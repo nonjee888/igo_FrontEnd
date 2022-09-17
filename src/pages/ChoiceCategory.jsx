@@ -5,12 +5,15 @@ import PageContainer from "../components/wrapper/PageContainer";
 import Headers from "../components/layout/Headers";
 
 const ChoiceCategory = () => {
-  return <div>
-    <PageContainer>
-    <Headers/>
-    <ChoiceCategory/>
-    <Footers/> 
-    </PageContainer></div>;
+  return (
+    <div>
+      <PageContainer>
+        <Headers />
+        <ChoiceCategory />
+        <Footers />
+      </PageContainer>
+    </div>
+  );
 };
 
 export default ChoiceCategory;

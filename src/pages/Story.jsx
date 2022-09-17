@@ -4,15 +4,14 @@ import PageContainer from "../components/wrapper/PageContainer";
 import Headers from "../components/layout/Headers";
 import TravelStory from "../components/story/TravelStory";
 
-
 const Story = () => {
-  return(
+  return (
     <PageContainer>
-    <Headers/>
-    <TravelStory/>
-    <Footers/>
+      <Headers />
+      <TravelStory />
+      <Footers />
     </PageContainer>
-    )
+  );
 };
 
 export default Story;
