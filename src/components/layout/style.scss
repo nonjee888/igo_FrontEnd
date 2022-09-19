@@ -1,0 +1,33 @@
+.SearchBar {
+  font-size: 18px;
+  width: calc(100% - 40px);
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.Icon {
+  position: absolute;
+  right: 12px;
+  top: 5px;
+  width: 26px;
+  height: 26px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  height: 40px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 1px solid #000;
+  border-radius: 120px;
+  background: #fff;
+  margin: 2rem auto 2rem auto;
+}
+
+.list-changer {
+  text-align: center;
+}
