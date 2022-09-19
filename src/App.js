@@ -22,7 +22,7 @@ function App() {
         <title>🚌🚕💸 내돈내여 💸🚗🚆</title>
       </Helmet>
       <div className="mobile-wrapper">
-        <Router />;
+        <Router />
       </div>
     </>
   );
