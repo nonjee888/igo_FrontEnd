@@ -1,4 +1,5 @@
 import "./App.css";
+import "./style.scss";
 import Router from "./shared/Router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -21,7 +22,7 @@ function App() {
         <title>🚌🚕💸 내돈내여 💸🚗🚆</title>
       </Helmet>
       <div className="mobile-wrapper">
-        <Router />;
+        <Router />
       </div>
     </>
   );

@@ -1,0 +1,168 @@
+//은지 담당
+//PostDetail.jsx
+.scroll-wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+.detail-wrapper {
+  border: 1px solid black;
+  width: 90vw;
+  height: 90vh;
+  margin: 0 auto;
+}
+.tag-wrapper {
+  border: 1px solid black;
+  width: 85vw;
+  height: 30px;
+  margin: 10px auto 0;
+}
+.title-wrapper {
+  border: 1px solid black;
+  width: 85vw;
+  height: 40px;
+  margin: 10px auto 0;
+}
+.title {
+  text-align: center;
+  margin: 5px auto;
+}
+.content-wrapper {
+  width: 85vw;
+  height: 82vh;
+  margin: 10px auto 0;
+}
+.pic-wrapper {
+  border: 1px solid black;
+  width: 75vw;
+  height: 25vh;
+  margin: 10px auto 0;
+  display: flex;
+}
+.img-container {
+  width: 70vw;
+  height: 20vh;
+  border-radius: 15px;
+  border: 1px solid black;
+  overflow: hidden;
+  position: relative;
+  margin: 20px auto;
+}
+.icon-heart {
+  position: absolute;
+  right: 80px;
+  top: 250px;
+  width: 26px;
+  height: 26px;
+}
+.map-wrapper {
+  width: 70vw;
+  height: 20vh;
+  border-radius: 15px;
+  border: 1px solid black;
+  overflow: hidden;
+  position: relative;
+  margin: 20px auto;
+}
+.body-wrapper {
+  border: 1px solid rgb(74, 9, 251);
+  width: 75vw;
+  height: 20vh;
+  margin: 10px auto 0;
+  border-radius: 15px;
+}
+
+.total-price {
+  border: 1px solid rgb(7, 193, 41);
+  width: 75vw;
+  height: 32h;
+  margin: 10px auto 0;
+}
+.detail-btns {
+  margin: 0 auto;
+  padding: 2% 58%;
+  width: 50%;
+  height: 30px;
+  display: flex;
+  gap: 10px;
+}
+.edit-btn {
+  width: 60px;
+  height: 30px;
+}
+.delete-btn {
+  width: 60px;
+  height: 30px;
+}
+.commentContainer {
+  padding-top: 10px;
+  border: 1px solid rgb(255, 0, 0);
+  width: 100%;
+  height: 30vh;
+}
+//CommentList.jsx
+.comment-wrapper {
+  display: flex;
+  padding-left: 30px;
+  gap: 10px;
+  align-items: center;
+}
+.comment-input {
+  width: 50vw;
+  height: 15px;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+.add-btn {
+  width: 50px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+}
+//PostEdit.jsx
+.price {
+  padding: 10px 10px;
+  border: 1px solid black;
+  display: flex;
+  align-items: baseline;
+}
+.total-cost {
+  margin-left: 30px;
+  width: 180px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.total-price-label {
+  margin-left: 30px;
+}
+//CommentList.jsx
+.ment-wrapper {
+  margin: 7px 30px;
+  display: flex;
+  gap: 10px;
+}
+//CommentEdit.jsx
+.show-modal {
+  position: absolute;
+  top: 400px;
+  left: 45px;
+  width: 80%;
+  height: 30%;
+  border: none;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.modal-text {
+  margin-left: 30px;
+  color: white;
+}
+.edit-input {
+  width: 200px;
+}
+.edit-content {
+  margin-top: 70px;
+  margin-left: 25px;
+  gap: 3px;
+  display: flex;
+}
+
+//은지 담당
