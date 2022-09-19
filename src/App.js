@@ -2,7 +2,6 @@ import "./App.css";
 import Router from "./shared/Router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Helmet } from "react-helmet-async";
 import { loginCheck } from "./redux/modules/user";
 
 function App() {
@@ -17,9 +16,6 @@ function App() {
 
   return (
     <>
-      <Helmet>
-        <title>🚌🚕💸 내돈내여 💸🚗🚆</title>
-      </Helmet>
       <div className="mobile-wrapper">
         <Router />
       </div>
