@@ -125,15 +125,17 @@
 
 //풋컨테이너
 .Footer-Container {
-  height: 70px;
+ 
   position: relative;
-  background-color: #c9c9c9;
+  background-color: #ffffff;
+  border-top: 1px solid grey;
+  
 
 }
 
 //글쓰기,관심목록,마이페이지 담긴 아이콘박스
 .Icon-box {
-  height: 70px;
+  height: 60px;
   
   display: flex;
   position: relative;
@@ -142,10 +144,25 @@
   
 }
 
-//관심목록아이콘
-.HeartIcon {
+//추천목록아이콘 다현이가추가
+.recomendIcon {
   margin-top: 10px;
-  margin-right: 1rem;
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  align-items: center;
+  &:hover {
+ color: yellow;
+  }
+  }
+
+
+
+//글쓰기아이콘 다현이가추가
+.addIcon {
+  margin-top: 10px;
+  margin-right: 20px;
   width: 46px;
   height: 46px;
   display: inline-block;
@@ -153,23 +170,34 @@
 
 }
 
-//글쓰기아이콘
-.writeIcon {
-  margin-top: 10px;
-  margin-right: 1rem;
-  width: 46px;
-  height: 46px;
-  display: inline-block;
-  align-items: center;
-
-}
-
-//마이페이지아이콘
+//마이페이지아이콘 다현이가추가
 .mypageIcon {
   margin-top: 10px;
-  margin-right: 1rem;
-  width: 46px;
-  height: 46px;
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  align-items: center;
+
+}
+
+//스토리아이콘 다현이가추가
+.storyIcon {
+  margin-top: 10px;
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  align-items: center;
+
+}
+
+//게시글 리스트 아이콘 다현이가추가
+.listIcon {
+  margin-top: 10px;
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
   display: inline-block;
   align-items: center;
 
@@ -177,6 +205,9 @@
 
 //아이콘각각 담아준박스
 .btnbox {
+  display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
 }
 

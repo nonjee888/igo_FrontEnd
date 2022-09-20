@@ -5,18 +5,24 @@ import ListChanger from "../components/layout/ListChanger";
 import ScrollContainer from "../components/wrapper/ScrollContainer";
 import Footers from "../components/layout/Footers";
 import Headerbar from "../components/layout/Headerbar";
+import PageContainer from "../components/wrapper/PageContainer";
 
 const PostPage = () => {
   return (
-    <div>
+    
+      
+      
+      <PageContainer>
       <Headers/>
-      <ScrollContainer>
-      <Headerbar/>
+      
       <Search />
       <ListChanger />
-    </ScrollContainer>
-    <Footers/>
- </div>
+     
+      <Footers/>
+      </PageContainer>
+      
+    
+ 
   );
 };
 
