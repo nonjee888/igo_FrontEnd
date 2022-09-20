@@ -1,5 +1,5 @@
 import React from "react";
-import AddPost from "../components/post/AddPost";
+import AddPostPage from "../pages/AddPostPage";
 import KaKaoLoading from "../pages/KaKaoLoading";
 import NaverLoading from "../pages/NaverLoading";
 import Loginpage from "../pages/Loginpage";
@@ -29,7 +29,7 @@ const Router = () => {
           <Route path="/choice" element={<ChoiceCategory />} exact />
           <Route path="/recommend" element={<MainRecommend />} exact />
           <Route path="/post" element={<PostPage />} exact />
-          <Route path="/addpost" element={<AddPost />} exact />
+          <Route path="/addpost" element={<AddPostPage />} exact />
           <Route path="/postdetail/:id" element={<PostDetailPage />} exact />
           <Route path="/postedit" element={<PostEdit />} exact />
           <Route path="/createstory" element={<CreateStory />} exact />
