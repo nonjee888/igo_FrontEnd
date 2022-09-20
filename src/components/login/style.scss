@@ -1,0 +1,16 @@
+//혜림 Login
+.loginCss {
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+}
+
+.loginButton {
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: transparent;
+  height: 45px;
+  font-weight: 900;
+  font-size: 15px;
+  color: white;
+}
