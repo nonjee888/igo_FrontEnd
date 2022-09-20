@@ -25,7 +25,7 @@ const Router = () => {
         <Routes>
           <Route path="/kakaoloading" element={<KaKaoLoading />} exact />
           <Route path="/naverloading" element={<NaverLoading />} exact />
-          <Route path="/login" element={<Loginpage />} exact />
+          <Route path="/" element={<Loginpage />} exact />
           <Route path="/choice" element={<ChoiceCategory />} exact />
           <Route path="/recommend" element={<MainRecommend />} exact />
           <Route path="/post" element={<PostPage />} exact />
