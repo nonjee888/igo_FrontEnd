@@ -1,5 +1,5 @@
 import React from "react";
-import "../../style.scss";
+import "./style.scss";
 //랜덤 이미지들 12개
 import img1 from "../../asset/assetLogin/img1.png";
 import img2 from "../../asset/assetLogin/img2.png";
@@ -50,6 +50,7 @@ const Login = () => {
               height: "170px",
               marginLeft: "4%",
               paddingBottom: "50px",
+              marginTop: "250px",
             }}
           />
           <img src={naver} />
