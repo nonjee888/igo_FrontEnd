@@ -1,4 +1,5 @@
 import "./App.css";
+import "./style.scss";
 import Router from "./shared/Router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
