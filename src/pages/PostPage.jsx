@@ -1,8 +1,8 @@
 import React from "react";
 import Search from "../components/layout/Search";
 import Headers from "../components/layout/Headers";
+import PostList from "../components/post/PostList";
 import ListChanger from "../components/layout/ListChanger";
-import ScrollContainer from "../components/wrapper/ScrollContainer";
 import Footers from "../components/layout/Footers";
 import PageContainer from "../components/wrapper/PageContainer";
 
@@ -12,6 +12,7 @@ const PostPage = () => {
       <Headers />
 
       <Search />
+      <PostList />
       <ListChanger />
 
       <Footers />
