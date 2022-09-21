@@ -12,18 +12,18 @@ const PostDetail = () => {
           <h2 className="title">Title</h2>
         </div>
         <div className="content-wrapper">
-          <div className="pic-wrapper">
-            <img className="img-container" src=""></img>
-            <img className="icon-heart" src="" />
-          </div>
-          <div className="map-wrapper">지도</div>
-          <div className="body-wrapper">body</div>
+          {/* <div className="pic-wrapper">
+              <img className="img-container" src=""></img>
+              <img className="icon-heart" src="" />
+            </div>
+            <div className="map-wrapper">지도</div>
+            <div className="body-wrapper">body</div>
 
-          <div className="total-price">total price</div>
-          <div className="detail-btns">
-            <button className="edit-btn">수정</button>
-            <button className="delete-btn">삭제</button>
-          </div>
+            <div className="total-price">total price</div> */}
+        </div>
+        <div className="detail-btns">
+          <button className="edit-btn">수정</button>
+          <button className="delete-btn">삭제</button>
         </div>
         <PostComment />
       </div>
