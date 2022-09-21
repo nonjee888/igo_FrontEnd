@@ -15,7 +15,6 @@
   height: 26px;
 }
 
-
 .input-wrapper {
   position: relative;
   display: flex;
@@ -41,21 +40,19 @@
   height: 80px;
   padding-top: 10px;
   padding-bottom: 10px;
-  
+
   display: flex;
   // position: fixed;
   // top: 0;
   // left: 0;
   // right: 0;
- 
 }
 //로고가 담긴 콘테이너
-.HeaderForm{
-  width:50%;
-  height:auto;
+.HeaderForm {
+  width: 50%;
+  height: auto;
   align-items: center;
   display: inline-block;
-  
 }
 
 //여행지추천,게시물,스토리가 담긴 헤더
@@ -65,9 +62,8 @@
   border-bottom: 3px solid grey;
   width: 100%;
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
-  
 }
 
 //내돈내여 로고
@@ -78,27 +74,26 @@
   height: 60px;
   display: flex;
   align-items: center;
-  
 }
 
 //로그인,회원가입 담긴 헤더
 .Sign-box {
-    display:flex;
-    width: 50%;
-    align-items: center;
-    justify-content: end;
-    padding: 10px 35px;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: end;
+  padding: 10px 35px;
 }
 
 //로그인,회원가입 버튼
 .Signbtn {
   font-size: 18px;
   padding: 0 0px;
-  position:relative;
+  position: relative;
   margin-right: 1rem;
-  border:none;
+  border: none;
   background: none;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   &:hover {
     font-weight: bold;
     color: #5e7fdc;
@@ -110,38 +105,33 @@
   font-size: 22px;
   font-weight: bold;
   line-height: 18px;
-  border:none;
+  border: none;
   padding: 0 10px;
   margin-left: 1rem;
-  position:relative;
-  font-family: 'NanumSquareAcb';
+  position: relative;
+  font-family: "NanumSquareAcb";
   background: none;
   &:hover {
     font-size: 25px;
-  font-weight: bold;
+    font-weight: bold;
   }
-  }
-
+}
 
 //풋컨테이너
 .Footer-Container {
- 
   position: relative;
   background-color: #ffffff;
   border-top: 1px solid grey;
-  
-
 }
 
 //글쓰기,관심목록,마이페이지 담긴 아이콘박스
 .Icon-box {
   height: 60px;
-  
+
   display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
-  
 }
 
 //추천목록아이콘 다현이가추가
@@ -153,11 +143,9 @@
   display: inline-block;
   align-items: center;
   &:hover {
- color: yellow;
+    color: yellow;
   }
-  }
-
-
+}
 
 //글쓰기아이콘 다현이가추가
 .addIcon {
@@ -167,7 +155,6 @@
   height: 46px;
   display: inline-block;
   align-items: center;
-
 }
 
 //마이페이지아이콘 다현이가추가
@@ -178,7 +165,6 @@
   height: 40px;
   display: inline-block;
   align-items: center;
-
 }
 
 //스토리아이콘 다현이가추가
@@ -189,7 +175,6 @@
   height: 40px;
   display: inline-block;
   align-items: center;
-
 }
 
 //게시글 리스트 아이콘 다현이가추가
@@ -200,7 +185,6 @@
   height: 40px;
   display: inline-block;
   align-items: center;
-
 }
 
 //아이콘각각 담아준박스
@@ -210,4 +194,3 @@
   align-items: center;
   justify-content: center;
 }
-
