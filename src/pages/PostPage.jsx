@@ -3,20 +3,21 @@ import Search from "../components/layout/Search";
 import Headers from "../components/layout/Headers";
 import PostList from "../components/post/PostList";
 import ListChanger from "../components/layout/ListChanger";
+import PostList from "../components/post/PostList";
 import Footers from "../components/layout/Footers";
 import PageContainer from "../components/wrapper/PageContainer";
 
 const PostPage = () => {
   return (
-    <PageContainer>
-      <Headers />
-
+      
+      <PageContainer>
+      <Headers/>
       <Search />
-      <PostList />
       <ListChanger />
+      <PostList/>
+      <Footers/>
+      </PageContainer>
 
-      <Footers />
-    </PageContainer>
   );
 };
 
