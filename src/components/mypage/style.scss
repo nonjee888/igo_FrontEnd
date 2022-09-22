@@ -1,62 +1,61 @@
-// 나의페이지
-.All {
-  border: 2px solid #d9d9d9; //배경사이즈 확인용
-  height: 80vh;
-}
+//혜림담당
 
+// 나의페이지
 .imgBox {
   border-radius: 70%;
   background-color: #d9d9d9;
-  width: 110px;
-  height: 110px;
-  margin: 15% auto auto auto;
+  width: 30%;
+  height: 15%;
+  margin: 10% 0 0 35%;
 }
 
 .profileNickname {
   display: flex;
   justify-content: center;
-  margin: 5% auto auto auto;
-  font-size: 20px;
+  margin: 3% auto auto auto;
+  font-size: 1.1rem;
   font-weight: 900;
   width: 50%;
   height: 5%;
 }
 
 .profileCategory {
-  margin-top: 10%;
+  margin-top: 15%;
 }
 
 .CategoryTitle {
   display: flex;
+  font-size: medium;
 }
 
 .categoryGet {
   background-color: #a3d7ed;
   width: 75%;
   height: 100%;
-  border-radius: 7px;
+  border-radius: 10px;
   padding: 10px;
   margin: auto;
 }
 
 .myListAll {
   margin: 10% 0 0 10%;
+  height: 20%;
   font-weight: bold;
   p {
     background-color: #d9d9d9;
     width: 85%;
     padding: 2%;
-    border-radius: 7px;
+    border-radius: 10px;
+    font-size: 1.1rem;
   }
 }
 // 나의 게시글, 관심, 일정 리스트
 .MyPostsList {
   display: flex;
-  margin: auto;
 }
 
 .MyPosts {
-  margin: 10%;
+  margin: 5%;
 }
 
 .MyPostImg {
@@ -106,19 +105,89 @@
   border-radius: 10px;
 }
 
+.MyplanContents {
+  padding: 3%;
+}
+
+//완료 전
 .MyplanDate {
-  background-color: #d9d9d9;
-  padding: 8% 0 0 12%;
+  background-color: #a3d7ed;
+  padding: 7% 0 0 8%;
   border-radius: 10px 0 0 0;
 }
 
 .MyplanTitle {
+  background-color: #a3d7ed;
+  padding: 3% 0 0 5%;
+  border-radius: 0 10px 0 0;
+  border-left: 1px solid #afafaf;
+}
+// 완료 후
+.MyplanDate1 {
   background-color: #d9d9d9;
-  padding: 3%;
+  padding: 7% 0 0 8%;
+  border-radius: 10px 0 0 0;
+}
+
+.MyplanTitle1 {
+  background-color: #d9d9d9;
+  padding: 3% 0 0 5%;
   border-radius: 0 10px 0 0;
   border-left: 1px solid #afafaf;
 }
 
-.MyplanContents {
+//일정추가
+.DatePicker {
+  border: none;
+  border-radius: 10px;
+  width: 40%;
+  font-size: medium;
+  font-weight: bold;
+  margin: 1% 0 0 30%;
+  text-align: center;
+}
+
+.MyplanPost {
+  display: grid;
+  grid-template-rows: 7% 7% 30% 56%;
+  border-radius: 10px;
+  width: 100%;
+  height: 50vh;
+  box-shadow: 2px 3px 3px 2px #d9d9d9;
+}
+
+.MyplanPostDate {
+  background-color: #a3d7ed;
+  border-radius: 10px 10px 0 0;
+}
+
+.MyplanPostTitle {
+  background-color: #a3d7ed;
+  padding-left: 5%;
+}
+
+.MyplanPostImg {
   padding: 3%;
+  border-radius: 10px;
+}
+
+.MyplanPostContents {
+  padding: 3%;
+}
+.PostimgBox {
+  width: 95%;
+  height: 90%;
+  margin: 3% auto;
+}
+
+.MyplanPostAddbutton {
+  background-color: #d9d9d9;
+  border: none;
+  width: 40%;
+  height: 7%;
+  border-radius: 10px;
+  margin: -10% 0 0 30%;
+  color: white;
+  font-size: large;
+  font-weight: bold;
 }

@@ -15,7 +15,6 @@ import MyLikesPage from "../pages/MyLikesPage";
 import MyPlanPage from "../pages/MyPlanPage";
 import MyPlanPostPage from "../pages/MyPlanPostPage";
 import MyPostsListPage from "../pages/MyPostsListPage";
-
 import StoryAdd from "../pages/StoryAdd";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
