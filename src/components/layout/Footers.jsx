@@ -6,22 +6,67 @@ import mypageIcon from "../../asset/assetFooter/mypageIcon.png";
 import addIcon from "../../asset/assetFooter/addIcon.png";
 import storyIcon from "../../asset/assetFooter/storyIcon.png";
 
-import { Navigate,useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Footers = () => {
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className="Footer-Container">
       <div className="Icon-box">
-      <div className="btnbox"><img className="recomendIcon" onClick={() => { navigate("/recommend") }} src={recomendIcon} /></div>
-      <div className="btnbox"><img className="listIcon" onClick={() => { navigate("/post") }} src={listIcon} /></div>
-      <div className="btnbox"><img className="addIcon" onClick={() => { navigate("") }} src={addIcon} /></div>
-      <div className="btnbox"><img className="storyIcon" onClick={() => { navigate("/story") }} src={storyIcon} /></div>
-      <div className="btnbox"> <img className="mypageIcon" onClick={() => { navigate("/myinfo") }} src={mypageIcon} /></div>
+        <div className="btnbox">
+          <img
+            className="recomendIcon"
+            onClick={() => {
+              navigate("/recommend");
+            }}
+            src={recomendIcon}
+            alt="추천"
+          />
+        </div>
+        <div className="btnbox">
+          <img
+            className="FootersIcon"
+            onClick={() => {
+              navigate("/post");
+            }}
+            src={listIcon}
+            alt="리스트"
+          />
+        </div>
+        <div className="btnbox">
+          <img
+            className="FootersIcon"
+            onClick={() => {
+              navigate("");
+            }}
+            src={addIcon}
+            alt="등록"
+          />
+        </div>
+        <div className="btnbox">
+          <img
+            className="FootersIcon"
+            onClick={() => {
+              navigate("/story");
+            }}
+            src={storyIcon}
+            alt="스토리"
+          />
+        </div>
+        <div className="btnbox">
+          <img
+            className="FootersIcon"
+            onClick={() => {
+              navigate("/myinfo");
+            }}
+            src={mypageIcon}
+            alt="마이페이지"
+          />
+        </div>
+      </div>
     </div>
-    </div>
-  )
+  );
 };
 
 export default Footers;
