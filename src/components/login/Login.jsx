@@ -45,6 +45,7 @@ const Login = () => {
         <div className="loginCss">
           <img
             src={logo}
+            alt="내돈내여로고"
             style={{
               width: "170px",
               height: "170px",
@@ -53,8 +54,8 @@ const Login = () => {
               marginTop: "250px",
             }}
           />
-          <img src={naver} />
-          <img src={kakao} />
+          <img src={naver} alt="네이버로시작하기" />
+          <img src={kakao} alt="카카오로시작하기" />
           <button className="loginButton">비회원으로 둘러보기</button>
         </div>
       </section>
