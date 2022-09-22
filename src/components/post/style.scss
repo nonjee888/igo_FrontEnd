@@ -1,24 +1,63 @@
 //은지 담당
-//PostDetail.jsx
-.scroll-wrapper {
-  width: 100%;
-  min-height: 100vh;
-}
-.detail-wrapper {
-  border: 1px solid black;
-  width: 90vw;
-  height: 90vh;
+
+//PostList.jsx
+.inner-content {
+  margin-bottom: 20px;
   margin: 0 auto;
+  border: 1px solid rgb(255, 0, 0);
+  width: 90%;
+  height: 30vh;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+//AddPost.jsx
+.editor-wrapper {
+  padding-top: 10px;
+}
+.submit-post {
+  margin-left: 360px;
+  margin-top: 10px;
+  width: 60px;
+  height: 30px;
+}
+
+//PostEdit.jsx
+.price {
+  padding: 10px 10px;
+  border: 1px solid black;
+  display: flex;
+  align-items: baseline;
+}
+.total-cost {
+  margin-left: 30px;
+  width: 180px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.total-price-label {
+  margin-left: 30px;
+}
+
+//Post.jsx
+.post-content {
+  margin-left: 10px;
+}
+
+//PostDetail.jsx
+.detail-wrapper {
+  width: 100%;
+  height: 90vh;
 }
 .tag-wrapper {
   border: 1px solid black;
-  width: 85vw;
+  width: 95%;
   height: 30px;
   margin: 10px auto 0;
 }
 .title-wrapper {
   border: 1px solid black;
-  width: 85vw;
+  width: 95%;
   height: 40px;
   margin: 10px auto 0;
 }
@@ -27,35 +66,32 @@
   margin: 5px auto;
 }
 .content-wrapper {
-  width: 85vw;
-  height: 82vh;
+  border: 1px solid black;
+  width: 90%;
+  height: 80%;
   margin: 10px auto 0;
 }
 .pic-wrapper {
-  border: 1px solid black;
-  width: 75vw;
+  width: 100%;
   height: 25vh;
-  margin: 10px auto 0;
-  display: flex;
 }
 .img-container {
-  width: 70vw;
-  height: 20vh;
+  width: 100%;
+  height: 100%;
   border-radius: 15px;
   border: 1px solid black;
   overflow: hidden;
   position: relative;
-  margin: 20px auto;
 }
 .icon-heart {
   position: absolute;
-  right: 80px;
-  top: 250px;
+  right: 135px;
+  top: 240px;
   width: 26px;
   height: 26px;
 }
 .map-wrapper {
-  width: 70vw;
+  width: 70%;
   height: 20vh;
   border-radius: 15px;
   border: 1px solid black;
@@ -65,21 +101,20 @@
 }
 .body-wrapper {
   border: 1px solid rgb(74, 9, 251);
-  width: 75vw;
+  width: 90%;
   height: 20vh;
   margin: 10px auto 0;
   border-radius: 15px;
 }
-
 .total-price {
   border: 1px solid rgb(7, 193, 41);
-  width: 75vw;
+  width: 75%;
   height: 32h;
   margin: 10px auto 0;
 }
 .detail-btns {
   margin: 0 auto;
-  padding: 2% 58%;
+  padding: 2% 68%;
   width: 50%;
   height: 30px;
   display: flex;
@@ -97,17 +132,18 @@
   padding-top: 10px;
   border: 1px solid rgb(255, 0, 0);
   width: 100%;
-  height: 30vh;
+  height: 20%;
 }
+
 //CommentList.jsx
 .comment-wrapper {
   display: flex;
-  padding-left: 30px;
+  padding-left: 60px;
   gap: 10px;
   align-items: center;
 }
 .comment-input {
-  width: 50vw;
+  width: 50%;
   height: 15px;
   border: none;
   border-bottom: 1px solid gray;
@@ -118,28 +154,14 @@
   border: none;
   border-radius: 5px;
 }
-//PostEdit.jsx
-.price {
-  padding: 10px 10px;
-  border: 1px solid black;
-  display: flex;
-  align-items: baseline;
-}
-.total-cost {
-  margin-left: 30px;
-  width: 180px;
-  border: none;
-  border-bottom: 1px solid black;
-}
-.total-price-label {
-  margin-left: 30px;
-}
+
 //CommentList.jsx
 .ment-wrapper {
-  margin: 7px 30px;
+  margin: 7px 60px;
   display: flex;
   gap: 10px;
 }
+
 //CommentEdit.jsx
 .show-modal {
   position: absolute;
@@ -164,5 +186,3 @@
   gap: 3px;
   display: flex;
 }
-
-//은지 담당
