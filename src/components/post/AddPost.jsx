@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import S3 from "react-aws-s3";
-import { v4 as uuidv4 } from "uuid";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "tui-color-picker/dist/tui-color-picker.css";
@@ -10,6 +9,7 @@ import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 
 const AddPost = () => {
   const editorRef = useRef();
+  // const isDesktop = true;
   window.Buffer = window.Buffer || require("buffer").Buffer;
   const handleRegisterButton = () => {
     console.log(editorRef.current?.getInstance().getHTML());
@@ -18,6 +18,9 @@ const AddPost = () => {
 
   return (
     <div className="detail-wrapper">
+      <div className="title-wrapper">
+        <input className="input-title" placeholder="제목을 입력하세요" />
+      </div>
       <div className="editor-wrapper">
         <Editor
           ref={editorRef}
@@ -32,7 +35,6 @@ const AddPost = () => {
           language="ko-KR"
           hooks={{
             addImageBlobHook: async (blob, callback) => {
-              // console.log(blob);
               const config = {
                 bucketName: "nondis3",
                 region: "ap-northeast-2",
