@@ -1,4 +1,5 @@
 //은지 담당
+$standard: 480px; //기준값 입력
 
 //PostList.jsx
 .inner-content {
@@ -12,16 +13,49 @@
 }
 
 //AddPost.jsx
-.editor-wrapper {
-  padding-top: 10px;
-}
 .submit-post {
   margin-left: 360px;
   margin-top: 10px;
   width: 60px;
   height: 30px;
 }
+.input-title {
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+  color: rgb(168, 166, 166);
+  border-bottom: 1px solid rgba(215, 215, 215, 0.933);
+}
 
+@mixin calcToastui-editor-popup($width) {
+  @if ($standard>$width) {
+    .toastui-editor-popup {
+      left: calc(80vw - 150px) !important; // 모바일모드에서 중간에서 보임
+      margin-left: 0 !important;
+    }
+  } @else {
+    .toastui-editor-popup {
+      left: 13px !important; // 데스크탑모드에서 중간에서 보임
+    }
+  }
+}
+
+%toastui-editor-popup {
+  width: 400px;
+  margin-right: auto;
+  background: #fff;
+  z-index: 30;
+  position: absolute;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+  border: 1px solid #dadde6;
+}
+
+.toastui-editor-dropdown-toolbar {
+  right: 0px !important;
+}
 //PostEdit.jsx
 .price {
   padding: 10px 10px;
@@ -47,7 +81,7 @@
 //PostDetail.jsx
 .detail-wrapper {
   width: 100%;
-  height: 90vh;
+  height: 70%;
 }
 .tag-wrapper {
   border: 1px solid black;
@@ -56,7 +90,6 @@
   margin: 10px auto 0;
 }
 .title-wrapper {
-  border: 1px solid black;
   width: 95%;
   height: 40px;
   margin: 10px auto 0;
@@ -85,7 +118,7 @@
 }
 .icon-heart {
   position: absolute;
-  right: 135px;
+  right: 55px;
   top: 240px;
   width: 26px;
   height: 26px;
