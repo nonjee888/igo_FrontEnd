@@ -15,7 +15,8 @@ import MyLikesPage from "../pages/MyLikesPage";
 import MyPlanPage from "../pages/MyPlanPage";
 import MyPlanPostPage from "../pages/MyPlanPostPage";
 import MyPostsListPage from "../pages/MyPostsListPage";
-import MyPlanDetail from "../components/mypage/MyPlanDetail";
+
+import StoryAdd from "../pages/StoryAdd";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Router = () => {
@@ -34,11 +35,11 @@ const Router = () => {
           <Route path="/postedit" element={<PostEdit />} exact />
           <Route path="/createstory" element={<CreateStory />} exact />
           <Route path="/story" element={<Story />} exact />
+          <Route path="/addstory" element={<StoryAdd />} exact />
           <Route path="/myinfo" element={<MyInfoPage />} exact />
           <Route path="/mylike" element={<MyLikesPage />} exact />
           <Route path="/myplan" element={<MyPlanPage />} exact />
           <Route path="/myplanpost" element={<MyPlanPostPage />} exact />
-          <Route path="/myplandetail/:id" element={<MyPlanDetail />} exact />
           <Route path="/mypostlist" element={<MyPostsListPage />} exact />
           <Route path="*" element={<div>없는 페이지입니다.</div>} />
         </Routes>
