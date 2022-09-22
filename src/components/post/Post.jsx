@@ -1,9 +1,10 @@
 import React from "react";
+import "./style.scss";
 import emptyHeart from "../../asset/emptyHeart.png";
 
 const Post = () => {
   return (
-    <div>
+    <div className="All">
       <div className="pic-wrapper">
         <img
           className="img-container"

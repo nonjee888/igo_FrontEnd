@@ -20,14 +20,25 @@ const Myplan = () => {
           />
         </div>
         <div className="Myplan">
-          <div className="MyplanDate">2022.09.22</div>
+          <div className="MyplanDate">2022/09/22</div>
           <div className="MyplanTitle">제목</div>
-          <img src="" className="MyplanImg" alt="내게시글이미지" />
+          <img src="" className="MyplanImg" alt="내일정이미지" />
           <div className="MyplanContents">여기에 내용</div>
           <button>
             <img src={deleteimg} style={{ width: "20%" }} alt="" />
           </button>
           <button>완료</button>
+        </div>
+        <h3 style={{ marginTop: "15%" }}>완료된 일정</h3>
+        <div className="Myplan">
+          <div className="MyplanDate1">2022/09/22</div>
+          <div className="MyplanTitle1">제목</div>
+          <img src="" className="MyplanImg" alt="내일정이미지완료" />
+          <div className="MyplanContents">여기에 내용</div>
+          <button>
+            <img src={deleteimg} style={{ width: "20%" }} alt="" />
+          </button>
+          <button>취소</button>
         </div>
       </div>
     </div>
