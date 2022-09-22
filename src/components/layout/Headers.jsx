@@ -8,11 +8,12 @@ const Headers = () => {
   return (
     <div className="Header-wrapper">
       <div className="HeaderForm">
-      <img className="Logo" onClick={() => { navigate("/post") }} src={IgoLogo} />
+      <img className="Logo" onClick={() => { navigate("/recommend") }} src={IgoLogo} />
        </div>
       <div className="Sign-box">
-         <button className="Signbtn" onClick={() => { navigate("/login") }}>로그인</button>
+         <button className="Signbtn" onClick={() => { navigate("/") }}>로그인</button>
       <button className="Signbtn"onClick={() => { navigate("") }}>회원가입</button>
+     
      
      
       </div>

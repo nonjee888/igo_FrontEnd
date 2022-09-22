@@ -10,11 +10,9 @@ const PostPage = () => {
   return (
     <PageContainer>
       <Headers />
-
       <Search />
-      <PostList />
       <ListChanger />
-
+      <PostList />
       <Footers />
     </PageContainer>
   );
