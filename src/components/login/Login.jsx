@@ -56,7 +56,14 @@ const Login = () => {
               marginTop: "30vh",
             }}
           />
-          <img src={naver} alt="네이버로시작하기" />
+          <div>
+            <a
+              href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=1tmOBpKKBicBaUmPQpaF&redirect_uri=http://localhost:3000/naverloading&state=STATE_STRING
+"
+            >
+              <img src={naver} alt="네이버로시작하기" />
+            </a>
+          </div>
           <img src={kakao} alt="카카오로시작하기" />
           <button
             className="loginButton"

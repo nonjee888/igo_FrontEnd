@@ -7,7 +7,6 @@ import story from "../modules/story";
 import user from "../modules/user";
 
 const store = configureStore({
-  reducer: {},
   reducer: {
     comments,
     map,

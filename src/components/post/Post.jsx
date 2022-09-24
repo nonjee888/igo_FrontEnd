@@ -4,15 +4,15 @@ import emptyHeart from "../../asset/emptyHeart.png";
 
 const Post = () => {
   return (
-    <div className="All">
-      <div className="pic-wrapper">
-        <img
-          className="img-container"
-          src="https://img.hankyung.com/photo/202012/AKR20201202073200053_01_i_P4.jpg"
-        />
-        <button className=""></button>
-        <p className="post-content">body내용</p>
-      </div>
+    <div className="pic-wrapper">
+      <img
+        className="img-container"
+        src="https://img.hankyung.com/photo/202012/AKR20201202073200053_01_i_P4.jpg"
+      />
+      <button className="heart-btn" type="button">
+        <img className="heart-btn-img" src={emptyHeart} alt="" />
+      </button>
+      <div className="post-content">경주 보문단지 솰라솰라</div>
     </div>
   );
 };

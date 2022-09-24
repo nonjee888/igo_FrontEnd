@@ -1,83 +1,99 @@
 //은지 담당
-$standard: 480px; //기준값 입력
 
 //PostList.jsx
-.inner-content {
-  margin-bottom: 20px;
-  margin: 0 auto;
-  border: 1px solid rgb(255, 0, 0);
-  width: 90%;
-  height: 30vh;
-  border-radius: 10px;
-  overflow: hidden;
-}
 
 //AddPost.jsx
-.submit-post {
-  margin-left: 360px;
-  margin-top: 10px;
-  width: 60px;
-  height: 30px;
+.allPost {
+  // border: 2px solid #d9d9d9; //배경사이즈 확인용
+  height: 100vh;
+  overflow-x: hidden;
+}
+.addpost-title {
+  padding: 15px 0;
 }
 .input-title {
   width: 100%;
-  height: 30px;
+  height: 20%;
   font-size: 20px;
   border: none;
   color: rgb(168, 166, 166);
   border-bottom: 1px solid rgba(215, 215, 215, 0.933);
 }
-
-@mixin calcToastui-editor-popup($width) {
-  @if ($standard>$width) {
-    .toastui-editor-popup {
-      left: calc(80vw - 150px) !important; // 모바일모드에서 중간에서 보임
-      margin-left: 0 !important;
-    }
-  } @else {
-    .toastui-editor-popup {
-      left: 13px !important; // 데스크탑모드에서 중간에서 보임
-    }
-  }
+.editor-wrapper {
+  position: relative;
+  max-width: 428px;
+  width: 100%;
 }
-
-%toastui-editor-popup {
-  width: 400px;
-  margin-right: auto;
-  background: #fff;
-  z-index: 30;
-  position: absolute;
-  border-radius: 2px;
-  -webkit-box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
-  border: 1px solid #dadde6;
+.toastui-editor-popup {
+  left: calc(40% - 150px) !important; // 모바일모드에서 중간에서 보임
+  margin-left: 0 !important;
 }
+// @mixin calcToastui-editor-popup($width) {
+//   @if $standard>$width {
+//     .toastui-editor-popup {
+//       left: calc(80% - 150px) !important; // 모바일모드에서 중간에서 보임
+//       margin-left: 0 !important;
+//     }
+//   } @else {
+//     .toastui-editor-popup {
+//       left: 13px !important; // 데스크탑모드에서 중간에서 보임
+//     }
+//   }
+// }
+// %toastui-editor-popup {
+//   width: 400px;
+//   margin-right: auto;
+//   background: #fff;
+//   z-index: 30;
+//   position: absolute;
+//   border-radius: 2px;
+//   -webkit-box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+//   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+//   border: 1px solid #dadde6;
+// }
 
 .toastui-editor-dropdown-toolbar {
   right: 0px !important;
 }
-//PostEdit.jsx
-.price {
-  padding: 10px 10px;
-  border: 1px solid black;
-  display: flex;
-  align-items: baseline;
+.submit-post {
+  margin-top: 10px;
+  width: 120px;
+  height: 40px;
 }
-.total-cost {
-  margin-left: 30px;
-  width: 180px;
+.submit-post {
+  background: none;
   border: none;
-  border-bottom: 1px solid black;
 }
-.total-price-label {
-  margin-left: 30px;
+.footer {
+  display: flex;
+  justify-content: center;
 }
+.submit-icon {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+//PostEdit.jsx
 
 //Post.jsx
 .post-content {
-  margin-left: 10px;
+  margin-left: 5%;
+  margin-top: 5%;
 }
-
+.heart-btn {
+  width: 10%;
+  height: 15%;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 50px;
+}
+.heart-btn-img {
+  width: 200%;
+  height: 100%;
+}
 //PostDetail.jsx
 .detail-wrapper {
   width: 100%;
@@ -90,54 +106,27 @@ $standard: 480px; //기준값 입력
   margin: 10px auto 0;
 }
 .title-wrapper {
-  width: 95%;
-  height: 40px;
-  margin: 10px auto 0;
+  height: 20%;
 }
 .title {
   text-align: center;
   margin: 5px auto;
 }
 .content-wrapper {
-  border: 1px solid black;
-  width: 90%;
+  //All 다음 wrapper
   height: 80%;
-  margin: 10px auto 0;
+  margin: 5%;
 }
 .pic-wrapper {
   width: 100%;
-  height: 25vh;
+  position: relative;
 }
 .img-container {
   width: 100%;
   height: 100%;
   border-radius: 15px;
-  border: 1px solid black;
   overflow: hidden;
   position: relative;
-}
-.icon-heart {
-  position: absolute;
-  right: 55px;
-  top: 240px;
-  width: 26px;
-  height: 26px;
-}
-.map-wrapper {
-  width: 70%;
-  height: 20vh;
-  border-radius: 15px;
-  border: 1px solid black;
-  overflow: hidden;
-  position: relative;
-  margin: 20px auto;
-}
-.body-wrapper {
-  border: 1px solid rgb(74, 9, 251);
-  width: 90%;
-  height: 20vh;
-  margin: 10px auto 0;
-  border-radius: 15px;
 }
 .total-price {
   border: 1px solid rgb(7, 193, 41);
