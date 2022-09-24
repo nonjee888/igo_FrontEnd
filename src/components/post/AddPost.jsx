@@ -18,7 +18,7 @@ const AddPost = () => {
     console.log(editorRef.current?.getInstance().getHTML());
     console.log(editorRef.current?.getInstance().getMarkdown());
   };
-
+  //아
   return (
     <>
       <div className="allPost">
