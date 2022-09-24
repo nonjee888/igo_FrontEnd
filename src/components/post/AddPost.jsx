@@ -8,6 +8,8 @@ import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/i18n/ko-kr";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 
+import PostSearchPlace from "./PostSearchPlace";
+
 const AddPost = () => {
   const editorRef = useRef();
   // const isDesktop = true;
@@ -29,7 +31,7 @@ const AddPost = () => {
             placeholder="입력하세요"
             initialValue=" "
             previewStyle="vertical"
-            height="calc(100vh - 400px)"
+            height="calc(100vh - 360px)"
             initialEditType="wysiwyg"
             useCommandShortcut={false}
             hideModeSwitch={true}
@@ -56,6 +58,9 @@ const AddPost = () => {
               },
             }}
           />
+          <div>
+            <PostSearchPlace />
+          </div>
           <div className="footer">
             <button className="submit-post" onClick={handleRegisterButton}>
               <img className="submit-icon" src={submitpost} alt="submit" />

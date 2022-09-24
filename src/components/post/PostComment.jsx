@@ -1,5 +1,5 @@
 import React from "react";
-import CommentList from "./CommentList";
+import PostCommentList from "./PostCommentList";
 
 const PostComment = () => {
   return (
@@ -11,7 +11,7 @@ const PostComment = () => {
           <button className="add-btn">댓글</button>
         </div>
         <div className="commentList">
-          <CommentList />
+          <PostCommentList />
         </div>
       </div>
     </>
