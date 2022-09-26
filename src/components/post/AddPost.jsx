@@ -12,13 +12,11 @@ import PostSearchPlace from "./PostSearchPlace";
 
 const AddPost = () => {
   const editorRef = useRef();
-  // const isDesktop = true;
   window.Buffer = window.Buffer || require("buffer").Buffer;
   const handleRegisterButton = () => {
     console.log(editorRef.current?.getInstance().getHTML());
-    console.log(editorRef.current?.getInstance().getMarkdown());
   };
-  //아
+
   return (
     <>
       <div className="allPost">
@@ -31,7 +29,7 @@ const AddPost = () => {
             placeholder="입력하세요"
             initialValue=" "
             previewStyle="vertical"
-            height="calc(100vh - 360px)"
+            height="calc(100vh - 390px)"
             initialEditType="wysiwyg"
             useCommandShortcut={false}
             hideModeSwitch={true}

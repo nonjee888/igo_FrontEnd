@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   width: 80%;
-  height: 40px;
+  height: 30px;
   padding: 5% 10%;
   box-sizing: border-box;
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
@@ -95,6 +95,8 @@
 .Footer-Container {
   border-top: 1px solid #d9d9d9;
   height: 10vh;
+  position: fixed;
+  width: 100%;
 }
 
 //글쓰기,관심목록,마이페이지 담긴 아이콘박스

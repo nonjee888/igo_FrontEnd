@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+OAuth.js
 
 # testing
 /coverage
@@ -25,4 +26,3 @@ yarn-error.log*
 
 # API KEY
 .env
-/src/shared/OAuth.js

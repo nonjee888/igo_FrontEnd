@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
+import { NAVER_AUTH_URL } from "../../shared/OAuth";
 //랜덤 이미지들 12개
 import img1 from "../../asset/assetLogin/img1.png";
 import img2 from "../../asset/assetLogin/img2.png";
@@ -57,12 +58,15 @@ const Login = () => {
             }}
           />
           <div>
-            <a
-              href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=1tmOBpKKBicBaUmPQpaF&redirect_uri=http://localhost:3000/naverloading&state=STATE_STRING
-"
-            >
-              <img src={naver} alt="네이버로시작하기" />
-            </a>
+            {/* <a href={}> */}
+            <img
+              src={naver}
+              alt="네이버로시작하기"
+              onClick={() => {
+                window.location.href = NAVER_AUTH_URL;
+              }}
+            />
+            {/* </a> */}
           </div>
           <img src={kakao} alt="카카오로시작하기" />
           <button

@@ -1,7 +1,4 @@
 //은지 담당
-
-//PostList.jsx
-
 //AddPost.jsx
 .allPost {
   // border: 2px solid #d9d9d9; //배경사이즈 확인용
@@ -57,6 +54,7 @@
 }
 .submit-post {
   margin-top: 10px;
+  margin-bottom: 10px;
   width: 120px;
   height: 40px;
 }
@@ -73,9 +71,6 @@
   height: 100%;
   margin: 0;
 }
-
-//PostEdit.jsx
-
 //Post.jsx
 .post-content {
   margin-left: 5%;
@@ -96,26 +91,29 @@
 }
 //PostDetail.jsx
 .detail-wrapper {
-  width: 100%;
+  width: 99.5%;
   height: 70%;
 }
 .tag-wrapper {
   border: 1px solid black;
-  width: 95%;
+  width: 100%;
   height: 30px;
   margin: 10px auto 0;
 }
-.title-wrapper {
-  height: 20%;
+.detail-title {
+  width: 100%;
+  height: 6%;
+  border: 1px solid black;
 }
 .title {
   text-align: center;
   margin: 5px auto;
 }
-.content-wrapper {
-  //All 다음 wrapper
-  height: 80%;
-  margin: 5%;
+.detail-content {
+  width: 100%;
+  height: 90%;
+  border: 1px solid black;
+  overflow: auto;
 }
 .pic-wrapper {
   width: 100%;
@@ -128,19 +126,17 @@
   overflow: hidden;
   position: relative;
 }
-.total-price {
+.map-wrapper {
   border: 1px solid rgb(7, 193, 41);
-  width: 75%;
-  height: 32h;
-  margin: 10px auto 0;
+  width: 100%;
+  height: 50%;
 }
 .detail-btns {
-  margin: 0 auto;
-  padding: 2% 68%;
-  width: 50%;
-  height: 30px;
+  margin-left: 280px;
+  padding: 10px 0 10px 0;
   display: flex;
   gap: 10px;
+  border: 1px solid rgb(7, 193, 41);
 }
 .edit-btn {
   width: 60px;
@@ -156,13 +152,15 @@
   width: 100%;
   height: 20%;
 }
-
 //CommentList.jsx
-.comment-wrapper {
+.toggle-comment-wrapper {
   display: flex;
-  padding-left: 60px;
-  gap: 10px;
   align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 50px;
+  padding: 0 12px;
+  border-top: 1px solid #eee;
 }
 .comment-input {
   width: 50%;
@@ -187,10 +185,10 @@
 //CommentEdit.jsx
 .show-modal {
   position: absolute;
-  top: 400px;
+  top: 200px;
   left: 45px;
   width: 80%;
-  height: 30%;
+  height: 40%;
   border: none;
   border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -207,4 +205,30 @@
   margin-left: 25px;
   gap: 3px;
   display: flex;
+}
+
+//PostSearchPlace.jsx
+.map-inputForm {
+  display: flex;
+  align-items: end;
+}
+.map-input {
+  width: 80%;
+  height: 20px;
+}
+.map-search-btn {
+  width: 18%;
+  height: 25px;
+}
+//PostComment.jsx
+
+.commentContainer {
+  max-width: 428px;
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+  height: 50px;
+  transition: all 1000ms;
+  background-color: white;
 }

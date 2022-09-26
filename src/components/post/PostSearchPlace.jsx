@@ -17,14 +17,18 @@ const SearchPlace = () => {
 
   return (
     <>
-      <form className="inputForm" onSubmit={handleSubmit}>
+      <form className="map-inputForm" onSubmit={handleSubmit}>
         <input
+          className="map-input"
           placeholder="Search Place..."
           onChange={onChange}
           value={inputText}
         />
-        <button type="submit">검색</button>
+        <button className="map-search-btn" type="submit">
+          검색
+        </button>
       </form>
+
       <PostKakaoMap searchPlace={place} />
     </>
   );

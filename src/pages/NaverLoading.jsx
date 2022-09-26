@@ -24,8 +24,8 @@ const NaverLoading = () => {
       const NICKNAME = data.data.data;
       localStorage.setItem("token", ACCESS_TOKEN); //로컬스토리지에 토큰저장
       localStorage.setItem("refresh", REFRESH_TOKEN); //로컬스토리지에 토큰저장
-      // localStorage.setItem("nickname", NICKNAME); //로컬스토리지에 닉넴 저장
-      // window.location.assign("/post"); //토큰 저장하면 자동으로 메인화면으로 이동
+      localStorage.setItem("nickname", NICKNAME); //로컬스토리지에 닉넴 저장
+      window.location.assign("/post"); //토큰 저장하면 자동으로 메인화면으로 이동
       window.alert("환영합니다!");
       return data;
     } catch (error) {
