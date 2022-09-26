@@ -6,7 +6,7 @@ import mypageIcon from "../../asset/assetFooter/mypageIcon.png";
 import addIcon from "../../asset/assetFooter/addIcon.png";
 import storyIcon from "../../asset/assetFooter/storyIcon.png";
 
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Footers = () => {
   const navigate = useNavigate();

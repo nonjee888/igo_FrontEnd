@@ -22,6 +22,25 @@ export const getToken = createAsyncThunk(
     }
   }
 );
+
+//카카오 로그인
+export const getKakao = createAsyncThunk(
+  "user/getKakao",
+  async (code, thunkAPI) => {
+    try {
+      const data = await instance.get(`/kakao/callback?code=${code}`);
+      console.log(data);
+      const ACCESS_TOKEN = data.headers.authorization;
+      localStorage.setItem("token", ACCESS_TOKEN);
+      window.location.assign("/myinfo");
+      window.alert("카카오 로그인 성공!");
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 //리듀서 -----------------------------------------------------------------------------------------------------
 export const user = createSlice({
   name: "user",
