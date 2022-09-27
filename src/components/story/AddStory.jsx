@@ -1,41 +1,16 @@
-import "./style.scss";
 import React from "react";
-
-
+import VideoInput from "./VideoInput";
+import "./style.scss";
 
 const AddStory = () => {
-    return (
+  return (
+    <div className="All">
+      
+      {/* 비디오불러오기 칠드런이 이거였어 */}
+      <VideoInput/>
 
-
-        <div>
-            <div className="AddStory-wrapper">
-
-                <div className="Add-Container">
-                       
-                       <div className="title-wrapper">
-                        <input 
-                        className="title"
-                        type="text"
-                         name="FirstName"
-                        placeholder="제목입력"/>
-                        </div>
-                       
-                        <input 
-                        className="add-video"
-                        type="file"
-                        placeholder="제목입력"/>
-                        </div>
-                       
-                       <input type="text"
-                       name="FirstName"
-                       placeholder="리뷰한줄"/>
-                      
-                       <button className="addbutton">여행스토리추가하기</button>
-                    </div>
-                </div>
-            
-       
-    );
-};
-
-export default AddStory
+    </div>
+    
+  );
+}
+export default AddStory 
