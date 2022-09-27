@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+//카카오맵 서치바
+import React, { useState, useRef } from "react";
 import PostKakaoMap from "./PostKakaoMap";
 
-const SearchPlace = () => {
+const SearchPlace = ({
+  // handleRegisterButton,
+  setMapData,
+  title,
+  inputCost,
+  editor,
+}) => {
   const [inputText, setInputText] = useState("");
   const [place, setPlace] = useState("");
 
@@ -9,7 +16,7 @@ const SearchPlace = () => {
     setInputText(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
     setPlace(inputText);
     setInputText("");
@@ -17,7 +24,7 @@ const SearchPlace = () => {
 
   return (
     <>
-      <form className="map-inputForm" onSubmit={handleSubmit}>
+      <form className="map-inputForm" onSubmit={handleSearch}>
         <input
           className="map-input"
           placeholder="Search Place..."
@@ -29,7 +36,13 @@ const SearchPlace = () => {
         </button>
       </form>
 
-      <PostKakaoMap searchPlace={place} />
+      <PostKakaoMap
+        searchPlace={place}
+        // handleRegisterButton={handleRegisterButton}
+        title={title}
+        inputCost={inputCost}
+        setMapData={setMapData}
+      />
     </>
   );
 };

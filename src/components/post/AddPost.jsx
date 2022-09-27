@@ -1,6 +1,6 @@
+//에디터
 import React, { useEffect, useRef, useState } from "react";
 import S3 from "react-aws-s3";
-import submitpost from "../../asset/submitpost.png";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "tui-color-picker/dist/tui-color-picker.css";
@@ -12,20 +12,50 @@ import PostSearchPlace from "./PostSearchPlace";
 
 const AddPost = () => {
   const editorRef = useRef();
+  const [title, setTitle] = useState();
+  const [tag, setTag] = useState();
+  const [tagList, setTagList] = useState([]);
+  const [inputCost, setInputCost] = useState();
+  const [mapData, setMapData] = useState({
+    marker: [],
+    polyline: [],
+  });
+  const editor = editorRef.current?.getInstance().getHTML();
   window.Buffer = window.Buffer || require("buffer").Buffer;
-  const handleRegisterButton = () => {
-    console.log(editorRef.current?.getInstance().getHTML());
-  };
+
+  // const handleRegisterButton = async (event) => {
+  //   event.preventDefault();
+  //   let data = {
+  //     title: title,
+  //     // tagList: tagList,
+  //     inputCost: inputCost,
+  //     editor: editorRef.current?.getInstance().getHTML(),
+  //   };
+  //   console.log(editorRef.current?.getInstance().getHTML());
+  // };
+
+  const onChange = (event, setState) => setState(event.target.value);
 
   return (
     <>
       <div className="allPost">
         <div className="addpost-title">
-          <input className="input-title" placeholder="제목을 입력하세요" />
+          <input
+            className="input-title"
+            placeholder="제목을 입력하세요"
+            type="text"
+            name="title"
+            value={title}
+            onChange={(event) => onChange(event, setTitle)}
+            required
+          />
         </div>
+        <div>태그를 선택하세요</div>
         <div className="editor-wrapper">
           <Editor
             ref={editorRef}
+            // value={editor}
+            // onChange={(event) => onChange(event, setEditor)}
             placeholder="입력하세요"
             initialValue=" "
             previewStyle="vertical"
@@ -56,13 +86,25 @@ const AddPost = () => {
               },
             }}
           />
-          <div>
-            <PostSearchPlace />
+          <div className="cost-wrap">
+            <input
+              className="cost-input"
+              placeholder="여행경비를 입력해주세요."
+              onChange={(event) => onChange(event, setInputCost)}
+              type="text"
+              value={inputCost}
+            />
+            <div>단위: 원</div>
           </div>
-          <div className="footer">
-            <button className="submit-post" onClick={handleRegisterButton}>
-              <img className="submit-icon" src={submitpost} alt="submit" />
-            </button>
+
+          <div>
+            <PostSearchPlace
+              // handleRegisterButton={handleRegisterButton}
+              title={title}
+              inputCost={inputCost}
+              setMapData={setMapData}
+              editor={editor}
+            />
           </div>
         </div>
       </div>

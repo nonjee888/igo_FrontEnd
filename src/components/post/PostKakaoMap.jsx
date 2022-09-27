@@ -1,10 +1,19 @@
-/* global kakao */
+//카카오 맵
+import submitpost from "../../asset/submitpost.png";
 import React, { useEffect, useState, useRef } from "react";
 import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 
 const { kakao } = window;
 
-const PostKakaoMap = ({ searchPlace }) => {
+const PostKakaoMap = ({
+  searchPlace,
+  // handleRegisterButton,
+  setMapData,
+  title,
+  inputCost,
+  editor,
+}) => {
+  const editorRef = useRef();
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
@@ -13,6 +22,16 @@ const PostKakaoMap = ({ searchPlace }) => {
     marker: [],
     polyline: [],
   });
+  const handleRegisterButton = async (event) => {
+    event.preventDefault();
+    let data = {
+      title: title,
+      // tagList: tagList,
+      inputCost: inputCost,
+      editor: editorRef.current?.getInstance().getHTML(),
+    };
+    console.log(editorRef.current?.getInstance().getHTML());
+  };
 
   function selectOverlay(type) {
     const manager = managerRef.current;
@@ -64,7 +83,7 @@ const PostKakaoMap = ({ searchPlace }) => {
       }
     });
   }, [map, searchPlace]);
-
+  console.log(overlayData);
   return (
     <>
       <Map // 로드뷰를 표시할 Container
@@ -136,7 +155,6 @@ const PostKakaoMap = ({ searchPlace }) => {
       >
         <button
           onClick={(e) => {
-            console.log("dd");
             selectOverlay(kakao.maps.drawing.OverlayType.POLYLINE);
           }}
         >
@@ -149,6 +167,18 @@ const PostKakaoMap = ({ searchPlace }) => {
           }}
         >
           마커
+        </button>
+      </div>
+      <div className="footer">
+        <button
+          className="submit-post"
+          onClick={() => {
+            handleRegisterButton();
+            drawOverlayData();
+            setMapData(overlayData);
+          }}
+        >
+          <img className="submit-icon" src={submitpost} alt="submit" />
         </button>
       </div>
     </>

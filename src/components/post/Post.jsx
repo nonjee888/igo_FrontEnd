@@ -1,3 +1,4 @@
+//PostList에 보여질 카드
 import React from "react";
 import "./style.scss";
 import emptyHeart from "../../asset/emptyHeart.png";
@@ -12,7 +13,7 @@ const Post = () => {
       <button className="heart-btn" type="button">
         <img className="heart-btn-img" src={emptyHeart} alt="" />
       </button>
-      <div className="post-content">경주 보문단지 솰라솰라</div>
+      <div className="post-content">title 들어갈곳</div>
     </div>
   );
 };
