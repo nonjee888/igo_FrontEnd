@@ -1,14 +1,15 @@
 import React from "react";
 import Footers from "../components/layout/Footers";
-import Choice from "../components/main/Choice";
+
 import PageContainer from "../components/wrapper/PageContainer";
 import Headers from "../components/layout/Headers";
+import Choice from "../components/main/Choice";
 
 const ChoiceCategory = () => {
   return <div>
     <PageContainer>
     <Headers/>
-    <ChoiceCategory/>
+    <Choice/>
     <Footers/> 
     </PageContainer></div>;
 };

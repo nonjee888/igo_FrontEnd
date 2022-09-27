@@ -16,9 +16,24 @@ import MyPlanPage from "../pages/MyPlanPage";
 import MyPlanPostPage from "../pages/MyPlanPostPage";
 import MyPostsListPage from "../pages/MyPostsListPage";
 import StoryAdd from "../pages/StoryAdd";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginCheck } from "../redux/modules/user";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const Router = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      // Storage에 token 저장된 값이 있다면 isLogin 상태를 true로 바꿔주는 함수로 보냄
+      dispatch(loginCheck()); //app.js에서 실행될때마다 항상 로컬스토리지에 토큰이 있나 없나보고 state의 isLogin상태를 바꿔줌
+    }
+  }, []);
+  const userlogin = useSelector((state) => state.user);
+  const checklogin = userlogin.isLogin;
+  console.log(checklogin); //로그인 상태 체크
+
   return (
     <div>
       <BrowserRouter>
