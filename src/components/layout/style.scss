@@ -5,38 +5,49 @@
   border: none;
   outline: none;
   padding: 0;
- 
 }
-
+//search 돋보기
 .Icon {
   position: absolute;
   right: 12px;
   top: 5px;
   width: 26px;
-  // height: 26px;
 }
-
+//search div박스
 .input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
   width: 80%;
-  height: 40px;
-  padding: 12px 20px;
+  height: 30px;
+  padding: 5% 10%;
   box-sizing: border-box;
-  border: 1px solid #000;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
   border-radius: 120px;
   background: #fff;
-  margin: 2rem auto 2rem auto;
+  margin: 1rem auto 1rem auto;
 }
-
-.list-changer {
+//최신순 추천순 조회순
+.changer-wrapper {
+  justify-content: center; //가운데 정렬
+  display: flex; //자식 요소들 일렬배치
+  gap: 5%;
+}
+.changer-wrapper.list.false {
+  display: none;
+}
+.changer-wrapper.list.true {
+  display: black;
+}
+.list {
   text-align: center;
   &:hover {
     color: #5e7fdc;
   }
 }
-//은지 담당//
+.line {
+  border-right: 1px solid #d9d9d9;
+}
 
 //포스트페이지 로그인,회원가입,로고포함 헤더
 .Header-wrapper {
@@ -85,6 +96,8 @@
 .Footer-Container {
   border-top: 1px solid #d9d9d9;
   height: 10vh;
+  position: fixed;
+  width: 100%;
 }
 
 //글쓰기,관심목록,마이페이지 담긴 아이콘박스

@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
+import { NAVER_AUTH_URL } from "../../shared/OAuth";
 //랜덤 이미지들 12개
 import img1 from "../../asset/assetLogin/img1.png";
 import img2 from "../../asset/assetLogin/img2.png";
@@ -35,6 +36,7 @@ const backgroundImg = backgroundArr[randomIndex];
 
 const Login = () => {
   let navigate = useNavigate();
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`;
   return (
     <>
       <section
@@ -56,8 +58,21 @@ const Login = () => {
               marginTop: "30vh",
             }}
           />
-          <img src={naver} alt="네이버로시작하기" />
-          <img src={kakao} alt="카카오로시작하기" />
+          
+          <div>
+            <img
+              src={naver}
+              alt="네이버로시작하기"
+              onClick={() => {
+                window.location.href = NAVER_AUTH_URL;
+              }}
+            />
+          </div>
+          
+          <a href={KAKAO_AUTH_URL}>
+            <img src={kakao} alt="카카오로시작하기" />
+          </a>
+          
           <button
             className="loginButton"
             onClick={() => {

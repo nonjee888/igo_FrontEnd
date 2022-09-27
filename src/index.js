@@ -5,12 +5,15 @@ import App from "./App";
 import store from "./redux/config/store";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
+import "./asset/fonts/font.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-   
-      <App />
+
+    {/* <React.StrictMode> */}
+    <App />
+    {/* </React.StrictMode> */}
 
   </Provider>
 );

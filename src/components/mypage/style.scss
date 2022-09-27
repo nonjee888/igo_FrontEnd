@@ -30,20 +30,20 @@
 
 .categoryGet {
   background-color: #a3d7ed;
-  width: 75%;
+  width: 85%;
   height: 100%;
   border-radius: 10px;
-  padding: 10px;
+  padding: 2%;
   margin: auto;
 }
 
 .myListAll {
-  margin: 10% 0 0 10%;
+  margin: 10% 0 0 5%;
   height: 20%;
   font-weight: bold;
   p {
     background-color: #d9d9d9;
-    width: 85%;
+    width: 90%;
     padding: 2%;
     border-radius: 10px;
     font-size: 1.1rem;
@@ -88,7 +88,7 @@
 .planAdd {
   width: 10%;
   height: 10%;
-  margin: 5% 0 0 0;
+  margin: 2% 0 0 0;
 }
 
 .Myplan {
@@ -121,6 +121,12 @@
   padding: 3% 0 0 5%;
   border-radius: 0 10px 0 0;
   border-left: 1px solid #afafaf;
+  display: flex;
+  justify-content: space-between;
+  img {
+    width: 10%;
+    padding: 0 5% 2% 0;
+  }
 }
 // 완료 후
 .MyplanDate1 {
@@ -134,6 +140,28 @@
   padding: 3% 0 0 5%;
   border-radius: 0 10px 0 0;
   border-left: 1px solid #afafaf;
+  display: flex;
+  justify-content: space-between;
+  img {
+    width: 10%;
+    padding: 0 5% 2% 0;
+  }
+}
+
+.buttonAll {
+  background-color: #d9d9d9;
+  border: none;
+  margin-left: 1px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 0 0 10px 0;
+}
+
+.buttonDelete {
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 0 0 0 10px;
+  padding-top: 4%;
 }
 
 //일정추가
@@ -157,12 +185,12 @@
 }
 
 .MyplanPostDate {
-  background-color: #a3d7ed;
+  background-color: #d9d9d9;
   border-radius: 10px 10px 0 0;
 }
 
 .MyplanPostTitle {
-  background-color: #a3d7ed;
+  background-color: #d9d9d9;
   padding-left: 5%;
 }
 
@@ -181,13 +209,8 @@
 }
 
 .MyplanPostAddbutton {
-  background-color: #d9d9d9;
-  border: none;
-  width: 40%;
-  height: 7%;
-  border-radius: 10px;
-  margin: -10% 0 0 30%;
-  color: white;
-  font-size: large;
-  font-weight: bold;
+  img {
+    width: 40%;
+  }
+  margin: 0 0 0 39%;
 }

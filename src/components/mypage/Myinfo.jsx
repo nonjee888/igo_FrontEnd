@@ -59,7 +59,7 @@ const Myinfo = () => {
       {/* 관심 여행 키워드, 수정버튼 */}
       <div className="profileCategory">
         <div className="CategoryTitle">
-          <h4 style={{ margin: "0 0 3% 10%" }}>관심 여행 키워드</h4>
+          <h3 style={{ margin: "0 0 3% 5%" }}>관심 여행 키워드</h3>
           <img
             src={edit}
             style={{ width: "25px", height: "20px" }}
