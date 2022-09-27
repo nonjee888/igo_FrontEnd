@@ -121,6 +121,12 @@
   padding: 3% 0 0 5%;
   border-radius: 0 10px 0 0;
   border-left: 1px solid #afafaf;
+  display: flex;
+  justify-content: space-between;
+  img {
+    width: 10%;
+    padding: 0 5% 2% 0;
+  }
 }
 // 완료 후
 .MyplanDate1 {
@@ -134,6 +140,12 @@
   padding: 3% 0 0 5%;
   border-radius: 0 10px 0 0;
   border-left: 1px solid #afafaf;
+  display: flex;
+  justify-content: space-between;
+  img {
+    width: 10%;
+    padding: 0 5% 2% 0;
+  }
 }
 
 .buttonAll {
