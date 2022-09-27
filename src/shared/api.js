@@ -5,9 +5,11 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-  const refreshToken = localStorage.getItem("refresh-token");
-  config.headers.Authorization = token;
-  config.headers.refreshToken = refreshToken;
+
+  const ACCESS_TOKEN = config.headers.authorization;
+  const REFRESH_TOKEN = config.headers.refreshtoken;
+  localStorage.setItem("token", ACCESS_TOKEN); //로컬스토리지에 토큰저장
+  localStorage.setItem("refresh", REFRESH_TOKEN); //로컬스토리지에 토큰저장
+
   return config;
 });

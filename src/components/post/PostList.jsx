@@ -1,15 +1,12 @@
 import "./style.scss";
-import Post from "./Post";
 import React from "react";
-
+import Search from "../layout/Search";
+import ListChanger from "../layout/ListChanger";
 const PostList = () => {
   return (
-    <div className="detail-wrapper">
-      <div className="content-wrapper">
-        <div className="inner-content">
-          <Post />
-        </div>
-      </div>
+    <div className="All">
+      <Search />
+      <ListChanger />
     </div>
   );
 };
