@@ -36,6 +36,7 @@ const backgroundImg = backgroundArr[randomIndex];
 
 const Login = () => {
   let navigate = useNavigate();
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`;
   return (
     <>
       <section
@@ -57,8 +58,8 @@ const Login = () => {
               marginTop: "30vh",
             }}
           />
+          
           <div>
-            {/* <a href={}> */}
             <img
               src={naver}
               alt="네이버로시작하기"
@@ -66,9 +67,12 @@ const Login = () => {
                 window.location.href = NAVER_AUTH_URL;
               }}
             />
-            {/* </a> */}
           </div>
-          <img src={kakao} alt="카카오로시작하기" />
+          
+          <a href={KAKAO_AUTH_URL}>
+            <img src={kakao} alt="카카오로시작하기" />
+          </a>
+          
           <button
             className="loginButton"
             onClick={() => {

@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 import IgoLogo from "../../asset/igoLogo.png";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Headers = () => {
   const navigate = useNavigate();

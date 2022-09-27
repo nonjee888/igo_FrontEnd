@@ -1,0 +1,17 @@
+@font-face {
+  /* 사용할 폰트의 이름 */
+  font-family: "NotoSansKR";
+  font-display: fallback;
+
+  /* 
+    src: 사용할 폰트의 위치 및 형식 
+       Safari, Android, iOS => ttf
+       Modern Browsers => woff
+       IE6-IE8 => eot
+    */
+  src: url("./NotoSansKR-Regular.ttf") format("truetype"),
+    url("./NotoSansKR-Regular.eot?iefix") format("embedded-opentype");
+
+  /* 사용할 폰트의 기본 스타일 */
+  font-style: normal;
+}

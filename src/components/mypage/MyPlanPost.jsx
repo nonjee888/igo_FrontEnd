@@ -6,6 +6,7 @@ import { ko } from "date-fns/esm/locale";
 
 //이미지
 import photo from "../../asset/assetMypage/photo.png";
+import calendar from "../../asset/assetMypage/calendar.png";
 
 const MyPlanPost = () => {
   //날짜
@@ -36,7 +37,7 @@ const MyPlanPost = () => {
     <div className="All">
       <div className="MyPosts">
         <div className="planTitle">
-          <h3>나의 일정 추가하기</h3>
+          <h3>나의 일정 등록하기</h3>
         </div>
         <div className="MyplanPost">
           <div className="MyplanPostDate">
@@ -71,7 +72,9 @@ const MyPlanPost = () => {
           <div className="MyplanPostContents">여기에 내용</div>
         </div>
       </div>
-      <button className="MyplanPostAddbutton">추가하기</button>
+      <div className="MyplanPostAddbutton">
+        <img src={calendar} alt="일정등록" />
+      </div>
     </div>
   );
 };

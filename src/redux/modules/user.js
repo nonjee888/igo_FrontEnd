@@ -2,6 +2,26 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../../shared/api";
 
 //미들웨어 ----------------------------------------------------------------------------------------------
+
+
+//카카오 로그인
+export const getKakao = createAsyncThunk(
+  "user/getKakao",
+  async (code, thunkAPI) => {
+    try {
+      const data = await instance.get(`/kakao/callback?code=${code}`);
+      console.log(data);
+      const ACCESS_TOKEN = data.headers.authorization;
+      localStorage.setItem("token", ACCESS_TOKEN);
+      window.location.assign("/post");
+      window.alert("카카오 로그인 성공!");
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 //네이버
 export const naver = createAsyncThunk("user/naver", async (code, thunkAPI) => {
   //주소창의 code 뽑아낸걸 payload로 받음
@@ -24,7 +44,9 @@ export const naver = createAsyncThunk("user/naver", async (code, thunkAPI) => {
   }
 });
 
+
 //리듀서 -----------------------------------------------------------------------------------------------------
+
 export const user = createSlice({
   name: "user",
   initialState: {
