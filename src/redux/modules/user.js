@@ -1,4 +1,6 @@
+
 import { createSlice } from "@reduxjs/toolkit";
+
 
 //리듀서 -----------------------------------------------------------------------------------------------------
 
@@ -11,7 +13,7 @@ export const user = createSlice({
   reducers: {
     //로그인상태확인 리듀서
     loginCheck: (state) => {
-      //app.js에서 뭔가 실행 될 때마다 항상 로컬스토리지에 토큰이 있나 없나 보고 state의 isLogin상태 바꿔줌
+      //Router.jsx 에서 뭔가 실행 될 때마다 항상 로컬스토리지에 토큰이 있나 없나 보고 state의 isLogin상태 바꿔줌
       state.isLogin = true;
     },
   },

@@ -12,29 +12,20 @@ import PostSearchPlace from "./PostSearchPlace";
 
 const AddPost = () => {
   const editorRef = useRef();
-  const [title, setTitle] = useState();
-  const [tag, setTag] = useState();
+  const [title, setTitle] = useState("");
+  const [tag, setTag] = useState(null);
   const [tagList, setTagList] = useState([]);
-  const [inputCost, setInputCost] = useState();
-  const [mapData, setMapData] = useState({
-    marker: [],
-    polyline: [],
-  });
+  const [inputCost, setInputCost] = useState("");
   const editor = editorRef.current?.getInstance().getHTML();
+
+  const onChangeHandler = () => {};
   window.Buffer = window.Buffer || require("buffer").Buffer;
 
-  // const handleRegisterButton = async (event) => {
-  //   event.preventDefault();
-  //   let data = {
-  //     title: title,
-  //     // tagList: tagList,
-  //     inputCost: inputCost,
-  //     editor: editorRef.current?.getInstance().getHTML(),
-  //   };
-  //   console.log(editorRef.current?.getInstance().getHTML());
-  // };
-
-  const onChange = (event, setState) => setState(event.target.value);
+  let data = {
+    title: title,
+    inputCost: inputCost,
+    editor: editor,
+  };
 
   return (
     <>
@@ -46,7 +37,7 @@ const AddPost = () => {
             type="text"
             name="title"
             value={title}
-            onChange={(event) => onChange(event, setTitle)}
+            onChange={(event) => setTitle(event.target.value)}
             required
           />
         </div>
@@ -54,8 +45,6 @@ const AddPost = () => {
         <div className="editor-wrapper">
           <Editor
             ref={editorRef}
-            // value={editor}
-            // onChange={(event) => onChange(event, setEditor)}
             placeholder="입력하세요"
             initialValue=" "
             previewStyle="vertical"
@@ -90,7 +79,7 @@ const AddPost = () => {
             <input
               className="cost-input"
               placeholder="여행경비를 입력해주세요."
-              onChange={(event) => onChange(event, setInputCost)}
+              onChange={(event) => setInputCost(event.target.value)}
               type="text"
               value={inputCost}
             />
@@ -98,13 +87,7 @@ const AddPost = () => {
           </div>
 
           <div>
-            <PostSearchPlace
-              // handleRegisterButton={handleRegisterButton}
-              title={title}
-              inputCost={inputCost}
-              setMapData={setMapData}
-              editor={editor}
-            />
+            <PostSearchPlace data={data} />
           </div>
         </div>
       </div>
