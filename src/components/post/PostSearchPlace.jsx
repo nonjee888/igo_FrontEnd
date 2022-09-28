@@ -2,19 +2,9 @@
 import React, { useState, useRef } from "react";
 import PostKakaoMap from "./PostKakaoMap";
 
-const SearchPlace = ({
-  // handleRegisterButton,
-  setMapData,
-  title,
-  inputCost,
-  editor,
-}) => {
+const SearchPlace = (props) => {
   const [inputText, setInputText] = useState("");
   const [place, setPlace] = useState("");
-
-  const onChange = (e) => {
-    setInputText(e.target.value);
-  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -28,7 +18,7 @@ const SearchPlace = ({
         <input
           className="map-input"
           placeholder="Search Place..."
-          onChange={onChange}
+          onChange={(event) => setInputText(event.target.value)}
           value={inputText}
         />
         <button className="map-search-btn" type="submit">
@@ -36,13 +26,7 @@ const SearchPlace = ({
         </button>
       </form>
 
-      <PostKakaoMap
-        searchPlace={place}
-        // handleRegisterButton={handleRegisterButton}
-        title={title}
-        inputCost={inputCost}
-        setMapData={setMapData}
-      />
+      <PostKakaoMap props={props.data} searchPlace={place} />
     </>
   );
 };

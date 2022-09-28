@@ -4,48 +4,40 @@ import "./style.scss";
 import TripIcon from "../../asset/tripcomm.png";
 import VodIcon from "../../asset/videocomm.png";
 
-
-
-const ChoiceAdd = ({close}) => {
-
-    const navigate = useNavigate();
-    return (
-        <>
-        
+const ChoiceAdd = ({ close }) => {
+  const navigate = useNavigate();
+  return (
+    <>
       <div className="show-Choicemodal">
         <div className="Check-Modal">
           <img
             className="btn-choiceModal"
             src={VodIcon}
             onClick={() => {
-                navigate("/addstory");
-              }}
-          >
-          </img>
+              navigate("/addstory");
+            }}
+          ></img>
           <img
             className="btn-choiceModal"
             src={TripIcon}
             onClick={() => {
-                navigate("/postedit");
-              }}
-          >
-          </img>
-          <div>
-          <button
-            className="btn-close"
-            onClick={() => {
-              close();
+              navigate("/addpost");
             }}
-          >
-            닫기
-          </button>
+          ></img>
+          <div>
+            <button
+              className="btn-close"
+              onClick={() => {
+                close();
+              }}
+            >
+              닫기
+            </button>
           </div>
-          </div>
-          </div>
-      
-      
+        </div>
+      </div>
     </>
-    )
-}
+  );
+};
 
 export default ChoiceAdd;
