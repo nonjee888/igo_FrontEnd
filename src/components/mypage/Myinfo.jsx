@@ -8,6 +8,8 @@ import edit from "../../asset/edit.png";
 
 const Myinfo = () => {
   let navigate = useNavigate();
+  const NICKNAME = localStorage.getItem("nickname");
+  //프로필 이미지
   const [Image, setImage] = useState(profileImg);
   const fileInput = useRef(null);
   const onChange = (e) => {
@@ -49,7 +51,7 @@ const Myinfo = () => {
       />
       {/* 닉네임, 수정버튼 */}
       <div className="profileNickname">
-        여기에닉네임
+        {NICKNAME}
         <img
           src={edit}
           style={{ width: "30px", height: "25px" }}
@@ -62,7 +64,7 @@ const Myinfo = () => {
           <h3 style={{ margin: "0 0 3% 5%" }}>관심 여행 키워드</h3>
           <img
             src={edit}
-            style={{ width: "25px", height: "20px" }}
+            style={{ width: "7%", height: "7%" }}
             alt="태그수정버튼"
           />
         </div>
