@@ -30,6 +30,7 @@ const CommentEdit = ({ close }) => {
           <button
             className="btn-editModal"
             onClick={() => {
+              //dispatch 삭제하기 넣어주기
               close();
             }}
           >

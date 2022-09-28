@@ -1,63 +1,71 @@
 //카카오 맵
+import { instance } from "../../shared/api";
 import submitpost from "../../asset/submitpost.png";
 import React, { useEffect, useState, useRef } from "react";
 import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
+import axios from "axios";
 
 const { kakao } = window;
 
-const PostKakaoMap = ({
-  searchPlace,
-  // handleRegisterButton,
-  setMapData,
-  title,
-  inputCost,
-  editor,
-}) => {
-  const editorRef = useRef();
+const PostKakaoMap = (props) => {
+  const managerRef = useRef(null);
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
-  const managerRef = useRef(null);
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
   });
-  const handleRegisterButton = async (event) => {
-    event.preventDefault();
-    let data = {
+
+  let title = props.props.title; //타이틀
+  let amount = props.props.inputCost; //여행경비
+  let content = props.props.editor; //에디터
+  let mapData = overlayData; //맵데이터
+
+  const handleRegisterButton = async () => {
+    let req = {
       title: title,
-      // tagList: tagList,
-      inputCost: inputCost,
-      editor: editorRef.current?.getInstance().getHTML(),
+      amount: amount,
+      content: content,
+      // mapData: mapData,
     };
-    console.log(editorRef.current?.getInstance().getHTML());
+
+    const URL = "http://3.34.1.176:8080/api/post";
+    const data = await axios.post(URL, req, {
+      headers: {
+        // Authorization: localStorage.getItem("token"),
+        Refreshtoken: localStorage.getItem("refresh"),
+      },
+    });
+    console.log(data);
   };
 
-  function selectOverlay(type) {
+  const selectOverlay = (type) => {
     const manager = managerRef.current;
     manager.cancel();
     manager.select(type);
-  }
+  };
   // Drawing Manager에서 가져온 데이터 중
   // 선과 다각형의 꼭지점 정보를 latlng 배열로 반환하는 함수입니다
 
-  function drawOverlayData() {
+  const drawOverlayData = () => {
     const manager = managerRef.current;
     setOverlayData(manager.getData());
-  }
-  function pointsToPath(points) {
+  };
+
+  const pointsToPath = (points) => {
     return points.map((point) => ({
       lat: point.y,
       lng: point.x,
     }));
-  }
+  };
 
   useEffect(() => {
     if (!map) return;
     const ps = new kakao.maps.services.Places();
-    if (searchPlace === "") return;
+    if (props.searchPlace === "") return;
 
-    ps.keywordSearch(searchPlace, (data, status, _pagination) => {
+    ps.keywordSearch(props.searchPlace, (data, status, _pagination) => {
       if (status === kakao.maps.services.Status.OK) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
@@ -82,8 +90,7 @@ const PostKakaoMap = ({
         map.setBounds(bounds);
       }
     });
-  }, [map, searchPlace]);
-  console.log(overlayData);
+  }, [map, props.searchPlace]);
   return (
     <>
       <Map // 로드뷰를 표시할 Container
@@ -158,7 +165,7 @@ const PostKakaoMap = ({
             selectOverlay(kakao.maps.drawing.OverlayType.POLYLINE);
           }}
         >
-          선
+          코스
         </button>
 
         <button
@@ -166,16 +173,16 @@ const PostKakaoMap = ({
             selectOverlay(kakao.maps.drawing.OverlayType.MARKER);
           }}
         >
-          마커
+          출발지 | 도착지
         </button>
+        <button onClick={drawOverlayData}>여행코스저장</button>
       </div>
+
       <div className="footer">
         <button
           className="submit-post"
           onClick={() => {
             handleRegisterButton();
-            drawOverlayData();
-            setMapData(overlayData);
           }}
         >
           <img className="submit-icon" src={submitpost} alt="submit" />
