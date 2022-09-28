@@ -6,6 +6,7 @@ import Headers from "../components/layout/Headers";
 import Choice from "../components/main/Choice";
 
 const ChoiceCategory = () => {
+
   return <div>
     <PageContainer>
     <Headers/>

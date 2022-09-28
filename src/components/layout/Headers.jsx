@@ -1,8 +1,10 @@
 import React from "react";
 import "./style.scss";
 import IgoLogo from "../../asset/igoLogo.png";
+
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+
 
 const Headers = () => {
   const navigate = useNavigate();
@@ -59,6 +61,7 @@ const Headers = () => {
           </button>
         </div>
       )}
+
     </div>
   );
 };

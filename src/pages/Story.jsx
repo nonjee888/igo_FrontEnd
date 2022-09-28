@@ -4,9 +4,8 @@ import PageContainer from "../components/wrapper/PageContainer";
 import Headers from "../components/layout/Headers";
 import VideoStory from "../components/story/VideoStory";
 
-
 const Story = () => {
-  return(
+  return (
     <PageContainer>
       <Headers/>
       <VideoStory/>
