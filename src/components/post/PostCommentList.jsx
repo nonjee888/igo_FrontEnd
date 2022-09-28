@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CommentEdit from "./CommentEdit";
+import PostCommentEdit from "./PostCommentEdit";
 
 const CommentList = () => {
   let [modal, setModal] = useState(false); //modal창은 false로 보이지 않는 상태
@@ -8,7 +8,7 @@ const CommentList = () => {
   };
   return (
     <>
-      {modal ? <CommentEdit close={close} /> : null}
+      {modal ? <PostCommentEdit close={close} /> : null}
       <div className="ment-listWrapper">
         <div className="ment-wrapper">
           <div className="nickname">닉네임</div>

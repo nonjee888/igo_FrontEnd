@@ -1,146 +1,154 @@
-//은지 담당
-
-//PostList.jsx
-.inner-content {
-  margin-bottom: 20px;
-  margin: 0 auto;
-  border: 1px solid rgb(255, 0, 0);
-  width: 90%;
-  height: 30vh;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
 //AddPost.jsx
+
+.allPost {
+  // border: 2px solid #d9d9d9; //배경사이즈 확인용
+  height: 100vh;
+  overflow-x: hidden;
+  max-width: 428px;
+}
+.input-title {
+  width: 100%;
+  height: 20%;
+  font-size: 20px;
+  border: none;
+  color: rgb(168, 166, 166);
+  border-bottom: 1px solid rgba(215, 215, 215, 0.933);
+}
 .editor-wrapper {
-  padding-top: 10px;
+  position: relative;
+  max-width: 428px;
+  width: 100%;
+}
+.toastui-editor-popup {
+  left: calc(40% - 150px) !important; // 모바일모드에서 중간에서 보임
+  margin-left: 0 !important;
+}
+.toastui-editor-dropdown-toolbar {
+  right: 0px !important;
 }
 .submit-post {
-  margin-left: 360px;
   margin-top: 10px;
-  width: 60px;
-  height: 30px;
+  margin-bottom: 10px;
+  width: 120px;
+  height: 40px;
 }
-
-//PostEdit.jsx
-.price {
-  padding: 10px 10px;
-  border: 1px solid black;
+.submit-post {
+  background: none;
+  border: none;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.submit-icon {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.cost-input {
+  width: 80%;
+  height: 20px;
+}
+.cost-wrap {
+  gap: 15px;
   display: flex;
   align-items: baseline;
-}
-.total-cost {
-  margin-left: 30px;
-  width: 180px;
-  border: none;
-  border-bottom: 1px solid black;
-}
-.total-price-label {
-  margin-left: 30px;
 }
 
 //Post.jsx
 .post-content {
-  margin-left: 10px;
+  margin-left: 5%;
+}
+.heart-btn {
+  width: 10%;
+  height: 15%;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 25px;
+  right: 50px;
+}
+.heart-btn-img {
+  width: 200%;
+  height: 100%;
 }
 
 //PostDetail.jsx
 .detail-wrapper {
-  width: 100%;
-  height: 90vh;
+  width: 99.5%;
+  height: 70%;
 }
 .tag-wrapper {
   border: 1px solid black;
-  width: 95%;
+  width: 100%;
   height: 30px;
-  margin: 10px auto 0;
 }
-.title-wrapper {
+.detail-title {
+  width: 100%;
+  height: 6%;
   border: 1px solid black;
-  width: 95%;
-  height: 40px;
-  margin: 10px auto 0;
 }
 .title {
   text-align: center;
   margin: 5px auto;
 }
-.content-wrapper {
+.detail-content {
+  width: 100%;
+  height: 70%;
   border: 1px solid black;
-  width: 90%;
-  height: 80%;
-  margin: 10px auto 0;
+  overflow: auto;
 }
 .pic-wrapper {
   width: 100%;
-  height: 25vh;
+  position: relative;
 }
 .img-container {
-  width: 100%;
+  margin: 5%;
+  width: 90%;
   height: 100%;
   border-radius: 15px;
-  border: 1px solid black;
   overflow: hidden;
   position: relative;
-}
-.icon-heart {
-  position: absolute;
-  right: 135px;
-  top: 240px;
-  width: 26px;
-  height: 26px;
 }
 .map-wrapper {
-  width: 70%;
-  height: 20vh;
-  border-radius: 15px;
-  border: 1px solid black;
-  overflow: hidden;
-  position: relative;
-  margin: 20px auto;
-}
-.body-wrapper {
-  border: 1px solid rgb(74, 9, 251);
-  width: 90%;
-  height: 20vh;
-  margin: 10px auto 0;
-  border-radius: 15px;
-}
-.total-price {
   border: 1px solid rgb(7, 193, 41);
-  width: 75%;
-  height: 32h;
-  margin: 10px auto 0;
+  width: 100%;
+  height: 50%;
 }
 .detail-btns {
-  margin: 0 auto;
-  padding: 2% 68%;
-  width: 50%;
-  height: 30px;
+  margin-left: 190px;
+  padding: 5px 0 5px 0;
   display: flex;
-  gap: 10px;
+  gap: 5px;
+
+  border: none;
 }
 .edit-btn {
-  width: 60px;
+  background: none;
+  border: none;
+}
+.edit-icon {
+  width: 35px;
   height: 30px;
 }
 .delete-btn {
-  width: 60px;
-  height: 30px;
+  background: none;
+  border: none;
 }
-.commentContainer {
-  padding-top: 10px;
-  border: 1px solid rgb(255, 0, 0);
-  width: 100%;
-  height: 20%;
+.delete-icon {
+  width: 26px;
+  height: 30px;
 }
 
 //CommentList.jsx
-.comment-wrapper {
+.toggle-comment-wrapper {
   display: flex;
-  padding-left: 60px;
-  gap: 10px;
   align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 50px;
+  padding: 0 12px;
+  border-top: 1px solid #eee;
 }
 .comment-input {
   width: 50%;
@@ -154,8 +162,6 @@
   border: none;
   border-radius: 5px;
 }
-
-//CommentList.jsx
 .ment-wrapper {
   margin: 7px 60px;
   display: flex;
@@ -165,10 +171,10 @@
 //CommentEdit.jsx
 .show-modal {
   position: absolute;
-  top: 400px;
+  top: 200px;
   left: 45px;
   width: 80%;
-  height: 30%;
+  height: 40%;
   border: none;
   border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -185,4 +191,30 @@
   margin-left: 25px;
   gap: 3px;
   display: flex;
+}
+
+//PostSearchPlace.jsx
+.map-inputForm {
+  display: flex;
+  align-items: end;
+}
+.map-input {
+  width: 80%;
+  height: 20px;
+}
+.map-search-btn {
+  width: 18%;
+  height: 25px;
+}
+
+//PostComment.jsx
+.commentContainer {
+  max-width: 428px;
+  position: fixed;
+  bottom: 0;
+  border: 1px solid rgb(255, 0, 0);
+  width: 100%;
+  height: 50px;
+  transition: all 1000ms;
+  background-color: white;
 }

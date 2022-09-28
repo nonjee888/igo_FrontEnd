@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import comments from "../modules/comments";
 import map from "../modules/map";
 import mypage from "../modules/mypage";
@@ -7,7 +7,6 @@ import story from "../modules/story";
 import user from "../modules/user";
 
 const store = configureStore({
-  reducer: {},
   reducer: {
     comments,
     map,
@@ -16,6 +15,10 @@ const store = configureStore({
     story,
     user,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;

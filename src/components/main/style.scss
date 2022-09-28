@@ -1,118 +1,100 @@
 
-//회원가입 후 여행취향카테고리 설정 전체 화면 wrapper
-.Choice-wrapper{
-    border: 1px solid black;
-    height: 78vh;
-    margin: 0 auto;
-    display: flex;
-    align-items:center;
-    justify-content: center;
-    overflow: hidden;
+
+
+
+.choiceBox{
+  width: 80%;
+  height: 60vh;
+  border: 1px solid black;
+  position: relative;
+  margin: 10% auto 10%;
 }
-    
-//취향카테고리 담은 컨테이너
-.Choice-container{
-     display: flex;
-     height: 330px;
-     border: 1px solid transparent; 
+
+
+.innerBox {
+  display: flex;
+  margin: 3vh auto;
+  
 }
-   
-//취향카테고리 설정 check버튼
-.Choicebtn {
-    width: 90px;
-    height: 90px;
-    text-align :center;
-    margin-top: 1rem;
-    margin-left:1rem;
-    margin-right:1rem;
-    border: 1px solid #FFAFAF;
-    background: none;
-    font-size: 12px;
-    &:focus {
-        font-weight: bold;
-        border: 3px solid #FF4444;
-      }
-    }
 
-    //취향카테고리 설정 완료 후 메인추천페이지 이동버튼
-    .mainrecommendbtn{
-        display: flex;
-        position: absolute;
-        bottom: 150px;
-        width: calc(100% - 380px);
-        border: none;
-        align-items:center;
-        justify-content: center;
-        text-align: center;
-        height: 30px;
-        color: white;
-        border-radius: 12px;
-        background-color: #47AFDB;
-        &:hover {
-           color : black;
-            border: 3px solid #47AFDB;
-            background:none;
-          }
-    }
+.btnBox {
+width: 100%;
+height: 10%;
+display: flex;
+padding: auto;
 
+}
+.joinbtn {
+  display:block;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 60%;
+  font-size: 100%;
+  color: white;
+  background-color: #5e7fdc;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  margin:auto;
+  &:hover {
+   font-weight: bold;
+   color: black;
+   border: 2px solid  #5e7fdc;
+   background: none;
+ }
+ }
 
-    //메인추천게시물 전체화면컨테이너
-    .Recommend-Container{
-      position: relative;
-      justify-content: center;
-      align-content: center;
-      margin: 0 auto;
-    }
+//메인추천게시물 전체화면컨테이너
+.Recommend-Container {
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  margin: 5%;
+}
 
+//추천게시물 박스
+.Recommend-List {
+  width: 90%;
+  height: 30vh;
+  margin-top: 2rem;
+  margin: auto;
+  display: inline;
+  align-content: center;
+  justify-content: center;
+}
 
-    //추천게시물 박스
-    .Recommend-List{
-      width: 90%;
-      height: 30vh;
-      margin-top: 2rem;
-      margin: auto;
-      display: inline;
-      align-content: center;
-      justify-content: center;
+//추천게시물 타이틀 border
+.Recommendtitle-wrapper {
+  border-radius: 22px;
+  background: #47afdb;
+  width: 80%;
+  height: 4vh;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
 
-    }
+//추천게시물title
+.Retitle {
+  text-align: center;
+  color: white;
+  display: flex;
+  margin-top: auto;
+  align-content: center;
+  justify-content: center;
+  position: absolute;
+}
 
-    //추천게시물 타이틀 border
-    .Recommendtitle-wrapper {
-      border-radius: 22px;
-      background: #47AFDB;
-      width: 80%;
-      height: 4vh;
-      text-align: center;
-      margin: auto;
-      display: flex;
-      align-content: center;
-      justify-content: center;
-    }
-
-
-    //추천게시물title
-    .Retitle {
-      text-align: center;
-      color: white;
-      display: flex;
-      margin-top: auto;
-      align-content: center;
-      justify-content: center;
-      position: absolute
-      
-
-    }
-    
-    //추천게시물 프리뷰이미지
-    .Preview-image{
-      width: 85%;
-      height: 25vh;
-      border-radius: 15px;
-      overflow: hidden;
-      margin: auto;
-      display: flex;
-      align-content: center;
-      justify-content: center;
-      
-    }
+//추천게시물 프리뷰이미지
+.Preview-image {
+  width: 85%;
+  height: 25vh;
+  border-radius: 15px;
+  overflow: hidden;
+  margin: auto;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

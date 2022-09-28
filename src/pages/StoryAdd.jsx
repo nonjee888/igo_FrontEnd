@@ -1,18 +1,19 @@
 import React from "react";
 import Footers from "../components/layout/Footers";
-
 import PageContainer from "../components/wrapper/PageContainer";
 import Headers from "../components/layout/Headers";
-import Choice from "../components/main/Choice";
+import AddStory from "../components/story/AddStory";
 
-const ChoiceCategory = () => {
 
-  return <div>
+
+const Story = () => {
+  return(
     <PageContainer>
-    <Headers/>
-    <Choice/>
-    <Footers/> 
-    </PageContainer></div>;
+      <Headers/>
+      <AddStory/>
+      <Footers/>
+    </PageContainer>
+    );
 };
 
-export default ChoiceCategory;
+export default Story;

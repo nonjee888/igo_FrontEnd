@@ -1,5 +1,7 @@
 import React from "react";
 import "./style.scss";
+import { useNavigate } from "react-router-dom";
+// import { NAVER_AUTH_URL } from "../../shared/OAuth";
 //랜덤 이미지들 12개
 import img1 from "../../asset/assetLogin/img1.png";
 import img2 from "../../asset/assetLogin/img2.png";
@@ -33,6 +35,9 @@ const randomIndex = Math.floor(Math.random() * backgroundArr.length);
 const backgroundImg = backgroundArr[randomIndex];
 
 const Login = () => {
+  let navigate = useNavigate();
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`;
+  const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT}&state=STATE_STRING`;
   return (
     <>
       <section
@@ -51,12 +56,26 @@ const Login = () => {
               height: "170px",
               marginLeft: "4%",
               paddingBottom: "50px",
-              marginTop: "250px",
+              marginTop: "30vh",
             }}
           />
-          <img src={naver} alt="네이버로시작하기" />
-          <img src={kakao} alt="카카오로시작하기" />
-          <button className="loginButton">비회원으로 둘러보기</button>
+
+          <a href={NAVER_AUTH_URL}>
+            <img src={naver} alt="네이버로시작하기" />
+          </a>
+
+          <a href={KAKAO_AUTH_URL}>
+            <img src={kakao} alt="카카오로시작하기" />
+          </a>
+
+          <button
+            className="loginButton"
+            onClick={() => {
+              navigate("/post");
+            }}
+          >
+            비회원으로 둘러보기
+          </button>
         </div>
       </section>
     </>

@@ -1,33 +1,41 @@
 import "./style.scss";
 import React from "react";
 import PostComment from "./PostComment";
-import ScrollContainer from "../wrapper/ScrollContainer";
+import heart from "../../asset/heart.png";
+import edit from "../../asset/edit.png";
+import deleteimg from "../../asset/deleteimg.png";
 
 const PostDetail = () => {
   return (
-    <ScrollContainer>
-      <div className="detail-wrapper">
-        <div className="tag-wrapper">태그들어감</div>
-        <div className="title-wrapper">
-          <h2 className="title">Title</h2>
-        </div>
-        <div className="content-wrapper">
-          {/* <div className="pic-wrapper">
-              <img className="img-container" src=""></img>
-              <img className="icon-heart" src="" />
+    <>
+      <div className="All">
+        <div className="detail-wrapper">
+          <div className="detail-title">
+            <h4 className="title">제목</h4>
+          </div>
+          <div className="detail-btns">
+            <div>
+              <img />
+              10
             </div>
-            <div className="map-wrapper">지도</div>
-            <div className="body-wrapper">body</div>
-
-            <div className="total-price">total price</div> */}
-        </div>
-        <div className="detail-btns">
-          <button className="edit-btn">수정</button>
-          <button className="delete-btn">삭제</button>
+            <div>
+              <img />
+              10
+            </div>
+            <button className="edit-btn">
+              <img src={edit} className="edit-icon" />
+            </button>
+            <button className="delete-btn">
+              <img src={deleteimg} className="delete-icon" />
+            </button>
+          </div>
+          <div className="tag-wrapper">태그들어감</div>
+          <div className="detail-content">에디터내용</div>
+          <div className="map-wrapper">지도보일곳</div>
         </div>
         <PostComment />
       </div>
-    </ScrollContainer>
+    </>
   );
 };
 
