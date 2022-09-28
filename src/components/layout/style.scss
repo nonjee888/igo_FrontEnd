@@ -55,6 +55,7 @@
   border-bottom: 1px solid #d9d9d9;
   display: flex;
   max-width: 428px;
+  font-family: "NotoSansKR";
 }
 //로고가 담긴 콘테이너
 .HeaderForm {
@@ -88,7 +89,7 @@
   font-family: "Noto Sans KR", sans-serif;
   &:hover {
     font-weight: bold;
-    color: #5e7fdc;
+    color: #47afdb;
   }
 }
 

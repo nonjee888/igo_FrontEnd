@@ -51,7 +51,11 @@ const MyPlanPost = () => {
           </div>
           <div className="MyplanPostTitle">
             제목:　
-            <input type="text" style={{ width: "70%" }} />
+            <input
+              type="text"
+              style={{ width: "75%", border: "none" }}
+              placeholder="제목을 입력해주세요."
+            />
           </div>
           <img
             className="PostimgBox"
@@ -69,7 +73,9 @@ const MyPlanPost = () => {
             onChange={onChange}
             ref={fileInput}
           />
-          <div className="MyplanPostContents">여기에 내용</div>
+          <div className="MyplanPostContents">
+            <textarea name="content" placeholder="일정을 입력해주세요." />
+          </div>
         </div>
       </div>
       <div className="MyplanPostAddbutton">
