@@ -34,7 +34,7 @@ const AddStory = () => {
           <h3>영상 남기기</h3>
           <p>15초 미만의 영상을 등록해주세요!</p>
         </div>
-        <div className="MyplanPost">
+        <div className="AddVideo">
           <img
             className="PostimgBox"
             src={Video}

@@ -43,12 +43,15 @@ const VideoStory = () => {
           justifyContent: "center",
           cursor: "pointer",
         }}
-        loop={true}
+        // loop={true}
         keyboardNavigation={true}
         isPaused={() => {}}
         currentIndex={() => {}}
         onStoryStart={() => {}}
-        onStoryEnd={() => {}}
+        onStoryEnd={(s, st) => {
+          console.log("story ended", s, st);
+        }}
+        // onStoryEnd={() => {}}
         onAllStoriesEnd={() => {}}
       />
     </React.Fragment>
