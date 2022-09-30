@@ -1,13 +1,20 @@
 //카카오 맵
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
 import submitpost from "../../asset/submitpost.png";
 import React, { useEffect, useState, useRef } from "react";
 import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 import axios from "axios";
+import goback from "../../asset/goback.png";
 
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
+  const navigate = useNavigate();
+  const userlogin = useSelector((state) => state.user.isLogin);
+  const nickname = localStorage.getItem("nickname");
+
   const managerRef = useRef(null);
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
@@ -29,15 +36,18 @@ const PostKakaoMap = (props) => {
       content: content,
       // mapData: mapData,
     };
-
-    const URL = "http://3.34.1.176:8080/api/post";
+    console.log(req);
+    const URL = " http://15.164.95.121:8001/api/post";
     const data = await axios.post(URL, req, {
       headers: {
-        // Authorization: localStorage.getItem("token"),
+        Authorization: localStorage.getItem("token"),
         Refreshtoken: localStorage.getItem("refresh"),
       },
     });
     console.log(data);
+    if (data.data.success) {
+      navigate("/post");
+    }
   };
 
   const selectOverlay = (type) => {
@@ -180,12 +190,20 @@ const PostKakaoMap = (props) => {
 
       <div className="footer">
         <button
+          className="goback-post"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          <img className="goback-icon" src={goback} alt="goback" />
+        </button>
+        <button
           className="submit-post"
           onClick={() => {
             handleRegisterButton();
           }}
         >
-          <img className="submit-icon" src={submitpost} alt="submit" />
+          <img className="submit-icon" src={submitpost} alt="back" />
         </button>
       </div>
     </>
