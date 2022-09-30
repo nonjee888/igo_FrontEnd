@@ -14,7 +14,7 @@ import deleteimg from "../../asset/deleteimg.png";
 const PostDetail = () => {
   const dispatch = useDispatch();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-
+  console.log(detail);
   let { id } = useParams();
   useEffect(() => {
     dispatch(getDetailPosts(id));
@@ -31,16 +31,17 @@ const PostDetail = () => {
       <div className="All">
         <div className="detail-wrapper">
           <div className="detail-title">
-            <h4 className="title">제목</h4>
+            <h4 className="title">{detail?.title}</h4>
           </div>
           <div className="detail-btns">
             <div>
               <img />
-              10
+              조회수:{detail?.viewCount}
             </div>
             <div>
               <img />
-              10
+              <button className="liked-post-btn">💙</button>
+              {detail?.heartNum}
             </div>
             <button className="edit-btn">
               <img src={edit} className="edit-icon" />
@@ -50,7 +51,11 @@ const PostDetail = () => {
             </button>
           </div>
           <div className="tag-wrapper">태그들어감</div>
-          <div className="detail-content">에디터내용</div>
+
+          <div
+            className="html-wrapper"
+            dangerouslySetInnerHTML={{ __html: detail?.content }}
+          ></div>
           <div className="map-wrapper">지도보일곳</div>
         </div>
         <PostComment />
