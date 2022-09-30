@@ -48,7 +48,7 @@ const AddPost = () => {
           <div className="editor-wrapper">
             <Editor
               ref={editorRef}
-              placeholder="입력하세요"
+              placeholder="사진 크기는 400*300px 에 최적화 되어있습니다."
               initialValue=" "
               previewStyle="vertical"
               height="calc(100vh - 390px)"
