@@ -37,7 +37,7 @@ const PostKakaoMap = (props) => {
       // mapData: mapData,
     };
     console.log(req);
-    const URL = " http://15.164.95.121:8001/api/post";
+    const URL = " http://13.125.222.76:8080/api/post";
     const data = await axios.post(URL, req, {
       headers: {
         Authorization: localStorage.getItem("token"),

@@ -8,7 +8,6 @@ import recomendIcon from "../../asset/assetFooter/recomendIcon.png";
 import mypageIcon from "../../asset/assetFooter/mypageIcon.png";
 import addIcon from "../../asset/assetFooter/addIcon.png";
 import storyIcon from "../../asset/assetFooter/storyIcon.png";
-import ChoiceAdd from "../modal/ChoiceAdd";
 
 const Footers = () => {
   const navigate = useNavigate();
@@ -16,12 +15,12 @@ const Footers = () => {
   //로그인해야 사용 가능
   const Alert = () => {
     Swal.fire({
-      icon: "error",
+      icon: "info",
       text: "로그인을 하셔야 이용 가능합니다.",
       showCancelButton: true,
       confirmButtonColor: "#47AFDB",
       cancelButtonColor: "#D9D9D9",
-      confirmButtonText: "로그인하러가기",
+      confirmButtonText: "로그인",
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
@@ -29,10 +28,27 @@ const Footers = () => {
       }
     });
   };
-
-  let [modal, setModal] = useState(false); //modal창은 false로 보이지 않는 상태
-  const close = () => {
-    setModal(false);
+  //글작성하기 / 포스트/스토리
+  const Add = () => {
+    Swal.fire({
+      showDenyButton: true,
+      showCancelButton: true,
+      imageUrl: addIcon,
+      imageWidth: 50,
+      imageHeight: 50,
+      confirmButtonColor: "#47AFDB",
+      denyButtonColor: "#47AFDB",
+      confirmButtonText: "여행 남기기",
+      denyButtonText: "영상 남기기",
+      cancelButtonColor: "#D9D9D9",
+      cancelButtonText: "닫기",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/addpost");
+      } else if (result.isDenied) {
+        navigate("/addstory");
+      }
+    });
   };
 
   return (
@@ -58,7 +74,6 @@ const Footers = () => {
             />
           </div>
           <>
-            {modal ? <ChoiceAdd close={close} /> : null}
             <div className="btnbox">
               <img
                 className="FootersIcon"
@@ -108,13 +123,10 @@ const Footers = () => {
             />
           </div>
           <>
-            {modal ? <ChoiceAdd close={close} /> : null}
             <div className="btnbox">
               <img
                 className="FootersIcon"
-                onClick={() => {
-                  setModal(true);
-                }}
+                onClick={Add}
                 src={addIcon}
                 alt="등록"
               />
@@ -142,7 +154,6 @@ const Footers = () => {
           </div>
         </div>
       )}
-
     </div>
   );
 };
