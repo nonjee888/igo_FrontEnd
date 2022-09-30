@@ -13,7 +13,7 @@ const Post = (props) => {
   let heart = props.post.heartNum;
 
   // let urlRegex = /<img[^>]+src=[\"']?([^>\"']+)[\"']?[^>]*>/g;
-  // let [url] = content.match(urlRegex);
+  // let url = content.match(0);
   // console.log(url);
 
   // let urlRegex = /(https?:\/\/[^>\"']*)/;

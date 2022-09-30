@@ -5,7 +5,7 @@ export const getPosts = createAsyncThunk(
   "posts/getPosts",
   async (_, thunkAPI) => {
     try {
-      const data = await instance.get("/api/post?type=create");
+      const data = await instance.get("/api/post");
 
       return data.data.data;
     } catch (error) {
@@ -13,6 +13,7 @@ export const getPosts = createAsyncThunk(
     }
   }
 );
+// /api/post/array/${payload}
 //create, view, heart 가 들어가야함.
 
 export const getDetailPosts = createAsyncThunk(
@@ -20,8 +21,8 @@ export const getDetailPosts = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await instance.get(`/api/detail/${payload}`);
-      console.log(data);
-      return data;
+
+      return data.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

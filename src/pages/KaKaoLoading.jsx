@@ -11,7 +11,7 @@ const KaKaoLoading = () => {
   const dispatch = useDispatch();
   const params = new URLSearchParams(window.location.search);
   let code = params.get("code");
-  console.log(code);
+  // console.log(code);
 
   useEffect(() => {
     dispatch(kakao);
@@ -20,7 +20,7 @@ const KaKaoLoading = () => {
   const kakao = async () => {
     try {
       const data = await instance.get(`/kakao/callback?code=${code}`);
-      console.log(data);
+      // console.log(data);
       const ACCESS_TOKEN = data.headers.authorization;
       const REFRESH_TOKEN = data.headers.refreshtoken;
       const NICKNAME = data.data.data;

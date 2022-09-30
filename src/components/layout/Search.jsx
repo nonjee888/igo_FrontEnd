@@ -42,7 +42,6 @@ const Search = () => {
     }
   };
   const { isLoading, error, posts } = useSelector((state) => state?.posts);
-  console.log(posts);
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
