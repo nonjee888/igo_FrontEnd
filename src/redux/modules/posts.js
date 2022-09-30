@@ -31,10 +31,9 @@ export const getDetailPosts = createAsyncThunk(
 export const onLikePost = createAsyncThunk(
   "like/onLikePost",
   async (payload, thunkApI) => {
-    console.log(payload);
     try {
       const data = await instance.post(
-        `/api/heart${payload}`,
+        `/api/heart/${payload}`,
         {} //post는 두번째 인자가 데이터가 들어가야해서 {}를 넣어줌 데이터가 없으면 headers를 데이터로 인식
       );
       return payload;

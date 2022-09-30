@@ -37,13 +37,7 @@ const PostKakaoMap = (props) => {
       // mapData: mapData,
     };
     console.log(req);
-    const URL = " http://13.125.222.76:8080/api/post";
-    const data = await axios.post(URL, req, {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-        Refreshtoken: localStorage.getItem("refresh"),
-      },
-    });
+    const data = await instance.post("/api/post", req);
     console.log(data);
     if (data.data.success) {
       navigate("/post");
