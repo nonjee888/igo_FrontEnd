@@ -12,9 +12,6 @@ const { kakao } = window;
 
 const PostKakaoMap = (props) => {
   const navigate = useNavigate();
-  const userlogin = useSelector((state) => state.user.isLogin);
-  const nickname = localStorage.getItem("nickname");
-
   const managerRef = useRef(null);
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
