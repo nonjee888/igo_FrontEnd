@@ -5,21 +5,23 @@ export const getPosts = createAsyncThunk(
   "posts/getPosts",
   async (_, thunkAPI) => {
     try {
-      const data = await instance.get("/api/posts");
-      console.log(data);
+      const data = await instance.get("/api/post?type=create");
+
       return data.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
+//create, view, heart 가 들어가야함.
+
 export const getDetailPosts = createAsyncThunk(
   "detailPosts/getDetailPosts",
   async (payload, thunkAPI) => {
     try {
-      const data = await instance.get(`/api/posts/${payload}`);
+      const data = await instance.get(`/api/detail/${payload}`);
       console.log(data);
-      return data.data.data;
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -31,7 +33,22 @@ export const onLikePost = createAsyncThunk(
     console.log(payload);
     try {
       const data = await instance.post(
-        `/api/auth/posts/likes/${payload}`,
+        `/api/heart${payload}`,
+        {} //post는 두번째 인자가 데이터가 들어가야해서 {}를 넣어줌 데이터가 없으면 headers를 데이터로 인식
+      );
+      return payload;
+    } catch (error) {
+      return thunkApI.rejectWithValue(error);
+    }
+  }
+);
+export const onReportPost = createAsyncThunk(
+  "report/onReportPost",
+  async (payload, thunkApI) => {
+    console.log(payload);
+    try {
+      const data = await instance.post(
+        `/api/heart${payload}`,
         {} //post는 두번째 인자가 데이터가 들어가야해서 {}를 넣어줌 데이터가 없으면 headers를 데이터로 인식
       );
       return payload;
@@ -47,7 +64,9 @@ export const posts = createSlice({
   name: "posts",
   initialState: {
     posts: [],
-    detail: {},
+    detail: {
+      content: "",
+    },
     isLoading: false,
     error: null,
   },

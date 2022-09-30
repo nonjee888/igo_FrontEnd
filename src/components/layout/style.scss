@@ -31,22 +31,9 @@
 .changer-wrapper {
   justify-content: center; //가운데 정렬
   display: flex; //자식 요소들 일렬배치
-  gap: 5%;
 }
-.changer-wrapper.list.false {
-  display: none;
-}
-.changer-wrapper.list.true {
-  display: black;
-}
-.list {
-  text-align: center;
-  &:hover {
-    color: #5e7fdc;
-  }
-}
-.line {
-  border-right: 1px solid #d9d9d9;
+.input-selector {
+  border: none;
 }
 
 //포스트페이지 로그인,회원가입,로고포함 헤더

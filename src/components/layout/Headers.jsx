@@ -1,10 +1,9 @@
 import React from "react";
 import "./style.scss";
-import IgoLogo from "../../asset/igoLogo.png";
+import igoLogo from "../../asset/igoLogo.png";
 
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
 
 const Headers = () => {
   const navigate = useNavigate();
@@ -38,7 +37,7 @@ const Headers = () => {
           onClick={() => {
             navigate("/recommend");
           }}
-          src={IgoLogo}
+          src={igoLogo}
           alt="로고"
         />
       </div>
@@ -61,7 +60,6 @@ const Headers = () => {
           </button>
         </div>
       )}
-
     </div>
   );
 };
