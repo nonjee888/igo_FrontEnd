@@ -21,12 +21,7 @@ export const myplans = createSlice({
   },
   reducers: {},
 
-  extraReducers: {
-    //내일정 가져오기
-    [getMyplans.pending]: (state) => {
-      state.isLoading = true;
-    },
-  },
+  extraReducers: {},
 });
 
 export default myplans.reducer;

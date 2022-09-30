@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { instance } from "../../shared/api";
+
+import { createSlice } from "@reduxjs/toolkit";
+
 
 //리듀서 -----------------------------------------------------------------------------------------------------
 

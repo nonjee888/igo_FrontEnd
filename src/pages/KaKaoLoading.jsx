@@ -20,16 +20,14 @@ const KaKaoLoading = () => {
   const kakao = async () => {
     try {
       const data = await instance.get(`/kakao/callback?code=${code}`);
-      // console.log(data);
-      const ACCESS_TOKEN = data.headers.authorization;
-      const REFRESH_TOKEN = data.headers.refreshtoken;
-      const NICKNAME = data.data.data;
-      localStorage.setItem("token", ACCESS_TOKEN); //로컬스토리지에 토큰저장
-      localStorage.setItem("refresh", REFRESH_TOKEN); //로컬스토리지에 토큰저장
-      localStorage.setItem("nickname", NICKNAME); //로컬스토리지에 닉넴 저장
+      localStorage.setItem("ACCESS_TOKEN", data.headers.authorization);
+      localStorage.setItem("REFRESH_TOKEN", data.headers.refreshtoken);
+      localStorage.setItem("nickname", data.data.data); //로컬스토리지에 닉넴 저장
+      localStorage.setItem("isLogin", data.headers.authorization);
+      const nickname = data.data.data;
       Swal.fire({
         icon: "success",
-        title: NICKNAME + "님",
+        title: nickname + "님",
         text: "환영합니다!",
         confirmButtonColor: "#47AFDB",
         confirmButtonText: "확인",
@@ -38,17 +36,17 @@ const KaKaoLoading = () => {
           navigate("/recommend");
         }
       });
+      return data;
     } catch (error) {
-      return (
-        <>
-          <img
-            src={loading}
-            alt="로딩이미지"
-            style={{ width: "50%", margin: "60% 25% 0 25%", display: "block" }}
-          />
-        </>
-      );
+      console.log("error", error);
+      window.alert(error.message); //navigate로 바꾸면 isLogin.state가 false. 새로고침해야 true
     }
+    return (
+      <div>
+        <img src={loading} alt="스피너" />
+      </div>
+    );
   };
 };
+
 export default KaKaoLoading;
