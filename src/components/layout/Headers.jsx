@@ -20,11 +20,13 @@ const Headers = () => {
       confirmButtonText: "확인",
       cancelButtonText: "취소",
     }).then((result) => {
+    
       if (result.isConfirmed) {
         localStorage.removeItem("ACCESS_TOKEN");
         localStorage.removeItem("nickname");
         localStorage.removeItem("REFRESH_TOKEN");
         localStorage.removeItem("isLogin");
+
         navigate("/");
         window.location.reload();
       }

@@ -2,8 +2,8 @@ import "./style.scss";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router";
+import { onLikePost } from "../../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
-import { Viewer } from "@toast-ui/react-editor";
 import { getDetailPosts } from "../../redux/modules/posts";
 import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
@@ -25,7 +25,12 @@ const PostDetail = () => {
   if (error) {
     return <div>{error.message}</div>;
   }
-  // var newText = content.replace(/<[^>]*>?/g, ''); //태그 제거
+  const onLike = async (event) => {
+    event.preventDefault();
+    dispatch(onLikePost(id));
+    window.location.reload();
+  };
+
   return (
     <>
       <div className="All">
@@ -40,7 +45,9 @@ const PostDetail = () => {
             </div>
             <div>
               <img />
-              <button className="liked-post-btn">💙</button>
+              <button onClick={onLike} className="liked-post-btn">
+                💙
+              </button>
               {detail?.heartNum}
             </div>
             <button className="edit-btn">

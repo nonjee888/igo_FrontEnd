@@ -105,7 +105,6 @@ const AddPost = () => {
           cancelButtonText: "취소",
         }).then((result) => {
           if (result.isConfirmed) {
-            // navigate("/");
             window.location.replace("/");
           }
         })
