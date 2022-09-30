@@ -17,7 +17,7 @@ const Footers = () => {
   const Alert = () => {
     Swal.fire({
       icon: "error",
-      text: "로그인을 하셔야 사용 가능합니다.",
+      text: "로그인을 하셔야 이용 가능합니다.",
       showCancelButton: true,
       confirmButtonColor: "#47AFDB",
       cancelButtonColor: "#D9D9D9",

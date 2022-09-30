@@ -48,7 +48,7 @@ const Myplan = () => {
           <img src="" className="MyplanImg" alt="내일정이미지" />
           <div className="MyplanContents">여기에 내용</div>
           <button className="buttonDelete" onClick={deleteAlert}>
-            <img src={deleteimg} style={{ width: "17%" }} alt="삭제버튼" />
+            <img src={deleteimg} style={{ width: "15%" }} alt="삭제버튼" />
           </button>
           <button className="buttonAll">완료</button>
         </div>
@@ -62,7 +62,7 @@ const Myplan = () => {
           <img src="" className="MyplanImg" alt="내일정이미지완료" />
           <div className="MyplanContents">여기에 내용</div>
           <button className="buttonDelete" onClick={deleteAlert}>
-            <img src={deleteimg} style={{ width: "17%" }} alt="삭제버튼" />
+            <img src={deleteimg} style={{ width: "15%" }} alt="삭제버튼" />
           </button>
           <button className="buttonAll">취소</button>
         </div>
