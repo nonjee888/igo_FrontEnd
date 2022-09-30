@@ -23,6 +23,10 @@ const Headers = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("nickname");
         localStorage.removeItem("refresh");
+        localStorage.removeItem("TOAST UI editor for localhost: Statistics");
+        localStorage.removeItem(
+          "TOAST UI color-picker for localhost: Statistics"
+        );
         navigate("/");
         window.location.reload();
       }
