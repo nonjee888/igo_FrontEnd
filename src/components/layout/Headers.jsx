@@ -21,13 +21,13 @@ const Headers = () => {
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
-        localStorage.removeItem("token");
-        localStorage.removeItem("nickname");
-        localStorage.removeItem("refresh");
-        localStorage.removeItem("TOAST UI editor for localhost: Statistics");
-        localStorage.removeItem(
-          "TOAST UI color-picker for localhost: Statistics"
-        );
+        // localStorage.removeItem("token");
+        // localStorage.removeItem("nickname");
+        // localStorage.removeItem("refresh");
+        // localStorage.removeItem("TOAST UI editor for localhost: Statistics");
+        // localStorage.removeItem(
+        //   "TOAST UI color-picker for localhost: Statistics"
+        // );
         navigate("/");
         window.location.reload();
       }
