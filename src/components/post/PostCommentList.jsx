@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import PostCommentEdit from "./PostCommentEdit";
-
+import { removeComment } from "../../redux/modules/comments";
 const CommentList = () => {
+  let dispatch = useDispatch();
   let [modal, setModal] = useState(false); //modal창은 false로 보이지 않는 상태
   const close = () => {
     setModal(false);
@@ -21,7 +23,13 @@ const CommentList = () => {
           >
             수정
           </button>
-          <button>삭제</button>
+          <button
+            onClick={() => {
+              // dispatch(removeComment(comment.id, comment.id_post));
+            }}
+          >
+            삭제
+          </button>
         </div>
       </div>
     </>

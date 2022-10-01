@@ -12,9 +12,6 @@ const { kakao } = window;
 
 const PostKakaoMap = (props) => {
   const navigate = useNavigate();
-  const userlogin = useSelector((state) => state.user.isLogin);
-  const nickname = localStorage.getItem("nickname");
-
   const managerRef = useRef(null);
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
@@ -37,13 +34,7 @@ const PostKakaoMap = (props) => {
       // mapData: mapData,
     };
     console.log(req);
-    const URL = " http://13.125.222.76:8080/api/post";
-    const data = await axios.post(URL, req, {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-        Refreshtoken: localStorage.getItem("refresh"),
-      },
-    });
+    const data = await instance.post("/api/post", req);
     console.log(data);
     if (data.data.success) {
       navigate("/post");

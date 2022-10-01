@@ -1,20 +1,21 @@
 import "./style.scss";
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router";
+import { instance } from "../../shared/api";
+import { useParams, useNavigate } from "react-router";
+import { onLikePost } from "../../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
-import { Viewer } from "@toast-ui/react-editor";
 import { getDetailPosts } from "../../redux/modules/posts";
 import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
-import editpost from "../../asset/editpost.png";
 import deleteimg from "../../asset/deleteimg.png";
 
 const PostDetail = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-  console.log(detail);
+
   let { id } = useParams();
   useEffect(() => {
     dispatch(getDetailPosts(id));
@@ -25,7 +26,18 @@ const PostDetail = () => {
   if (error) {
     return <div>{error.message}</div>;
   }
-  // var newText = content.replace(/<[^>]*>?/g, ''); //태그 제거
+  const onLike = async (event) => {
+    event.preventDefault();
+    dispatch(onLikePost(id));
+    window.location.reload();
+  };
+  const onDelete = async (event) => {
+    event.preventDefault();
+    const { data } = await instance.delete(`/api/post/${id}`);
+    console.log(data);
+    if (data.success) navigate("/post");
+  };
+
   return (
     <>
       <div className="All">
@@ -40,13 +52,15 @@ const PostDetail = () => {
             </div>
             <div>
               <img />
-              <button className="liked-post-btn">💙</button>
+              <button onClick={onLike} className="liked-post-btn">
+                <img src={heart} className="liked-post-icon" />
+              </button>
               {detail?.heartNum}
             </div>
             <button className="edit-btn">
               <img src={edit} className="edit-icon" />
             </button>
-            <button className="delete-btn">
+            <button onClick={onDelete} className="delete-btn">
               <img src={deleteimg} className="delete-icon" />
             </button>
           </div>

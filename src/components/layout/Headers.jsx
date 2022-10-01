@@ -21,9 +21,10 @@ const Headers = () => {
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
-        localStorage.removeItem("token");
+        localStorage.removeItem("ACCESS_TOKEN");
         localStorage.removeItem("nickname");
-        localStorage.removeItem("refresh");
+        localStorage.removeItem("REFRESH_TOKEN");
+        localStorage.removeItem("isLogin");
         localStorage.removeItem("TOAST UI editor for localhost: Statistics");
         localStorage.removeItem(
           "TOAST UI color-picker for localhost: Statistics"

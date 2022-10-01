@@ -1,19 +1,16 @@
 //에디터
 import React, { useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import S3 from "react-aws-s3";
+import { Editor } from "@toast-ui/react-editor";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
+import "@toast-ui/editor/dist/i18n/ko-kr";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "tui-color-picker/dist/tui-color-picker.css";
-import { Editor } from "@toast-ui/react-editor";
-import "@toast-ui/editor/dist/i18n/ko-kr";
-import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 import PostSearchPlace from "./PostSearchPlace";
+import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 
 const AddPost = () => {
-  const navigate = useNavigate();
   const NICKNAME = localStorage.getItem("nickname");
   //로그인해야 사용 가능
   const editorRef = useRef();
@@ -105,7 +102,6 @@ const AddPost = () => {
           cancelButtonText: "취소",
         }).then((result) => {
           if (result.isConfirmed) {
-            // navigate("/");
             window.location.replace("/");
           }
         })

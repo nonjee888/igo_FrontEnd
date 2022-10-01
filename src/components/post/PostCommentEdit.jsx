@@ -1,9 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateComment } from "../../redux/modules/comments";
 
 const CommentEdit = ({ close }) => {
-  const initialsState = {};
+  let dispatch = useDispatch();
+  const initialsState = {
+    // id_post:
+    // content:
+  };
   const [ment1, setMent] = useState(initialsState);
   const [content, setContent] = useState(ment1.content);
+  // const payload = {
+
+  // }
   return (
     <>
       <div className="show-modal">
