@@ -15,11 +15,7 @@ const PostComment = () => {
   const [comments, setComments] = useState("");
   const [review, setReview] = useState(initialState);
   const { id } = useParams();
-  let id_post = id;
-  let payload = {
-    id_post: id,
-    content: review,
-  };
+  // let id_post = id;
   const openModal = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
@@ -40,7 +36,7 @@ const PostComment = () => {
       style={{ height: modalOpen ? "500px" : "50px" }}
       className="commentContainer"
     >
-      <p onClick={openModal}>댓글 작성하기</p>
+      <p onClick={openModal}>댓글</p>
       {!loading && modalOpen && (
         <>
           <div className="toggle-comment-wrapper">
@@ -63,7 +59,7 @@ const PostComment = () => {
             <button
               className="add-btn"
               onClick={() => {
-                dispatch(createComment(payload));
+                dispatch(createComment(review));
                 setReview(initialState);
                 setComments("");
               }}

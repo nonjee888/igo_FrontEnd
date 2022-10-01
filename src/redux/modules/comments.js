@@ -6,8 +6,7 @@ export const createComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     console.log(payload);
     try {
-      const data = await instance.post("/api/comment", payload.review);
-
+      const data = await instance.post("/api/comment", payload);
       console.log(data);
       return data.data;
     } catch (error) {
