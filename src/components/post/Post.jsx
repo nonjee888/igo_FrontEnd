@@ -16,9 +16,9 @@ const Post = (props) => {
   // let url = content.match(0);
   // console.log(url);
 
-  // let urlRegex = /(https?:\/\/[^>\"']*)/;
-  // let url = content.match(urlRegex);
-  // console.log(url[1]);
+  let urlRegex = /(https?:\/\/[^>\"']*)/;
+  let url = content.match(urlRegex);
+  console.log(url[1]);
 
   return (
     <>
@@ -29,10 +29,7 @@ const Post = (props) => {
         }}
       >
         <div className="pic-wrapper">
-          <img
-            className="img-container"
-            src="https://img.hankyung.com/photo/202012/AKR20201202073200053_01_i_P4.jpg"
-          />
+          <img className="img-container" src={url[1]} />
           <div className="post-content">
             <p>{title}</p> <p>{name}</p>
             <p>{heart}</p>

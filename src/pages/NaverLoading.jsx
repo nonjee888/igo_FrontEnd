@@ -22,14 +22,12 @@ const NaverLoading = () => {
       const data = await instance.get(
         `/naver/callback?code=${code}&state=STATE_STRING`
       );
-
+      console.log(data);
       localStorage.setItem("ACCESS_TOKEN", data.headers.authorization);
       localStorage.setItem("REFRESH_TOKEN", data.headers.refreshtoken);
       localStorage.setItem("nickname", data.data.data); //로컬스토리지에 닉넴 저장
       localStorage.setItem("isLogin", data.headers.authorization);
       const nickname = data.data.data;
-      navigate("/recommend"); //토큰 저장하면 자동으로 메인화면으로 이동
-
       Swal.fire({
         icon: "success",
         title: nickname + "님",
