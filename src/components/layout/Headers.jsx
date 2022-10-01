@@ -20,13 +20,15 @@ const Headers = () => {
       confirmButtonText: "확인",
       cancelButtonText: "취소",
     }).then((result) => {
-    
       if (result.isConfirmed) {
         localStorage.removeItem("ACCESS_TOKEN");
         localStorage.removeItem("nickname");
         localStorage.removeItem("REFRESH_TOKEN");
         localStorage.removeItem("isLogin");
-
+        localStorage.removeItem("TOAST UI editor for localhost: Statistics");
+        localStorage.removeItem(
+          "TOAST UI color-picker for localhost: Statistics"
+        );
         navigate("/");
         window.location.reload();
       }
