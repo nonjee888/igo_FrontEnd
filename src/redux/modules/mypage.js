@@ -1,10 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const initialState = {};
-
 export const mypage = createSlice({
   name: "mypage",
-  initialState,
+  initialState: {},
   reducers: {},
 });
 

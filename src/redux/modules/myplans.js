@@ -13,9 +13,21 @@ export const getMyplans = createAsyncThunk(
   }
 );
 
+export const postMyplans = createAsyncThunk(
+  "myplans/postMyplans",
+  async (payload, thunkApI) => {
+    try {
+      const data = await instance.post("/api/mypost", payload);
+    } catch (error) {
+      return thunkApI.rejectWithValue(error);
+    }
+  }
+);
+
 export const myplans = createSlice({
   name: "myplans",
   initialState: {
+    data: [],
     isLoading: false,
     error: null,
   },

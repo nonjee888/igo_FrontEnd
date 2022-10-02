@@ -22,9 +22,9 @@ const KaKaoLoading = () => {
       const data = await instance.get(`/kakao/callback?code=${code}`);
       localStorage.setItem("ACCESS_TOKEN", data.headers.authorization);
       localStorage.setItem("REFRESH_TOKEN", data.headers.refreshtoken);
-      localStorage.setItem("nickname", data.data.data); //로컬스토리지에 닉넴 저장
+      localStorage.setItem("nickname", data.data.data.nickname);
       localStorage.setItem("isLogin", data.headers.authorization);
-      const nickname = data.data.data;
+      const nickname = data.data.data.nickname;
       Swal.fire({
         icon: "success",
         title: nickname + "님",
