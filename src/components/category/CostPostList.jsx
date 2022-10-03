@@ -2,7 +2,7 @@ import { useEffect,useState } from "react";
 import Tags from "./Tags";
 
 
-
+// 가격 카테고리목록
 export default function CostPostList() {
     const postList = [] 
     const [cost,setCost] = useState(1);
