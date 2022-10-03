@@ -26,13 +26,14 @@ const sortList = [
 ] 
 useEffect(()=> {
     
-},[sort]);
+},{sort});
 
 return (
     <div>
         <div className="tag-wrapper">
             {sortList.map(item => (
                 <Tags
+                key={item.name}
                 selected={sort === item.name}
                 handler={()=> setSort(item.name)}
                 name={item.value}

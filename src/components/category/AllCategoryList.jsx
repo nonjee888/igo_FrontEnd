@@ -19,7 +19,7 @@ export default function AllCategoryList() {
             
             {category === 'region' && <RegionPostList/>}
             
-            {category === 'like' && <LikePostList/>}
+            {category === 'interested' && <InterestedPostList/>}
             
             {category === 'cost' && <CostPostList/>}
             

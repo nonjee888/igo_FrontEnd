@@ -27,14 +27,16 @@ export default function CostPostList() {
 
     useEffect(()=> {
     
-    },[cost]);
+    },{cost});
 
 
 return (
     <div>
         <div className="tag-wrapper">
             {costList.map(item => (
+                
                 <Tags
+                key={item.name}
                 selected={cost === item.value} //Tags 프롭스에서 selected는 아이템이름과 같은지 안같은지 판단
                 handler={() => setCost(item.value)}
                 name={item.name}
