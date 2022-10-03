@@ -31,8 +31,8 @@ const Router = () => {
           <Route path="/recommend" element={<MainRecommend />} exact />
           <Route path="/post" element={<PostPage />} exact />
           <Route path="/addpost" element={<AddPostPage />} exact />
+          <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
           <Route path="/postdetail/:id" element={<PostDetailPage />} exact />
-          <Route path="/postedit" element={<PostEdit />} exact />
           <Route path="/createstory" element={<CreateStory />} exact />
           <Route path="/story" element={<Story />} exact />
           <Route path="/addstory" element={<StoryAdd />} exact />

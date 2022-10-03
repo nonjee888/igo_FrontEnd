@@ -1,35 +1,41 @@
-import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import PostCommentEdit from "./PostCommentEdit";
 import { removeComment } from "../../redux/modules/comments";
-const CommentList = () => {
-  let dispatch = useDispatch();
-  let [modal, setModal] = useState(false); //modal창은 false로 보이지 않는 상태
-  const close = () => {
-    setModal(false);
+
+import profileImg from "../../asset/assetMypage/profileImg.png";
+const CommentList = (props) => {
+  const dispatch = useDispatch();
+  const writerId = localStorage.getItem("nickname");
+  const nickname = props.comment.nickname;
+  const userConfirm = writerId === nickname;
+  const content = props.comment.content;
+  const postId = props.postId;
+  const commentId = props.comment.id.toString();
+
+  const payload = {
+    postId,
+    commentId,
   };
+
   return (
     <>
-      {modal ? <PostCommentEdit close={close} /> : null}
       <div className="ment-listWrapper">
         <div className="ment-wrapper">
-          <div className="nickname">닉네임</div>
-          <div className="comment">댓글 솰라솰라</div>
-          {/* 로그인시 자기 댓글 누르면 수정 삭제 버튼 나오게하기 */}
-          <button
-            onClick={() => {
-              setModal(true); //수정 누르면 모달창 띄워짐
-            }}
-          >
-            수정
-          </button>
-          <button
-            onClick={() => {
-              // dispatch(removeComment(comment.id, comment.id_post));
-            }}
-          >
-            삭제
-          </button>
+          <div className="nickname">
+            <img className="imgBox" src={profileImg} alt="" />
+
+            {nickname}
+          </div>
+          <div className="comment">{content}</div>
+          {userConfirm ? (
+            <button
+              className="delete-comment"
+              onClick={() => {
+                dispatch(removeComment(payload));
+              }}
+            >
+              삭제
+            </button>
+          ) : null}
         </div>
       </div>
     </>

@@ -1,17 +1,20 @@
 //카카오 맵
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
-import submitpost from "../../asset/submitpost.png";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
-import axios from "axios";
 import goback from "../../asset/goback.png";
+import editpost from "../../asset/editpost.png";
+import submitpost from "../../asset/submitpost.png";
 
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
+  console.log(props);
   const navigate = useNavigate();
+  const nickname = localStorage.getItem("nickname");
+  const writerId = props.props.writerId;
+  const userConfirm = nickname === writerId;
   const managerRef = useRef(null);
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
@@ -21,21 +24,20 @@ const PostKakaoMap = (props) => {
     polyline: [],
   });
 
-  let title = props.props.title; //타이틀
-  let amount = props.props.inputCost; //여행경비
-  let content = props.props.editor; //에디터
+  let title = props.props.data.title; //타이틀
+  // let amount = props.props.data.inputCost; //여행경비
+  let content = props.props.data.editor; //에디터
   let mapData = overlayData; //맵데이터
 
   const handleRegisterButton = async () => {
     let req = {
       title: title,
-      amount: amount,
+      // amount: amount,
       content: content,
-      // mapData: mapData,
+      mapData: mapData,
     };
     console.log(req);
     const data = await instance.post("/api/post", req);
-    console.log(data);
     if (data.data.success) {
       navigate("/post");
     }
@@ -183,18 +185,23 @@ const PostKakaoMap = (props) => {
         <button
           className="goback-post"
           onClick={() => {
-            navigate(-1);
+            navigate("/post");
           }}
         >
-          <img className="goback-icon" src={goback} alt="goback" />
+          <img className="goback-icon" src={goback} alt="뒤로" />
         </button>
+
+        <button className="edit-post" onClick={() => {}}>
+          <img className="edit-icon" src={editpost} alt="수정" />
+        </button>
+
         <button
           className="submit-post"
           onClick={() => {
             handleRegisterButton();
           }}
         >
-          <img className="submit-icon" src={submitpost} alt="back" />
+          <img className="submit-icon" src={submitpost} alt="등록" />
         </button>
       </div>
     </>

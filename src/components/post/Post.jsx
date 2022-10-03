@@ -1,7 +1,7 @@
 //PostList에 보여질 카드
-import React from "react";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
+import photo from "../../asset/assetMypage/photo.png";
 import emptyHeart from "../../asset/emptyHeart.png";
 
 const Post = (props) => {
@@ -12,13 +12,10 @@ const Post = (props) => {
   let name = props.post.member.nickname;
   let heart = props.post.heartNum;
 
-  // let urlRegex = /<img[^>]+src=[\"']?([^>\"']+)[\"']?[^>]*>/g;
-  // let url = content.match(0);
-  // console.log(url);
-
+  // html에서 정규표현식으로 썸네일 추출
   let urlRegex = /(https?:\/\/[^>\"']*)/;
   let url = content.match(urlRegex);
-  console.log(url[1]);
+  console.log(url);
 
   return (
     <>
@@ -28,8 +25,12 @@ const Post = (props) => {
           navigate("/postdetail/" + id);
         }}
       >
-        <div className="pic-wrapper">
+        {url === null ? (
+          <img className="img-container" src={photo} />
+        ) : (
           <img className="img-container" src={url[1]} />
+        )}
+        <div className="pic-wrapper">
           <div className="post-content">
             <p>{title}</p> <p>{name}</p>
             <p>{heart}</p>

@@ -5,8 +5,8 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  const token = localStorage.getItem("ACCESS_TOKEN"); //로컬스토리지에 토큰저장
-  const refreshtoken = localStorage.getItem("REFRESH_TOKEN"); //로컬스토리지에 토큰저장
+  const token = localStorage.getItem("ACCESS_TOKEN");
+  const refreshtoken = localStorage.getItem("REFRESH_TOKEN");
   config.headers.authorization = token;
   config.headers.refreshtoken = refreshtoken;
   return config;

@@ -4,10 +4,9 @@ import { instance } from "../../shared/api";
 export const createComment = createAsyncThunk(
   "comments/CreateComments",
   async (payload, thunkAPI) => {
-    console.log(payload);
     try {
-      const data = await instance.post("/api/comment", payload);
-      console.log(data);
+      const data = await instance.post("/api/comments", payload);
+      // console.log(data);
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -18,9 +17,11 @@ export const createComment = createAsyncThunk(
 export const removeComment = createAsyncThunk(
   "comments/RemoveComments",
   async (payload, thunkAPI) => {
-    console.log(payload);
+    // console.log(payload.commentId);
     try {
-      const data = await instance.delete(`/api/comment/${payload}`, payload);
+      const data = await instance.delete(`/api/comments/${payload.commentId}`, {
+        postId: payload.postId,
+      });
       return payload;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -33,7 +34,7 @@ export const updateComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     console.log(payload);
     try {
-      const data = await instance.put(`/api/comment/${payload.id}`, {
+      const data = await instance.put(`/api/comments/${payload.id}`, {
         postId: payload.postId,
         content: payload.content,
       });
@@ -47,6 +48,7 @@ export const updateComment = createAsyncThunk(
 export const comments = createSlice({
   name: "comments",
   initialState: {
+    post: [],
     comments: [],
     isLoading: false,
     error: null,
@@ -69,11 +71,12 @@ export const comments = createSlice({
       state.isLoading = true;
     },
     [removeComment.fulfilled]: (state, action) => {
+      console.log(action.payload);
       state.isLoading = false;
       let index = state.comments.findIndex(
         (comment) => comment.id === action.payload
       );
-      console.log(index);
+      // console.log(index);
       state.comments.splice(index, 1);
     },
     [removeComment.rejected]: (state, action) => {
