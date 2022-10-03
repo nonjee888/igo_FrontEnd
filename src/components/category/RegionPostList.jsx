@@ -38,7 +38,7 @@ export default function RegionPostList() {
 
     return (
         <div>
-            <div className="tag-wapper">
+            <div className="tag-wrapper">
                 {regionList.map(item => (
                    <Tags
                    key={item.name}
