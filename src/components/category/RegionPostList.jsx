@@ -41,6 +41,7 @@ export default function RegionPostList() {
             <div className="tag-wapper">
                 {regionList.map(item => (
                    <Tags
+                   key={item.name}
                    selected={region === item.name}
                    handler={() => setRegion(item.name)}
                    name={item.name}/>
