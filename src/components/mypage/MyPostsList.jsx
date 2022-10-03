@@ -3,39 +3,49 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../redux/modules/posts";
 
-const MyPostsList = (props) => {
+const MyPostsList = () => {
   const navigate = useNavigate();
-  let id = props.post.id;
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state.post.data);
-  console.log(posts);
+  const posts = useSelector((state) => state.posts?.posts);
+  // console.log(posts);
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
-  console.log(posts?.data?.data);
 
-  const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
+  const user = localStorage.getItem("nickname");
 
-  let Mypostslist = posts.filter((post) => {
-    return post.REFRESH_TOKEN === REFRESH_TOKEN;
+  let MyPostsList = posts?.filter((post) => {
+    return post?.member?.nickname === user;
   });
+  // console.log(MyPostsList);
+
   return (
     <div className="All">
       <div className="MyPosts">
         <h3>나의 작성 게시글</h3>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
-          {Mypostslist.map((post) => {
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+          }}
+        >
+          {MyPostsList?.map((posts) => {
             return (
               <div
+                key={posts.id}
                 onClick={() => {
-                  navigate("/postdetail/" + id);
+                  navigate("/postdetail/" + posts.id);
                 }}
               >
                 <div className="MyPostsList">
-                  <img src="" className="MyPostImg" alt="내게시글이미지" />
-                  <div className="MyPostTitle">{post.title}</div>
+                  <img
+                    src={posts.imgurl}
+                    className="MyPostImg"
+                    alt="내게시글이미지"
+                  />
+                  <div className="MyPostTitle">{posts.title}</div>
                 </div>
               </div>
             );

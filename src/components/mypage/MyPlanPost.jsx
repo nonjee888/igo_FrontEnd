@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { instance } from "../../shared/api";
 //날짜 선택 라이브러리
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,7 +10,9 @@ import photo from "../../asset/assetMypage/photo.png";
 import calendar from "../../asset/assetMypage/calendar.png";
 
 const MyPlanPost = () => {
-  //날짜
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [time, setTime] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   //이미지 등록
   const [Image, setImage] = useState(photo);
@@ -32,6 +35,11 @@ const MyPlanPost = () => {
     };
     reader.readAsDataURL(e.target.files[0]);
   };
+
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("content", content);
+  formData.append("time", time);
 
   return (
     <div className="All">
