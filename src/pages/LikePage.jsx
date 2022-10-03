@@ -1,20 +1,17 @@
 import React from "react";
 import Headers from "../components/layout/Headers";
-import PostList from "../components/post/PostList";
-import Footers from "../components/layout/Footers";
 import PageContainer from "../components/wrapper/PageContainer";
+import LikePostList from "../components/category/LikePostList";
 import Category from "../components/category/Category";
 
-
-const PostPage = () => {
+const LikePage = () => {
   return (
     <PageContainer>
       <Headers />
       <Category/>
-      <PostList />
-      <Footers />
+      <LikePostList/>
     </PageContainer>
   );
 };
 
-export default PostPage;
+export default LikePage;
