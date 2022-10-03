@@ -9,6 +9,7 @@ export default function Category () {
 
   const navigate = useNavigate();
   const path = useParams();
+
   const categoryList = [
      { name : '전체',
       path : 'all',},
@@ -22,6 +23,8 @@ export default function Category () {
       { name : '가격',
       path : 'cost',},
   ];
+
+  console.log(path)
   return(
     <div>
       <div className="category-wrapper">
@@ -32,8 +35,7 @@ export default function Category () {
         key={item.path}
         style={path.category ===item.path? { fontWeight: 700, color:'#000'} : {}}
         onClick={()=>navigate('/post/'+ item.path )}> {/*대카테고리선택시 해당하는 카테고리로 이동*/}
-          
-          {item.name}{path.category === item.path && '+'}
+        {item.name}{path.category === item.path && '+'}
           
         </p>
         ))}
