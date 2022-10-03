@@ -30,8 +30,14 @@
   margin-bottom: 10px;
   width: 120px;
   height: 40px;
+  background: none;
+  border: none;
 }
-.submit-post {
+.edit-post {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 120px;
+  height: 40px;
   background: none;
   border: none;
 }
@@ -76,6 +82,11 @@
   background: none;
   border: none;
   width: 30px;
+}
+.edit-icon {
+  width: 110px;
+  height: 38px;
+  cursor: pointer;
 }
 //Post.jsx
 .post-content {
@@ -150,8 +161,9 @@
   height: 50%;
 }
 .detail-btns {
-  margin-left: 190px;
+  margin-left: 30%;
   padding: 5px 0 5px 0;
+  align-items: baseline;
   display: flex;
   gap: 5px;
   border: none;
@@ -160,18 +172,18 @@
   background: none;
   border: none;
 }
-.edit-icon {
+.edit-detail-icon {
   width: 35px;
   height: 30px;
-  cursor: pointer;
 }
+
 .delete-btn {
   background: none;
   border: none;
 }
 .delete-icon {
-  width: 26px;
-  height: 30px;
+  width: 23px;
+  height: 28px;
   cursor: pointer;
 }
 .html-wrapper {
@@ -189,19 +201,20 @@
 }
 .liked-post-icon {
   width: 25px;
+  height: 22px;
+  cursor: pointer;
+}
+.report-post-btn {
+  border: none;
+  background: none;
+}
+.report-post-icon {
+  width: 25px;
   height: 25px;
   cursor: pointer;
 }
-//CommentList.jsx
-.toggle-comment-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  height: 50px;
-  padding: 0 12px;
-  border-top: 1px solid #eee;
-}
+//PostCommentList.jsx
+
 .comment-input {
   width: 50%;
   height: 15px;
@@ -214,10 +227,18 @@
   border: none;
   border-radius: 5px;
 }
+.ment-listWrapper {
+  width: 80%;
+}
 .ment-wrapper {
-  margin: 7px 60px;
   display: flex;
-  gap: 10px;
+  width: 110%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 50px;
+  padding: 0 20px;
+  border-top: 1px solid #eee;
 }
 
 //CommentEdit.jsx
@@ -246,6 +267,7 @@
 }
 
 //PostComment.jsx
+
 .commentContainer {
   max-width: 428px;
   position: fixed;
@@ -255,4 +277,13 @@
   height: 50px;
   transition: all 1000ms;
   background-color: white;
+}
+.toggle-comment-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 50px;
+  padding: 0 20px;
+  border-top: 1px solid #eee;
 }

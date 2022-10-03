@@ -22,12 +22,12 @@ const NaverLoading = () => {
       const data = await instance.get(
         `/naver/callback?code=${code}&state=STATE_STRING`
       );
-      console.log(data);
+      // console.log(data);
       localStorage.setItem("ACCESS_TOKEN", data.headers.authorization);
       localStorage.setItem("REFRESH_TOKEN", data.headers.refreshtoken);
-      localStorage.setItem("nickname", data.data.data); //로컬스토리지에 닉넴 저장
+      localStorage.setItem("nickname", data.data.data.nickname); //로컬스토리지에 닉넴 저장
       localStorage.setItem("isLogin", data.headers.authorization);
-      const nickname = data.data.data;
+      const nickname = data.data.data.nickname;
       Swal.fire({
         icon: "success",
         title: nickname + "님",
@@ -39,7 +39,10 @@ const NaverLoading = () => {
           navigate("/recommend");
         }
       });
+      return data;
     } catch (error) {
+      console.log("error", error);
+      window.alert(error.message); //navigate로 바꾸면 isLogin.state가 false. 새로고침해야 true
       return (
         <>
           <img
