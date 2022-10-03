@@ -1,13 +1,13 @@
 import { useEffect,useState } from "react";
-import Tags from "../components/category/Tags";
+import Tags from "./Tags";
 
 
 
 // 취향 카테고리목록
-export default function LikePostList(){
+export default function InterestedPostList(){
     const PostList =[]
-    const [like,setLike] =useState('혼자여행');
-    const likeList = [
+    const [interested,setInterested] =useState('혼자여행');
+    const interestedList = [
 
           { name:'혼자여행',
            },
@@ -35,20 +35,21 @@ export default function LikePostList(){
 
           { name:'인스타감성',
             },
-         
+    
     ];
 
     useEffect(()=> {
        
-    },[like]);
+    },{interested});
 
     return (
         <div>
             <div className="tag-wrapper">
-                {likeList.map(item => (
+                {interestedList.map(item => (
                     <Tags
-                    selected={like ===item.name}
-                    handler={() => setLike(item.name)}
+                    key={item.name}
+                    selected={interested ===item.name}
+                    handler={() => setInterested(item.name)}
                     name={item.name}
                     />
                ))}
