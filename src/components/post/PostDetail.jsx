@@ -43,7 +43,8 @@ const PostDetail = () => {
     event.preventDefault();
     const { data } = await instance.delete(`/api/post/${id}`);
     console.log(data);
-    if (data.success) navigate("/post");
+    if (data.success) alert("게시물을 삭제하시겠습니까?");
+    navigate("/post");
   };
 
   return (
@@ -61,7 +62,7 @@ const PostDetail = () => {
             <div>
               <img />
               <button onClick={onLike} className="liked-post-btn">
-                <img src={heart} className="liked-post-icon" />
+                <img src={heart} className="liked-post-icon" alt="관심게시글" />
               </button>
               {detail?.heartNum}
             </div>

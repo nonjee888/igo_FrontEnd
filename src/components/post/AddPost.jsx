@@ -20,24 +20,23 @@ import PostSearchPlace from "./PostSearchPlace";
 const AddPost = () => {
   const dispatch = useDispatch();
   const NICKNAME = localStorage.getItem("nickname");
+
   const { id } = useParams();
   const editorRef = useRef();
   const [title, setTitle] = useState("");
-  // const [inputCost, setInputCost] = useState("");
   const [editor, setEditor] = useState("");
+
   const { detail } = useSelector((state) => state?.posts);
   const writerId = detail.nickname;
+
   useEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
-        console.log(response);
         setTitle(response.payload.title);
-        // setInputCost(response.payload.amount);
         setEditor(response.payload.content);
       });
     } else {
       setTitle("");
-      // setInputCost("");
       setEditor(editorRef.current?.getInstance().getHTML());
     }
   }, [dispatch]);
@@ -46,10 +45,9 @@ const AddPost = () => {
 
   let data = {
     title: title,
-    // inputCost: inputCost,
     editor: editor,
   };
-  console.log(data);
+
   return (
     <>
       {NICKNAME ? (
@@ -105,19 +103,6 @@ const AddPost = () => {
                 },
               }}
             />
-            {/* <div className="cost-wrap">
-              <input
-                className="cost-input"
-                placeholder="여행경비를 입력해주세요."
-                onChange={(event) => setInputCost(event.target.value)}
-                type="number"
-                required
-                name="inputCost"
-                value={inputCost}
-              />
-              <div>단위: 원</div>
-            </div> */}
-
             <div>
               <PostSearchPlace data={data} writerId={writerId} />
             </div>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
 import { createComment } from "../../redux/modules/comments";
 import PostCommentList from "./PostCommentList";
+import profileImg from "../../asset/assetMypage/profileImg.png";
 
 const PostComment = () => {
   let dispatch = useDispatch();
@@ -21,9 +22,10 @@ const PostComment = () => {
   const openModal = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
-  const { detail } = useSelector((state) => state?.posts);
-
+  const { isLoading, error, detail } = useSelector((state) => state?.posts);
+  console.log(detail);
   const commentList = detail.commentResponseDtoList;
+  const userProfile = detail.profile;
 
   return (
     <div
@@ -34,7 +36,14 @@ const PostComment = () => {
       {!loading && modalOpen && (
         <>
           <div className="toggle-comment-wrapper">
-            <div className="nickname-wrap">{username}</div>
+            <div className="nickname">
+              {userProfile === null ? (
+                <img className="profileImg" src={profileImg} alt="" />
+              ) : (
+                <img className="profileImg" src={userProfile} alt="" />
+              )}
+              <p className="userNick">{username}</p>
+            </div>
             <input
               type="text"
               name="comments"
@@ -68,6 +77,8 @@ const PostComment = () => {
                   comment={comment}
                   key={comment.id}
                   postId={postId}
+                  profile={detail.profile}
+                  setComments={setComments}
                 />
               );
             })}

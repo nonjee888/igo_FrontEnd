@@ -10,7 +10,6 @@ import submitpost from "../../asset/submitpost.png";
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
-  console.log(props);
   const navigate = useNavigate();
   const nickname = localStorage.getItem("nickname");
   const writerId = props.props.writerId;
@@ -25,18 +24,16 @@ const PostKakaoMap = (props) => {
   });
 
   let title = props.props.data.title; //타이틀
-  // let amount = props.props.data.inputCost; //여행경비
   let content = props.props.data.editor; //에디터
   let mapData = overlayData; //맵데이터
 
   const handleRegisterButton = async () => {
     let req = {
       title: title,
-      // amount: amount,
       content: content,
-      mapData: mapData,
+      // mapData: mapData,
     };
-    console.log(req);
+
     const data = await instance.post("/api/post", req);
     if (data.data.success) {
       navigate("/post");
