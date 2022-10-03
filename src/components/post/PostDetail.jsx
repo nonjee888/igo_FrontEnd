@@ -3,19 +3,22 @@ import React from "react";
 import { useEffect } from "react";
 import { instance } from "../../shared/api";
 import { useParams, useNavigate } from "react-router";
-import { onLikePost } from "../../redux/modules/posts";
+import { onLikePost, onReportPost } from "../../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
 import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
+import report from "../../asset/report.png";
 import deleteimg from "../../asset/deleteimg.png";
 
 const PostDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-
+  const writerId = detail.nickname;
+  const NICKNAME = localStorage.getItem("nickname");
+  const userConfirm = NICKNAME === writerId;
   let { id } = useParams();
   useEffect(() => {
     dispatch(getDetailPosts(id));
@@ -31,7 +34,12 @@ const PostDetail = () => {
     dispatch(onLikePost(id));
     window.location.reload();
   };
-  const onDelete = async (event) => {
+  const onReport = async (event) => {
+    event.preventDefault();
+    dispatch(onReportPost(id));
+    window.location.reload();
+  };
+  const onDeletePost = async (event) => {
     event.preventDefault();
     const { data } = await instance.delete(`/api/post/${id}`);
     console.log(data);
@@ -57,12 +65,30 @@ const PostDetail = () => {
               </button>
               {detail?.heartNum}
             </div>
-            <button className="edit-btn">
-              <img src={edit} className="edit-icon" />
-            </button>
-            <button onClick={onDelete} className="delete-btn">
-              <img src={deleteimg} className="delete-icon" />
-            </button>
+            <div>
+              <img />
+            </div>
+            {userConfirm ? null : (
+              <button onClick={onReport} className="report-post-btn">
+                <img src={report} className="report-post-icon" />
+              </button>
+            )}
+            {userConfirm ? (
+              <div>
+                <button className="edit-btn">
+                  <img
+                    src={edit}
+                    className="edit-detail-icon"
+                    onClick={() => {
+                      navigate("/addpost/edit/" + id);
+                    }}
+                  />
+                </button>
+                <button onClick={onDeletePost} className="delete-btn">
+                  <img src={deleteimg} className="delete-icon" />
+                </button>
+              </div>
+            ) : null}
           </div>
           <div className="tag-wrapper">태그들어감</div>
 

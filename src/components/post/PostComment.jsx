@@ -1,35 +1,29 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetailPosts } from "../../redux/modules/posts";
 import { createComment } from "../../redux/modules/comments";
 import PostCommentList from "./PostCommentList";
 
 const PostComment = () => {
   let dispatch = useDispatch();
+  let username = localStorage.getItem("nickname");
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const initialState = {
-    id_post: 0,
+    postId: 0,
     content: "",
   };
   const [comments, setComments] = useState("");
   const [review, setReview] = useState(initialState);
   const { id } = useParams();
-  // let id_post = id;
+  let postId = id;
   const openModal = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
+  const { detail } = useSelector((state) => state?.posts);
 
-  // useEffect(() => {
-  //   async(() => {
-  //       setLoading(true);
-  //       const data = await axios(코멘트 get)
-  //       if (data.status === 'success') {
-  //           setComments(data.data);
-  //           setLoading(false);
-  //       }
-  //   })();
-  // }, []);
+  const commentList = detail.commentResponseDtoList;
 
   return (
     <div
@@ -40,7 +34,7 @@ const PostComment = () => {
       {!loading && modalOpen && (
         <>
           <div className="toggle-comment-wrapper">
-            <div className="nickname-wrap">닉네임</div>
+            <div className="nickname-wrap">{username}</div>
             <input
               type="text"
               name="comments"
@@ -51,7 +45,7 @@ const PostComment = () => {
                 setComments(e.target.value);
                 setReview({
                   ...review,
-                  id_post: Number(id),
+                  postId: id,
                   content: e.target.value,
                 });
               }}
@@ -68,7 +62,15 @@ const PostComment = () => {
             </button>
           </div>
           <div className="commentList">
-            <PostCommentList />
+            {commentList?.map((comment) => {
+              return (
+                <PostCommentList
+                  comment={comment}
+                  key={comment.id}
+                  postId={postId}
+                />
+              );
+            })}
           </div>
         </>
       )}

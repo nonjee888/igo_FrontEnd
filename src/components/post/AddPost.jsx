@@ -1,31 +1,55 @@
 //에디터
-import React, { useRef, useState } from "react";
-import Swal from "sweetalert2";
 import S3 from "react-aws-s3";
+import Swal from "sweetalert2";
 import { Editor } from "@toast-ui/react-editor";
-import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "@toast-ui/editor/dist/i18n/ko-kr";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "tui-color-picker/dist/tui-color-picker.css";
-import PostSearchPlace from "./PostSearchPlace";
+import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 
+import { Dispatch } from "react";
+import { useRef, useState } from "react";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetailPosts } from "../../redux/modules/posts";
+
+import PostSearchPlace from "./PostSearchPlace";
+
 const AddPost = () => {
+  const dispatch = useDispatch();
   const NICKNAME = localStorage.getItem("nickname");
-  //로그인해야 사용 가능
+  const { id } = useParams();
   const editorRef = useRef();
   const [title, setTitle] = useState("");
-  const [inputCost, setInputCost] = useState("");
-  const editor = editorRef.current?.getInstance().getHTML();
+  // const [inputCost, setInputCost] = useState("");
+  const [editor, setEditor] = useState("");
+  const { detail } = useSelector((state) => state?.posts);
+  const writerId = detail.nickname;
+  useEffect(() => {
+    if (id !== undefined) {
+      dispatch(getDetailPosts(id)).then((response) => {
+        console.log(response);
+        setTitle(response.payload.title);
+        // setInputCost(response.payload.amount);
+        setEditor(response.payload.content);
+      });
+    } else {
+      setTitle("");
+      // setInputCost("");
+      setEditor(editorRef.current?.getInstance().getHTML());
+    }
+  }, [dispatch]);
 
   window.Buffer = window.Buffer || require("buffer").Buffer;
 
   let data = {
     title: title,
-    inputCost: inputCost,
+    // inputCost: inputCost,
     editor: editor,
   };
-
+  console.log(data);
   return (
     <>
       {NICKNAME ? (
@@ -51,9 +75,15 @@ const AddPost = () => {
               height="calc(100vh - 390px)"
               initialEditType="wysiwyg"
               useCommandShortcut={false}
+              onChange={() => {
+                const innerText = editorRef.current?.getInstance().getHTML();
+                setEditor(innerText);
+              }}
               hideModeSwitch={true}
               plugins={[colorSyntax]}
               language="ko-KR"
+              name="editor"
+              required
               hooks={{
                 addImageBlobHook: async (blob, callback) => {
                   const config = {
@@ -75,19 +105,21 @@ const AddPost = () => {
                 },
               }}
             />
-            <div className="cost-wrap">
+            {/* <div className="cost-wrap">
               <input
                 className="cost-input"
                 placeholder="여행경비를 입력해주세요."
                 onChange={(event) => setInputCost(event.target.value)}
-                type="text"
+                type="number"
+                required
+                name="inputCost"
                 value={inputCost}
               />
               <div>단위: 원</div>
-            </div>
+            </div> */}
 
             <div>
-              <PostSearchPlace data={data} />
+              <PostSearchPlace data={data} writerId={writerId} />
             </div>
           </div>
         </div>
