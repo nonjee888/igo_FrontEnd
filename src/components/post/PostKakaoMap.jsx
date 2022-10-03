@@ -36,7 +36,7 @@ const PostKakaoMap = (props) => {
 
     const data = await instance.post("/api/post", req);
     if (data.data.success) {
-      navigate("/post");
+      navigate("/post/all");
     }
   };
 
@@ -182,7 +182,7 @@ const PostKakaoMap = (props) => {
         <button
           className="goback-post"
           onClick={() => {
-            navigate("/post");
+            navigate("/post/all");
           }}
         >
           <img className="goback-icon" src={goback} alt="뒤로" />

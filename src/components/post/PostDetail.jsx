@@ -44,7 +44,7 @@ const PostDetail = () => {
     const { data } = await instance.delete(`/api/post/${id}`);
     console.log(data);
     if (data.success) alert("게시물을 삭제하시겠습니까?");
-    navigate("/post");
+    navigate("/post/all");
   };
 
   return (
