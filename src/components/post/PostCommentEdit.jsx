@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateComment } from "../../redux/modules/comments";
 
 const CommentEdit = ({ close }) => {
   let dispatch = useDispatch();

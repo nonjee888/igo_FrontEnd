@@ -5,18 +5,16 @@
     display:flex;
     align-items: center;
     background-color: #ffff;
-   
 }
 //카테고리텍스트
 .catagory-head {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20%;
-    height: 100%;
-    font-size: 20px;
-    color: #999FAB;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+  font-size: 20px;
+  color: #999fab;
 }
 //검색바
 .search-icon {
@@ -38,19 +36,19 @@
     border: 1px solid transparent;
   }
 
-  //태그테투리
+//태그테투리
 .tag {
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    width: 20%;
-    border-radius: 15px;
-    height: 30px;
-    background-color: #eef1f7;
-    padding: 8px;
-    box-sizing: border-box;
-    margin: 0 10px 10px 0;
-  }
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  border-radius: 15px;
+  height: 30px;
+  background-color: #eef1f7;
+  padding: 8px;
+  box-sizing: border-box;
+  margin: 0 10px 10px 0;
+}
 
 //태그텍스트
   .tag-text {
@@ -61,3 +59,4 @@
     text-align: center;
     margin-right: 0;
   }
+
