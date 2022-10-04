@@ -32,7 +32,11 @@ const CommentList = (props) => {
       }
     );
     console.log(data);
-    if (data.success) window.location.reload();
+    if (data.success)
+      var index = data.commentDtoList.findIndex(
+        (comment) => comment.id === payload.commentId
+      );
+    data.commentDtoList.splice(index, 1);
   };
 
   return (

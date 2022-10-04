@@ -21,7 +21,7 @@ export const getDetailPosts = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await instance.get(`/api/detail/${payload}`);
-
+      console.log(data);
       return data.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

@@ -32,7 +32,9 @@ const PostComment = () => {
       style={{ height: modalOpen ? "500px" : "50px" }}
       className="commentContainer"
     >
-      <p onClick={openModal}>댓글</p>
+      <p className="comment" onClick={openModal}>
+        댓글보기
+      </p>
       {!loading && modalOpen && (
         <>
           <div className="toggle-comment-wrapper">

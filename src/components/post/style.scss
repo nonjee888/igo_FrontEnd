@@ -253,7 +253,7 @@
 .commentContainer {
   max-width: 428px;
   position: fixed;
-  bottom: 45px;
+  bottom: 70px;
   width: 100%;
   transition: all 1000ms;
   overflow: auto;
@@ -267,4 +267,7 @@
   height: 100px;
   padding: 0 20px;
   border-top: 1px solid #eee;
+}
+.comment {
+  margin: 0 auto;
 }

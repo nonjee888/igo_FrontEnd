@@ -62,7 +62,7 @@ export const comments = createSlice({
     [createComment.fulfilled]: (state, action) => {
       console.log(action);
       state.isLoading = false;
-      state.comments.push(action.payload);
+      state.data.data.data.push(action.payload);
     },
     [createComment.rejected]: (state, action) => {
       state.isLoading = false;
