@@ -1,6 +1,4 @@
-
 import { createSlice } from "@reduxjs/toolkit";
-
 
 //리듀서 -----------------------------------------------------------------------------------------------------
 
@@ -13,5 +11,4 @@ export const user = createSlice({
   reducers: {},
 });
 
-export const { loginCheck } = user.actions;
 export default user.reducer;

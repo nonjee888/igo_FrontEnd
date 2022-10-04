@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../../shared/api";
 
 export const createComment = createAsyncThunk(
@@ -7,8 +7,7 @@ export const createComment = createAsyncThunk(
     try {
       const data = await instance.post("/api/comments", payload);
       console.log(data.data.data);
-      if (data.data.success) window.location.reload();
-      return data.data;
+      if (data.data.success) return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -30,22 +29,6 @@ export const createComment = createAsyncThunk(
 //   }
 // );
 
-export const updateComment = createAsyncThunk(
-  "comments/UpdateComments",
-  async (payload, thunkAPI) => {
-    console.log(payload);
-    try {
-      const data = await instance.put(`/api/comments/${payload.id}`, {
-        postId: payload.postId,
-        content: payload.content,
-      });
-      return data.data; //존재하지않는 게시글 id입니다. data.data.data = null
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
-
 export const comments = createSlice({
   name: "comments",
   initialState: {
@@ -62,13 +45,13 @@ export const comments = createSlice({
     [createComment.fulfilled]: (state, action) => {
       console.log(action);
       state.isLoading = false;
-      state.data.data.data.push(action.payload);
+      state.comments.push(action.payload.data);
+      console.log(current(state.comments));
     },
     [createComment.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
-
     // [removeComment.pending]: (state) => {
     //   state.isLoading = true;
     // },

@@ -10,13 +10,14 @@ import submitpost from "../../asset/submitpost.png";
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
-  console.log(props);
   const navigate = useNavigate();
   const nickname = localStorage.getItem("nickname");
   const writerId = props.props.writerId;
   const isEdit = props.props.isEdit;
   const userConfirm = nickname === writerId;
   const managerRef = useRef(null);
+  const id = props.props.id;
+
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
@@ -48,7 +49,9 @@ const PostKakaoMap = (props) => {
       content: content,
       mapData: mapData,
     };
-    const data = await instance.put("/api/post", req);
+    const data = await instance.put(`/api/post/${id}`, req, {
+      headers: { "content-type": "application/json" },
+    });
     if (data.data.success) {
       navigate("/post/all");
     }
