@@ -2,27 +2,42 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
-import { createComment } from "../../redux/modules/posts";
+import { createComment, getComments } from "../../redux/modules/comments";
 import PostCommentList from "./PostCommentList";
 import profileImg from "../../asset/assetMypage/profileImg.png";
 
 const PostComment = () => {
   let dispatch = useDispatch();
   let username = localStorage.getItem("nickname");
+  const { detail } = useSelector((state) => state.posts);
+  const { isLoading, error, comments } = useSelector((state) => state.comments);
+  console.log(comments);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+
   const initialState = {
     postId: 0,
     content: "",
   };
-  const [comments, setComments] = useState("");
+
+  const [comment, setComments] = useState("");
   const [review, setReview] = useState(initialState);
   const { id } = useParams();
   let postId = id;
   const openModal = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
-  const { isLoading, error, detail } = useSelector((state) => state?.posts);
+
+  useEffect(() => {
+    dispatch(getComments(id));
+  }, [dispatch, id]);
+  if (isLoading) {
+    return <div>...로딩중</div>;
+  }
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+
   const commentList = detail.commentResponseDtoList;
   const userProfile = detail.profile;
 
@@ -48,7 +63,7 @@ const PostComment = () => {
             <input
               type="text"
               name="comments"
-              value={comments}
+              value={comment}
               className="comment-input"
               placeholder="댓글입력..."
               onChange={(e) => {
@@ -72,7 +87,7 @@ const PostComment = () => {
             </button>
           </div>
           <div className="commentList">
-            {commentList?.map((comment) => {
+            {comments?.map((comment) => {
               return (
                 <PostCommentList
                   comment={comment}
@@ -80,7 +95,7 @@ const PostComment = () => {
                   postId={postId}
                   profile={detail.profile}
                   setComments={setComments}
-                  commentList={commentList}
+                  commentList={comments}
                 />
               );
             })}

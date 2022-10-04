@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router";
 import { onLikePost, onReportPost } from "../../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
+import { removeComment } from "../../redux/modules/comments";
 import { Map, Polyline, MapMarker } from "react-kakao-maps-sdk";
 
 import PostComment from "./PostComment";
@@ -33,7 +34,6 @@ const PostDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-  console.log(detail);
   const writerId = detail.nickname;
   const NICKNAME = localStorage.getItem("nickname");
   const userConfirm = NICKNAME === writerId;
@@ -103,7 +103,12 @@ const PostDetail = () => {
                     }}
                   />
                 </button>
-                <button onClick={onDeletePost} className="delete-btn">
+                <button
+                  onClick={() => {
+                    dispatch(onDeletePost(id));
+                  }}
+                  className="delete-btn"
+                >
                   <img src={deleteimg} className="delete-icon" />
                 </button>
               </div>

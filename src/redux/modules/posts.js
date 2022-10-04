@@ -60,22 +60,6 @@ export const onReportPost = createAsyncThunk(
   }
 );
 
-export const createComment = createAsyncThunk(
-  "comments/CreateComments",
-  async (payload, thunkAPI) => {
-    try {
-      const data = await instance.post("/api/comments", payload);
-      console.log(data);
-      if (data.data.success) {
-        // window.location.reload();
-        return data.data;
-      }
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
-
 const initialState = {};
 
 export const posts = createSlice({
@@ -151,19 +135,6 @@ export const posts = createSlice({
     [onReportPost.rejected]: (state, action) => {
       state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
-    },
-    [createComment.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [createComment.fulfilled]: (state, action) => {
-      console.log(action);
-      state.isLoading = false;
-      state.comment = action.payload;
-      console.log();
-    },
-    [createComment.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
     },
   },
 });
