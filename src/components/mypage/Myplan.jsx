@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+// 리덕스 관련 Imports
+import { useDispatch, useSelector } from "react-redux";
+import { getMyplans } from "../../redux/modules/myplans";
 //이미지
 import add from "../../asset/add.png";
 import deleteimg from "../../asset/deleteimg.png";
@@ -10,6 +13,10 @@ import Swal from "sweetalert2";
 
 const Myplan = (props) => {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const myplans = useSelector((state) => state.mypage.posts);
+  console.log(myplans);
+
   //삭제알림창
   const deleteAlert = () => {
     Swal.fire({
@@ -26,11 +33,6 @@ const Myplan = (props) => {
     });
   };
 
-  let title = props.mypost.title;
-  let content = props.mypost.content;
-  let time = props.mypost.time;
-  let imgurl = props.mypost.imgurl;
-
   return (
     <div className="All">
       <div className="MyPosts">
@@ -46,13 +48,13 @@ const Myplan = (props) => {
           />
         </div>
         <div className="Myplan">
-          <div className="MyplanDate">{time}</div>
+          <div className="MyplanDate">time</div>
           <div className="MyplanTitle">
-            {title}
+            title
             <img src={edit} alt="수정하기" />
           </div>
-          <img src={imgurl} className="MyplanImg" alt="내일정이미지" />
-          <div className="MyplanContents">{content}</div>
+          <img src="" className="MyplanImg" alt="내일정이미지" />
+          <div className="MyplanContents">내용</div>
           <button className="buttonDelete" onClick={deleteAlert}>
             <img src={deleteimg} style={{ width: "15%" }} alt="삭제버튼" />
           </button>

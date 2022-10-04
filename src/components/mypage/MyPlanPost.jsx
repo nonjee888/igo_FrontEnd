@@ -1,12 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux";
 import { postMyplans } from "../../redux/modules/myplans";
-//날짜 선택 라이브러리
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { ko } from "date-fns/esm/locale";
 //이미지
 import photo from "../../asset/assetMypage/photo.png";
 import calendar from "../../asset/assetMypage/calendar.png";
@@ -16,22 +11,21 @@ const MyPlanPost = () => {
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState("");
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState("");
   const [content, setContent] = useState("");
-  const [imgurl, setImgurl] = useState(null);
+  const [images, setImages] = useState([]);
   const [preview, setPreview] = useState("");
 
   const resetStates = () => {
     setTime("");
     setTitle("");
-    setImgurl(null);
-    // setPreview("");
+    setImages();
     setContent("");
   };
 
   const onChangeImage = (e) => {
     console.log(e.target.files);
-    setImgurl(e.target.files[0]);
+    setImages(e.target.files[0]);
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -51,7 +45,8 @@ const MyPlanPost = () => {
       content: content,
     };
     const formData = new FormData();
-    formData.append("imgurl", imgurl);
+    formData.append("images", images);
+
     let json = JSON.stringify(req);
 
     const timeblob = new Blob([json], { type: "application/json" });
@@ -77,12 +72,11 @@ const MyPlanPost = () => {
         <form onSubmit={onSubmitHandler}>
           <div className="MyplanPost">
             <div className="MyplanPostDate">
-              <DatePicker
-                className="DatePicker"
-                selected={time}
-                onChange={(date) => setTime(date)}
-                locale={ko}
-                dateFormat="yyyy/MM/dd"
+              <input
+                type="date"
+                onChange={(e) => {
+                  setTime(e.target.value);
+                }}
                 value={time}
               />
             </div>
@@ -110,6 +104,7 @@ const MyPlanPost = () => {
               name="image"
               className="imginput"
               onChange={onChangeImage}
+              multiple="multiple"
             />
             <div className="MyplanPostContents">
               <textarea
