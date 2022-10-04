@@ -186,7 +186,7 @@
 
 .MyplanPost {
   display: grid;
-  grid-template-rows: 7% 7% 30% 56%;
+  grid-template-rows: 7% 7% 30% 6% 50%;
   border-radius: 10px;
   width: 100%;
   height: 50vh;
@@ -225,8 +225,10 @@
 }
 
 .MyplanPostAddbutton {
+  border: none;
+  background-color: transparent;
+  margin: 5% 0 0 23%;
   img {
-    width: 40%;
+    width: 50%;
   }
-  margin: 0 0 0 39%;
 }

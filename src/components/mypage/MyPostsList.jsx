@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../redux/modules/posts";
+import photo from "../../asset/assetMypage/photo.png";
 
 const MyPostsList = () => {
   const navigate = useNavigate();
@@ -19,7 +20,11 @@ const MyPostsList = () => {
   let MyPostsList = posts?.filter((post) => {
     return post?.member?.nickname === user;
   });
-  // console.log(MyPostsList);
+  console.log(MyPostsList);
+
+  let urlRegex = /(https?:\/\/[^>\"']*)/;
+  let url = MyPostsList[1]?.content?.match(urlRegex)?.["1"];
+  console.log(url);
 
   return (
     <div className="All">
@@ -40,11 +45,15 @@ const MyPostsList = () => {
                 }}
               >
                 <div className="MyPostsList">
-                  <img
-                    src={posts.imgurl}
-                    className="MyPostImg"
-                    alt="내게시글이미지"
-                  />
+                  {url === null ? (
+                    <img
+                      src={photo}
+                      className="MyPostImg"
+                      alt="내게시글이미지"
+                    />
+                  ) : (
+                    <img src={url} className="MyPostImg" alt="내게시글이미지" />
+                  )}
                   <div className="MyPostTitle">{posts.title}</div>
                 </div>
               </div>

@@ -10,9 +10,11 @@ import submitpost from "../../asset/submitpost.png";
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
+  console.log(props);
   const navigate = useNavigate();
   const nickname = localStorage.getItem("nickname");
   const writerId = props.props.writerId;
+  const isEdit = props.props.isEdit;
   const userConfirm = nickname === writerId;
   const managerRef = useRef(null);
   const [info, setInfo] = useState();
@@ -31,10 +33,22 @@ const PostKakaoMap = (props) => {
     let req = {
       title: title,
       content: content,
-      // mapData: mapData,
+      mapData: mapData,
     };
 
     const data = await instance.post("/api/post", req);
+    if (data.data.success) {
+      navigate("/post/all");
+    }
+  };
+
+  const handleEditButton = async () => {
+    let req = {
+      title: title,
+      content: content,
+      mapData: mapData,
+    };
+    const data = await instance.put("/api/post", req);
     if (data.data.success) {
       navigate("/post/all");
     }
@@ -187,19 +201,25 @@ const PostKakaoMap = (props) => {
         >
           <img className="goback-icon" src={goback} alt="뒤로" />
         </button>
-
-        <button className="edit-post" onClick={() => {}}>
-          <img className="edit-icon" src={editpost} alt="수정" />
-        </button>
-
-        <button
-          className="submit-post"
-          onClick={() => {
-            handleRegisterButton();
-          }}
-        >
-          <img className="submit-icon" src={submitpost} alt="등록" />
-        </button>
+        {isEdit ? (
+          <button
+            className="edit-post"
+            onClick={() => {
+              handleEditButton();
+            }}
+          >
+            <img className="edit-icon" src={editpost} alt="수정" />
+          </button>
+        ) : (
+          <button
+            className="submit-post"
+            onClick={() => {
+              handleRegisterButton();
+            }}
+          >
+            <img className="submit-icon" src={submitpost} alt="등록" />
+          </button>
+        )}
       </div>
     </>
   );
