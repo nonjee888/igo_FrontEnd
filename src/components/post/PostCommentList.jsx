@@ -2,9 +2,7 @@ import { useDispatch } from "react-redux";
 import { instance } from "../../shared/api";
 import { removeComment } from "../../redux/modules/comments";
 import deleteimg from "../../asset/deleteimg.png";
-
 import profileImg from "../../asset/assetMypage/profileImg.png";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const CommentList = (props) => {
   const navigate = useNavigate();
@@ -13,6 +11,7 @@ const CommentList = (props) => {
   const nickname = props.comment.nickname;
   const userConfirm = writerId === nickname;
   const content = props.comment.content;
+  const commentList = props.commentList;
   const postId = props.postId;
   const userProfile = props.profile;
   const id = postId;
@@ -32,11 +31,18 @@ const CommentList = (props) => {
       }
     );
     console.log(data);
-    if (data.success)
-      var index = data.commentDtoList.findIndex(
-        (comment) => comment.id === payload.commentId
-      );
-    data.commentDtoList.splice(index, 1);
+    if (data.success) {
+      window.alert("삭제되었습니다.");
+      window.location.reload();
+    }
+    // if (data.success) {
+    //   const index = commentList.findIndex(
+    //     (comment) => comment.id === Number(payload.commentId)
+    //   );
+    //   console.log(index);
+    //   console.log(commentList);
+    //   return commentList.splice(index, 1);
+    // }
   };
 
   return (

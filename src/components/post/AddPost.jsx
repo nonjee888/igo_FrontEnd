@@ -108,6 +108,7 @@ const AddPost = () => {
             />
             <div>
               <PostSearchPlace
+                id={id}
                 data={data}
                 writerId={writerId}
                 isEdit={isEdit}

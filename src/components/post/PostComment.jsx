@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
-import { createComment } from "../../redux/modules/comments";
+import { createComment } from "../../redux/modules/posts";
 import PostCommentList from "./PostCommentList";
 import profileImg from "../../asset/assetMypage/profileImg.png";
 
@@ -23,7 +23,6 @@ const PostComment = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-  console.log(detail);
   const commentList = detail.commentResponseDtoList;
   const userProfile = detail.profile;
 
@@ -32,8 +31,8 @@ const PostComment = () => {
       style={{ height: modalOpen ? "500px" : "50px" }}
       className="commentContainer"
     >
-      <p className="comment" onClick={openModal}>
-        댓글보기
+      <p className="comment-tap" onClick={openModal}>
+        …
       </p>
       {!loading && modalOpen && (
         <>
@@ -81,6 +80,7 @@ const PostComment = () => {
                   postId={postId}
                   profile={detail.profile}
                   setComments={setComments}
+                  commentList={commentList}
                 />
               );
             })}
