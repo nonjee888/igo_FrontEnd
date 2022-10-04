@@ -34,7 +34,7 @@ export default function RegionPostList() {
 
     useEffect(()=> {
 
-    },{region});
+    },[region]);
 
     return (
         <div>

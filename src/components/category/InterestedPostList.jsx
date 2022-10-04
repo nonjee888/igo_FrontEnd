@@ -40,7 +40,7 @@ export default function InterestedPostList(){
 
     useEffect(()=> {
        
-    },{interested});
+    },[interested]);
 
     return (
         <div>

@@ -27,7 +27,7 @@ export default function CostPostList() {
 
     useEffect(()=> {
     
-    },{cost});
+    },[cost]);
 
 
 return (

@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
-import AllPostList from "../component/category/AllPostList";
-import RegionPostList from  "../component/category/RegionPostList";
-import LikePostList from  "../component/category/LikePostList";
-import CostPostList from  "../component/category/CostPostList";
-import Category from  "../component/category/Category";
+import AllPostList from "./AllPostList";
+
+import InterestedPostList from  "./InterestedPostList";
+import CostPostList from  "./CostPostList";
+import Category from  "./Category";
+import RegionPostList from "./RegionPostList";
 
 export default function AllCategoryList() {
     const { category } = useParams();
@@ -13,7 +14,7 @@ export default function AllCategoryList() {
     return (
         <div>
 
-            <Category/>
+            {/* <Category/> */}
 
             {category === 'all' && <AllPostList/>}
             
