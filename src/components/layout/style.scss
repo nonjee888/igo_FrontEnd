@@ -83,13 +83,17 @@
 //풋컨테이너
 .Footer-Container {
   border-top: 1px solid #d9d9d9;
-  height: 10vh;
+  height: 70px;
   width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  max-width: 428px;
 }
 
 //글쓰기,관심목록,마이페이지 담긴 아이콘박스
 .Icon-box {
-  height: 7vh;
+  height: 90%;
   display: flex;
   justify-content: center;
 }

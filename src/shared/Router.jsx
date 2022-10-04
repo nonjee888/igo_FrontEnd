@@ -5,14 +5,11 @@ import NaverLoading from "../pages/NaverLoading";
 import Loginpage from "../pages/Loginpage";
 import ChoiceCategory from "../pages/ChoiceCategory";
 import MainRecommend from "../pages/MainRecommend";
-import PostPage from "../pages/PostPage";
 //카테고리추가해서 페이지로 이동할거
 import RegionPage from "../pages/RegionPage";
-import LikePage from "../pages/AllPostPage";
 import CostPage from "../pages/CostPage";
 import AllPostPage from "../pages/AllPostPage";
 import PostDetailPage from "../pages/PostDetailPage";
-import PostEdit from "../components/post/PostEdit";
 //카테고리추가해서 페이지로 이동할거
 import CreateStory from "../pages/CreateStory";
 import Story from "../pages/Story";
@@ -22,9 +19,8 @@ import MyPlanPage from "../pages/MyPlanPage";
 import MyPlanPostPage from "../pages/MyPlanPostPage";
 import MyPostsListPage from "../pages/MyPostsListPage";
 import StoryAdd from "../pages/StoryAdd";
-
+import InterestedPage from "../pages/InterestedPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 
 const Router = () => {
   return (
@@ -36,12 +32,11 @@ const Router = () => {
           <Route path="/" element={<Loginpage />} exact />
           <Route path="/choice" element={<ChoiceCategory />} exact />
           <Route path="/recommend" element={<MainRecommend />} exact />
-          <Route path="/post" element={<PostPage />} exact />
-          <Route path="/post/:region" element={<RegionPage />} exact />
-          <Route path="/post/:like" element={<LikePage />} exact />
-          <Route path="/post/:cost" element={<CostPage />} exact />
-          <Route path="/post/:all" element={<AllPostPage />} exact />
-          <Route path="/region" element={<RegionPage />} exact />
+          <Route path="/post/region" element={<RegionPage />} exact />{" "}
+          {/*post/:region에서 앞에 :값을 제거해주니 세부카테고리 확인됨 */}
+          <Route path="/post/interested" element={<InterestedPage />} exact />
+          <Route path="/post/cost" element={<CostPage />} exact />
+          <Route path="/post/all" element={<AllPostPage />} exact />
           <Route path="/addpost" element={<AddPostPage />} exact />
           <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
           <Route path="/postdetail/:id" element={<PostDetailPage />} exact />

@@ -94,30 +94,25 @@
   padding: 5%;
   background-color: rgba(255, 255, 255, 0.524);
   width: 80%;
-  height: 7%;
+  height: 30px;
   position: absolute;
   overflow: hidden;
   display: flex;
   gap: 10px;
   align-items: center;
-  bottom: 10%;
-}
-.heart-btn {
-  width: 10%;
-  height: 15%;
-  background: none;
-  border: none;
-  position: absolute;
-  top: 25px;
-  right: 50px;
+  bottom: 20px;
 }
 .heart-btn-img {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 }
 .post-body {
   width: 100%;
-  height: 100%;
+  height: 250px;
+
+  & img {
+    object-fit: cover;
+  }
 }
 
 //PostDetail.jsx
@@ -161,7 +156,7 @@
   height: 50%;
 }
 .detail-btns {
-  margin-left: 30%;
+  margin-left: 45%;
   padding: 5px 0 5px 0;
   align-items: baseline;
   display: flex;
@@ -176,7 +171,6 @@
   width: 35px;
   height: 30px;
 }
-
 .delete-btn {
   background: none;
   border: none;
@@ -187,12 +181,13 @@
   cursor: pointer;
 }
 .html-wrapper {
+  max-width: 428px;
   width: 100%;
   height: 100%;
 
   overflow: auto;
   & img {
-    width: 390px;
+    width: 350px;
   }
 }
 .liked-post-btn {
@@ -214,10 +209,13 @@
   cursor: pointer;
 }
 //PostCommentList.jsx
-
+.delete-btn {
+  background: none;
+  border: none;
+}
 .comment-input {
   width: 50%;
-  height: 15px;
+  height: 30px;
   border: none;
   border-bottom: 1px solid gray;
 }
@@ -236,54 +234,37 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  height: 50px;
+  height: 100px;
   padding: 0 20px;
   border-top: 1px solid #eee;
 }
-
-//CommentEdit.jsx
-.show-modal {
-  position: absolute;
-  top: 200px;
-  left: 45px;
-  width: 80%;
-  height: 40%;
-  border: none;
-  border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.8);
+.profileImg {
+  margin-top: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #eee;
 }
-.modal-text {
-  margin-left: 30px;
-  color: white;
-}
-.edit-input {
-  width: 200px;
-}
-.edit-content {
-  margin-top: 70px;
-  margin-left: 25px;
-  gap: 3px;
-  display: flex;
+.nickname {
+  text-align: center;
 }
 
 //PostComment.jsx
-
 .commentContainer {
   max-width: 428px;
   position: fixed;
-  bottom: 0;
-  border: 1px solid rgb(255, 0, 0);
+  bottom: 45px;
   width: 100%;
-  height: 50px;
   transition: all 1000ms;
-  background-color: white;
+  overflow: auto;
+  background-color: rgb(255, 255, 255);
 }
 .toggle-comment-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  height: 50px;
+  height: 100px;
   padding: 0 20px;
   border-top: 1px solid #eee;
 }

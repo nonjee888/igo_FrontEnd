@@ -67,7 +67,7 @@ const Footers = () => {
             <img
               className="FootersIcon"
               onClick={() => {
-                navigate("/post");
+                navigate("/post/all");
               }}
               src={listIcon}
               alt="리스트"
@@ -116,7 +116,7 @@ const Footers = () => {
             <img
               className="FootersIcon"
               onClick={() => {
-                navigate("/post");
+                navigate("/post/all");
               }}
               src={listIcon}
               alt="리스트"

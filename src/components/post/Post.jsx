@@ -15,7 +15,6 @@ const Post = (props) => {
   // html에서 정규표현식으로 썸네일 추출
   let urlRegex = /(https?:\/\/[^>\"']*)/;
   let url = content.match(urlRegex);
-  console.log(url);
 
   return (
     <>
@@ -33,11 +32,11 @@ const Post = (props) => {
         <div className="pic-wrapper">
           <div className="post-content">
             <p>{title}</p> <p>{name}</p>
-            <p>{heart}</p>
+            <div>
+              <img className="heart-btn-img" src={emptyHeart} alt="" />
+              {heart}
+            </div>
           </div>
-          <button className="heart-btn" type="button">
-            <img className="heart-btn-img" src={emptyHeart} alt="" />
-          </button>
         </div>
       </div>
     </>
