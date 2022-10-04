@@ -33,7 +33,7 @@ const PostKakaoMap = (props) => {
     let req = {
       title: title,
       content: content,
-      // mapData: mapData,
+      mapData: mapData,
     };
 
     const data = await instance.post("/api/post", req);
@@ -46,7 +46,7 @@ const PostKakaoMap = (props) => {
     let req = {
       title: title,
       content: content,
-      // mapData: mapData,
+      mapData: mapData,
     };
     const data = await instance.put("/api/post", req);
     if (data.data.success) {
