@@ -1,13 +1,13 @@
 import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../../shared/api";
+import Swal from "sweetalert2";
 
 export const getComments = createAsyncThunk(
   "comments/getComments",
   async (payload, thunkAPI) => {
-    console.log(payload);
     try {
       const data = await instance.get(`/api/comment/${payload}`);
-      console.log(data);
+
       if (data.data.success) return data.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -19,7 +19,7 @@ export const createComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await instance.post("/api/comments", payload);
-      console.log(data.data.data);
+
       if (data.data.success) return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -35,6 +35,15 @@ export const removeComment = createAsyncThunk(
       const data = await instance.delete(`/api/comments/${payload.commentId}`, {
         postId: payload.postId,
       });
+
+      if (data.data.success === true) {
+        Swal.fire({
+          icon: "info",
+          text: "댓글이 삭제되었습니다",
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        });
+      }
       return payload;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -66,10 +75,8 @@ export const comments = createSlice({
       state.isLoading = true;
     },
     [createComment.fulfilled]: (state, action) => {
-      console.log(action);
       state.isLoading = false;
       state.comments.push(action.payload.data);
-      console.log(current(state.comments));
     },
     [createComment.rejected]: (state, action) => {
       state.isLoading = false;

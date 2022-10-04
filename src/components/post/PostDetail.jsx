@@ -3,16 +3,18 @@ import "./style.scss";
 import { useEffect, useState, useRef } from "react";
 import { instance } from "../../shared/api";
 import { useParams, useNavigate } from "react-router";
-import { onLikePost, onReportPost } from "../../redux/modules/posts";
+import { onLikePost } from "../../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
-import { removeComment } from "../../redux/modules/comments";
+
 import { Map, Polyline, MapMarker } from "react-kakao-maps-sdk";
+import Swal from "sweetalert2";
 
 import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
+import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
 
 const PostDetail = () => {
@@ -33,11 +35,15 @@ const PostDetail = () => {
   }
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
+
   const writerId = detail.nickname;
   const NICKNAME = localStorage.getItem("nickname");
   const userConfirm = NICKNAME === writerId;
+
   let { id } = useParams();
+
   useEffect(() => {
     dispatch(getDetailPosts(id));
   }, [dispatch, id]);
@@ -47,22 +53,40 @@ const PostDetail = () => {
   if (error) {
     return <div>{error.message}</div>;
   }
+
   const onLike = async (event) => {
     event.preventDefault();
     dispatch(onLikePost(id));
-    window.location.reload();
   };
-  const onReport = async (event) => {
-    event.preventDefault();
-    dispatch(onReportPost(id));
-    window.location.reload();
+
+  const onReport = async (id) => {
+    const data = await instance.post(`/api/report/${id}`, {});
+    console.log(data);
+    if (data.data.success === true) {
+      navigate("/post/all");
+    } else {
+      if (data.data.success === false) {
+        Swal.fire({
+          imageUrl: listIcon,
+          imageWidth: 50,
+          imageHeight: 50,
+          text: "이미 신고한 게시물입니다.",
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        }).then((result) => {
+          navigate("/post/all");
+        });
+        return data.data;
+      }
+    }
   };
-  const onDeletePost = async (event) => {
-    event.preventDefault();
+
+  const onDeletePost = async (id) => {
     const { data } = await instance.delete(`/api/post/${id}`);
     console.log(data);
-    if (data.success) alert("게시물을 삭제하시겠습니까?");
-    navigate("/post/all");
+    if (data.success) {
+      navigate("/post/all");
+    }
   };
 
   return (
@@ -88,7 +112,12 @@ const PostDetail = () => {
               <img />
             </div>
             {userConfirm ? null : (
-              <button onClick={onReport} className="report-post-btn">
+              <button
+                onClick={() => {
+                  onReport(id);
+                }}
+                className="report-post-btn"
+              >
                 <img src={report} className="report-post-icon" />
               </button>
             )}
@@ -105,7 +134,21 @@ const PostDetail = () => {
                 </button>
                 <button
                   onClick={() => {
-                    dispatch(onDeletePost(id));
+                    Swal.fire({
+                      showCancelButton: true,
+                      imageUrl: listIcon,
+                      imageWidth: 50,
+                      imageHeight: 50,
+                      text: "게시글을 삭제할까요?",
+                      confirmButtonColor: "#47AFDB",
+                      confirmButtonText: "삭제 확인",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        onDeletePost(id);
+                      } else if (result.isDenied) {
+                        window.location.reload();
+                      }
+                    });
                   }}
                   className="delete-btn"
                 >
