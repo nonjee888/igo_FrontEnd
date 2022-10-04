@@ -8,7 +8,7 @@ import calendarIcon from "../../asset/assetMypage/calendarIcon.png";
 //삭제알림창
 import Swal from "sweetalert2";
 
-const Myplan = () => {
+const Myplan = (props) => {
   let navigate = useNavigate();
   //삭제알림창
   const deleteAlert = () => {
@@ -25,6 +25,12 @@ const Myplan = () => {
       cancelButtonText: "취소",
     });
   };
+
+  let title = props.mypost.title;
+  let content = props.mypost.content;
+  let time = props.mypost.time;
+  let imgurl = props.mypost.imgurl;
+
   return (
     <div className="All">
       <div className="MyPosts">
@@ -40,13 +46,13 @@ const Myplan = () => {
           />
         </div>
         <div className="Myplan">
-          <div className="MyplanDate">2022/09/22</div>
+          <div className="MyplanDate">{time}</div>
           <div className="MyplanTitle">
-            제목
+            {title}
             <img src={edit} alt="수정하기" />
           </div>
-          <img src="" className="MyplanImg" alt="내일정이미지" />
-          <div className="MyplanContents">여기에 내용</div>
+          <img src={imgurl} className="MyplanImg" alt="내일정이미지" />
+          <div className="MyplanContents">{content}</div>
           <button className="buttonDelete" onClick={deleteAlert}>
             <img src={deleteimg} style={{ width: "15%" }} alt="삭제버튼" />
           </button>
