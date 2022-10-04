@@ -1,11 +1,13 @@
 import "./style.scss";
-import React from "react";
-import { useEffect } from "react";
+
+import { useEffect, useState, useRef } from "react";
 import { instance } from "../../shared/api";
 import { useParams, useNavigate } from "react-router";
 import { onLikePost, onReportPost } from "../../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
+import { Map, Polyline, MapMarker } from "react-kakao-maps-sdk";
+
 import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
@@ -13,9 +15,25 @@ import report from "../../asset/report.png";
 import deleteimg from "../../asset/deleteimg.png";
 
 const PostDetail = () => {
+  const managerRef = useRef(null);
+
+  const [overlayData, setOverlayData] = useState({
+    marker: [],
+    polyline: [],
+  });
+
+  // Drawing Manager에서 가져온 데이터 중
+  // 선과 다각형의 꼭지점 정보를 latlng 배열로 반환하는 함수입니다
+  function pointsToPath(points) {
+    return points.map((point) => ({
+      lat: point.y,
+      lng: point.x,
+    }));
+  }
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
+  console.log(detail);
   const writerId = detail.nickname;
   const NICKNAME = localStorage.getItem("nickname");
   const userConfirm = NICKNAME === writerId;
@@ -49,10 +67,10 @@ const PostDetail = () => {
 
   return (
     <>
-      <div className="All">
+      <div className="allPost">
         <div className="detail-wrapper">
           <div className="detail-title">
-            <h4 className="title">{detail?.title}</h4>
+            <h3 className="title">{detail?.title}</h3>
           </div>
           <div className="detail-btns">
             <div>
@@ -97,7 +115,20 @@ const PostDetail = () => {
             className="html-wrapper"
             dangerouslySetInnerHTML={{ __html: detail?.content }}
           ></div>
-          <div className="map-wrapper">지도보일곳</div>
+          <div className="map-wrapper">
+            <Map
+              center={{
+                // 지도의 중심좌표
+                lat: 33.450701,
+                lng: 126.570667,
+              }}
+              style={{
+                width: "100%",
+                height: "250px",
+              }}
+              level={3} // 지도의 확대 레벨
+            ></Map>
+          </div>
         </div>
         <PostComment />
       </div>

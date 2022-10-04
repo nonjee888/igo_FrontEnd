@@ -5,6 +5,8 @@ import InterestedPostList from  "./InterestedPostList";
 import CostPostList from  "./CostPostList";
 import Category from  "./Category";
 import RegionPostList from "./RegionPostList";
+import Headers from "../layout/Headers";
+import Footers from "../layout/Footers";
 
 export default function AllCategoryList() {
     const { category } = useParams();
@@ -13,8 +15,8 @@ export default function AllCategoryList() {
 // 카테고리 라우터
     return (
         <div>
-
-            {/* <Category/> */}
+<Headers/>
+           <Category/>
 
             {category === 'all' && <AllPostList/>}
             
@@ -23,7 +25,7 @@ export default function AllCategoryList() {
             {category === 'interested' && <InterestedPostList/>}
             
             {category === 'cost' && <CostPostList/>}
-            
+            <Footers/>
       </div>
     )
 }

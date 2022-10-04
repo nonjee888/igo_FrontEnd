@@ -9,7 +9,6 @@ const AllPostPage = () => {
   return (
     <PageContainer>
       <Headers />
-      <Category />
       <AllPostList />
       <Footers />
     </PageContainer>
