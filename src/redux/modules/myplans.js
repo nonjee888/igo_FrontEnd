@@ -17,11 +17,13 @@ export const getMyplans = createAsyncThunk(
 export const postMyplans = createAsyncThunk(
   "/api/mypost",
   async (payload, thunkAPI) => {
+    console.log(payload);
     try {
       console.log(payload);
       const data = await instance.post(`/api/mypost`, payload, {
         headers: {
           "Content-Type": "multipart/form-data",
+          REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
         },
       });
       if (data.data.success === false) alert(data.data.error.message);
@@ -34,14 +36,9 @@ export const postMyplans = createAsyncThunk(
 );
 
 export const myplans = createSlice({
-  name: "myplans",
+  name: "mypage",
   initialState: {
-    data: {
-      title: "",
-      content: "",
-      time: "",
-      imgurl: "",
-    },
+    posts: [{ title: "", content: "", time: "" }, { images: "" }],
     isLoading: false,
     error: null,
   },
