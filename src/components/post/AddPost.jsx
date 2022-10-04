@@ -22,10 +22,10 @@ const AddPost = () => {
   const NICKNAME = localStorage.getItem("nickname");
 
   const { id } = useParams();
+  const isEdit = id !== undefined;
   const editorRef = useRef();
   const [title, setTitle] = useState("");
   const [editor, setEditor] = useState("");
-
   const { detail } = useSelector((state) => state?.posts);
   const writerId = detail.nickname;
 
@@ -33,7 +33,10 @@ const AddPost = () => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
         setTitle(response.payload.title);
-        setEditor(response.payload.content);
+        setEditor(
+          editorRef.current?.getInstance().setHTML(response.payload.content)
+        );
+        // console.log(response.payload.content);
       });
     } else {
       setTitle("");
@@ -104,7 +107,11 @@ const AddPost = () => {
               }}
             />
             <div>
-              <PostSearchPlace data={data} writerId={writerId} />
+              <PostSearchPlace
+                data={data}
+                writerId={writerId}
+                isEdit={isEdit}
+              />
             </div>
           </div>
         </div>

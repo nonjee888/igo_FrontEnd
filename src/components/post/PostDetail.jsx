@@ -22,7 +22,7 @@ const PostDetail = () => {
   let { id } = useParams();
   useEffect(() => {
     dispatch(getDetailPosts(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
   if (isLoading) {
     return <div>...로딩중</div>;
   }

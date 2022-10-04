@@ -26,7 +26,7 @@ export default function AllPostList() {
   ];
   useEffect(() => {}, [sort]);
   const { isLoading, error, posts } = useSelector((state) => state?.posts);
-  console.log(posts);
+
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
@@ -37,7 +37,7 @@ export default function AllPostList() {
   if (error) {
     return <div>{error.message}</div>;
   }
-  console.log(posts);
+
   return (
     <div className="All">
       <div className="tag-wrapper">
