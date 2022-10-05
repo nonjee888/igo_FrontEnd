@@ -37,7 +37,8 @@ const Router = () => {
           <Route path="/post/:category" element={<AllCategoryList />} exact />
           {/*post/:region에서 앞에 :값을 제거해주니 세부카테고리 확인됨 */}
           <Route path="/createstory" element={<CreateStory />} exact />
-          <Route path="/search" element={<SearchPage />} exact />
+          <Route path="/search/" element={<SearchPage />} exact />
+          <Route path="/search/:searchTerm" element={<SearchPage />} exact />
           <Route path="/story" element={<Story />} exact />
           <Route path="/addstory" element={<StoryAdd />} exact />
           <Route path="/myinfo" element={<MyInfoPage />} exact />

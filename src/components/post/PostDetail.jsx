@@ -20,6 +20,7 @@ import deleteimg from "../../asset/deleteimg.png";
 const { kakao } = window;
 
 const PostDetail = ({ props }) => {
+  console.log(props);
   const { id } = useParams();
 
   const overlayData = props.overlayData;
@@ -144,6 +145,7 @@ const PostDetail = ({ props }) => {
             <h3 className="title">{detail?.title}</h3>
           </div>
           <div className="detail-btns">
+            <h4>{writerId}</h4>
             <div>
               <img />
               조회수:{detail?.viewCount}
