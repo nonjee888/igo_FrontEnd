@@ -9,6 +9,7 @@ import MainRecommend from "../pages/MainRecommend";
 import PostDetailPage from "../pages/PostDetailPage";
 //카테고리추가해서 페이지로 이동할거
 import CreateStory from "../pages/CreateStory";
+import SearchPage from "../pages/SearchPage";
 import Story from "../pages/Story";
 import MyInfoPage from "../pages/MyInfoPage";
 import MyLikesPage from "../pages/MyLikesPage";
@@ -35,8 +36,8 @@ const Router = () => {
           <Route path="/recommend" element={<MainRecommend />} exact />
           <Route path="/post/:category" element={<AllCategoryList />} exact />
           {/*post/:region에서 앞에 :값을 제거해주니 세부카테고리 확인됨 */}
-
           <Route path="/createstory" element={<CreateStory />} exact />
+          <Route path="/search" element={<SearchPage />} exact />
           <Route path="/story" element={<Story />} exact />
           <Route path="/addstory" element={<StoryAdd />} exact />
           <Route path="/myinfo" element={<MyInfoPage />} exact />

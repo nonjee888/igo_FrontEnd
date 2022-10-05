@@ -1,0 +1,29 @@
+//은지 담당//
+.SearchBar {
+  font-size: 18px;
+  width: calc(100% - 40px);
+  border: none;
+  outline: none;
+  padding: 0;
+}
+//search 돋보기
+.Icon {
+  position: absolute;
+  right: 12px;
+  top: 5px;
+  width: 26px;
+}
+//search div박스
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  height: 30px;
+  padding: 5% 10%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  border-radius: 120px;
+  background: #fff;
+  margin: 1rem auto 1rem auto;
+}

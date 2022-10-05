@@ -27,6 +27,7 @@ const PostDetail = ({ props }) => {
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
+
   function pointsToPath(points) {
     return points.map((point) => ({
       lat: point.y,
