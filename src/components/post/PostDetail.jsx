@@ -17,22 +17,23 @@ import report from "../../asset/report.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
 
-const PostDetail = () => {
-  const managerRef = useRef(null);
+const PostDetail = ({ props }) => {
+  const { id } = useParams();
 
-  const [overlayData, setOverlayData] = useState({
-    marker: [],
-    polyline: [],
-  });
+  const overlayData = props.overlayData;
+  const setOverlayData = props.setOverlayData;
 
-  // Drawing Manager에서 가져온 데이터 중
-  // 선과 다각형의 꼭지점 정보를 latlng 배열로 반환하는 함수입니다
+  console.log(overlayData);
+  const [info, setInfo] = useState();
+  const [markers, setMarkers] = useState([]);
+  const [map, setMap] = useState();
   function pointsToPath(points) {
     return points.map((point) => ({
       lat: point.y,
       lng: point.x,
     }));
   }
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -42,11 +43,14 @@ const PostDetail = () => {
   const NICKNAME = localStorage.getItem("nickname");
   const userConfirm = NICKNAME === writerId;
 
-  let { id } = useParams();
-
   useEffect(() => {
-    dispatch(getDetailPosts(id));
+    if (id !== undefined) {
+      dispatch(getDetailPosts(id)).then((response) => {
+        setOverlayData(response.payload.mapData);
+      });
+    }
   }, [dispatch, id]);
+
   if (isLoading) {
     return <div>...로딩중</div>;
   }
@@ -164,18 +168,45 @@ const PostDetail = () => {
             dangerouslySetInnerHTML={{ __html: detail?.content }}
           ></div>
           <div className="map-wrapper">
-            <Map
+            <Map // 로드뷰를 표시할 Container
               center={{
-                // 지도의 중심좌표
-                lat: 33.450701,
-                lng: 126.570667,
+                lat: 37.566826,
+                lng: 126.9786567,
               }}
               style={{
                 width: "100%",
-                height: "250px",
+                height: "220px",
               }}
-              level={3} // 지도의 확대 레벨
-            ></Map>
+              level={3}
+              onCreate={setMap}
+            >
+              {overlayData.polyline.map(({ points, options }, i) => (
+                <Polyline key={i} path={pointsToPath(points)} {...options} />
+              ))}
+
+              {overlayData.marker.map(({ x, y, zIndex }, i) => (
+                <MapMarker
+                  key={i}
+                  position={{
+                    lat: y,
+                    lng: x,
+                  }}
+                  zIndex={zIndex}
+                />
+              ))}
+
+              {markers.map((marker) => (
+                <MapMarker
+                  key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
+                  position={marker.position}
+                  onClick={() => setInfo(marker)}
+                >
+                  {info && info.content === marker.content && (
+                    <div style={{ color: "#000" }}>{marker.content}</div>
+                  )}
+                </MapMarker>
+              ))}
+            </Map>
           </div>
         </div>
         <PostComment />

@@ -16,9 +16,12 @@ import { getDetailPosts } from "../../redux/modules/posts";
 
 import PostSearchPlace from "./PostSearchPlace";
 
-const AddPost = () => {
+const AddPost = ({ props }) => {
+  // console.log(props);
   const dispatch = useDispatch();
   const NICKNAME = localStorage.getItem("nickname");
+  const overlayData = props.overlayData;
+  const setOverlayData = props.setOverlayData;
 
   const { id } = useParams();
   const isEdit = id !== undefined;
@@ -26,10 +29,6 @@ const AddPost = () => {
 
   const [title, setTitle] = useState("");
   const [editor, setEditor] = useState("");
-  const [overlayData, setOverlayData] = useState({
-    marker: [],
-    polyline: [],
-  });
 
   const { detail } = useSelector((state) => state?.posts);
   const writerId = detail.nickname;

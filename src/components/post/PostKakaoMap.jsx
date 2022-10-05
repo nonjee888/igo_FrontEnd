@@ -10,6 +10,7 @@ import submitpost from "../../asset/submitpost.png";
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
+  // console.log(props);
   const navigate = useNavigate();
   const nickname = localStorage.getItem("nickname");
   const writerId = props.props.writerId;
@@ -24,6 +25,10 @@ const PostKakaoMap = (props) => {
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
+  // const [overlayData, setOverlayData] = useState({
+  //   marker: [],
+  //   polyline: [],
+  // });
 
   let title = props.props.data.title; //타이틀
   let content = props.props.data.editor; //에디터
