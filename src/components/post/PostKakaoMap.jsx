@@ -10,7 +10,7 @@ import submitpost from "../../asset/submitpost.png";
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
-  // console.log(props);
+  console.log(props);
   const navigate = useNavigate();
   const nickname = localStorage.getItem("nickname");
   const writerId = props.props.writerId;
@@ -21,14 +21,10 @@ const PostKakaoMap = (props) => {
   const editMap = props.props.editMap;
   const overlayData = props.props.overlayData;
   const setOverlayData = props.props.setOverlayData;
-
+  console.log(overlayData);
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
-  // const [overlayData, setOverlayData] = useState({
-  //   marker: [],
-  //   polyline: [],
-  // });
 
   let title = props.props.data.title; //타이틀
   let content = props.props.data.editor; //에디터
@@ -40,7 +36,7 @@ const PostKakaoMap = (props) => {
       content: content,
       mapData: mapData,
     };
-
+    console.log(req);
     const data = await instance.post("/api/post", req);
     if (data.data.success) {
       navigate("/post/all");
@@ -53,7 +49,8 @@ const PostKakaoMap = (props) => {
       content: content,
       mapData: mapData,
     };
-    const data = await instance.put(`/api/post/${id}`, req, {
+    console.log(req);
+    const data = await instance.patch(`/api/post/${id}`, req, {
       headers: { "content-type": "application/json" },
     });
     if (data.data.success) {
@@ -112,6 +109,7 @@ const PostKakaoMap = (props) => {
       }
     });
   }, [map, props.searchPlace]);
+  console.log(overlayData.marker);
   return (
     <>
       <Map // 로드뷰를 표시할 Container

@@ -17,13 +17,14 @@ import report from "../../asset/report.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
 
+const { kakao } = window;
+
 const PostDetail = ({ props }) => {
   const { id } = useParams();
 
   const overlayData = props.overlayData;
   const setOverlayData = props.setOverlayData;
 
-  console.log(overlayData);
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
@@ -34,6 +35,37 @@ const PostDetail = ({ props }) => {
       lng: point.x,
     }));
   }
+  useEffect(() => {
+    if (!map) return;
+    const ps = new kakao.maps.services.Places();
+    if (props.searchPlace === "") return;
+
+    ps.keywordSearch(props.searchPlace, (data, status, _pagination) => {
+      if (status === kakao.maps.services.Status.OK) {
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        const bounds = new kakao.maps.LatLngBounds();
+        let markers = [];
+
+        for (var i = 0; i < data.length; i++) {
+          // @ts-ignore
+          markers.push({
+            position: {
+              lat: data[i].y,
+              lng: data[i].x,
+            },
+            content: data[i].place_name,
+          });
+          // @ts-ignore
+          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }
+        setMarkers(markers);
+
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+        map.setBounds(bounds);
+      }
+    });
+  }, [map, props.searchPlace]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,6 +100,16 @@ const PostDetail = ({ props }) => {
     const data = await instance.post(`/api/report/${id}`, {});
     console.log(data);
     if (data.data.success === true) {
+      Swal.fire({
+        imageUrl: listIcon,
+        imageWidth: 50,
+        imageHeight: 50,
+        text: "신고완료!",
+        confirmButtonColor: "#47AFDB",
+        confirmButtonText: "확인",
+      }).then((result) => {
+        navigate("/post/all");
+      });
       navigate("/post/all");
     } else {
       if (data.data.success === false) {
@@ -171,15 +213,14 @@ const PostDetail = ({ props }) => {
           <div className="map-wrapper">
             <Map // 로드뷰를 표시할 Container
               center={{
-                lat: 37.566826,
-                lng: 126.9786567,
+                lat: 35.415745314272534,
+                lng: 127.25518763341239,
               }}
               style={{
                 width: "100%",
-                height: "220px",
+                height: "300px",
               }}
-              level={3}
-              onCreate={setMap}
+              level={14}
             >
               {overlayData.polyline.map(({ points, options }, i) => (
                 <Polyline key={i} path={pointsToPath(points)} {...options} />
