@@ -2,7 +2,6 @@
 .allPost {
   // border: 2px solid #d9d9d9; //배경사이즈 확인용
   height: 100%;
-  overflow-x: auto;
   max-width: 428px;
 }
 .input-title {
@@ -105,12 +104,11 @@
 
 .heart-btn-img {
   width: 20px;
-  height: 20px;
 }
 .post-body {
   width: 100%;
   height: 250px;
-  margin-bottom: 3%;
+  margin-bottom: 5%;
 
   & img {
     object-fit: cover;
@@ -120,7 +118,8 @@
 //PostDetail.jsx
 .detail-wrapper {
   width: 99.5%;
-  height: 70%;
+  height: 100%;
+  overflow: auto;
 }
 .tag-wrapper {
   border: 1px solid black;
@@ -159,7 +158,7 @@
   height: 50%;
 }
 .detail-btns {
-  margin-left: 45%;
+  margin-left: 40%;
   padding: 5px 0 5px 0;
   align-items: baseline;
   display: flex;

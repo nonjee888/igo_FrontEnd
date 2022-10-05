@@ -1,6 +1,5 @@
 //에디터
 import S3 from "react-aws-s3";
-import Swal from "sweetalert2";
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/i18n/ko-kr";
 import "@toast-ui/editor/dist/toastui-editor.css";
@@ -8,7 +7,7 @@ import "tui-color-picker/dist/tui-color-picker.css";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 
-import { Dispatch } from "react";
+import Swal from "sweetalert2";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -17,15 +16,20 @@ import { getDetailPosts } from "../../redux/modules/posts";
 
 import PostSearchPlace from "./PostSearchPlace";
 
-const AddPost = () => {
+const AddPost = ({ props }) => {
+  // console.log(props);
   const dispatch = useDispatch();
   const NICKNAME = localStorage.getItem("nickname");
+  const overlayData = props.overlayData;
+  const setOverlayData = props.setOverlayData;
 
   const { id } = useParams();
   const isEdit = id !== undefined;
   const editorRef = useRef();
+
   const [title, setTitle] = useState("");
   const [editor, setEditor] = useState("");
+
   const { detail } = useSelector((state) => state?.posts);
   const writerId = detail.nickname;
 
@@ -36,7 +40,7 @@ const AddPost = () => {
         setEditor(
           editorRef.current?.getInstance().setHTML(response.payload.content)
         );
-        // console.log(response.payload.content);
+        setOverlayData(response.payload.mapData);
       });
     } else {
       setTitle("");
@@ -112,6 +116,8 @@ const AddPost = () => {
                 data={data}
                 writerId={writerId}
                 isEdit={isEdit}
+                overlayData={overlayData}
+                setOverlayData={setOverlayData}
               />
             </div>
           </div>
