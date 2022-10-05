@@ -25,15 +25,17 @@ const PostKakaoMap = (props) => {
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
 
-  let title = props.props.data.title; //타이틀
-  let content = props.props.data.editor; //에디터
-  let mapData = overlayData; //맵데이터
+  const title = props.props.data.title; //타이틀
+  const content = props.props.data.editor; //에디터
+  const mapData = overlayData; //맵데이터
+  const searchPlace = props.searchPlace; //키워드검색
 
   const handleRegisterButton = async () => {
     let req = {
       title: title,
       content: content,
       mapData: mapData,
+      searchPlace: searchPlace,
     };
     console.log(req);
     const data = await instance.post("/api/post", req);
@@ -102,7 +104,7 @@ const PostKakaoMap = (props) => {
           bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
         setMarkers(markers);
-
+        console.log(markers);
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
       }

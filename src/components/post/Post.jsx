@@ -5,17 +5,16 @@ import photo from "../../asset/assetMypage/photo.png";
 import filledHeart from "../../asset/filledHeart.png";
 
 const Post = (props) => {
-  console.log(props);
-  let navigate = useNavigate();
-  let id = props.post.id;
-  let title = props.post.title;
-  let content = props.post.content;
-  let name = props?.post?.member?.nickname;
-  let heart = props.post.heartNum;
+  const navigate = useNavigate();
+  const id = props.post.id;
+  const title = props.post.title;
+  const content = props.post.content;
+  const name = props?.post?.member?.nickname;
+  const heart = props.post.heartNum;
 
   // html에서 정규표현식으로 썸네일 추출
-  let urlRegex = /(https?:\/\/[^>\"']*)/;
-  let url = content.match(urlRegex);
+  const urlRegex = /(https?:\/\/[^>\"']*)/;
+  const url = content.match(urlRegex);
 
   return (
     <>
