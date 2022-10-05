@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 // 리덕스 관련 Imports
 import { useDispatch, useSelector } from "react-redux";
-import { getMyplans } from "../../redux/modules/myplans";
+import { getMyplans, deleteMyplans } from "../../redux/modules/myplans";
 //이미지
 import add from "../../asset/add.png";
 import deleteimg from "../../asset/deleteimg.png";
@@ -11,11 +11,18 @@ import calendarIcon from "../../asset/assetMypage/calendarIcon.png";
 //삭제알림창
 import Swal from "sweetalert2";
 
-const Myplan = (props) => {
+const Myplan = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const myplans = useSelector((state) => state.mypage.posts);
+  const myplans = useSelector((state) => state.myplans.myplans);
   console.log(myplans);
+  // 리덕스에서 포스트 리스트를 로딩
+  useEffect(() => {
+    dispatch(getMyplans());
+  }, [dispatch]);
+  // console.log();
+
+  const { id } = useParams();
 
   //삭제알림창
   const deleteAlert = () => {
@@ -30,6 +37,11 @@ const Myplan = (props) => {
       cancelButtonColor: "#D9D9D9",
       confirmButtonText: "삭제",
       cancelButtonText: "취소",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteMyplans(id));
+        // window.location.reload();
+      }
     });
   };
 
@@ -47,20 +59,39 @@ const Myplan = (props) => {
             }}
           />
         </div>
-        <div className="Myplan">
-          <div className="MyplanDate">time</div>
-          <div className="MyplanTitle">
-            title
-            <img src={edit} alt="수정하기" />
-          </div>
-          <img src="" className="MyplanImg" alt="내일정이미지" />
-          <div className="MyplanContents">내용</div>
-          <button className="buttonDelete" onClick={deleteAlert}>
-            <img src={deleteimg} style={{ width: "15%" }} alt="삭제버튼" />
-          </button>
-          <button className="buttonAll">완료</button>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+          }}
+        >
+          {myplans?.map((myplans) => {
+            return (
+              <div className="Myplan" key={myplans.id}>
+                <div className="MyplanDate">{myplans.time}</div>
+                <div className="MyplanTitle">
+                  {myplans.title}
+                  <img src={edit} alt="수정하기" />
+                </div>
+                <img
+                  src={myplans.imgUrl}
+                  className="MyplanImg"
+                  alt="내일정이미지"
+                />
+                <div className="MyplanContents">{myplans.content}</div>
+                <button className="buttonDelete" onClick={deleteAlert}>
+                  <img
+                    src={deleteimg}
+                    style={{ width: "15%" }}
+                    alt="삭제버튼"
+                  />
+                </button>
+                <button className="buttonAll">완료</button>
+              </div>
+            );
+          })}
         </div>
-        <h3 style={{ marginTop: "15%" }}>완료된 일정</h3>
+        <h3 style={{ marginTop: "10%" }}>완료된 일정</h3>
         <div className="Myplan">
           <div className="MyplanDate1">2022/09/22</div>
           <div className="MyplanTitle1">

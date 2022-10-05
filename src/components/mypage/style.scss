@@ -53,8 +53,9 @@
 .MyPostsList {
   display: flex;
   width: 100%;
+  margin-bottom: 3%;
   img {
-    width: 100%;
+    width: 60%;
   }
 }
 
@@ -103,10 +104,14 @@
   width: 100%;
   height: 180px;
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  margin-bottom: 5%;
 }
 .MyplanImg {
   padding: 3%;
   border-radius: 10px;
+  img {
+    width: 29%;
+  }
 }
 
 .MyplanContents {
@@ -161,6 +166,9 @@
   font-size: 0.9rem;
   font-weight: bold;
   border-radius: 0 0 10px 0;
+  &:hover {
+    background-color: #a3d7ed;
+  }
 }
 
 .buttonDelete {
@@ -186,7 +194,7 @@
 
 .MyplanPost {
   display: grid;
-  grid-template-rows: 7% 7% 30% 6% 50%;
+  grid-template-rows: 7% 7% 30% 8% 45%;
   border-radius: 10px;
   width: 100%;
   height: 50vh;
@@ -196,6 +204,7 @@
 .MyplanPostDate {
   background-color: #d9d9d9;
   border-radius: 10px 10px 0 0;
+  padding-left: 35%;
 }
 
 .MyplanPostTitle {
@@ -227,7 +236,7 @@
 .MyplanPostAddbutton {
   border: none;
   background-color: transparent;
-  margin: 5% 0 0 23%;
+  margin: 5% 20%;
   img {
     width: 50%;
   }
