@@ -1,10 +1,12 @@
 import { useEffect,useState } from "react";
+import { instance } from "../../shared/api";
 import Tags from "./Tags";
 
 
 // 가격 카테고리목록
 export default function CostPostList() {
     const postList = [] 
+    
     const [cost,setCost] = useState(1);
     const costList = [
         {
@@ -24,11 +26,19 @@ export default function CostPostList() {
             value:4,
         }
     ]
+//
+     const getCostList =async () => {
+        const response = await instance.get(`/api/post/cost?type=cost`);
+        console.log(response)
+        return response.data;
+      };
+      
+    
 
     useEffect(()=> {
-    
+    getCostList()
     },[cost]);
-
+//
 
 return (
     <div>
@@ -40,6 +50,8 @@ return (
                 selected={cost === item.value} //Tags 프롭스에서 selected는 아이템이름과 같은지 안같은지 판단
                 handler={() => setCost(item.value)}
                 name={item.name}
+                onClick={getCostList}
+                
            
             />
             ))}

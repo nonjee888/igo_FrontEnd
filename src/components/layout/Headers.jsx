@@ -59,8 +59,24 @@ const Headers = () => {
         </div>
       ) : (
         <div className="Sign-box">
-          <p>{NICKNAME}님</p>
-          <button className="Signbtn" onClick={logoutHandler}>
+          <p 
+          style=
+          {{fontWeight:"bold",
+          fontSize:"22px",
+          color:"#555555"}}>{NICKNAME}님
+          </p>
+          <button className="Signbtn" onClick={logoutHandler}
+          style=
+          {{width:"45%",
+          height:"50%",
+          marginLeft:"1rem",
+          borderRadius:"22px",
+          textAlign:"center",
+          backgroundColor:"#A3D7ED",
+          fontSize:"1rem",
+          color:"white",
+          fontWeight:"bold"
+          }}>
             로그아웃
           </button>
         </div>
