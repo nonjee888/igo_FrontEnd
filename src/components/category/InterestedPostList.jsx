@@ -1,4 +1,5 @@
 import { useEffect,useState } from "react";
+import { instance } from "../../shared/api";
 import Tags from "./Tags";
 
 
@@ -37,10 +38,18 @@ export default function InterestedPostList(){
             },
     
     ];
+    const getInterestList =async () => {
+      const response = await instance.get(`/api/post/interest?type=interest`);
+      console.log(response)
+      return response.data;
+    
+    };
+    
 
-    useEffect(()=> {
-       
-    },[interested]);
+  useEffect(()=> {
+  getInterestList()
+  },[interested]);
+
 
     return (
         <div>
@@ -51,6 +60,7 @@ export default function InterestedPostList(){
                     selected={interested ===item.name}
                     handler={() => setInterested(item.name)}
                     name={item.name}
+                    onClick={getInterestList}
                     />
                ))}
             </div>

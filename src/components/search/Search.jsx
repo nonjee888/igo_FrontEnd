@@ -8,13 +8,9 @@ const Search = () => {
   const searchHandler = (searchTerm) => {
     setSearchTerm(searchTerm);
   };
-  const getSearchTerm = () => {}
-    
-  return (
-    <>
-      
-    </>
-  );
+  const getSearchTerm = () => {};
+
+  return <></>;
 };
 
 export default Search;

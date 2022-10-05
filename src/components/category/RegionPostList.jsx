@@ -1,4 +1,5 @@
 import { useEffect,useState } from "react";
+import { instance } from "../../shared/api";
 import Tags from "./Tags";
 
 
@@ -32,9 +33,18 @@ export default function RegionPostList() {
         },
     ];
 
+    const getRegionList =async () => {
+        const response = await instance.get(`/api/post/region?type=region`);
+        console.log(response)
+        return response.data;
+      };
+      
+  
     useEffect(()=> {
-
+    getRegionList() //dispatch쓰지 않고 불러오는방법^^
     },[region]);
+
+    
 
     return (
         <div>
@@ -44,7 +54,9 @@ export default function RegionPostList() {
                    key={item.name}
                    selected={region === item.name}
                    handler={() => setRegion(item.name)}
-                   name={item.name}/>
+                   name={item.name}
+                   onClick={getRegionList}
+                   />
                 ))}
             </div>
         </div>

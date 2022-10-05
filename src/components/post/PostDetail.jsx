@@ -3,66 +3,95 @@ import "./style.scss";
 import { useEffect, useState, useRef } from "react";
 import { instance } from "../../shared/api";
 import { useParams, useNavigate } from "react-router";
-import { onLikePost, onReportPost } from "../../redux/modules/posts";
+import { onLikePost } from "../../redux/modules/posts";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
+
 import { Map, Polyline, MapMarker } from "react-kakao-maps-sdk";
+import Swal from "sweetalert2";
 
 import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
+import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
 
-const PostDetail = () => {
-  const managerRef = useRef(null);
+const PostDetail = ({ props }) => {
+  const { id } = useParams();
 
-  const [overlayData, setOverlayData] = useState({
-    marker: [],
-    polyline: [],
-  });
+  const overlayData = props.overlayData;
+  const setOverlayData = props.setOverlayData;
 
-  // Drawing Manager에서 가져온 데이터 중
-  // 선과 다각형의 꼭지점 정보를 latlng 배열로 반환하는 함수입니다
+  console.log(overlayData);
+  const [info, setInfo] = useState();
+  const [markers, setMarkers] = useState([]);
+  const [map, setMap] = useState();
+
   function pointsToPath(points) {
     return points.map((point) => ({
       lat: point.y,
       lng: point.x,
     }));
   }
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-  console.log(detail);
+
   const writerId = detail.nickname;
   const NICKNAME = localStorage.getItem("nickname");
   const userConfirm = NICKNAME === writerId;
-  let { id } = useParams();
+
   useEffect(() => {
-    dispatch(getDetailPosts(id));
+    if (id !== undefined) {
+      dispatch(getDetailPosts(id)).then((response) => {
+        setOverlayData(response.payload.mapData);
+      });
+    }
   }, [dispatch, id]);
+
   if (isLoading) {
     return <div>...로딩중</div>;
   }
   if (error) {
     return <div>{error.message}</div>;
   }
+
   const onLike = async (event) => {
     event.preventDefault();
     dispatch(onLikePost(id));
-    window.location.reload();
   };
-  const onReport = async (event) => {
-    event.preventDefault();
-    dispatch(onReportPost(id));
-    window.location.reload();
+
+  const onReport = async (id) => {
+    const data = await instance.post(`/api/report/${id}`, {});
+    console.log(data);
+    if (data.data.success === true) {
+      navigate("/post/all");
+    } else {
+      if (data.data.success === false) {
+        Swal.fire({
+          imageUrl: listIcon,
+          imageWidth: 50,
+          imageHeight: 50,
+          text: "이미 신고한 게시물입니다.",
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        }).then((result) => {
+          navigate("/post/all");
+        });
+        return data.data;
+      }
+    }
   };
-  const onDeletePost = async (event) => {
-    event.preventDefault();
+
+  const onDeletePost = async (id) => {
     const { data } = await instance.delete(`/api/post/${id}`);
     console.log(data);
-    if (data.success) alert("게시물을 삭제하시겠습니까?");
-    navigate("/post/all");
+    if (data.success) {
+      navigate("/post/all");
+    }
   };
 
   return (
@@ -88,7 +117,12 @@ const PostDetail = () => {
               <img />
             </div>
             {userConfirm ? null : (
-              <button onClick={onReport} className="report-post-btn">
+              <button
+                onClick={() => {
+                  onReport(id);
+                }}
+                className="report-post-btn"
+              >
                 <img src={report} className="report-post-icon" />
               </button>
             )}
@@ -103,7 +137,26 @@ const PostDetail = () => {
                     }}
                   />
                 </button>
-                <button onClick={onDeletePost} className="delete-btn">
+                <button
+                  onClick={() => {
+                    Swal.fire({
+                      showCancelButton: true,
+                      imageUrl: listIcon,
+                      imageWidth: 50,
+                      imageHeight: 50,
+                      text: "게시글을 삭제할까요?",
+                      confirmButtonColor: "#47AFDB",
+                      confirmButtonText: "삭제 확인",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        onDeletePost(id);
+                      } else if (result.isDenied) {
+                        window.location.reload();
+                      }
+                    });
+                  }}
+                  className="delete-btn"
+                >
                   <img src={deleteimg} className="delete-icon" />
                 </button>
               </div>
@@ -116,18 +169,45 @@ const PostDetail = () => {
             dangerouslySetInnerHTML={{ __html: detail?.content }}
           ></div>
           <div className="map-wrapper">
-            <Map
+            <Map // 로드뷰를 표시할 Container
               center={{
-                // 지도의 중심좌표
-                lat: 33.450701,
-                lng: 126.570667,
+                lat: 37.566826,
+                lng: 126.9786567,
               }}
               style={{
                 width: "100%",
-                height: "250px",
+                height: "220px",
               }}
-              level={3} // 지도의 확대 레벨
-            ></Map>
+              level={3}
+              onCreate={setMap}
+            >
+              {overlayData.polyline.map(({ points, options }, i) => (
+                <Polyline key={i} path={pointsToPath(points)} {...options} />
+              ))}
+
+              {overlayData.marker.map(({ x, y, zIndex }, i) => (
+                <MapMarker
+                  key={i}
+                  position={{
+                    lat: y,
+                    lng: x,
+                  }}
+                  zIndex={zIndex}
+                />
+              ))}
+
+              {markers.map((marker) => (
+                <MapMarker
+                  key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
+                  position={marker.position}
+                  onClick={() => setInfo(marker)}
+                >
+                  {info && info.content === marker.content && (
+                    <div style={{ color: "#000" }}>{marker.content}</div>
+                  )}
+                </MapMarker>
+              ))}
+            </Map>
           </div>
         </div>
         <PostComment />

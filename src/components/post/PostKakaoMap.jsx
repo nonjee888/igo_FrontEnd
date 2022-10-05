@@ -10,6 +10,7 @@ import submitpost from "../../asset/submitpost.png";
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
+  // console.log(props);
   const navigate = useNavigate();
   const nickname = localStorage.getItem("nickname");
   const writerId = props.props.writerId;
@@ -17,14 +18,17 @@ const PostKakaoMap = (props) => {
   const userConfirm = nickname === writerId;
   const managerRef = useRef(null);
   const id = props.props.id;
+  const editMap = props.props.editMap;
+  const overlayData = props.props.overlayData;
+  const setOverlayData = props.props.setOverlayData;
 
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
-  const [overlayData, setOverlayData] = useState({
-    marker: [],
-    polyline: [],
-  });
+  // const [overlayData, setOverlayData] = useState({
+  //   marker: [],
+  //   polyline: [],
+  // });
 
   let title = props.props.data.title; //타이틀
   let content = props.props.data.editor; //에디터
@@ -192,7 +196,13 @@ const PostKakaoMap = (props) => {
         >
           출발지 | 도착지
         </button>
-        <button onClick={drawOverlayData}>여행코스저장</button>
+        <button
+          onClick={() => {
+            drawOverlayData();
+          }}
+        >
+          여행코스저장
+        </button>
       </div>
 
       <div className="footer">

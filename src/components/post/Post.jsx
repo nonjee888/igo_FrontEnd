@@ -2,7 +2,7 @@
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import photo from "../../asset/assetMypage/photo.png";
-import emptyHeart from "../../asset/emptyHeart.png";
+import filledHeart from "../../asset/filledHeart.png";
 
 const Post = (props) => {
   let navigate = useNavigate();
@@ -32,10 +32,8 @@ const Post = (props) => {
         <div className="pic-wrapper">
           <div className="post-content">
             <p>{title}</p> <p>{name}</p>
-            <div>
-              <img className="heart-btn-img" src={emptyHeart} alt="" />
-              {heart}
-            </div>
+            <img className="heart-btn-img" src={filledHeart} alt="" />
+            {heart}
           </div>
         </div>
       </div>
