@@ -22,10 +22,6 @@ const MyPostsList = () => {
   });
   console.log(MyPostsList);
 
-  let urlRegex = /(https?:\/\/[^>\"']*)/;
-  let url = MyPostsList[1]?.content?.match(urlRegex)?.["1"];
-  console.log(url);
-
   return (
     <div className="All">
       <div className="MyPosts">
@@ -45,15 +41,12 @@ const MyPostsList = () => {
                 }}
               >
                 <div className="MyPostsList">
-                  {url === null ? (
-                    <img
-                      src={photo}
-                      className="MyPostImg"
-                      alt="내게시글이미지"
-                    />
+                  {{} === null ? (
+                    <img src={photo} className="MyPostImg" alt="" />
                   ) : (
-                    <img src={url} className="MyPostImg" alt="내게시글이미지" />
+                    <img src={posts.thumnail} className="MyPostImg" alt="" />
                   )}
+
                   <div className="MyPostTitle">{posts.title}</div>
                 </div>
               </div>

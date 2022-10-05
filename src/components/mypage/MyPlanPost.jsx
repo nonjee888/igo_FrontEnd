@@ -24,7 +24,7 @@ const MyPlanPost = () => {
   };
 
   const onChangeImage = (e) => {
-    console.log(e.target.files);
+    // console.log(e.target.files);
     setImages(e.target.files[0]);
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
@@ -35,7 +35,7 @@ const MyPlanPost = () => {
     time: time,
   };
   //value를 setState해준다
-  console.log(data);
+  // console.log(data);
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -85,7 +85,7 @@ const MyPlanPost = () => {
               <input
                 type="text"
                 style={{ width: "75%", border: "none" }}
-                placeholder="제목을 입력해주세요."
+                placeholder="날짜를 선택해주시고, 제목을 입력해주세요."
                 onChange={(e) => {
                   setTitle(e.target.value);
                 }}
@@ -95,10 +95,14 @@ const MyPlanPost = () => {
             <img
               alt="이미지를 업로드 해주세요."
               src={preview ? preview : photo}
-              style={{ display: "block", margin: "5px auto", height: "100px" }}
+              style={{ display: "block", margin: "auto", height: "100%" }}
             ></img>
             <input
-              style={{ display: "block", margin: "0 auto" }}
+              style={{
+                display: "block",
+                margin: "0 23%",
+                height: "100%",
+              }}
               type="file"
               accept="image/*"
               name="image"
