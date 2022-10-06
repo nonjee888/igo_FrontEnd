@@ -10,7 +10,6 @@ import submitpost from "../../asset/submitpost.png";
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
-  // console.log(props);
   const navigate = useNavigate();
   const nickname = localStorage.getItem("nickname");
   const writerId = props.props.writerId;
@@ -25,22 +24,20 @@ const PostKakaoMap = (props) => {
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
-  // const [overlayData, setOverlayData] = useState({
-  //   marker: [],
-  //   polyline: [],
-  // });
 
-  let title = props.props.data.title; //타이틀
-  let content = props.props.data.editor; //에디터
-  let mapData = overlayData; //맵데이터
+  const title = props.props.data.title; //타이틀
+  const content = props.props.data.editor; //에디터
+  const mapData = overlayData; //맵데이터
+  const searchPlace = props.searchPlace; //키워드검색
 
   const handleRegisterButton = async () => {
     let req = {
       title: title,
       content: content,
       mapData: mapData,
+      searchPlace: searchPlace,
     };
-
+    console.log(req);
     const data = await instance.post("/api/post", req);
     if (data.data.success) {
       navigate("/post/all");
@@ -53,6 +50,7 @@ const PostKakaoMap = (props) => {
       content: content,
       mapData: mapData,
     };
+    // console.log(req);
     const data = await instance.put(`/api/post/${id}`, req, {
       headers: { "content-type": "application/json" },
     });
@@ -106,12 +104,13 @@ const PostKakaoMap = (props) => {
           bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
         setMarkers(markers);
-
+        console.log(markers);
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
       }
     });
   }, [map, props.searchPlace]);
+
   return (
     <>
       <Map // 로드뷰를 표시할 Container
