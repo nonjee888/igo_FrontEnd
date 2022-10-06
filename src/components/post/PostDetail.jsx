@@ -277,6 +277,7 @@ const PostDetail = ({ props }) => {
   const setOverlayData = props?.setOverlayData;
 
   const [center, setCenter] = useState();
+  const [poly, setPoly] = useState();
 
   function pointsToPath(points) {
     return points.map((point) => ({
@@ -288,6 +289,7 @@ const PostDetail = ({ props }) => {
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
     setCenter(data?.data?.mapData?.marker);
+    setPoly(data?.data?.mapData?.polyline);
   };
 
   useEffect(() => {
@@ -302,6 +304,7 @@ const PostDetail = ({ props }) => {
   const userConfirm = NICKNAME === writerId;
 
   useEffect(() => {
+    //수정하기 할때 예전에 넣은 맵데이터 보임. 근데 수정이 안됨. 뺄까 말까 고민중
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
         setOverlayData(response.payload.mapData);
@@ -359,7 +362,7 @@ const PostDetail = ({ props }) => {
       navigate("/post/all");
     }
   };
-
+  console.log(center?.length === 0 && poly[0]?.points.length !== 0);
   return (
     <>
       <div className="allPost">
@@ -463,7 +466,7 @@ const PostDetail = ({ props }) => {
                   />
                 ))}
               </Map>
-            ) : center === undefined ? (
+            ) : center?.length === 0 ? (
               <Map // 로드뷰를 표시할 Container
                 center={{
                   lat: 37.566826,
@@ -472,6 +475,33 @@ const PostDetail = ({ props }) => {
                 style={{
                   width: "100%",
                   height: "300px",
+                }}
+                level={4}
+              >
+                {overlayData.polyline.map(({ points, options }, i) => (
+                  <Polyline key={i} path={pointsToPath(points)} {...options} />
+                ))}
+
+                {overlayData.marker.map(({ x, y, zIndex }, i) => (
+                  <MapMarker
+                    key={i}
+                    position={{
+                      lat: y,
+                      lng: x,
+                    }}
+                    zIndex={zIndex}
+                  />
+                ))}
+              </Map>
+            ) : center === undefined ? (
+              <Map // 로드뷰를 표시할 Container
+                center={{
+                  lat: 37.566826,
+                  lng: 126.9786567,
+                }}
+                style={{
+                  width: "100%",
+                  height: "200px",
                 }}
                 level={14}
               >
