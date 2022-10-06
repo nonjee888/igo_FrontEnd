@@ -275,3 +275,38 @@
   margin-left: 50%;
   font-weight: bolder;
 }
+//PostDetailFooters.jsx
+.Footer-Container {
+  border-top: 1px solid #d9d9d9;
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  max-width: 428px;
+  z-index: 1;
+}
+
+//글쓰기,관심목록,마이페이지 담긴 아이콘박스
+.Icon-box {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+//추천아이콘 사이즈 맞추기
+.recomendIcon {
+  height: 110%;
+}
+
+//푸터 아이콘들
+.FootersIcon {
+  width: 100%;
+  height: 100%;
+}
+
+//아이콘각각 담아준박스
+.btnbox {
+  display: flex;
+  margin: 3% 4%;
+}

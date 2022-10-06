@@ -39,7 +39,6 @@ const PostDetail = ({ props }) => {
     const { data } = await instance.get(`/api/detail/${id}`);
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
-    // console.log(data?.data?.mapData?.polyline);
   };
 
   useEffect(() => {
@@ -58,7 +57,6 @@ const PostDetail = ({ props }) => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
         setOverlayData(response.payload.mapData);
-        console.log(response);
       });
     }
   }, [dispatch, id]);
@@ -77,7 +75,7 @@ const PostDetail = ({ props }) => {
 
   const onReport = async (id) => {
     const data = await instance.post(`/api/report/${id}`, {});
-
+    console.log(data);
     if (data.data.success === true) {
       Swal.fire({
         imageUrl: listIcon,
@@ -113,13 +111,7 @@ const PostDetail = ({ props }) => {
       navigate("/post/all");
     }
   };
-
-  // console.log(center?.length === 0 && poly[0]?.points.length !== 0); //폴리선택
-  // console.log(poly[0]?.points[0]); //폴리만 선택 좌표
-  // console.log(center?.length === 0 && poly.length === 0); //지도 선택 안할경우
-  // console.log(center?.length !== 0); //마커만 찍은 경우
-  // console.log(center === undefined); // 데이터 늦게 들어올때
-
+  console.log(center?.length === 0 && poly[0]?.points.length !== 0);
   return (
     <>
       <div className="allPost">
@@ -195,10 +187,72 @@ const PostDetail = ({ props }) => {
             className="html-wrapper"
             dangerouslySetInnerHTML={{ __html: detail?.content }}
           ></div>
-          <div className="map-wrapper">
-            {center?.length === 0 && poly.length === 0 ? ( //맵선택안함
-              <> {NICKNAME}님은 지도를 공유하지 않았습니다. </>
-            ) : center === undefined ? ( //오류방지
+
+          {center?.length === 0 && poly[0]?.points.length === 0 ? (
+            <div className="map-wrapper">
+              <span style={{ color: "blue" }}>
+                {NICKNAME}님이 입력한 위치 정보가 없습니다.
+              </span>
+              <Map // 로드뷰를 표시할 Container
+                center={{
+                  lat: 37.566826,
+                  lng: 126.9786567,
+                }}
+                style={{
+                  width: "100%",
+                  height: "300px",
+                }}
+                level={14}
+              >
+                {overlayData.polyline.map(({ points, options }, i) => (
+                  <Polyline key={i} path={pointsToPath(points)} {...options} />
+                ))}
+
+                {overlayData.marker.map(({ x, y, zIndex }, i) => (
+                  <MapMarker
+                    key={i}
+                    position={{
+                      lat: y,
+                      lng: x,
+                    }}
+                    zIndex={zIndex}
+                  />
+                ))}
+              </Map>
+            </div>
+          ) : center?.length === 0 && poly[0]?.points.length !== 0 ? (
+            <div className="map-wrapper">
+              <Map // 로드뷰를 표시할 Container
+                center={{
+                  lat: poly[0]?.points[0]?.y,
+                  lng: poly[0]?.points[0]?.x,
+                }}
+                style={{
+                  width: "100%",
+                  height: "300px",
+                }}
+                level={4}
+              >
+                {overlayData.polyline.map(({ points, options }, i) => (
+                  <Polyline key={i} path={pointsToPath(points)} {...options} />
+                ))}
+
+                {overlayData.marker.map(({ x, y, zIndex }, i) => (
+                  <MapMarker
+                    key={i}
+                    position={{
+                      lat: y,
+                      lng: x,
+                    }}
+                    zIndex={zIndex}
+                  />
+                ))}
+              </Map>
+            </div>
+          ) : center ||
+            poly[0]?.points ||
+            (center && poly[0]?.points === undefined) ? (
+            <div className="map-wrapper">
               <Map // 로드뷰를 표시할 Container
                 center={{
                   lat: 37.566826,
@@ -208,7 +262,7 @@ const PostDetail = ({ props }) => {
                   width: "100%",
                   height: "200px",
                 }}
-                level={5}
+                level={14}
               >
                 {overlayData.polyline.map(({ points, options }, i) => (
                   <Polyline key={i} path={pointsToPath(points)} {...options} />
@@ -225,36 +279,10 @@ const PostDetail = ({ props }) => {
                   />
                 ))}
               </Map>
-            ) : center?.length === 0 && poly[0]?.points.length !== 0 ? ( //폴리만 선택
-              <Map
-                center={{
-                  lat: poly[0]?.points[0].y,
-                  lng: poly[0]?.points[0].x,
-                }}
-                style={{
-                  width: "100%",
-                  height: "300px",
-                }}
-                level={4}
-              >
-                {overlayData.polyline.map(({ points, options }, i) => (
-                  <Polyline key={i} path={pointsToPath(points)} {...options} />
-                ))}
-
-                {overlayData.marker.map(({ x, y, zIndex }, i) => (
-                  <MapMarker
-                    key={i}
-                    position={{
-                      lat: y,
-                      lng: x,
-                    }}
-                    zIndex={zIndex}
-                  />
-                ))}
-              </Map>
-            ) : (
-              //마커있을때
-              <Map
+            </div>
+          ) : (
+            <div className="map-wrapper">
+              <Map // 로드뷰를 표시할 Container
                 center={{
                   lat: center[0]?.y || "",
                   lng: center[0]?.x || "",
@@ -263,7 +291,7 @@ const PostDetail = ({ props }) => {
                   width: "100%",
                   height: "300px",
                 }}
-                level={4}
+                level={1}
               >
                 {overlayData.polyline.map(({ points, options }, i) => (
                   <Polyline key={i} path={pointsToPath(points)} {...options} />
@@ -280,11 +308,11 @@ const PostDetail = ({ props }) => {
                   />
                 ))}
               </Map>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-        <PostComment />
       </div>
+      <PostComment />
     </>
   );
 };
