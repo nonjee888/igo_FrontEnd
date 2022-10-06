@@ -21,7 +21,6 @@ import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
 const AddPost = ({ props }) => {
-  // console.log(props);
   const dispatch = useDispatch();
   const NICKNAME = localStorage.getItem("nickname");
   const overlayData = props.overlayData;
@@ -35,6 +34,7 @@ const AddPost = ({ props }) => {
   const [editor, setEditor] = useState("");
 
   const { detail } = useSelector((state) => state?.posts);
+
   const writerId = detail.nickname;
 
   const[openRegionModal,setOpenRegionModal]=useState(false)
@@ -54,7 +54,7 @@ const AddPost = ({ props }) => {
       setTitle("");
       setEditor(editorRef.current?.getInstance().getHTML());
     }
-  }, [dispatch]);
+  }, [id]);
 
   window.Buffer = window.Buffer || require("buffer").Buffer;
 
