@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import "./style.scss";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // 리덕스 관련 Imports
 import { useDispatch, useSelector } from "react-redux";
 import { getMyplans, deleteMyplans } from "../../redux/modules/myplans";
@@ -20,30 +21,6 @@ const Myplan = () => {
   useEffect(() => {
     dispatch(getMyplans());
   }, [dispatch]);
-  // console.log();
-
-  const { id } = useParams();
-
-  //삭제알림창
-  const deleteAlert = () => {
-    Swal.fire({
-      title: "일정삭제",
-      text: "정말로 삭제하시겠어요?",
-      imageUrl: calendarIcon,
-      imageWidth: 50,
-      imageHeight: 50,
-      showCancelButton: true,
-      confirmButtonColor: "#47AFDB",
-      cancelButtonColor: "#D9D9D9",
-      confirmButtonText: "삭제",
-      cancelButtonText: "취소",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch(deleteMyplans(id));
-        // window.location.reload();
-      }
-    });
-  };
 
   return (
     <div className="All">
@@ -79,7 +56,28 @@ const Myplan = () => {
                   alt="내일정이미지"
                 />
                 <div className="MyplanContents">{myplans.content}</div>
-                <button className="buttonDelete" onClick={deleteAlert}>
+                <button
+                  className="buttonDelete"
+                  onClick={() => {
+                    Swal.fire({
+                      title: "일정삭제",
+                      text: "정말로 삭제하시겠어요?",
+                      imageUrl: calendarIcon,
+                      imageWidth: 50,
+                      imageHeight: 50,
+                      showCancelButton: true,
+                      confirmButtonColor: "#47AFDB",
+                      cancelButtonColor: "#D9D9D9",
+                      confirmButtonText: "삭제",
+                      cancelButtonText: "취소",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        dispatch(deleteMyplans(myplans.id));
+                        window.location.reload();
+                      }
+                    });
+                  }}
+                >
                   <img
                     src={deleteimg}
                     style={{ width: "15%" }}
@@ -100,7 +98,28 @@ const Myplan = () => {
           </div>
           <img src="" className="MyplanImg" alt="내일정이미지완료" />
           <div className="MyplanContents">여기에 내용</div>
-          <button className="buttonDelete" onClick={deleteAlert}>
+          <button
+            className="buttonDelete"
+            onClick={() => {
+              Swal.fire({
+                title: "일정삭제",
+                text: "정말로 삭제하시겠어요?",
+                imageUrl: calendarIcon,
+                imageWidth: 50,
+                imageHeight: 50,
+                showCancelButton: true,
+                confirmButtonColor: "#47AFDB",
+                cancelButtonColor: "#D9D9D9",
+                confirmButtonText: "삭제",
+                cancelButtonText: "취소",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  dispatch(deleteMyplans(myplans.id));
+                  window.location.reload();
+                }
+              });
+            }}
+          >
             <img src={deleteimg} style={{ width: "15%" }} alt="삭제버튼" />
           </button>
           <button className="buttonAll">취소</button>

@@ -42,8 +42,10 @@ export const deleteMyplans = createAsyncThunk(
   "myplans/delete",
   async (payload, thunkAPI) => {
     try {
-      const data = await instance.delete(`/api/mypost/${payload.id}`, {
-        REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
+      const data = await instance.delete(`/api/mypost/${payload}`, {
+        headers: {
+          REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
+        },
       });
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
@@ -54,11 +56,7 @@ export const deleteMyplans = createAsyncThunk(
 
 export const myplans = createSlice({
   name: "myplans",
-  initialState: {
-    data: { id: "", title: "", content: "", time: "", imgUrl: "" },
-    isLoading: false,
-    error: null,
-  },
+  initialState: {},
   reducers: {},
 
   extraReducers: {

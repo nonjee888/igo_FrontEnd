@@ -59,8 +59,9 @@ const MyPlanPost = () => {
     formData.append("content", contentblob);
 
     dispatch(postMyplans(formData));
-    navigate("/myplan");
     resetStates();
+    navigate("/myplan");
+    window.location.reload();
   };
 
   return (
