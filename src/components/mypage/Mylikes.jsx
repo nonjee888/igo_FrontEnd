@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // 리덕스 관련 Imports
 import { useDispatch, useSelector } from "react-redux";
 import { getMylikes } from "../../redux/modules/mylikes";
@@ -9,7 +9,7 @@ const Mylikes = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const mylikes = useSelector((state) => state.mylikes.mylike);
-  console.log(mylikes);
+  // console.log(mylikes);
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {

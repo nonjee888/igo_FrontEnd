@@ -1,12 +1,13 @@
 import React from "react";
 import "./style.scss";
 import igoLogo from "../../asset/igoLogo.png";
-
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Headers = () => {
   const navigate = useNavigate();
+  const myinfo = useSelector((state) => state?.myinfo?.myinfo);
   const NICKNAME = localStorage.getItem("nickname");
   //로그아웃
   const logoutHandler = () => {
@@ -59,9 +60,20 @@ const Headers = () => {
         </div>
       ) : (
         <div className="Sign-box">
-          <p style={{ fontWeight: "bold", fontSize: "18px", color: "#555555" }}>
-            {NICKNAME}님
-          </p>
+          {myinfo === undefined ? (
+            <p
+              style={{ fontWeight: "bold", fontSize: "18px", color: "#555555" }}
+            >
+              {NICKNAME}님
+            </p>
+          ) : (
+            <p
+              style={{ fontWeight: "bold", fontSize: "18px", color: "#555555" }}
+            >
+              {myinfo[0].nickname}님
+            </p>
+          )}
+
           <button
             className="Signbtn"
             onClick={logoutHandler}

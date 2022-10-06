@@ -8,15 +8,51 @@
   height: 15%;
   margin: 10% 0 0 35%;
 }
+.profileImage {
+  margin: 5% 0 0 34%;
+  display: flex;
+  img {
+    width: 50%;
+    height: 130px;
+    border-radius: 70%;
+  }
+}
+
+.profileImginputLabel {
+  background-color: transparent;
+  position: absolute;
+  height: 130px;
+  width: 33%;
+  border-radius: 70%;
+  color: transparent;
+}
+
+.profileImginput {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
 
 .profileNickname {
   display: flex;
   justify-content: center;
-  margin: 3% auto auto auto;
+  margin: 2% 0 0 22%;
   font-size: 1.1rem;
   font-weight: 900;
   width: 50%;
   height: 5%;
+}
+
+.profileNickameinput {
+  border: none;
+  width: 50%;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: transparent;
 }
 
 .profileCategory {
@@ -38,7 +74,7 @@
 }
 
 .myListAll {
-  margin: 10% 0 0 5%;
+  margin: 10% 0 30% 5%;
   height: 20%;
   font-weight: bold;
   p {
@@ -61,7 +97,7 @@
 }
 
 .MyPosts {
-  margin: 5%;
+  margin: 5% 5% 15% 5%;
 }
 
 .MyPostImg {
@@ -79,7 +115,7 @@
   width: 85%;
   position: absolute;
   z-index: 1;
-  margin-top: 150px;
+  margin-top: 155px;
 }
 
 //나의 일정관리하기
@@ -236,11 +272,23 @@
   margin: 3% auto;
 }
 
-.MyplanPostAddbutton {
+.MyplanPostAddbuttons {
+  display: flex;
+  margin: 5% 0 0 25%;
+}
+
+.MyplanPostAdd {
   border: none;
   background-color: transparent;
-  margin: 5% 20%;
+  margin-left: -20%;
   img {
-    width: 50%;
+    width: 45%;
+  }
+}
+.MyplanPostGoback {
+  border: none;
+  background-color: transparent;
+  img {
+    width: 65%;
   }
 }
