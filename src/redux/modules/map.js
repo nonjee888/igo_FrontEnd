@@ -4,8 +4,14 @@ const initialState = {};
 
 export const map = createSlice({
   name: "map",
-  initialState,
-  reducers: {},
+  initialState: {
+    overlayData: { marker: [], polyline: [] },
+  },
+  reducers: {
+    overlayData: (state) => {
+      [...state].push(state);
+    },
+  },
 });
-
+export const { overlayData } = map.actions;
 export default map.reducer;
