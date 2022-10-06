@@ -61,7 +61,7 @@ const MyPlanPost = () => {
     dispatch(postMyplans(formData));
     resetStates();
     navigate("/myplan");
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (

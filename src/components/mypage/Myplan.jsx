@@ -48,7 +48,7 @@ const Myplan = () => {
                 <div className="MyplanDate">{myplans.time}</div>
                 <div className="MyplanTitle">
                   {myplans.title}
-                  <img src={edit} alt="수정하기" />
+                  {/* <img src={edit} alt="수정하기" /> */}
                 </div>
                 <img
                   src={myplans.imgUrl}
@@ -73,7 +73,7 @@ const Myplan = () => {
                     }).then((result) => {
                       if (result.isConfirmed) {
                         dispatch(deleteMyplans(myplans.id));
-                        window.location.reload();
+                        // window.location.reload();
                       }
                     });
                   }}
@@ -94,7 +94,7 @@ const Myplan = () => {
           <div className="MyplanDate1">2022/09/22</div>
           <div className="MyplanTitle1">
             제목
-            <img src={edit} alt="수정하기" />
+            {/* <img src={edit} alt="수정하기" /> */}
           </div>
           <img src="" className="MyplanImg" alt="내일정이미지완료" />
           <div className="MyplanContents">여기에 내용</div>

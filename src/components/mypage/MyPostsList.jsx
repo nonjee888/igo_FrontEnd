@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyposts } from "../../redux/modules/myposts";
 import photo from "../../asset/assetMypage/photo.png";
@@ -7,7 +7,6 @@ import photo from "../../asset/assetMypage/photo.png";
 const MyPostsList = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state.posts?.posts);
   const myposts = useSelector((state) => state.myposts.myposts);
   console.log(myposts);
 
@@ -19,7 +18,7 @@ const MyPostsList = () => {
   return (
     <div className="All">
       <div className="MyPosts">
-        <h3>나의 작성 게시글</h3>
+        <h3>나의 🤍 게시글</h3>
         <div
           style={{
             display: "flex",
@@ -29,20 +28,27 @@ const MyPostsList = () => {
           {myposts?.map((myposts) => {
             return (
               <div
+                className="MyPostsList"
                 key={myposts.id}
                 onClick={() => {
-                  navigate("/postdetail/" + posts.id);
+                  navigate("/postdetail/" + myposts.id);
                 }}
               >
-                <div className="MyPostsList">
-                  {myposts.thumnai === null ? (
-                    <img src={photo} className="MyPostImg" alt="" />
-                  ) : (
-                    <img src={myposts.thumnail} className="MyPostImg" alt="" />
-                  )}
-
-                  <div className="MyPostTitle">{myposts.title}</div>
-                </div>
+                {myposts.thumnail === "false" ? (
+                  <img
+                    src={photo}
+                    style={{ width: "97%" }}
+                    className="MyPostImg"
+                    alt="내게시글이미지"
+                  />
+                ) : (
+                  <img
+                    src={myposts.thumnail}
+                    className="MyPostImg"
+                    alt="내게시글이미지"
+                  />
+                )}
+                <div className="MyPostTitle">{myposts.title}</div>
               </div>
             );
           })}

@@ -12,7 +12,8 @@ export const postMyplans = createAsyncThunk(
         },
       });
       if (data.data.success === false) alert(data.data.error.message);
-      // else alert(data.data.data); 일정등록 성공 메세지 죽여둠
+      //일정등록 성공 메세지 죽여둠
+      // else alert(data.data.data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -56,7 +57,12 @@ export const deleteMyplans = createAsyncThunk(
 
 export const myplans = createSlice({
   name: "myplans",
-  initialState: {},
+  initialState: {
+    myplan: {},
+    success: true,
+    isLoading: false,
+    error: null,
+  },
   reducers: {},
 
   extraReducers: {
@@ -70,6 +76,33 @@ export const myplans = createSlice({
       state.myplans = action.payload;
     },
     [getMyplans.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    //일정등록
+    [postMyplans.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [postMyplans.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.myplans.push(action.payload.data);
+    },
+    [postMyplans.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    //일정삭제
+    [deleteMyplans.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [deleteMyplans.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      let index = state.myplans.findIndex(
+        (comment) => comment.id === action.payload.data
+      );
+      state.myplans.splice(index, 1);
+    },
+    [deleteMyplans.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },

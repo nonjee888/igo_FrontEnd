@@ -3,8 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 // 리덕스 관련 Imports
 import { useDispatch, useSelector } from "react-redux";
 import { getMylikes } from "../../redux/modules/mylikes";
-
-// import heart from "../../asset/heart.png";
+import photo from "../../asset/assetMypage/photo.png";
 
 const Mylikes = () => {
   let navigate = useNavigate();
@@ -33,18 +32,25 @@ const Mylikes = () => {
                 className="MyPostsList"
                 key={mylikes.id}
                 onClick={() => {
-                  navigate("/postdetail/" + {});
+                  navigate("/postdetail/" + mylikes.id);
                 }}
               >
-                <img
-                  src={mylikes.thumnail}
-                  className="MyPostImg"
-                  alt="내게시글이미지"
-                />
-                <div className="MyPostTitle">
-                  {mylikes.title}
-                  {/* <img src={heart} alt="" /> */}
-                </div>
+                {mylikes.thumnail === "false" ? (
+                  <img
+                    src={photo}
+                    style={{ width: "97%" }}
+                    className="MyPostImg"
+                    alt="내게시글이미지"
+                  />
+                ) : (
+                  <img
+                    src={mylikes.thumnail}
+                    className="MyPostImg"
+                    alt="내게시글이미지"
+                  />
+                )}
+
+                <div className="MyPostTitle">{mylikes.title}</div>
               </div>
             );
           })}
