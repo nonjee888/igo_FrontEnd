@@ -35,10 +35,24 @@ export const onLikePost = createAsyncThunk(
         `/api/heart/${payload}`,
         {} //post는 두번째 인자로 데이터가 들어가야해서 {}를 넣어줌 데이터가 없으면 headers를 데이터로 인식
       );
-      console.log(data);
-      return data.data;
+
+      return data.data.data;
     } catch (error) {
       return thunkApI.rejectWithValue(error);
+    }
+  }
+);
+
+export const searchPosts = createAsyncThunk(
+  "search/searchPosts",
+  async (payload, thunkAPI) => {
+    console.log(payload);
+    try {
+      const data = await instance.get(`/api/search?content=${payload}`, {});
+      console.log(data);
+      return data?.data?.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -48,14 +62,26 @@ export const posts = createSlice({
   initialState: {
     posts: [],
     detail: {
+      commentResponseDtoList: [],
       content: "",
       createdAt: "",
       heartNum: 0,
       id: "",
+      mapData: {
+        marker: [],
+        polyline: [],
+      },
       modifiedAt: "",
+      nickname: "",
+      profile: null,
+      reportNum: 0,
+      searchPlace: "",
+      tags: [""],
+      thumnail: "",
       title: "",
       viewCount: 0,
     },
+    success: true,
     isLoading: false,
     error: null,
   },
@@ -94,14 +120,28 @@ export const posts = createSlice({
       state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
     },
     [onLikePost.fulfilled]: (state, action) => {
-      console.log(action);
       state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
-      // if(state.detail){
-      //   state.detail === false;
-      //   state.
-      // } = action.payload; // Store에 있는 todos에 서버에서 가져온 todos를 넣습니다.
+      if (action.payload === "false") {
+        state.detail.heartNum -= 1;
+      } else {
+        state.detail.heartNum += 1;
+      }
     },
     [onLikePost.rejected]: (state, action) => {
+      state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
+      state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
+    },
+    [searchPosts.pending]: (state) => {
+      state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
+    },
+    [searchPosts.fulfilled]: (state, action) => {
+      // console.log(action.payload);
+      state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
+      state.posts = action.payload;
+      console.log(state.posts);
+      // Store에 있는 todos에 서버에서 가져온 todos를 넣습니다.
+    },
+    [searchPosts.rejected]: (state, action) => {
       state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
     },

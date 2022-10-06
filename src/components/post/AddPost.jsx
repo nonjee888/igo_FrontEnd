@@ -40,7 +40,7 @@ const AddPost = ({ props }) => {
         setEditor(
           editorRef.current?.getInstance().setHTML(response.payload.content)
         );
-        setOverlayData(response.payload.mapData);
+        // setOverlayData(response.payload.mapData);
       });
     } else {
       setTitle("");
