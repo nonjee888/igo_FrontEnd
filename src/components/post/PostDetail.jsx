@@ -17,8 +17,6 @@ import report from "../../asset/report.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
 
-const { kakao } = window;
-
 const PostDetail = ({ props }) => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
@@ -39,7 +37,6 @@ const PostDetail = ({ props }) => {
     const { data } = await instance.get(`/api/detail/${id}`);
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
-    // console.log(data?.data?.mapData?.polyline);
   };
 
   useEffect(() => {
@@ -54,7 +51,6 @@ const PostDetail = ({ props }) => {
   const userConfirm = NICKNAME === writerId;
 
   useEffect(() => {
-    //수정하기 할때 예전에 넣은 맵데이터 보임. 근데 수정이 안됨. 뺄까 말까 고민중
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
         setOverlayData(response.payload.mapData);
@@ -197,7 +193,7 @@ const PostDetail = ({ props }) => {
           ></div>
           <div className="map-wrapper">
             {center?.length === 0 && poly.length === 0 ? ( //맵선택안함
-              <> {NICKNAME}님은 지도를 공유하지 않았습니다. </>
+              <> {detail.nickname}님은 경로를 공유하지 않았습니다. </>
             ) : center === undefined ? ( //오류방지
               <Map // 로드뷰를 표시할 Container
                 center={{
@@ -206,7 +202,7 @@ const PostDetail = ({ props }) => {
                 }}
                 style={{
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
                 }}
                 level={5}
               >
@@ -263,7 +259,7 @@ const PostDetail = ({ props }) => {
                   width: "100%",
                   height: "300px",
                 }}
-                level={4}
+                level={3}
               >
                 {overlayData.polyline.map(({ points, options }, i) => (
                   <Polyline key={i} path={pointsToPath(points)} {...options} />
