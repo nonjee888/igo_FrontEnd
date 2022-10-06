@@ -44,7 +44,7 @@ export default function Category() {
           className="search-icon"
           src={search}
           onClick={() => {
-            navigate("/search");
+            navigate("/search/");
           }}
         />
       </div>

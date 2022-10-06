@@ -4,17 +4,17 @@ import { useNavigate } from "react-router-dom";
 import photo from "../../asset/assetMypage/photo.png";
 import filledHeart from "../../asset/filledHeart.png";
 
-const Post = (props) => {
+const SearchPost = (props) => {
+  console.log(props);
   const navigate = useNavigate();
-  const id = props.post.id;
   const title = props.post.title;
+  const id = props.post.id;
   const content = props.post.content;
-  const name = props?.post?.member?.nickname;
-  const heart = props.post.heartNum;
-
+  const heartNum = props.post.heartNum;
+  const nickname = props.post.nickname;
   // html에서 정규표현식으로 썸네일 추출
-  const urlRegex = /(https?:\/\/[^>\"']*)/;
-  const url = content.match(urlRegex);
+  let urlRegex = /(https?:\/\/[^>\"']*)/;
+  let url = content.match(urlRegex);
 
   return (
     <>
@@ -31,10 +31,9 @@ const Post = (props) => {
         )}
         <div className="pic-wrapper">
           <div className="post-content">
-            <p>{title}</p>
-            <p>{name}</p>
+            <p>{title}</p> <p>{nickname}</p>
             <img className="heart-btn-img" src={filledHeart} alt="" />
-            {heart}
+            {heartNum}
           </div>
         </div>
       </div>
@@ -42,4 +41,4 @@ const Post = (props) => {
   );
 };
 
-export default Post;
+export default SearchPost;

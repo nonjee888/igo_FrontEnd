@@ -1,26 +1,20 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "../../redux/modules/posts";
+import { getMyposts } from "../../redux/modules/myposts";
 import photo from "../../asset/assetMypage/photo.png";
 
 const MyPostsList = () => {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts?.posts);
-  // console.log(posts);
+  const myposts = useSelector((state) => state.myposts.myposts);
+  console.log(myposts);
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getMyposts());
   }, [dispatch]);
-
-  const user = localStorage.getItem("nickname");
-
-  let MyPostsList = posts?.filter((post) => {
-    return post?.member?.nickname === user;
-  });
-  console.log(MyPostsList);
 
   return (
     <div className="All">
@@ -32,22 +26,22 @@ const MyPostsList = () => {
             flexWrap: "wrap",
           }}
         >
-          {MyPostsList?.map((posts) => {
+          {myposts?.map((myposts) => {
             return (
               <div
-                key={posts.id}
+                key={myposts.id}
                 onClick={() => {
                   navigate("/postdetail/" + posts.id);
                 }}
               >
                 <div className="MyPostsList">
-                  {{} === null ? (
+                  {myposts.thumnai === null ? (
                     <img src={photo} className="MyPostImg" alt="" />
                   ) : (
-                    <img src={posts.thumnail} className="MyPostImg" alt="" />
+                    <img src={myposts.thumnail} className="MyPostImg" alt="" />
                   )}
 
-                  <div className="MyPostTitle">{posts.title}</div>
+                  <div className="MyPostTitle">{myposts.title}</div>
                 </div>
               </div>
             );

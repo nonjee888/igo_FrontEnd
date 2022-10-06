@@ -37,13 +37,11 @@ const PostComment = () => {
   if (error) {
     return <div>{error.message}</div>;
   }
-
-  const commentList = detail.commentResponseDtoList;
   const userProfile = detail.profile;
 
   return (
     <div
-      style={{ height: modalOpen ? "500px" : "50px" }}
+      style={{ height: modalOpen ? "50%" : "7%" }}
       className="commentContainer"
     >
       <p className="comment-tap" onClick={openModal}>

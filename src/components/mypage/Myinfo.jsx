@@ -1,63 +1,94 @@
-import "./style.scss";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { postMyinfo } from "../../redux/modules/myinfo";
 //이미지
 import profileImg from "../../asset/assetMypage/profileImg1.png";
 import edit from "../../asset/edit.png";
 
 const Myinfo = () => {
   let navigate = useNavigate();
+  let dispatch = useDispatch();
   const NICKNAME = localStorage.getItem("nickname");
-  //프로필 이미지
-  const [Image, setImage] = useState(profileImg);
-  const fileInput = useRef(null);
-  const onChange = (e) => {
-    // if (e.target.files[0]) {
-    //   setFile(e.target.files[0]);
-    // } else {
-    //   //업로드 취소할 시
-    //   setImage(profileImg);
-    //   return;
-    // }
-    //화면에 프로필 사진 표시
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setImage(reader.result);
-      }
+  const [nickname, setNickname] = useState("");
+  const [profileImage, setProfileImage] = useState([]);
+  const [preview, setPreview] = useState("");
+
+  const resetStates = () => {
+    setNickname("");
+    setProfileImage();
+  };
+
+  const onChangeImage = (e) => {
+    console.log(e.target.files);
+    setProfileImage(e.target.files[0]);
+    setPreview(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    let req = {
+      nickname: nickname,
     };
-    reader.readAsDataURL(e.target.files[0]);
+    const formData = new FormData();
+    formData.append("profileImage", profileImage);
+
+    let json = JSON.stringify(req);
+
+    const nicknameblob = new Blob([json], { type: "application/json" });
+    formData.append("nickname", nicknameblob);
+
+    dispatch(postMyinfo(formData));
+    resetStates();
+    navigate("/myinfo");
+    // window.location.reload();
   };
 
   return (
     <div className="All">
-      {/* 프로필사진 */}
-      <img
-        className="imgBox"
-        src={Image}
-        onClick={() => {
-          fileInput.current.click();
-        }}
-        alt=""
-      />
-      <input
-        type="file"
-        style={{ display: "none" }}
-        accept="image/jpg,impge/png,image/jpeg"
-        name="profile_img"
-        onChange={onChange}
-        ref={fileInput}
-      />
-      {/* 닉네임, 수정버튼 */}
-      <div className="profileNickname">
-        {NICKNAME}
+      <form onSubmit={onSubmitHandler}>
+        {/* 프로필사진 */}
         <img
-          src={edit}
-          style={{ width: "30px", height: "25px" }}
-          alt="닉네임수정버튼"
+          alt="이미지를 업로드 해주세요."
+          src={preview ? preview : profileImg}
+          style={{ display: "block", margin: "auto", width: "20%" }}
         />
-      </div>
+        <input
+          style={{
+            display: "block",
+            margin: "0 23%",
+            height: "100%",
+          }}
+          type="file"
+          accept="image/*"
+          name="profileImage"
+          className="imginput"
+          onChange={onChangeImage}
+          multiple="multiple"
+        />
+        {/* 닉네임, 수정버튼 */}
+        <div className="profileNickname">
+          <input
+            type="text"
+            placeholder={NICKNAME}
+            value={nickname}
+            style={{ border: "none" }}
+            onChange={(e) => {
+              setNickname(e.target.value);
+            }}
+          />
+          <button
+            type="submit"
+            style={{ border: "none", background: "transparent" }}
+          >
+            <img
+              src={edit}
+              style={{ width: "30px", height: "25px" }}
+              alt="닉네임수정버튼"
+            />
+          </button>
+        </div>
+      </form>
       {/* 관심 여행 키워드, 수정버튼 */}
       <div className="profileCategory">
         <div className="CategoryTitle">
