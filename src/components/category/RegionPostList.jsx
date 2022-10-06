@@ -17,13 +17,34 @@ export default function RegionPostList() {
             name:'서울/경기권',
         },
         {
+            name:'대전',
+        },
+        {
+            name:'세종',
+        },
+        {
+            name:'인천',
+        },
+        {
+            name:'대구',
+        },
+        {
             name:'강원도',
+        },
+        {
+            name:'울산',
         },
         {
             name:'충청도',
         },
         {
+            name:'광주',
+        },
+        {
             name:'전라도',
+        },
+        {
+            name:'부산',
         },
         {
             name:'경상도',

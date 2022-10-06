@@ -16,8 +16,11 @@ import { getDetailPosts } from "../../redux/modules/posts";
 
 import PostSearchPlace from "./PostSearchPlace";
 
+import InterestModal from "../postmodal/InterestModal";
+import CostModal from "../postmodal/CostModal";
+import RegionModal from "../postmodal/RegionModal";
+
 const AddPost = ({ props }) => {
-  // console.log(props);
   const dispatch = useDispatch();
   const NICKNAME = localStorage.getItem("nickname");
   const overlayData = props.overlayData;
@@ -31,7 +34,12 @@ const AddPost = ({ props }) => {
   const [editor, setEditor] = useState("");
 
   const { detail } = useSelector((state) => state?.posts);
+
   const writerId = detail.nickname;
+
+  const[openRegionModal,setOpenRegionModal]=useState(false)
+  const[openInterestModal,setOpenInterestModal]=useState(false)
+  const[openCostModal,setOpenCostModal]=useState(false)
 
   useEffect(() => {
     if (id !== undefined) {
@@ -46,7 +54,7 @@ const AddPost = ({ props }) => {
       setTitle("");
       setEditor(editorRef.current?.getInstance().getHTML());
     }
-  }, [dispatch]);
+  }, [id]);
 
   window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -70,7 +78,15 @@ const AddPost = ({ props }) => {
               required
             />
           </div>
-          <div>태그를 선택하세요</div>
+          <div className="tagsbox">
+            <button onClick={()=>{setOpenInterestModal(true);}}>관심사</button>
+            {openInterestModal && <InterestModal closeInterestModal={setOpenInterestModal}/>}
+            <button onClick={()=>{setOpenRegionModal(true);}}>지역</button>
+            {openRegionModal && <RegionModal closeModal={setOpenRegionModal}/>}
+            <button onClick={()=>{setOpenCostModal(true);}}>여행경비</button>
+            {openCostModal && <CostModal closeModal={setOpenCostModal}/>}
+            
+          </div>
           <div className="editor-wrapper">
             <Editor
               ref={editorRef}

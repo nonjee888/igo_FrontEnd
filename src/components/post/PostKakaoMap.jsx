@@ -24,20 +24,21 @@ const PostKakaoMap = (props) => {
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
+  const [isDone, setIsDone] = useState(false);
 
   const title = props.props.data.title; //타이틀
   const content = props.props.data.editor; //에디터
   const mapData = overlayData; //맵데이터
   const searchPlace = props.searchPlace; //키워드검색
-
+  console.log(mapData);
   const handleRegisterButton = async () => {
     let req = {
       title: title,
       content: content,
-      mapData: mapData,
+      mapData: overlayData,
       searchPlace: searchPlace,
     };
-    console.log(req);
+
     const data = await instance.post("/api/post", req);
     if (data.data.success) {
       navigate("/post/all");
@@ -49,8 +50,9 @@ const PostKakaoMap = (props) => {
       title: title,
       content: content,
       mapData: mapData,
+      searchPlace: searchPlace,
     };
-    // console.log(req);
+
     const data = await instance.put(`/api/post/${id}`, req, {
       headers: { "content-type": "application/json" },
     });
@@ -195,13 +197,24 @@ const PostKakaoMap = (props) => {
         >
           출발지 | 도착지
         </button>
-        <button
-          onClick={() => {
-            drawOverlayData();
-          }}
-        >
-          여행코스저장
-        </button>
+        {isEdit ? (
+          <button
+            onClick={() => {
+              drawOverlayData();
+              setIsDone(true);
+            }}
+          >
+            {isDone ? "경로업데이트" : "여행경로수정"}
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              drawOverlayData();
+            }}
+          >
+            여행코스저장
+          </button>
+        )}
       </div>
 
       <div className="footer">
