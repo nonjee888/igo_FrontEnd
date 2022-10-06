@@ -11,7 +11,7 @@ const Myinfo = () => {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   const myinfo = useSelector((state) => state.myinfo.myinfo);
-  // console.log(myinfo);
+  console.log(myinfo);
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
@@ -55,7 +55,7 @@ const Myinfo = () => {
 
   return (
     <div className="All">
-      {myinfo === undefined ? (
+      {myinfo[0].profileImage === null ? (
         <form onSubmit={onSubmitHandler}>
           {/* 프로필사진 */}
           <div className="profileImage">
