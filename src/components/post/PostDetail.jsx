@@ -54,7 +54,6 @@ const PostDetail = ({ props }) => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
         setOverlayData(response.payload.mapData);
-        console.log(response);
       });
     }
   }, [dispatch, id]);

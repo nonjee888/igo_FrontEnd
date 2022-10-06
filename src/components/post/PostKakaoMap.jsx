@@ -14,7 +14,7 @@ const PostKakaoMap = (props) => {
   const nickname = localStorage.getItem("nickname");
   const writerId = props.props.writerId;
   const isEdit = props.props.isEdit;
-  const userConfirm = nickname === writerId;
+  // const userConfirm = nickname === writerId;
   const managerRef = useRef(null);
   const id = props.props.id;
   const editMap = props.props.editMap;
@@ -30,7 +30,7 @@ const PostKakaoMap = (props) => {
   const content = props.props.data.editor; //에디터
   const mapData = overlayData; //맵데이터
   const searchPlace = props.searchPlace; //키워드검색
-  console.log(mapData);
+
   const handleRegisterButton = async () => {
     let req = {
       title: title,
@@ -38,7 +38,7 @@ const PostKakaoMap = (props) => {
       mapData: overlayData,
       searchPlace: searchPlace,
     };
-
+    console.log(searchPlace);
     const data = await instance.post("/api/post", req);
     if (data.data.success) {
       navigate("/post/all");
@@ -53,7 +53,8 @@ const PostKakaoMap = (props) => {
       searchPlace: searchPlace,
     };
 
-    const data = await instance.put(`/api/post/${id}`, req, {
+    console.log(req);
+    const data = await instance.patch(`/api/post/${id}`, req, {
       headers: { "content-type": "application/json" },
     });
     if (data.data.success) {
@@ -183,14 +184,16 @@ const PostKakaoMap = (props) => {
         }}
       >
         <button
+          className="지도버튼"
           onClick={(e) => {
             selectOverlay(kakao.maps.drawing.OverlayType.POLYLINE);
           }}
         >
-          코스
+          여행경로
         </button>
 
         <button
+          className="지도버튼"
           onClick={(e) => {
             selectOverlay(kakao.maps.drawing.OverlayType.MARKER);
           }}
@@ -199,6 +202,7 @@ const PostKakaoMap = (props) => {
         </button>
         {isEdit ? (
           <button
+            className="지도버튼"
             onClick={() => {
               drawOverlayData();
               setIsDone(true);
@@ -208,6 +212,7 @@ const PostKakaoMap = (props) => {
           </button>
         ) : (
           <button
+            className="지도버튼"
             onClick={() => {
               drawOverlayData();
             }}
