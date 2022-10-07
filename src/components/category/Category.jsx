@@ -18,7 +18,7 @@ export default function Category() {
     { name: "가격", path: "cost" },
   ];
 
-  console.log(path);
+  // console.log(path);
   return (
     <div>
       <div className="category-wrapper">
@@ -28,7 +28,7 @@ export default function Category() {
             key={item.path}
             style={
               path.category === item.path
-                ? { fontWeight: 700, color: "#000" }
+                ? { fontWeight: 700, color: "#555555" }
                 : {}
             }
             onClick={() => navigate("/post/" + item.path)}

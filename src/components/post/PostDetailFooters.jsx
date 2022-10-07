@@ -44,6 +44,7 @@ const PostDetailFooters = () => {
       cancelButtonText: "닫기",
     }).then((result) => {
       if (result.isConfirmed) {
+        // navigate("/addpost", { replace: true });
         window.location.replace("/addpost");
       } else if (result.isDenied) {
         navigate("/addstory");

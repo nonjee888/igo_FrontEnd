@@ -54,7 +54,6 @@ const PostDetail = ({ props }) => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
         setOverlayData(response.payload.mapData);
-        console.log(response);
       });
     }
   }, [dispatch, id]);
@@ -194,7 +193,7 @@ const PostDetail = ({ props }) => {
           <div className="map-wrapper">
             {center?.length === 0 && poly.length === 0 ? ( //맵선택안함
               <> {detail.nickname}님은 경로를 공유하지 않았습니다. </>
-            ) : center === undefined ? ( //오류방지
+            ) : center === undefined || poly === undefined ? ( //오류방지
               <Map // 로드뷰를 표시할 Container
                 center={{
                   lat: 37.566826,
