@@ -79,7 +79,7 @@ const AddPost = ({ props }) => {
             />
           </div>
           <div className="tagsbox">
-            <button
+            <button className="tagmodalbtn"
               onClick={() => {
                 setOpenInterestModal(true);
               }}
@@ -89,7 +89,7 @@ const AddPost = ({ props }) => {
             {openInterestModal && (
               <InterestModal closeInterestModal={setOpenInterestModal} />
             )}
-            <button
+            <button className="tagmodalbtn"
               onClick={() => {
                 setOpenRegionModal(true);
               }}
@@ -97,7 +97,7 @@ const AddPost = ({ props }) => {
               지역
             </button>
             {openRegionModal && <RegionModal closeModal={setOpenRegionModal} />}
-            <button
+            <button className="tagmodalbtn"
               onClick={() => {
                 setOpenCostModal(true);
               }}
