@@ -37,9 +37,9 @@ const AddPost = ({ props }) => {
 
   const writerId = detail.nickname;
 
-  const[openRegionModal,setOpenRegionModal]=useState(false)
-  const[openInterestModal,setOpenInterestModal]=useState(false)
-  const[openCostModal,setOpenCostModal]=useState(false)
+  const [openRegionModal, setOpenRegionModal] = useState(false);
+  const [openInterestModal, setOpenInterestModal] = useState(false);
+  const [openCostModal, setOpenCostModal] = useState(false);
 
   useEffect(() => {
     if (id !== undefined) {
@@ -79,18 +79,46 @@ const AddPost = ({ props }) => {
             />
           </div>
           <div className="tagsbox">
-            <button onClick={()=>{setOpenInterestModal(true);}}>관심사</button>
-            {openInterestModal && <InterestModal closeInterestModal={setOpenInterestModal}/>}
-            <button onClick={()=>{setOpenRegionModal(true);}}>지역</button>
-            {openRegionModal && <RegionModal closeModal={setOpenRegionModal}/>}
-            <button onClick={()=>{setOpenCostModal(true);}}>여행경비</button>
-            {openCostModal && <CostModal closeModal={setOpenCostModal}/>}
-            
+            <button
+              onClick={() => {
+                setOpenInterestModal(true);
+              }}
+            >
+              관심사
+            </button>
+            {openInterestModal && (
+              <InterestModal closeInterestModal={setOpenInterestModal} />
+            )}
+            <button
+              onClick={() => {
+                setOpenRegionModal(true);
+              }}
+            >
+              지역
+            </button>
+            {openRegionModal && <RegionModal closeModal={setOpenRegionModal} />}
+            <button
+              onClick={() => {
+                setOpenCostModal(true);
+              }}
+            >
+              여행경비
+            </button>
+            {openCostModal && <CostModal closeModal={setOpenCostModal} />}
           </div>
           <div className="editor-wrapper">
             <Editor
               ref={editorRef}
-              placeholder="사진 크기는 400*300px 에 최적화 되어있습니다."
+              placeholder="
+            ❤내돈내여 여행공유 작성 tip ❤                                                      
+              ❤ 태그는 3개 선택 할 수 있어요!                                                      
+              ❤ …을 누르면 사진을 업로드 할 수 있어요!                                      
+              ❤ 사진 크기는 428*300px 에 최적화 되어있습니다.                          
+              ❤ 지도 하단 여행경로 버튼을 누르면 여행 경로를 그릴 수 있어요!           
+              ❤ 출발지 | 도착지 버튼으로 출발지와 도착지를 표시 해 보세요!           
+              ❤ 경로업데이트 | 여행경로수정 버튼으로 경로를 지도에 저장해주세요!   
+              ❤ 게시물작성 또는 게시물수정 버튼을 누르면 공유 완료!
+              "
               initialValue=" "
               previewStyle="vertical"
               height="calc(100vh - 390px)"

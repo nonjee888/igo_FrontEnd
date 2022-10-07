@@ -67,10 +67,16 @@
 .map-input {
   width: 80%;
   height: 20px;
+  border: none;
 }
 .map-search-btn {
   width: 18%;
   height: 25px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 900;
+  background: linear-gradient(to right, #80bbd0, #f5c9e0);
 }
 //PostKakaoMap.jsx
 .goback-icon {
@@ -87,6 +93,14 @@
   height: 38px;
   cursor: pointer;
 }
+.지도버튼 {
+  background: linear-gradient(to right, #80bbd0, #f5c9e0);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 900;
+}
+
 //Post.jsx
 .post-content {
   margin-left: 5%;

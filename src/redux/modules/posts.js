@@ -30,6 +30,7 @@ export const getDetailPosts = createAsyncThunk(
 export const onLikePost = createAsyncThunk(
   "like/onLikePost",
   async (payload, thunkApI) => {
+    console.log(payload);
     try {
       const data = await instance.post(
         `/api/heart/${payload}`,
