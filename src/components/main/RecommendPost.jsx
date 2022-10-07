@@ -1,26 +1,21 @@
-//PostList에 보여질 카드
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import photo from "../../asset/assetMypage/photo.png";
 import filledHeart from "../../asset/filledHeart.png";
 
-const SearchPost = (props) => {
+const RecommendPost = ({ item }) => {
   const navigate = useNavigate();
-  const title = props.post.title;
-  const id = props.post.id;
-  const content = props.post.content;
-  const heartNum = props.post.heartNum;
-  const nickname = props.post.nickname;
+
   // html에서 정규표현식으로 썸네일 추출
-  let urlRegex = /(https?:\/\/[^>\"']*)/;
-  let url = content.match(urlRegex);
+  const urlRegex = /(https?:\/\/[^>\"']*)/;
+  const url = item.content.match(urlRegex);
 
   return (
     <>
       <div
         className="post-body"
         onClick={() => {
-          navigate("/postdetail/" + id);
+          navigate("/postdetail/" + item.id);
         }}
       >
         {url === null ? (
@@ -30,9 +25,10 @@ const SearchPost = (props) => {
         )}
         <div className="pic-wrapper">
           <div className="post-content">
-            <p>{title}</p> <p>{nickname}</p>
+            <p>{item.title}</p>
+            <p>{item.member.nickname}</p>
             <img className="heart-btn-img" src={filledHeart} alt="" />
-            {heartNum}
+            {item.heartNum}
           </div>
         </div>
       </div>
@@ -40,4 +36,4 @@ const SearchPost = (props) => {
   );
 };
 
-export default SearchPost;
+export default RecommendPost;

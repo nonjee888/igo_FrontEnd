@@ -39,6 +39,7 @@ export const getMyplans = createAsyncThunk(
   }
 );
 
+//삭제
 export const deleteMyplans = createAsyncThunk(
   "myplans/delete",
   async (payload, thunkAPI) => {
@@ -48,6 +49,42 @@ export const deleteMyplans = createAsyncThunk(
           REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
         },
       });
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+//일정 완료 포스트
+export const postMyplanDone = createAsyncThunk(
+  "myplan/done/post",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await instance.post(`/api/mypost/done/${payload}`, {
+        headers: {
+          REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
+        },
+      });
+      if (data.data.success === false) alert(data.data.error.message);
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+//일정 완료취소 포스트
+export const postMyplanCancel = createAsyncThunk(
+  "myplan/cancel/post",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await instance.post(`/api/mypost/cancel/${payload}`, {
+        headers: {
+          REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
+        },
+      });
+      if (data.data.success === false) alert(data.data.error.message);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -79,7 +116,7 @@ export const myplans = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    //일정등록
+    //일정 새로고침없이 자동등록
     [postMyplans.pending]: (state) => {
       state.isLoading = true;
     },

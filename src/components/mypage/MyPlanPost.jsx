@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postMyplans } from "../../redux/modules/myplans";
 //이미지
-import photo from "../../asset/assetMypage/photo.png";
+import photo1 from "../../asset/assetMypage/photo1.png";
 import calendar from "../../asset/assetMypage/calendar.png";
 import goback from "../../asset/goback.png";
 
@@ -87,7 +87,7 @@ const MyPlanPost = () => {
               <input
                 type="text"
                 style={{ width: "75%", border: "none" }}
-                placeholder="날짜를 선택해주시고, 제목을 입력해주세요."
+                placeholder="날짜를 선택하고, 제목을 입력해주세요."
                 onChange={(e) => {
                   setTitle(e.target.value);
                 }}
@@ -96,19 +96,18 @@ const MyPlanPost = () => {
             </div>
             <img
               alt="이미지를 업로드 해주세요."
-              src={preview ? preview : photo}
-              style={{ display: "block", margin: "auto", height: "100%" }}
-            ></img>
+              src={preview ? preview : photo1}
+              style={{ display: "flex", width: "100%", height: "130px" }}
+            />
+            <label htmlFor="file" className="planImginputLabel">
+              변경하기
+            </label>
             <input
-              style={{
-                display: "block",
-                margin: "0 23%",
-                height: "100%",
-              }}
               type="file"
               accept="image/*"
               name="image"
-              className="imginput"
+              id="file"
+              className="planImginput"
               onChange={onChangeImage}
               multiple="multiple"
             />
