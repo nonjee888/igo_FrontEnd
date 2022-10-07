@@ -7,7 +7,6 @@ export default function RegionModal({
   setCheckedItems,
 }) {
   const [isChecked, setIsChecked] = useState(false); //체크여부
-  // const [checkedItems, setCheckedItems] = useState({ tag: "" });
 
   const regionList = [
     { id: 1, tag: "전체" },

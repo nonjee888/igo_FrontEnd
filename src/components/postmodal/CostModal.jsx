@@ -7,7 +7,6 @@ export default function CostModal({
   setCheckedItems,
 }) {
   const [isChecked, setIsChecked] = useState(false); //체크여부
-  // const [checkedItems, setCheackedItems] = useState({ tag: "" });
 
   const costList = [
     { id: 1, tag: "10만원대" },

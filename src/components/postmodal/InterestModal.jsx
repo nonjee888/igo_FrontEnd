@@ -7,7 +7,6 @@ export default function InterestModal({
   closeInterestModal,
 }) {
   const [isChecked, setIsChecked] = useState(false); //체크여부
-  // const [checkedItems, setCheackedItems] = useState({ tag: "" });
 
   const interestedList = [
     { id: 1, tag: "혼자여행" },

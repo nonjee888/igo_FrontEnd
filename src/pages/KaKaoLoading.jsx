@@ -38,7 +38,6 @@ const KaKaoLoading = () => {
       });
       return data;
     } catch (error) {
-      console.log("error", error);
       window.alert(error.message); //navigate로 바꾸면 isLogin.state가 false. 새로고침해야 true
     }
     return (

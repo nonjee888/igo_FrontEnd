@@ -27,6 +27,19 @@ export const getDetailPosts = createAsyncThunk(
   }
 );
 
+export const getRecommendPosts = createAsyncThunk(
+  "recommendPosts/getRecommendPosts",
+  async (_, thunkAPI) => {
+    try {
+      const data = await instance.get("/api/member/posts");
+
+      return data.data.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const onLikePost = createAsyncThunk(
   "like/onLikePost",
   async (payload, thunkApI) => {
@@ -60,6 +73,7 @@ export const posts = createSlice({
   name: "posts",
   initialState: {
     posts: [],
+    recommend: [],
     detail: {
       commentResponseDtoList: [],
       content: "",
@@ -141,6 +155,17 @@ export const posts = createSlice({
       // Store에 있는 todos에 서버에서 가져온 todos를 넣습니다.
     },
     [searchPosts.rejected]: (state, action) => {
+      state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
+      state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
+    },
+    [getRecommendPosts.pending]: (state) => {
+      state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
+    },
+    [getRecommendPosts.fulfilled]: (state, action) => {
+      state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
+      state.recommend = action.payload; // Store에 있는 todos에 서버에서 가져온 todos를 넣습니다.
+    },
+    [getRecommendPosts.rejected]: (state, action) => {
       state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
     },
