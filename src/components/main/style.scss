@@ -1,5 +1,4 @@
-
-.choiceBox{
+.choiceBox {
   width: 80%;
   height: 60vh;
   border: 1px solid black;
@@ -12,34 +11,31 @@
   &:focus {
     font-weight: bold;
     color: white;
-    border: 2px solid  #5e7fdc;
+    border: 2px solid #5e7fdc;
     background: none;
   }
-
 }
-
 
 .likebox {
- width: 10%;
- display: inline-block;
- justify-content: space-between;
- &:focus {
-  font-weight: bold;
-  color: white;
-  border: 2px solid  #5e7fdc;
-  background: none;
-  
-}}
+  width: 10%;
+  display: inline-block;
+  justify-content: space-between;
+  &:focus {
+    font-weight: bold;
+    color: white;
+    border: 2px solid #5e7fdc;
+    background: none;
+  }
+}
 
 .btnBox {
-width: 100%;
-height: 10%;
-display: flex;
-padding: auto;
-
+  width: 100%;
+  height: 10%;
+  display: flex;
+  padding: auto;
 }
 .joinbtn {
-  display:block;
+  display: block;
   align-items: center;
   justify-content: center;
   width: 40%;
@@ -49,14 +45,14 @@ padding: auto;
   background-color: #5e7fdc;
   border-radius: 12px;
   border: 1px solid transparent;
-  margin:auto;
+  margin: auto;
   &:hover {
-   font-weight: bold;
-   color: black;
-   border: 2px solid  #5e7fdc;
-   background: none;
- }
- }
+    font-weight: bold;
+    color: black;
+    border: 2px solid #5e7fdc;
+    background: none;
+  }
+}
 
 //메인추천게시물 전체화면컨테이너
 .Recommend-Container {
@@ -119,4 +115,32 @@ padding: auto;
   display: flex;
   align-content: center;
   justify-content: center;
+}
+
+//RecommendPost.jsx
+.post-content {
+  margin-left: 5%;
+  padding: 5%;
+  background-color: rgba(255, 255, 255, 0.524);
+  width: 80%;
+  height: 30px;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  bottom: 20px;
+}
+
+.heart-btn-img {
+  width: 20px;
+}
+.post-body {
+  width: 100%;
+  height: 250px;
+  margin-bottom: 5%;
+
+  & img {
+    object-fit: cover;
+  }
 }

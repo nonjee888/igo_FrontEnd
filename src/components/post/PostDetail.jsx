@@ -16,10 +16,12 @@ import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
+import PostTags from "./PostTags";
 
 const PostDetail = ({ props }) => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
+
   const overlayData = props?.overlayData;
   const setOverlayData = props?.setOverlayData;
 
@@ -35,6 +37,7 @@ const PostDetail = ({ props }) => {
 
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
+
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
   };
@@ -79,7 +82,7 @@ const PostDetail = ({ props }) => {
         imageWidth: 50,
         imageHeight: 50,
         text: "신고완료!",
-        confirmButtonColor: "#47AFDB",
+        confirmButtonColor: "#80bbd0",
         confirmButtonText: "확인",
       }).then((result) => {
         navigate("/post/all");
@@ -92,7 +95,7 @@ const PostDetail = ({ props }) => {
           imageWidth: 50,
           imageHeight: 50,
           text: "이미 신고한 게시물입니다.",
-          confirmButtonColor: "#47AFDB",
+          confirmButtonColor: "#80bbd0",
           confirmButtonText: "확인",
         }).then((result) => {
           navigate("/post/all");
@@ -167,7 +170,7 @@ const PostDetail = ({ props }) => {
                       imageWidth: 50,
                       imageHeight: 50,
                       text: "게시글을 삭제할까요?",
-                      confirmButtonColor: "#47AFDB",
+                      confirmButtonColor: "#80bbd0",
                       confirmButtonText: "삭제 확인",
                     }).then((result) => {
                       if (result.isConfirmed) {
@@ -184,7 +187,40 @@ const PostDetail = ({ props }) => {
               </div>
             ) : null}
           </div>
-          <div className="tag-wrapper">태그들어감</div>
+          {/*태그*/}
+          <div className="tag-wrapper">
+            <div
+              className="tag"
+              style={{
+                background: `linear-gradient(to left, #F5C9E0 30%,#47AFDB) 70%`,
+              }}
+            >
+              <span className="tag-text" style={{ color: "#fff" }}>
+                {detail?.tags[0]}
+              </span>
+            </div>
+            <div
+              className="tag"
+              style={{
+                background: `linear-gradient(to left, #F5C9E0 30%,#47AFDB) 70%`,
+              }}
+            >
+              <span className="tag-text" style={{ color: "#fff" }}>
+                {detail?.tags[1]}
+              </span>
+            </div>
+            <div
+              className="tag"
+              style={{
+                background: `linear-gradient(to left, #F5C9E0 30%,#47AFDB) 70%`,
+              }}
+            >
+              <span className="tag-text" style={{ color: "#fff" }}>
+                {detail?.tags[2]}
+              </span>
+            </div>
+          </div>
+          {/*태그*/}
 
           <div
             className="html-wrapper"

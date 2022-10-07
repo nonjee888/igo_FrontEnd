@@ -22,9 +22,12 @@ import RegionModal from "../postmodal/RegionModal";
 
 const AddPost = ({ props }) => {
   const dispatch = useDispatch();
+  const { detail } = useSelector((state) => state?.posts);
+  const writerId = detail.nickname;
   const NICKNAME = localStorage.getItem("nickname");
   const overlayData = props.overlayData;
   const setOverlayData = props.setOverlayData;
+  window.Buffer = window.Buffer || require("buffer").Buffer;
 
   const { id } = useParams();
   const isEdit = id !== undefined;
@@ -32,10 +35,12 @@ const AddPost = ({ props }) => {
 
   const [title, setTitle] = useState("");
   const [editor, setEditor] = useState("");
-
-  const { detail } = useSelector((state) => state?.posts);
-
-  const writerId = detail.nickname;
+  const [checkedItems, setCheckedItems] = useState({
+    interest: "",
+    region: "",
+    cost: "",
+  });
+  const tags = Object.values(checkedItems);
 
   const [openRegionModal, setOpenRegionModal] = useState(false);
   const [openInterestModal, setOpenInterestModal] = useState(false);
@@ -48,7 +53,7 @@ const AddPost = ({ props }) => {
         setEditor(
           editorRef.current?.getInstance().setHTML(response.payload.content)
         );
-        // setOverlayData(response.payload.mapData);
+        setOverlayData(response.payload.mapData);
       });
     } else {
       setTitle("");
@@ -56,11 +61,10 @@ const AddPost = ({ props }) => {
     }
   }, [id]);
 
-  window.Buffer = window.Buffer || require("buffer").Buffer;
-
   let data = {
     title: title,
     editor: editor,
+    tags: tags,
   };
 
   return (
@@ -87,7 +91,11 @@ const AddPost = ({ props }) => {
               관심사
             </button>
             {openInterestModal && (
-              <InterestModal closeInterestModal={setOpenInterestModal} />
+              <InterestModal
+                checkedItems={checkedItems}
+                setCheckedItems={setCheckedItems}
+                closeInterestModal={setOpenInterestModal}
+              />
             )}
             <button className="tagmodalbtn"
               onClick={() => {
@@ -96,15 +104,29 @@ const AddPost = ({ props }) => {
             >
               지역
             </button>
-            {openRegionModal && <RegionModal closeModal={setOpenRegionModal} />}
+           
+            {openRegionModal && (
+              <RegionModal
+                closeModal={setOpenRegionModal}
+                checkedItems={checkedItems}
+                setCheckedItems={setCheckedItems}
+              />
+            )}
             <button className="tagmodalbtn"
+
               onClick={() => {
                 setOpenCostModal(true);
               }}
             >
               여행경비
             </button>
-            {openCostModal && <CostModal closeModal={setOpenCostModal} />}
+            {openCostModal && (
+              <CostModal
+                closeModal={setOpenCostModal}
+                checkedItems={checkedItems}
+                setCheckedItems={setCheckedItems}
+              />
+            )}
           </div>
           <div className="editor-wrapper">
             <Editor
