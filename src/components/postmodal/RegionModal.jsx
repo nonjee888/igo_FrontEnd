@@ -7,7 +7,7 @@ import "./style.scss";
 export default function RegionModal({closeModal}) {
 
     const [isChecked, setIsChecked] = useState(false); //체크여부
-    const [checkedItems,setCheackedItems]=useState({tag:""})
+    const [checkedItems,setCheckedItems]=useState({tag:""})
 
     const regionList = [
         { id: 1, tag: "전체" },
@@ -29,12 +29,17 @@ export default function RegionModal({closeModal}) {
       const changeHandler = (e)=> {
         const { name, value } = e.target;
          if(isChecked) {
-            setCheackedItems(checkedItems);
+            setCheckedItems(checkedItems);
           } 
-        console.log(e.target.value)
+          if (checkedItems.size > 1) {
+            checkedItems.delete();
+            setCheckedItems(checkedItems);
+            e.preventDefault();
+            window.alert("최대 3개까지 선택가능합니다");
+          } else {
         setIsChecked(!isChecked);
-        setCheackedItems({tag:e.target.value})
-      
+        setCheckedItems({tag:e.target.value})
+    }
         };
 
     return (

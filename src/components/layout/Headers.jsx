@@ -71,7 +71,7 @@ const Headers = () => {
               marginLeft: "1rem",
               borderRadius: "22px",
               textAlign: "center",
-              backgroundColor: "#A3D7ED",
+              background: "linear-gradient( to left, #F5C9E0 30% ,#47AFDB 70%)",
               fontSize: "1rem",
               color: "white",
               fontWeight: "bold",
