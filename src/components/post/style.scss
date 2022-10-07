@@ -76,7 +76,7 @@
   border-radius: 5px;
   color: white;
   font-weight: 900;
-  background: linear-gradient(to right, #80bbd0, #f5c9e0);
+  background: linear-gradient(to left, #80bbd0, #f5c9e0);
 }
 //PostKakaoMap.jsx
 .goback-icon {
@@ -94,7 +94,7 @@
   cursor: pointer;
 }
 .지도버튼 {
-  background: linear-gradient(to right, #80bbd0, #f5c9e0);
+  background: linear-gradient(to left, #80bbd0, #f5c9e0);
   border: none;
   border-radius: 5px;
   color: white;
@@ -140,6 +140,7 @@
   margin: auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   border: 1px solid transparent;
 }
