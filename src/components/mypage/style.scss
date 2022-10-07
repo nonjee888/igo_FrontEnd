@@ -3,7 +3,7 @@
 // 나의페이지
 .imgBox {
   border-radius: 70%;
-  background-color: #d9d9d9;
+  background-color: #ececec;
   width: 30%;
   height: 15%;
   margin: 10% 0 0 35%;
@@ -13,7 +13,18 @@
   display: flex;
   img {
     width: 50%;
-    height: 130px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 70%;
+  }
+}
+.profileImage {
+  margin: 5% 0 0 34%;
+  display: flex;
+  img {
+    width: 50%;
+    height: 120px;
+    object-fit: cover;
     border-radius: 70%;
   }
 }
@@ -21,7 +32,7 @@
 .profileImginputLabel {
   background-color: transparent;
   position: absolute;
-  height: 130px;
+  height: 120px;
   width: 33%;
   border-radius: 70%;
   color: transparent;
@@ -65,7 +76,7 @@
 }
 
 .categoryGet {
-  background:linear-gradient(to right, #F5C9E0 5%,#47AFDB 70%);
+  background: linear-gradient(to right, #f5c9e0 5%, #47afdb 70%);
   color: #fff;
   width: 85%;
   height: 100%;
@@ -79,7 +90,7 @@
   height: 20%;
   font-weight: bold;
   p {
-    background-color: #d9d9d9;
+    background-color: #ececec;
     width: 90%;
     padding: 2%;
     border-radius: 10px;
@@ -92,17 +103,17 @@
   width: 100%;
   margin-bottom: 3%;
   img {
-    width: 100%;
+    width: 98.5%;
     height: 200px;
   }
 }
 
 .MyPosts {
-  margin: 5% 5% 15% 5%;
+  margin: 5% 5% 10% 5%;
 }
 
 .MyPostImg {
-  background-color: #d9d9d9;
+  background-color: #ececec;
   padding: 1%;
   border-radius: 10px;
   width: 100%;
@@ -162,16 +173,17 @@
 
 //완료 전
 .MyplanDate {
-  background-color: #a3d7ed;
+  background-color: #f5c9e0;
   padding: 7% 0 0 8%;
   border-radius: 10px 0 0 0;
+  font-weight: bold;
 }
 
 .MyplanTitle {
-  background-color: #a3d7ed;
+  background: linear-gradient(to right, #f5c9e0 5%, #47afdb 70%);
   padding: 3% 0 0 5%;
   border-radius: 0 10px 0 0;
-  border-left: 1px solid #afafaf;
+  border-left: 1px solid #ececec;
   display: flex;
   justify-content: space-between;
   img {
@@ -181,13 +193,13 @@
 }
 // 완료 후
 .MyplanDate1 {
-  background-color: #d9d9d9;
+  background-color: #ececec;
   padding: 7% 0 0 8%;
   border-radius: 10px 0 0 0;
 }
 
 .MyplanTitle1 {
-  background-color: #d9d9d9;
+  background-color: #ececec;
   padding: 3% 0 0 5%;
   border-radius: 0 10px 0 0;
   border-left: 1px solid #afafaf;
@@ -200,28 +212,46 @@
 }
 
 .buttonAll {
-  background-color: #d9d9d9;
+  background-color: #ececec;
   border: none;
   margin-left: 1px;
   font-size: 0.9rem;
   font-weight: bold;
   border-radius: 0 0 10px 0;
   &:hover {
-    background-color: #a3d7ed;
+    background: linear-gradient(to right, #f5c9e0 5%, #47afdb 70%);
   }
 }
 
 .buttonDelete {
-  background-color: #d9d9d9;
+  background-color: #ececec;
   border: none;
   border-radius: 0 0 0 10px;
   padding-top: 4%;
   &:hover {
-    background-color: #a3d7ed;
+    background: linear-gradient(to right, #f5c9e0 5%, #47afdb 70%);
   }
 }
 
 //일정추가
+.planImginputLabel {
+  background-color: transparent;
+  position: absolute;
+  height: 130px;
+  width: 50%;
+  margin: 20%;
+  color: transparent;
+}
+
+.planImginput {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+
 .DatePicker {
   border: none;
   border-radius: 10px;
@@ -234,7 +264,7 @@
 
 .MyplanPost {
   display: grid;
-  grid-template-rows: 7% 7% 30% 8% 45%;
+  grid-template-rows: 9% 11% 30% 48%;
   border-radius: 10px;
   width: 100%;
   height: 50vh;
@@ -242,14 +272,14 @@
 }
 
 .MyplanPostDate {
-  background-color: #d9d9d9;
+  background-color: #ececec;
   border-radius: 10px 10px 0 0;
-  padding-left: 35%;
+  padding: 2.5% 0 0 35%;
 }
 
 .MyplanPostTitle {
-  background-color: #d9d9d9;
-  padding-left: 5%;
+  background-color: #ececec;
+  padding: 1.5% 0 0 5%;
 }
 
 .MyplanPostImg {
@@ -275,7 +305,7 @@
 
 .MyplanPostAddbuttons {
   display: flex;
-  margin: 5% 0 0 25%;
+  margin: 5% 0 0 20%;
 }
 
 .MyplanPostAdd {
@@ -283,7 +313,7 @@
   background-color: transparent;
   margin-left: -20%;
   img {
-    width: 45%;
+    width: 48%;
   }
 }
 .MyplanPostGoback {

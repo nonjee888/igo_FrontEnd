@@ -1,9 +1,10 @@
 import React from "react";
 import "./style.scss";
-import igoLogo from "../../asset/igoLogo.png";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import logout from "../../asset/logout.png";
+import igoLogo from "../../asset/igoLogo.png";
 
 const Headers = () => {
   const navigate = useNavigate();
@@ -62,13 +63,13 @@ const Headers = () => {
         <div className="Sign-box">
           {myinfo === undefined ? (
             <p
-              style={{ fontWeight: "bold", fontSize: "18px", color: "#555555" }}
+              style={{ fontWeight: "bold", fontSize: "1em", color: "#555555" }}
             >
               {NICKNAME}님
             </p>
           ) : (
             <p
-              style={{ fontWeight: "bold", fontSize: "18px", color: "#555555" }}
+              style={{ fontWeight: "bold", fontSize: "1em", color: "#555555" }}
             >
               {myinfo[0].nickname}님
             </p>
@@ -76,20 +77,18 @@ const Headers = () => {
 
           <button
             className="Signbtn"
-            onClick={logoutHandler}
             style={{
-              width: "45%",
-              height: "45%",
-              marginLeft: "1rem",
-              borderRadius: "22px",
-              textAlign: "center",
-              background: "linear-gradient( to left, #F5C9E0 30% ,#47AFDB 70%)",
-              fontSize: "1rem",
-              color: "white",
-              fontWeight: "bold",
+              width: "35%",
             }}
+            onClick={logoutHandler}
           >
-            로그아웃
+            <img
+              src={logout}
+              alt="로그아웃"
+              style={{
+                width: "100%",
+              }}
+            />
           </button>
         </div>
       )}

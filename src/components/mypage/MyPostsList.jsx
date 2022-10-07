@@ -18,7 +18,7 @@ const MyPostsList = () => {
   return (
     <div className="All">
       <div className="MyPosts">
-        <h3>나의 🤍 게시글</h3>
+        <h3>나의 작성 게시글</h3>
         <div
           style={{
             display: "flex",
