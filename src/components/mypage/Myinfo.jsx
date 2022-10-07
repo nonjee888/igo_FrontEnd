@@ -11,7 +11,7 @@ const Myinfo = () => {
   let navigate = useNavigate();
   let dispatch = useDispatch();
   const myinfo = useSelector((state) => state.myinfo.myinfo);
-  console.log(myinfo);
+  // console.log(myinfo);
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
@@ -91,12 +91,15 @@ const Myinfo = () => {
               type="submit"
               style={{ border: "none", background: "transparent" }}
               onClick={() => {
-                window.location.reload();
                 Swal.fire({
                   icon: "success",
                   text: "닉네임이 변경되었습니다.",
-                  confirmButtonColor: "#47AFDB",
+                  confirmButtonColor: "#BDE8F8",
                   confirmButtonText: "확인",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.reload();
+                  }
                 });
               }}
             >
@@ -144,12 +147,15 @@ const Myinfo = () => {
               type="submit"
               style={{ border: "none", background: "transparent" }}
               onClick={() => {
-                window.location.reload();
                 Swal.fire({
                   icon: "success",
                   text: "닉네임이 변경되었습니다.",
-                  confirmButtonColor: "#47AFDB",
+                  confirmButtonColor: "#BDE8F8",
                   confirmButtonText: "확인",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.reload();
+                  }
                 });
               }}
             >
@@ -197,12 +203,15 @@ const Myinfo = () => {
               type="submit"
               style={{ border: "none", background: "transparent" }}
               onClick={() => {
-                window.location.reload();
                 Swal.fire({
                   icon: "success",
                   text: "닉네임이 변경되었습니다.",
-                  confirmButtonColor: "#47AFDB",
+                  confirmButtonColor: "#BDE8F8",
                   confirmButtonText: "확인",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.reload();
+                  }
                 });
               }}
             >

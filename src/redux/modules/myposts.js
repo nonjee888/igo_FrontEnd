@@ -5,7 +5,7 @@ export const getMyposts = createAsyncThunk(
   "myposts/get",
   async (_, thunkAPI) => {
     try {
-      const data = await instance.get("/api/member/post", {
+      const data = await instance.get("/api/mypage/post", {
         headers: {
           REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
         },
