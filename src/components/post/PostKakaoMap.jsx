@@ -1,52 +1,67 @@
 //카카오 맵
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
-import submitpost from "../../asset/submitpost.png";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
-import axios from "axios";
 import goback from "../../asset/goback.png";
+import editpost from "../../asset/editpost.png";
+import submitpost from "../../asset/submitpost.png";
 
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
   const navigate = useNavigate();
-  const userlogin = useSelector((state) => state.user.isLogin);
   const nickname = localStorage.getItem("nickname");
-
+  const writerId = props.props.writerId;
+  const isEdit = props.props.isEdit;
+  // const userConfirm = nickname === writerId;
   const managerRef = useRef(null);
+  const id = props.props.id;
+  const editMap = props.props.editMap;
+  const overlayData = props.props.overlayData;
+  const setOverlayData = props.props.setOverlayData;
+
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
-  const [overlayData, setOverlayData] = useState({
-    marker: [],
-    polyline: [],
-  });
+  const [isDone, setIsDone] = useState(false);
 
-  let title = props.props.title; //타이틀
-  let amount = props.props.inputCost; //여행경비
-  let content = props.props.editor; //에디터
-  let mapData = overlayData; //맵데이터
+  const title = props.props.data.title; //타이틀
+  const content = props.props.data.editor; //에디터
+  const mapData = overlayData; //맵데이터
+  const searchPlace = props.searchPlace; //키워드검색
+  const tags = props.props.data.tags; //tag선택
 
   const handleRegisterButton = async () => {
     let req = {
       title: title,
-      amount: amount,
       content: content,
-      // mapData: mapData,
+      mapData: overlayData,
+      searchPlace: searchPlace,
+      tags: tags,
     };
-    console.log(req);
-    const URL = " http://13.125.222.76:8080/api/post";
-    const data = await axios.post(URL, req, {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-        Refreshtoken: localStorage.getItem("refresh"),
-      },
-    });
-    console.log(data);
+
+    const data = await instance.post("/api/post", req);
+
     if (data.data.success) {
-      navigate("/post");
+      navigate("/post/all");
+    }
+  };
+
+  const handleEditButton = async () => {
+    let req = {
+      title: title,
+      content: content,
+      mapData: mapData,
+      searchPlace: searchPlace,
+      tags: tags,
+    };
+
+    const data = await instance.patch(`/api/post/${id}`, req, {
+      headers: { "content-type": "application/json" },
+    });
+    if (data.data.success) {
+      navigate("/post/all");
     }
   };
 
@@ -101,6 +116,7 @@ const PostKakaoMap = (props) => {
       }
     });
   }, [map, props.searchPlace]);
+
   return (
     <>
       <Map // 로드뷰를 표시할 Container
@@ -171,40 +187,72 @@ const PostKakaoMap = (props) => {
         }}
       >
         <button
+          className="지도버튼"
           onClick={(e) => {
             selectOverlay(kakao.maps.drawing.OverlayType.POLYLINE);
           }}
         >
-          코스
+          여행경로
         </button>
 
         <button
+          className="지도버튼"
           onClick={(e) => {
             selectOverlay(kakao.maps.drawing.OverlayType.MARKER);
           }}
         >
           출발지 | 도착지
         </button>
-        <button onClick={drawOverlayData}>여행코스저장</button>
+        {isEdit ? (
+          <button
+            className="지도버튼"
+            onClick={() => {
+              drawOverlayData();
+              setIsDone(true);
+            }}
+          >
+            {isDone ? "경로업데이트" : "여행경로수정"}
+          </button>
+        ) : (
+          <button
+            className="지도버튼"
+            onClick={() => {
+              drawOverlayData();
+            }}
+          >
+            여행코스저장
+          </button>
+        )}
       </div>
 
       <div className="footer">
         <button
           className="goback-post"
           onClick={() => {
-            navigate(-1);
+            navigate("/post/all");
           }}
         >
-          <img className="goback-icon" src={goback} alt="goback" />
+          <img className="goback-icon" src={goback} alt="뒤로" />
         </button>
-        <button
-          className="submit-post"
-          onClick={() => {
-            handleRegisterButton();
-          }}
-        >
-          <img className="submit-icon" src={submitpost} alt="back" />
-        </button>
+        {isEdit ? (
+          <button
+            className="edit-post"
+            onClick={() => {
+              handleEditButton();
+            }}
+          >
+            <img className="edit-icon" src={editpost} alt="수정" />
+          </button>
+        ) : (
+          <button
+            className="submit-post"
+            onClick={() => {
+              handleRegisterButton();
+            }}
+          >
+            <img className="submit-icon" src={submitpost} alt="등록" />
+          </button>
+        )}
       </div>
     </>
   );

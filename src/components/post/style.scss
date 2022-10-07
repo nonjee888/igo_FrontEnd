@@ -1,13 +1,11 @@
 //AddPost.jsx
-
 .allPost {
   // border: 2px solid #d9d9d9; //배경사이즈 확인용
-  height: 100vh;
-  overflow-x: hidden;
+  height: 100%;
   max-width: 428px;
 }
 .input-title {
-  width: 100%;
+  width: 99%;
   height: 20%;
   font-size: 20px;
   border: none;
@@ -31,8 +29,14 @@
   margin-bottom: 10px;
   width: 120px;
   height: 40px;
+  background: none;
+  border: none;
 }
-.submit-post {
+.edit-post {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 120px;
+  height: 40px;
   background: none;
   border: none;
 }
@@ -63,10 +67,16 @@
 .map-input {
   width: 80%;
   height: 20px;
+  border: none;
 }
 .map-search-btn {
   width: 18%;
   height: 25px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 900;
+  background: linear-gradient(to left, #80bbd0, #f5c9e0);
 }
 //PostKakaoMap.jsx
 .goback-icon {
@@ -78,43 +88,61 @@
   border: none;
   width: 30px;
 }
+.edit-icon {
+  width: 110px;
+  height: 38px;
+  cursor: pointer;
+}
+.지도버튼 {
+  background: linear-gradient(to left, #80bbd0, #f5c9e0);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 900;
+}
+
 //Post.jsx
 .post-content {
   margin-left: 5%;
   padding: 5%;
   background-color: rgba(255, 255, 255, 0.524);
   width: 80%;
-  height: 7%;
+  height: 30px;
   position: absolute;
   overflow: hidden;
   display: flex;
   gap: 10px;
   align-items: center;
-  bottom: 10%;
+  bottom: 20px;
 }
-.heart-btn {
-  width: 10%;
-  height: 15%;
-  background: none;
-  border: none;
-  position: absolute;
-  top: 25px;
-  right: 50px;
-}
+
 .heart-btn-img {
-  width: 200%;
-  height: 100%;
+  width: 20px;
+}
+.post-body {
+  width: 100%;
+  height: 250px;
+  margin-bottom: 5%;
+
+  & img {
+    object-fit: cover;
+  }
 }
 
 //PostDetail.jsx
 .detail-wrapper {
   width: 99.5%;
-  height: 70%;
+  height: 75%;
+  overflow: auto;
 }
 .tag-wrapper {
-  border: 1px solid black;
-  width: 100%;
-  height: 30px;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid transparent;
 }
 .detail-title {
   width: 100%;
@@ -143,22 +171,23 @@
   position: relative;
 }
 .map-wrapper {
-  width: 100%;
+  margin: auto;
+  width: 95%;
   height: 50%;
 }
 .detail-btns {
-  margin-left: 190px;
+  margin-left: 25%;
   padding: 5px 0 5px 0;
+  align-items: baseline;
   display: flex;
-  gap: 5px;
-
+  gap: 10px;
   border: none;
 }
 .edit-btn {
   background: none;
   border: none;
 }
-.edit-icon {
+.edit-detail-icon {
   width: 35px;
   height: 30px;
 }
@@ -167,32 +196,46 @@
   border: none;
 }
 .delete-icon {
-  width: 26px;
-  height: 30px;
+  width: 23px;
+  height: 28px;
+  cursor: pointer;
 }
 .html-wrapper {
-  width: 100%;
-  height: 100%;
+  max-width: 428px;
+  width: 95%;
+  margin: auto;
 
   overflow: auto;
   & img {
-    width: 250px;
+    width: 100%;
   }
 }
-
-//CommentList.jsx
-.toggle-comment-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  height: 50px;
-  padding: 0 12px;
-  border-top: 1px solid #eee;
+.liked-post-btn {
+  border: none;
+  background: none;
+}
+.liked-post-icon {
+  width: 25px;
+  height: 22px;
+  cursor: pointer;
+}
+.report-post-btn {
+  border: none;
+  background: none;
+}
+.report-post-icon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+//PostCommentList.jsx
+.delete-btn {
+  background: none;
+  border: none;
 }
 .comment-input {
   width: 50%;
-  height: 15px;
+  height: 30px;
   border: none;
   border-bottom: 1px solid gray;
 }
@@ -202,45 +245,86 @@
   border: none;
   border-radius: 5px;
 }
-.ment-wrapper {
-  margin: 7px 60px;
-  display: flex;
-  gap: 10px;
-}
-
-//CommentEdit.jsx
-.show-modal {
-  position: absolute;
-  top: 200px;
-  left: 45px;
+.ment-listWrapper {
   width: 80%;
-  height: 40%;
-  border: none;
-  border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.8);
 }
-.modal-text {
-  margin-left: 30px;
-  color: white;
-}
-.edit-input {
-  width: 200px;
-}
-.edit-content {
-  margin-top: 70px;
-  margin-left: 25px;
-  gap: 3px;
+.ment-wrapper {
   display: flex;
+  width: 110%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 100px;
+  padding: 0 20px;
+  border-top: 1px solid #eee;
+}
+.profileImg {
+  margin-top: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #eee;
+}
+.nickname {
+  text-align: center;
 }
 
 //PostComment.jsx
 .commentContainer {
   max-width: 428px;
   position: fixed;
-  bottom: 0;
-  border: 1px solid rgb(255, 0, 0);
+  bottom: 10%;
   width: 100%;
-  height: 50px;
+  z-index: 1;
   transition: all 1000ms;
+  overflow: auto;
+  background-color: rgb(255, 255, 255);
+}
+.toggle-comment-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 100px;
+  padding: 0 20px;
+  border-top: 1px solid #eee;
+}
+.comment-tap {
+  margin-left: 50%;
+  font-weight: bolder;
+}
+//PostDetailFooters.jsx
+.Footer-Container {
+  border-top: 1px solid #d9d9d9;
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
   background-color: white;
+  max-width: 428px;
+  z-index: 1;
+}
+
+//글쓰기,관심목록,마이페이지 담긴 아이콘박스
+.Icon-box {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+//추천아이콘 사이즈 맞추기
+.recomendIcon {
+  height: 110%;
+}
+
+//푸터 아이콘들
+.FootersIcon {
+  width: 100%;
+  height: 100%;
+}
+
+//아이콘각각 담아준박스
+.btnbox {
+  display: flex;
+  margin: 3% 4%;
 }

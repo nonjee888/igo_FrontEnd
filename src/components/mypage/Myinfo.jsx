@@ -1,63 +1,229 @@
-import "./style.scss";
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { putMyinfo, getMyinfo } from "../../redux/modules/myinfo";
+import Swal from "sweetalert2";
 //이미지
 import profileImg from "../../asset/assetMypage/profileImg1.png";
 import edit from "../../asset/edit.png";
 
 const Myinfo = () => {
   let navigate = useNavigate();
+  let dispatch = useDispatch();
+  const myinfo = useSelector((state) => state.myinfo.myinfo);
+  // console.log(myinfo);
+
+  // 리덕스에서 포스트 리스트를 로딩
+  useEffect(() => {
+    dispatch(getMyinfo());
+  }, [dispatch]);
+
   const NICKNAME = localStorage.getItem("nickname");
-  //프로필 이미지
-  const [Image, setImage] = useState(profileImg);
-  const fileInput = useRef(null);
-  const onChange = (e) => {
-    // if (e.target.files[0]) {
-    //   setFile(e.target.files[0]);
-    // } else {
-    //   //업로드 취소할 시
-    //   setImage(profileImg);
-    //   return;
-    // }
-    //화면에 프로필 사진 표시
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setImage(reader.result);
-      }
+  const [nickname, setNickname] = useState("");
+  const [profileImage, setProfileImage] = useState([]);
+  const [preview, setPreview] = useState("");
+
+  const resetStates = () => {
+    setNickname("");
+    setProfileImage();
+  };
+
+  const onChangeImage = (e) => {
+    console.log(e.target.files);
+    setProfileImage(e.target.files[0]);
+    setPreview(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    let req = {
+      nickname: nickname,
     };
-    reader.readAsDataURL(e.target.files[0]);
+    const formData = new FormData();
+    formData.append("profileImage", profileImage);
+
+    let json = JSON.stringify(req);
+
+    const nicknameblob = new Blob([json], { type: "application/json" });
+    formData.append("nickname", nicknameblob);
+
+    dispatch(putMyinfo(formData));
+    resetStates();
+    navigate("/myinfo");
+    // window.location.reload();
   };
 
   return (
     <div className="All">
-      {/* 프로필사진 */}
-      <img
-        className="imgBox"
-        src={Image}
-        onClick={() => {
-          fileInput.current.click();
-        }}
-        alt=""
-      />
-      <input
-        type="file"
-        style={{ display: "none" }}
-        accept="image/jpg,impge/png,image/jpeg"
-        name="profile_img"
-        onChange={onChange}
-        ref={fileInput}
-      />
-      {/* 닉네임, 수정버튼 */}
-      <div className="profileNickname">
-        {NICKNAME}
-        <img
-          src={edit}
-          style={{ width: "30px", height: "25px" }}
-          alt="닉네임수정버튼"
-        />
-      </div>
+      {myinfo === undefined ? (
+        <form onSubmit={onSubmitHandler}>
+          {/* 프로필사진 */}
+          <div className="profileImage">
+            <img
+              alt="이미지를 업로드 해주세요."
+              src={preview ? preview : profileImg}
+            />
+            <label htmlFor="file" className="profileImginputLabel">
+              변경하기
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              name="profileImage"
+              id="file"
+              className="profileImginput"
+              onChange={onChangeImage}
+              multiple="multiple"
+            />
+          </div>
+          {/* 닉네임, 수정버튼 */}
+          <div className="profileNickname">
+            <input
+              type="text"
+              placeholder={NICKNAME}
+              value={nickname}
+              className="profileNickameinput"
+              onChange={(e) => {
+                setNickname(e.target.value);
+              }}
+            />
+            <button
+              type="submit"
+              style={{ border: "none", background: "transparent" }}
+              onClick={() => {
+                Swal.fire({
+                  icon: "success",
+                  text: "닉네임이 변경되었습니다.",
+                  confirmButtonColor: "#BDE8F8",
+                  confirmButtonText: "확인",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.reload();
+                  }
+                });
+              }}
+            >
+              <img
+                src={edit}
+                style={{ width: "30px", height: "25px" }}
+                alt="닉네임수정버튼"
+              />
+            </button>
+          </div>
+        </form>
+      ) : myinfo[0].profileImage === null ? (
+        <form onSubmit={onSubmitHandler}>
+          {/* 프로필사진 */}
+          <div className="profileImage">
+            <img
+              alt="이미지를 업로드 해주세요."
+              src={preview ? preview : profileImg}
+            />
+            <label htmlFor="file" className="profileImginputLabel">
+              변경하기
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              name="profileImage"
+              id="file"
+              className="profileImginput"
+              onChange={onChangeImage}
+              multiple="multiple"
+            />
+          </div>
+          {/* 닉네임, 수정버튼 */}
+          <div className="profileNickname">
+            <input
+              type="text"
+              placeholder={NICKNAME}
+              value={nickname}
+              className="profileNickameinput"
+              onChange={(e) => {
+                setNickname(e.target.value);
+              }}
+            />
+            <button
+              type="submit"
+              style={{ border: "none", background: "transparent" }}
+              onClick={() => {
+                Swal.fire({
+                  icon: "success",
+                  text: "닉네임이 변경되었습니다.",
+                  confirmButtonColor: "#BDE8F8",
+                  confirmButtonText: "확인",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.reload();
+                  }
+                });
+              }}
+            >
+              <img
+                src={edit}
+                style={{ width: "30px", height: "25px" }}
+                alt="닉네임수정버튼"
+              />
+            </button>
+          </div>
+        </form>
+      ) : (
+        <form onSubmit={onSubmitHandler}>
+          {/* 프로필사진 */}
+          <div className="profileImage">
+            <img
+              alt="이미지를 업로드 해주세요."
+              src={preview ? preview : myinfo[0].profileImage}
+            />
+            <label htmlFor="file" className="profileImginputLabel">
+              변경하기
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              name="profileImage"
+              id="file"
+              className="profileImginput"
+              onChange={onChangeImage}
+              multiple="multiple"
+            />
+          </div>
+          {/* 닉네임, 수정버튼 */}
+          <div className="profileNickname">
+            <input
+              type="text"
+              placeholder={myinfo[0].nickname}
+              value={nickname}
+              className="profileNickameinput"
+              onChange={(e) => {
+                setNickname(e.target.value);
+              }}
+            />
+            <button
+              type="submit"
+              style={{ border: "none", background: "transparent" }}
+              onClick={() => {
+                Swal.fire({
+                  icon: "success",
+                  text: "닉네임이 변경되었습니다.",
+                  confirmButtonColor: "#BDE8F8",
+                  confirmButtonText: "확인",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.reload();
+                  }
+                });
+              }}
+            >
+              <img
+                src={edit}
+                style={{ width: "30px", height: "25px" }}
+                alt="닉네임수정버튼"
+              />
+            </button>
+          </div>
+        </form>
+      )}
       {/* 관심 여행 키워드, 수정버튼 */}
       <div className="profileCategory">
         <div className="CategoryTitle">

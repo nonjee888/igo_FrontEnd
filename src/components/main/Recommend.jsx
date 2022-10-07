@@ -1,27 +1,36 @@
-import React from "react";
 import "./style.scss";
-import { navigate, useNavigate } from "react-router-dom";
+import recom from "../../asset/recom.png";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getRecommendPosts } from "../../redux/modules/posts";
+import RecommendPost from "./RecommendPost";
 
 //메인페이지 추천게시물
 
 const Recommend = () => {
-  const navigate = useNavigate();
+  const { isLoading, error, recommend } = useSelector((state) => state.posts);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getRecommendPosts());
+  }, []);
+  if (isLoading) {
+    return <div>...로딩중</div>;
+  }
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+
   return (
     <div className="All">
       <div className="Recommend-Container">
-        <div className="Recommend-List">
-          <div className="Recommendtitle-wrapper">
-            <h2 className="Retitle">안누루고못베기는추천</h2>
-          </div>
-          <img
-            className="Preview-image"
-            src="https://youimg1.tripcdn.com/target/0106j1200093s90ih82FB_C_640_320_R5_Q70.jpg_.webp?proc=source%2Ftrip"
-            onClick={() => {
-              navigate("/postdetail/:id");
-            }}
-            alt=""
-          />
-        </div>
+        <img className="Recommend-logo" src={recom} alt="추천" />
+        <div className="Recommend-List"></div>
+        {recommend?.map((item) => {
+          return <RecommendPost item={item} key={item.id} />;
+        })}
       </div>
     </div>
   );

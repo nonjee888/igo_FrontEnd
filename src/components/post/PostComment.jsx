@@ -1,41 +1,102 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetailPosts } from "../../redux/modules/posts";
+import { createComment, getComments } from "../../redux/modules/comments";
 import PostCommentList from "./PostCommentList";
+import profileImg from "../../asset/assetMypage/profileImg.png";
 
 const PostComment = () => {
+  let dispatch = useDispatch();
+  let username = localStorage.getItem("nickname");
+  const { detail } = useSelector((state) => state.posts);
+  const { isLoading, error, comments } = useSelector((state) => state.comments);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [comments, setComments] = useState([]);
 
+  const initialState = {
+    postId: 0,
+    content: "",
+  };
+
+  const [comment, setComments] = useState("");
+  const [review, setReview] = useState(initialState);
+  const { id } = useParams();
+  let postId = id;
   const openModal = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
 
   useEffect(() => {
-    // async(() => {
-    //     setLoading(true);
-    //     const data = await axios(코멘트 get)
-    //     if (data.status === 'success') {
-    //         setComments(data.data);
-    //         setLoading(false);
-    //     }
-    // })();
-  }, []);
-  console.log(modalOpen);
+    dispatch(getComments(id));
+  }, [dispatch, id]);
+  if (isLoading) {
+    return <div>...로딩중</div>;
+  }
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+  const userProfile = detail.profile;
+
   return (
     <div
-      style={{ height: modalOpen ? "500px" : "50px" }}
+      style={{ height: modalOpen ? "50%" : "7%" }}
       className="commentContainer"
     >
-      <p onClick={openModal}>댓글 작성하기</p>
+      <p className="comment-tap" onClick={openModal}>
+        …
+      </p>
       {!loading && modalOpen && (
         <>
           <div className="toggle-comment-wrapper">
-            <div className="nickname-wrap">닉네임</div>
-            <input className="comment-input" placeholder="댓글추가..."></input>
-            <button className="add-btn">댓글</button>
+            <div className="nickname">
+              {userProfile === null ? (
+                <img className="profileImg" src={profileImg} alt="" />
+              ) : (
+                <img className="profileImg" src={userProfile} alt="" />
+              )}
+              <p className="userNick">{username}</p>
+            </div>
+            <input
+              type="text"
+              name="comments"
+              value={comment}
+              className="comment-input"
+              placeholder="댓글입력..."
+              onChange={(e) => {
+                setComments(e.target.value);
+                setReview({
+                  ...review,
+                  postId: id,
+                  content: e.target.value,
+                });
+              }}
+            />
+            <button
+              className="add-btn"
+              onClick={() => {
+                dispatch(createComment(review));
+                setReview(initialState);
+                setComments("");
+              }}
+            >
+              댓글
+            </button>
           </div>
           <div className="commentList">
-            <PostCommentList />
+            {comments?.map((comment) => {
+              return (
+                <PostCommentList
+                  comment={comment}
+                  key={comment.id}
+                  postId={postId}
+                  profile={detail.profile}
+                  setComments={setComments}
+                  commentList={comments}
+                />
+              );
+            })}
           </div>
         </>
       )}

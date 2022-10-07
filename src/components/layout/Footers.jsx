@@ -18,7 +18,7 @@ const Footers = () => {
       icon: "info",
       text: "로그인을 하셔야 이용 가능합니다.",
       showCancelButton: true,
-      confirmButtonColor: "#47AFDB",
+      confirmButtonColor: "#80bbd0",
       cancelButtonColor: "#D9D9D9",
       confirmButtonText: "로그인",
       cancelButtonText: "취소",
@@ -36,8 +36,8 @@ const Footers = () => {
       imageUrl: addIcon,
       imageWidth: 50,
       imageHeight: 50,
-      confirmButtonColor: "#47AFDB",
-      denyButtonColor: "#47AFDB",
+      confirmButtonColor: "#80bbd0",
+      denyButtonColor: "#80bbd0",
       confirmButtonText: "여행 남기기",
       denyButtonText: "영상 남기기",
       cancelButtonColor: "#D9D9D9",
@@ -67,7 +67,7 @@ const Footers = () => {
             <img
               className="FootersIcon"
               onClick={() => {
-                navigate("/post");
+                navigate("/post/all");
               }}
               src={listIcon}
               alt="리스트"
@@ -116,7 +116,7 @@ const Footers = () => {
             <img
               className="FootersIcon"
               onClick={() => {
-                navigate("/post");
+                navigate("/post/all");
               }}
               src={listIcon}
               alt="리스트"

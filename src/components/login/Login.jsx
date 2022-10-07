@@ -71,7 +71,7 @@ const Login = () => {
           <button
             className="loginButton"
             onClick={() => {
-              navigate("/post");
+              navigate("/post/all");
             }}
           >
             비회원으로 둘러보기

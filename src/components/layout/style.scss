@@ -52,18 +52,18 @@
 
 //내돈내여 로고
 .Logo {
-  width: 60%;
+  width: 95%;
   height: 60%;
-  margin: 20%;
+  margin: 27% 0 0 27%;
 }
 
 //로그인,회원가입 담긴 헤더
 .Sign-box {
   display: flex;
-  width: 50%;
+  width: 100%;
   align-items: center;
   justify-content: end;
-  padding: 10px 35px;
+  margin: 5% 2% 0 10%;
 }
 
 //로그인,회원가입 버튼
@@ -83,13 +83,18 @@
 //풋컨테이너
 .Footer-Container {
   border-top: 1px solid #d9d9d9;
-  height: 10vh;
+  height: 70px;
   width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  max-width: 428px;
+  z-index: 1;
 }
 
 //글쓰기,관심목록,마이페이지 담긴 아이콘박스
 .Icon-box {
-  height: 7vh;
+  height: 90%;
   display: flex;
   justify-content: center;
 }
@@ -102,7 +107,6 @@
 //푸터 아이콘들
 .FootersIcon {
   width: 100%;
-  height: 100%;
 }
 
 //아이콘각각 담아준박스

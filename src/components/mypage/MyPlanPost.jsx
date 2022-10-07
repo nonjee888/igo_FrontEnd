@@ -1,36 +1,68 @@
-import React, { useState, useRef } from "react";
-//날짜 선택 라이브러리
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { ko } from "date-fns/esm/locale";
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { postMyplans } from "../../redux/modules/myplans";
 //이미지
-import photo from "../../asset/assetMypage/photo.png";
+import photo1 from "../../asset/assetMypage/photo1.png";
 import calendar from "../../asset/assetMypage/calendar.png";
+import goback from "../../asset/goback.png";
 
 const MyPlanPost = () => {
-  //날짜
-  const [startDate, setStartDate] = useState(new Date());
-  //이미지 등록
-  const [Image, setImage] = useState(photo);
-  const fileInput = useRef(null);
-  const onChange = (e) => {
-    // if (e.target.files[0]) {
-    //   setFile(e.target.files[0]);
-    // } else {
-    //   //업로드 취소할 시
-    //   setImage(photo);
-    //   return;
-    // }
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    //화면에 선택사진 표시
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setImage(reader.result);
-      }
+  const [title, setTitle] = useState("");
+  const [time, setTime] = useState("");
+  const [content, setContent] = useState("");
+  const [images, setImages] = useState([]);
+  const [preview, setPreview] = useState("");
+
+  const resetStates = () => {
+    setTime("");
+    setTitle("");
+    setImages();
+    setContent("");
+  };
+
+  const onChangeImage = (e) => {
+    // console.log(e.target.files);
+    setImages(e.target.files[0]);
+    setPreview(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const data = {
+    title: title,
+    content: content,
+    time: time,
+  };
+  //value를 setState해준다
+  // console.log(data);
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    let req = {
+      time: time,
+      title: title,
+      content: content,
     };
-    reader.readAsDataURL(e.target.files[0]);
+    const formData = new FormData();
+    formData.append("images", images);
+
+    let json = JSON.stringify(req);
+
+    const timeblob = new Blob([json], { type: "application/json" });
+    formData.append("time", timeblob);
+
+    const titleblob = new Blob([json], { type: "application/json" });
+    formData.append("title", titleblob);
+
+    const contentblob = new Blob([json], { type: "application/json" });
+    formData.append("content", contentblob);
+
+    dispatch(postMyplans(formData));
+    resetStates();
+    navigate("/myplan");
+    // window.location.reload();
   };
 
   return (
@@ -39,47 +71,71 @@ const MyPlanPost = () => {
         <div className="planTitle">
           <h3>나의 일정 등록하기</h3>
         </div>
-        <div className="MyplanPost">
-          <div className="MyplanPostDate">
-            <DatePicker
-              className="DatePicker"
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              locale={ko}
-              dateFormat="yyyy/MM/dd"
+        <form onSubmit={onSubmitHandler}>
+          <div className="MyplanPost">
+            <div className="MyplanPostDate">
+              <input
+                type="date"
+                onChange={(e) => {
+                  setTime(e.target.value);
+                }}
+                value={time}
+              />
+            </div>
+            <div className="MyplanPostTitle">
+              제목:　
+              <input
+                type="text"
+                style={{ width: "75%", border: "none" }}
+                placeholder="날짜를 선택하고, 제목을 입력해주세요."
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+                value={title}
+              />
+            </div>
+            <img
+              alt="이미지를 업로드 해주세요."
+              src={preview ? preview : photo1}
+              style={{ display: "flex", width: "100%", height: "130px" }}
             />
-          </div>
-          <div className="MyplanPostTitle">
-            제목:　
+            <label htmlFor="file" className="planImginputLabel">
+              변경하기
+            </label>
             <input
-              type="text"
-              style={{ width: "75%", border: "none" }}
-              placeholder="제목을 입력해주세요."
+              type="file"
+              accept="image/*"
+              name="image"
+              id="file"
+              className="planImginput"
+              onChange={onChangeImage}
+              multiple="multiple"
             />
+            <div className="MyplanPostContents">
+              <textarea
+                name="content"
+                placeholder="일정을 입력해주세요."
+                onChange={(e) => {
+                  setContent(e.target.value);
+                }}
+                value={content}
+              />
+            </div>
           </div>
-          <img
-            className="PostimgBox"
-            src={Image}
-            onClick={() => {
-              fileInput.current.click();
-            }}
-            alt=""
-          />
-          <input
-            type="file"
-            style={{ display: "none" }}
-            accept="image/jpg,impge/png,image/jpeg"
-            name="photo"
-            onChange={onChange}
-            ref={fileInput}
-          />
-          <div className="MyplanPostContents">
-            <textarea name="content" placeholder="일정을 입력해주세요." />
+          <div className="MyplanPostAddbuttons">
+            <button
+              className="MyplanPostGoback"
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              <img src={goback} alt="뒤로" />
+            </button>
+            <button className="MyplanPostAdd" type="submit">
+              <img src={calendar} alt="일정등록" />
+            </button>
           </div>
-        </div>
-      </div>
-      <div className="MyplanPostAddbutton">
-        <img src={calendar} alt="일정등록" />
+        </form>
       </div>
     </div>
   );

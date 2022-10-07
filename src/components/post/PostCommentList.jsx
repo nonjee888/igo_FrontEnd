@@ -1,27 +1,54 @@
-import React, { useState } from "react";
-import PostCommentEdit from "./PostCommentEdit";
+import { useDispatch } from "react-redux";
 
-const CommentList = () => {
-  let [modal, setModal] = useState(false); //modal창은 false로 보이지 않는 상태
-  const close = () => {
-    setModal(false);
+import { removeComment } from "../../redux/modules/comments";
+import deleteimg from "../../asset/deleteimg.png";
+import deleteNemo from "../../asset/deleteNemo.png";
+import profileImg from "../../asset/assetMypage/profileImg.png";
+
+const CommentList = (props) => {
+  const dispatch = useDispatch();
+  const writerId = localStorage.getItem("nickname");
+  const nickname = props.comment.nickname;
+  const userConfirm = writerId === nickname;
+  const content = props.comment.content;
+
+  const postId = props.postId;
+  const userProfile = props.profile;
+  const id = postId;
+  const commentId = props.comment.id;
+
+  const payload = {
+    postId,
+    commentId,
   };
+
   return (
     <>
-      {modal ? <PostCommentEdit close={close} /> : null}
       <div className="ment-listWrapper">
         <div className="ment-wrapper">
-          <div className="nickname">닉네임</div>
-          <div className="comment">댓글 솰라솰라</div>
-          {/* 로그인시 자기 댓글 누르면 수정 삭제 버튼 나오게하기 */}
-          <button
-            onClick={() => {
-              setModal(true); //수정 누르면 모달창 띄워짐
-            }}
-          >
-            수정
-          </button>
-          <button>삭제</button>
+          <div className="nickname">
+            {userProfile === null ? (
+              <img className="profileImg" src={profileImg} alt="" />
+            ) : (
+              <img className="profileImg" src={userProfile} alt="" />
+            )}
+            <p className="userNick">{nickname}</p>
+          </div>
+          <div className="comment">{content}</div>
+          {userConfirm ? (
+            <button
+              className="delete-btn"
+              onClick={() => {
+                dispatch(removeComment(payload));
+              }}
+            >
+              <img className="delete-icon" src={deleteimg} />
+            </button>
+          ) : (
+            <button className="delete-btn">
+              <img className="delete-icon" src={deleteNemo} />
+            </button>
+          )}
         </div>
       </div>
     </>

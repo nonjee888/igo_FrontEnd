@@ -1,12 +1,14 @@
 import React from "react";
 import "./style.scss";
-import igoLogo from "../../asset/igoLogo.png";
-
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import logout from "../../asset/logout.png";
+import igoLogo from "../../asset/igoLogo.png";
 
 const Headers = () => {
   const navigate = useNavigate();
+  const myinfo = useSelector((state) => state?.myinfo?.myinfo);
   const NICKNAME = localStorage.getItem("nickname");
   //로그아웃
   const logoutHandler = () => {
@@ -15,15 +17,16 @@ const Headers = () => {
       title: "로그아웃",
       text: "정말로 로그아웃하시겠어요?",
       showCancelButton: true,
-      confirmButtonColor: "#47AFDB",
+      confirmButtonColor: "#80bbd0",
       cancelButtonColor: "#D9D9D9",
       confirmButtonText: "확인",
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
-        localStorage.removeItem("token");
+        localStorage.removeItem("ACCESS_TOKEN");
         localStorage.removeItem("nickname");
-        localStorage.removeItem("refresh");
+        localStorage.removeItem("REFRESH_TOKEN");
+        localStorage.removeItem("isLogin");
         localStorage.removeItem("TOAST UI editor for localhost: Statistics");
         localStorage.removeItem(
           "TOAST UI color-picker for localhost: Statistics"
@@ -39,7 +42,7 @@ const Headers = () => {
         <img
           className="Logo"
           onClick={() => {
-            navigate("/recommend");
+            navigate("/post/all"); // 나중에 /recommend로 바꾸기
           }}
           src={igoLogo}
           alt="로고"
@@ -58,9 +61,34 @@ const Headers = () => {
         </div>
       ) : (
         <div className="Sign-box">
-          <p>{NICKNAME}님</p>
-          <button className="Signbtn" onClick={logoutHandler}>
-            로그아웃
+          {myinfo === undefined ? (
+            <p
+              style={{ fontWeight: "bold", fontSize: "1em", color: "#555555" }}
+            >
+              {NICKNAME}님
+            </p>
+          ) : (
+            <p
+              style={{ fontWeight: "bold", fontSize: "1em", color: "#555555" }}
+            >
+              {myinfo[0].nickname}님
+            </p>
+          )}
+
+          <button
+            className="Signbtn"
+            style={{
+              width: "35%",
+            }}
+            onClick={logoutHandler}
+          >
+            <img
+              src={logout}
+              alt="로그아웃"
+              style={{
+                width: "100%",
+              }}
+            />
           </button>
         </div>
       )}

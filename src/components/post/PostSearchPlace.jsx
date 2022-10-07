@@ -26,7 +26,7 @@ const SearchPlace = (props) => {
         </button>
       </form>
 
-      <PostKakaoMap props={props.data} searchPlace={place} />
+      <PostKakaoMap props={props} searchPlace={place} />
     </>
   );
 };
