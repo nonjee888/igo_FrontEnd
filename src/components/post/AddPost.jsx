@@ -171,7 +171,7 @@ const AddPost = ({ props }) => {
           icon: "error",
           text: "로그인을 하셔야 이용 가능합니다.",
           showCancelButton: true,
-          confirmButtonColor: "#47AFDB",
+          confirmButtonColor: "#80bbd0",
           cancelButtonColor: "#D9D9D9",
           confirmButtonText: "로그인하러가기",
           cancelButtonText: "취소",

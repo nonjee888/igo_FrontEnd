@@ -29,11 +29,11 @@ const KaKaoLoading = () => {
         icon: "success",
         title: nickname + "님",
         text: "환영합니다!",
-        confirmButtonColor: "#47AFDB",
+        confirmButtonColor: "#80bbd0",
         confirmButtonText: "확인",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/recommend");
+          navigate("/post/all"); // 나중에 /recommend로 바꾸기
         }
       });
       return data;

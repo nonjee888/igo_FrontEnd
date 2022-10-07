@@ -18,7 +18,7 @@ const PostDetailFooters = () => {
       icon: "info",
       text: "로그인을 하셔야 이용 가능합니다.",
       showCancelButton: true,
-      confirmButtonColor: "#47AFDB",
+      confirmButtonColor: "#80bbd0",
       cancelButtonColor: "#D9D9D9",
       confirmButtonText: "로그인",
       cancelButtonText: "취소",
@@ -36,8 +36,8 @@ const PostDetailFooters = () => {
       imageUrl: addIcon,
       imageWidth: 50,
       imageHeight: 50,
-      confirmButtonColor: "#47AFDB",
-      denyButtonColor: "#47AFDB",
+      confirmButtonColor: "#80bbd0",
+      denyButtonColor: "#80bbd0",
       confirmButtonText: "여행 남기기",
       denyButtonText: "영상 남기기",
       cancelButtonColor: "#D9D9D9",
@@ -107,7 +107,7 @@ const PostDetailFooters = () => {
             <img
               className="recomendIcon"
               onClick={() => {
-                navigate("/recommend");
+                navigate("/post/all"); // 나중에 /recommend로 바꾸기
               }}
               src={recomendIcon}
               alt="추천"
