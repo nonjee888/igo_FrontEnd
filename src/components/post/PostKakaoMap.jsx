@@ -30,7 +30,7 @@ const PostKakaoMap = (props) => {
   const content = props.props.data.editor; //에디터
   const mapData = overlayData; //맵데이터
   const searchPlace = props.searchPlace; //키워드검색
-
+  console.log(overlayData);
   const handleRegisterButton = async () => {
     let req = {
       title: title,
@@ -107,7 +107,7 @@ const PostKakaoMap = (props) => {
           bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
         setMarkers(markers);
-        console.log(markers);
+
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
       }
