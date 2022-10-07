@@ -22,7 +22,7 @@ export default function CostModal({closeModal}) {
          if(isChecked) {
             setCheackedItems(checkedItems);
           } 
-        console.log(e.target.value)
+        
         setIsChecked(!isChecked);
         setCheackedItems({tag:e.target.value})
       
