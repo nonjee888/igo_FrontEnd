@@ -55,7 +55,7 @@ const Myinfo = () => {
 
   return (
     <div className="All">
-      {myinfo[0].profileImage === null ? (
+      {myinfo === undefined ? (
         <form onSubmit={onSubmitHandler}>
           {/* 프로필사진 */}
           <div className="profileImage">
@@ -91,15 +91,65 @@ const Myinfo = () => {
               type="submit"
               style={{ border: "none", background: "transparent" }}
               onClick={() => {
+                window.location.reload();
                 Swal.fire({
                   icon: "success",
                   text: "닉네임이 변경되었습니다.",
                   confirmButtonColor: "#47AFDB",
                   confirmButtonText: "확인",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    navigate("/myinfo");
-                  }
+                });
+              }}
+            >
+              <img
+                src={edit}
+                style={{ width: "30px", height: "25px" }}
+                alt="닉네임수정버튼"
+              />
+            </button>
+          </div>
+        </form>
+      ) : myinfo[0].profileImage === null ? (
+        <form onSubmit={onSubmitHandler}>
+          {/* 프로필사진 */}
+          <div className="profileImage">
+            <img
+              alt="이미지를 업로드 해주세요."
+              src={preview ? preview : profileImg}
+            />
+            <label htmlFor="file" className="profileImginputLabel">
+              변경하기
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              name="profileImage"
+              id="file"
+              className="profileImginput"
+              onChange={onChangeImage}
+              multiple="multiple"
+            />
+          </div>
+          {/* 닉네임, 수정버튼 */}
+          <div className="profileNickname">
+            <input
+              type="text"
+              placeholder={NICKNAME}
+              value={nickname}
+              className="profileNickameinput"
+              onChange={(e) => {
+                setNickname(e.target.value);
+              }}
+            />
+            <button
+              type="submit"
+              style={{ border: "none", background: "transparent" }}
+              onClick={() => {
+                window.location.reload();
+                Swal.fire({
+                  icon: "success",
+                  text: "닉네임이 변경되었습니다.",
+                  confirmButtonColor: "#47AFDB",
+                  confirmButtonText: "확인",
                 });
               }}
             >
@@ -165,7 +215,6 @@ const Myinfo = () => {
           </div>
         </form>
       )}
-      {/* })}; */}
       {/* 관심 여행 키워드, 수정버튼 */}
       <div className="profileCategory">
         <div className="CategoryTitle">
