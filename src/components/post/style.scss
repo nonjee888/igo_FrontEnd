@@ -145,8 +145,8 @@
   border: 1px solid transparent;
 }
 .detail-title {
+  margin-top: 6%;
   width: 100%;
-  height: 6%;
   font-size: larger;
 }
 .title {
@@ -163,7 +163,7 @@
   position: relative;
 }
 .img-container {
-  margin: 5%;
+  margin: 10% 5% 5% 5%;
   width: 90%;
   height: 100%;
   border-radius: 15px;
@@ -203,7 +203,7 @@
 .html-wrapper {
   max-width: 428px;
   width: 95%;
-  margin: auto;
+  margin: 10% 0 0 2.8%;
 
   overflow: auto;
   & img {
