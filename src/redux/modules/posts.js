@@ -6,7 +6,7 @@ export const getPosts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const data = await instance.get("/api/post");
-      // console.log(data);
+
       return data.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -30,7 +30,6 @@ export const getDetailPosts = createAsyncThunk(
 export const onLikePost = createAsyncThunk(
   "like/onLikePost",
   async (payload, thunkApI) => {
-    console.log(payload);
     try {
       const data = await instance.post(
         `/api/heart/${payload}`,
@@ -47,10 +46,9 @@ export const onLikePost = createAsyncThunk(
 export const searchPosts = createAsyncThunk(
   "search/searchPosts",
   async (payload, thunkAPI) => {
-    console.log(payload);
     try {
       const data = await instance.get(`/api/search?content=${payload}`, {});
-      console.log(data);
+
       return data?.data?.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -139,7 +137,7 @@ export const posts = createSlice({
       // console.log(action.payload);
       state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
       state.posts = action.payload;
-      console.log(state.posts);
+
       // Store에 있는 todos에 서버에서 가져온 todos를 넣습니다.
     },
     [searchPosts.rejected]: (state, action) => {

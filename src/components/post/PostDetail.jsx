@@ -16,10 +16,12 @@ import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
+import PostTags from "./PostTags";
 
 const PostDetail = ({ props }) => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
+
   const overlayData = props?.overlayData;
   const setOverlayData = props?.setOverlayData;
 
@@ -35,6 +37,7 @@ const PostDetail = ({ props }) => {
 
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
+
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
   };
@@ -184,7 +187,40 @@ const PostDetail = ({ props }) => {
               </div>
             ) : null}
           </div>
-          <div className="tag-wrapper">태그들어감</div>
+          {/*태그*/}
+          <div className="tag-wrapper">
+            <div
+              className="tag"
+              style={{
+                background: `linear-gradient(to left, #F5C9E0 30%,#47AFDB) 70%`,
+              }}
+            >
+              <span className="tag-text" style={{ color: "#fff" }}>
+                {detail?.tags[0]}
+              </span>
+            </div>
+            <div
+              className="tag"
+              style={{
+                background: `linear-gradient(to left, #F5C9E0 30%,#47AFDB) 70%`,
+              }}
+            >
+              <span className="tag-text" style={{ color: "#fff" }}>
+                {detail?.tags[1]}
+              </span>
+            </div>
+            <div
+              className="tag"
+              style={{
+                background: `linear-gradient(to left, #F5C9E0 30%,#47AFDB) 70%`,
+              }}
+            >
+              <span className="tag-text" style={{ color: "#fff" }}>
+                {detail?.tags[2]}
+              </span>
+            </div>
+          </div>
+          {/*태그*/}
 
           <div
             className="html-wrapper"

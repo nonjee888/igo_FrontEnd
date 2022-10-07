@@ -30,16 +30,19 @@ const PostKakaoMap = (props) => {
   const content = props.props.data.editor; //에디터
   const mapData = overlayData; //맵데이터
   const searchPlace = props.searchPlace; //키워드검색
-  console.log(overlayData);
+  const tags = props.props.data.tags; //tag선택
+
   const handleRegisterButton = async () => {
     let req = {
       title: title,
       content: content,
       mapData: overlayData,
       searchPlace: searchPlace,
+      tags: tags,
     };
-    console.log(searchPlace);
+
     const data = await instance.post("/api/post", req);
+
     if (data.data.success) {
       navigate("/post/all");
     }
@@ -51,9 +54,9 @@ const PostKakaoMap = (props) => {
       content: content,
       mapData: mapData,
       searchPlace: searchPlace,
+      tags: tags,
     };
 
-    console.log(req);
     const data = await instance.patch(`/api/post/${id}`, req, {
       headers: { "content-type": "application/json" },
     });
