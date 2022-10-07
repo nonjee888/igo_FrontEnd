@@ -17,7 +17,7 @@ const Headers = () => {
       title: "로그아웃",
       text: "정말로 로그아웃하시겠어요?",
       showCancelButton: true,
-      confirmButtonColor: "#47AFDB",
+      confirmButtonColor: "#80bbd0",
       cancelButtonColor: "#D9D9D9",
       confirmButtonText: "확인",
       cancelButtonText: "취소",
@@ -42,7 +42,7 @@ const Headers = () => {
         <img
           className="Logo"
           onClick={() => {
-            navigate("/recommend");
+            navigate("/post/all"); // 나중에 /recommend로 바꾸기
           }}
           src={igoLogo}
           alt="로고"
