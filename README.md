@@ -4,7 +4,7 @@
 ## 2022.09.16 ~ 2022.10.28
 ### 팀원 
 ## FE : 노은지 심혜림 이다현 | BE : 김민식 김예원 이주현
-## BE GitHub : https://github.com/kminsic/Igo
+ BE GitHub : https://github.com/kminsic/Igo
 
 개요:
 -------------
@@ -22,10 +22,10 @@ Server Architecture
 
 😊주요기능
 -------------
-##1. 소셜 로그인/회원가입 : 개인정보 수집하기
-##2. 여행 취향 분류
+## 1. 소셜 로그인/회원가입 : 개인정보 수집하기
+## 2. 여행 취향 분류
 ##    -여행지 추천 (혼자여행, 친구, 가족, 연인, 여행 예산 별 추천)
-##3. 내 여행일정 관리 / 관심 게시물 관리 / 내 작성 게시물 / 프로필 설정
+## 3. 내 여행일정 관리 / 관심 게시물 관리 / 내 작성 게시물 / 프로필 설정
 ##4. 게시글 검색 기능
 ##5. 스토리 기능 (동영상 공유)
 ##6. 신고 기능
@@ -72,5 +72,8 @@ src="https://camo.githubusercontent.com/e68c6b9ddf0d0aa553f47fa6a1beb2b60176552e
 <img
 src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149e14c24a2203d7f7217bb4643/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f536c61636b2d3441313534423f7374796c653d666f722d7468652d6261646765266c6f676f3d536c61636b266c6f676f436f6c6f723d7768697465">
 
+Trouble Shooting
+-----------------
+[트러블슈팅!](https://coconut-plate-991.notion.site/Trouble-Shooting-66a7e2ef3348434dbaf2cfb3e6cdf8dd)
 
 
