@@ -5,6 +5,7 @@ import { postMyplans } from "../../redux/modules/myplans";
 //이미지
 import photo from "../../asset/assetMypage/photo.png";
 import calendar from "../../asset/assetMypage/calendar.png";
+import goback from "../../asset/goback.png";
 
 const MyPlanPost = () => {
   const navigate = useNavigate();
@@ -122,9 +123,19 @@ const MyPlanPost = () => {
               />
             </div>
           </div>
-          <button className="MyplanPostAddbutton" type="submit">
-            <img src={calendar} alt="일정등록" />
-          </button>
+          <div className="MyplanPostAddbuttons">
+            <button
+              className="MyplanPostGoback"
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              <img src={goback} alt="뒤로" />
+            </button>
+            <button className="MyplanPostAdd" type="submit">
+              <img src={calendar} alt="일정등록" />
+            </button>
+          </div>
         </form>
       </div>
     </div>

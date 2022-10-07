@@ -18,7 +18,7 @@ export default function Category() {
     { name: "가격", path: "cost" },
   ];
 
-  console.log(path);
+  // console.log(path);
   return (
     <div>
       <div className="category-wrapper">

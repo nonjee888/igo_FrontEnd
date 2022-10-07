@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyposts } from "../../redux/modules/myposts";
 import photo from "../../asset/assetMypage/photo.png";
@@ -8,7 +8,7 @@ const MyPostsList = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const myposts = useSelector((state) => state.myposts.myposts);
-  console.log(myposts);
+  // console.log(myposts);
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
