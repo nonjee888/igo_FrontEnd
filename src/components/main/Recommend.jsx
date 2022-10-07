@@ -1,4 +1,5 @@
 import "./style.scss";
+import recommend from "../../asset/recommend.png";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +26,11 @@ const Recommend = () => {
   return (
     <div className="All">
       <div className="Recommend-Container">
+      <img
+          className="Recommend-logo"
+          src={recommend}
+          alt="추천"
+        />
         <div className="Recommend-List">
           <div className="Recommendtitle-wrapper">
             <h2 className="Retitle">안누루고못베기는추천</h2>

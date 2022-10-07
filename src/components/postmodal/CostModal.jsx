@@ -43,6 +43,7 @@ export default function CostModal({
               <div>{item.tag}</div>
             </label>
           ))}
+
         </div>
         <div className="buttonbox">
           <button className="닫기버튼" onClick={() => closeModal(false)}>
