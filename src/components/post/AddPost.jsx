@@ -46,6 +46,16 @@ const AddPost = ({ props }) => {
   const [openInterestModal, setOpenInterestModal] = useState(false);
   const [openCostModal, setOpenCostModal] = useState(false);
 
+  const openInterestNextModal =() => {
+    setOpenInterestModal(false);
+    setOpenRegionModal(true);
+  }
+  const openRegionNextModal =() => {
+    setOpenRegionModal(false);
+    setOpenCostModal(true);
+  }
+
+
   useEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
@@ -86,6 +96,8 @@ const AddPost = ({ props }) => {
             <button className="tagmodalbtn"
               onClick={() => {
                 setOpenInterestModal(true);
+                setOpenRegionModal(false);
+                setOpenCostModal(false);
               }}
             >
               관심사
@@ -95,11 +107,14 @@ const AddPost = ({ props }) => {
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
                 closeInterestModal={setOpenInterestModal}
+                openInterestNextModal={openInterestNextModal}
               />
             )}
             <button className="tagmodalbtn"
               onClick={() => {
                 setOpenRegionModal(true);
+                setOpenInterestModal(false);
+                setOpenCostModal(false);
               }}
             >
               지역
@@ -110,12 +125,15 @@ const AddPost = ({ props }) => {
                 closeModal={setOpenRegionModal}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
+                openRegionNextModal={openRegionNextModal}
               />
             )}
             <button className="tagmodalbtn"
 
               onClick={() => {
                 setOpenCostModal(true);
+                setOpenRegionModal(false);
+                setOpenInterestModal(false);
               }}
             >
               여행경비

@@ -5,6 +5,7 @@ export default function RegionModal({
   closeModal,
   checkedItems,
   setCheckedItems,
+  openRegionNextModal,
 }) {
   const [isChecked, setIsChecked] = useState(false); //체크여부
 
@@ -68,11 +69,11 @@ export default function RegionModal({
           <button
             className="다음"
             onClick={() => {
-              closeModal(false);
+              openRegionNextModal();
               submitHandler();
             }}
           >
-            다음단게
+            다음단계
           </button>
         </div>
       </div>

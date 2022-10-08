@@ -56,7 +56,7 @@ export default function CostModal({
               submitHandler();
             }}
           >
-            다음단게
+            선택완료
           </button>
         </div>
       </div>
