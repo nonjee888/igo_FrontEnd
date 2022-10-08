@@ -18,16 +18,16 @@ import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
 import PostTags from "./PostTags";
 
-const PostDetail = ({ props }) => {
+const PostDetail = () => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
   });
   const [center, setCenter] = useState();
   const [poly, setPoly] = useState();
+  const [user, setUser] = useState();
 
   function pointsToPath(points) {
     return points.map((point) => ({
@@ -38,8 +38,10 @@ const PostDetail = ({ props }) => {
 
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
+    console.log(data?.data?.nickname);
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
+    setUser(data?.data?.nickname);
   };
 
   useEffect(() => {
@@ -49,8 +51,8 @@ const PostDetail = ({ props }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const writerId = detail.nickname;
-  const NICKNAME = localStorage.getItem("nickname");
-  const userConfirm = NICKNAME === writerId;
+
+  const userConfirm = user === writerId;
 
   useEffect(() => {
     if (id !== undefined) {
@@ -125,7 +127,7 @@ const PostDetail = ({ props }) => {
             <h3 className="title">{detail?.title}</h3>
           </div>
           <div className="detail-btns">
-            <h4>{writerId}</h4>
+            <h4 className="writer">{writerId}</h4>
             <div>
               <img />
               조회수:{detail?.viewCount}
