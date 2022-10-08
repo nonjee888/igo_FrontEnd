@@ -109,13 +109,22 @@
   width: 80%;
   height: 30px;
   position: absolute;
-  overflow: hidden;
   display: flex;
   gap: 10px;
   align-items: center;
   bottom: 20px;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  display: grid;
+  grid-template-columns: 70% 20% 10%;
 }
-
+.post-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50px;
+}
 .heart-btn-img {
   width: 20px;
 }

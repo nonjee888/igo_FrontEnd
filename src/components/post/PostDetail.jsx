@@ -22,9 +22,10 @@ const PostDetail = ({ props }) => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
 
-  const overlayData = props?.overlayData;
-  const setOverlayData = props?.setOverlayData;
-
+  const [overlayData, setOverlayData] = useState({
+    marker: [],
+    polyline: [],
+  });
   const [center, setCenter] = useState();
   const [poly, setPoly] = useState();
 
@@ -37,7 +38,6 @@ const PostDetail = ({ props }) => {
 
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
-
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
   };
@@ -48,7 +48,6 @@ const PostDetail = ({ props }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const writerId = detail.nickname;
   const NICKNAME = localStorage.getItem("nickname");
   const userConfirm = NICKNAME === writerId;

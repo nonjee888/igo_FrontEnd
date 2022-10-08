@@ -6,18 +6,15 @@ import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 import goback from "../../asset/goback.png";
 import editpost from "../../asset/editpost.png";
 import submitpost from "../../asset/submitpost.png";
+import Swal from "sweetalert2";
 
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
   const navigate = useNavigate();
-  const nickname = localStorage.getItem("nickname");
-  const writerId = props.props.writerId;
   const isEdit = props.props.isEdit;
-  // const userConfirm = nickname === writerId;
   const managerRef = useRef(null);
   const id = props.props.id;
-  const editMap = props.props.editMap;
   const overlayData = props.props.overlayData;
   const setOverlayData = props.props.setOverlayData;
 
@@ -33,18 +30,29 @@ const PostKakaoMap = (props) => {
   const tags = props.props.data.tags; //tag선택
 
   const handleRegisterButton = async () => {
-    let req = {
-      title: title,
-      content: content,
-      mapData: overlayData,
-      searchPlace: searchPlace,
-      tags: tags,
-    };
+    if (title === "" || content === "" || tags === ["", "", ""]) {
+      Swal.fire({
+        icon: "info",
+        text: "제목과 태그, 내용을 입력 해 주세요 :)",
+        showCancelButton: true,
+        cancelButtonColor: "#D9D9D9",
+        cancelButtonText: "확인",
+      });
+      return false;
+    } else {
+      let req = {
+        title: title,
+        content: content,
+        mapData: overlayData,
+        searchPlace: searchPlace,
+        tags: tags,
+      };
 
-    const data = await instance.post("/api/post", req);
+      const data = await instance.post("/api/post", req);
 
-    if (data.data.success) {
-      navigate("/post/all");
+      if (data.data.success) {
+        navigate("/post/all");
+      }
     }
   };
 
