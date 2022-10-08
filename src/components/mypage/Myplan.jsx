@@ -46,6 +46,11 @@ const Myplan = () => {
             }}
           />
         </div>
+        {Origin?.length === 0 ? (
+          <p>➕버튼을 눌러서 일정을 등록해주세요.</p>
+        ) : (
+          <></>
+        )}
         <div
           style={{
             display: "flex",
@@ -56,10 +61,7 @@ const Myplan = () => {
             return (
               <div className="Myplan" key={myplans.id}>
                 <div className="MyplanDate">{myplans.time}</div>
-                <div className="MyplanTitle">
-                  {myplans.title}
-                  {/* <img src={edit} alt="수정하기" /> */}
-                </div>
+                <div className="MyplanTitle">{myplans.title}</div>
                 <img
                   src={myplans.imgUrl}
                   className="MyplanImg"
@@ -83,7 +85,6 @@ const Myplan = () => {
                     }).then((result) => {
                       if (result.isConfirmed) {
                         dispatch(deleteMyplans(myplans.id));
-                        // window.location.reload();
                       }
                     });
                   }}
@@ -108,12 +109,14 @@ const Myplan = () => {
           })}
         </div>
         <h3 style={{ marginTop: "10%" }}>완료된 일정</h3>
+
         <div
           style={{
             display: "flex",
             flexWrap: "wrap",
           }}
         >
+          {Done?.length === 0 ? <p>완료된 일정이 없습니다.</p> : <></>}
           {Done?.map((myplans) => {
             return (
               <div className="Myplan" key={myplans.id}>
@@ -142,7 +145,6 @@ const Myplan = () => {
                     }).then((result) => {
                       if (result.isConfirmed) {
                         dispatch(deleteMyplans(myplans.id));
-                        // window.location.reload();
                       }
                     });
                   }}

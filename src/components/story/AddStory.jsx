@@ -1,3 +1,4 @@
+import "./style.scss";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -60,7 +61,7 @@ const AddStory = () => {
               multiple="multiple"
             />
           </div>
-          <button className="MyplanPostAddbutton" type="submit">
+          <button className="videoAddbutton" type="submit">
             <img src={addVideo} alt="영상등록" />
           </button>
         </form>
