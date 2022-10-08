@@ -12,6 +12,29 @@
   color: rgb(168, 166, 166);
   border-bottom: 1px solid rgba(215, 215, 215, 0.933);
 }
+
+.tagmodalbtn{
+width: 30%;
+height:4vh;
+margin: 6px 6px 6px 6px;
+display: inline-block;
+justify-content: center;
+align-items: center;
+border-radius: 22px;
+border: none;
+color:white;
+font-weight: bold;
+font-size: 18px;
+background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
+&:focus {
+  border: 5px solid linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
+  color: #555555;
+  font-weight: bold;
+  font-size: 18px;
+ 
+}
+
+}
 .editor-wrapper {
   position: relative;
   max-width: 428px;
