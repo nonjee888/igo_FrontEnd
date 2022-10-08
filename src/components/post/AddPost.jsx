@@ -20,19 +20,23 @@ import InterestModal from "../postmodal/InterestModal";
 import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
-const AddPost = ({ props }) => {
+const AddPost = () => {
+  const inputFocus = useRef(null);
   const dispatch = useDispatch();
   const { detail } = useSelector((state) => state?.posts);
   const writerId = detail.nickname;
   const NICKNAME = localStorage.getItem("nickname");
-  const overlayData = props.overlayData;
-  const setOverlayData = props.setOverlayData;
+
   window.Buffer = window.Buffer || require("buffer").Buffer;
 
   const { id } = useParams();
   const isEdit = id !== undefined;
   const editorRef = useRef();
 
+  const [overlayData, setOverlayData] = useState({
+    marker: [],
+    polyline: [],
+  });
   const [title, setTitle] = useState("");
   const [editor, setEditor] = useState("");
   const [checkedItems, setCheckedItems] = useState({
@@ -45,7 +49,7 @@ const AddPost = ({ props }) => {
   const [openRegionModal, setOpenRegionModal] = useState(false);
   const [openInterestModal, setOpenInterestModal] = useState(false);
   const [openCostModal, setOpenCostModal] = useState(false);
-
+  console.log(checkedItems);
   useEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
@@ -54,6 +58,11 @@ const AddPost = ({ props }) => {
           editorRef.current?.getInstance().setHTML(response.payload.content)
         );
         setOverlayData(response.payload.mapData);
+        setCheckedItems({
+          interest: response.payload.tags[0],
+          region: response.payload.tags[1],
+          cost: response.payload.tags[2],
+        });
       });
     } else {
       setTitle("");
@@ -66,6 +75,10 @@ const AddPost = ({ props }) => {
     editor: editor,
     tags: tags,
   };
+
+  useEffect(() => {
+    inputFocus.current.focus();
+  }, []);
 
   return (
     <>
@@ -80,10 +93,12 @@ const AddPost = ({ props }) => {
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               required
+              ref={inputFocus}
             />
           </div>
           <div className="tagsbox">
-            <button className="tagmodalbtn"
+            <button
+              className="tagmodalbtn"
               onClick={() => {
                 setOpenInterestModal(true);
               }}
@@ -97,14 +112,15 @@ const AddPost = ({ props }) => {
                 closeInterestModal={setOpenInterestModal}
               />
             )}
-            <button className="tagmodalbtn"
+            <button
+              className="tagmodalbtn"
               onClick={() => {
                 setOpenRegionModal(true);
               }}
             >
               지역
             </button>
-           
+
             {openRegionModal && (
               <RegionModal
                 closeModal={setOpenRegionModal}
@@ -112,8 +128,8 @@ const AddPost = ({ props }) => {
                 setCheckedItems={setCheckedItems}
               />
             )}
-            <button className="tagmodalbtn"
-
+            <button
+              className="tagmodalbtn"
               onClick={() => {
                 setOpenCostModal(true);
               }}
