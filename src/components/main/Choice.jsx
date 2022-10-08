@@ -3,6 +3,7 @@ import "./style.scss";
 import { navigate, useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 const Choice = () => {
   const navigate = useNavigate();
@@ -69,7 +70,16 @@ const Choice = () => {
 
     //이제 다다가 해야할일 : 3개이상 체크시 alert띠워서 3개만 체크 가능하다고 하기랑 제한두기
   };
-  console.log(checkedItems);
+
+  // useEffect(()=> {
+  //   if(token) {
+  //     getUser()
+  //     if(data.userData.interested ===''||data.userData.interestedList.length ===0) {
+  //       navigate('/choice')
+  //     }
+  //   }
+  // })
+
   return (
     <div className="All">
       <div className="choiceBox">
