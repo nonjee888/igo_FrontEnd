@@ -79,6 +79,25 @@
     color: #47afdb;
   }
 }
+//헤더 nickname+btn div
+.hearders-nickWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+//헤더 nick+님 div
+.headers-님 {
+  display: flex;
+}
+//헤더 닉네임 p
+.headers-nick {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50%;
+  margin: auto;
+  text-align: right;
+}
 
 //풋컨테이너
 .Footer-Container {

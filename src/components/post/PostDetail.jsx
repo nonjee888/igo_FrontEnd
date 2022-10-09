@@ -122,24 +122,18 @@ const PostDetail = ({ props }) => {
       <div className="allPost">
         <div className="detail-wrapper">
           <div className="detail-title">
-            <h3 className="title">{detail?.title}</h3>
+            <div className="title">{detail?.title}</div>
           </div>
           <div className="detail-btns">
-            <h4>{writerId}</h4>
-            <div>
-              <img />
-              조회수:{detail?.viewCount}
-            </div>
-            <div>
-              <img />
+            <h4 className="detail-nickname">{writerId}</h4>
+            <div>조회수:{detail?.viewCount}</div>
+            <div className="heart-num">
               <button onClick={onLike} className="liked-post-btn">
                 <img src={heart} className="liked-post-icon" alt="관심게시글" />
               </button>
               {detail?.heartNum}
             </div>
-            <div>
-              <img />
-            </div>
+
             {userConfirm ? null : (
               <button
                 onClick={() => {
@@ -151,7 +145,7 @@ const PostDetail = ({ props }) => {
               </button>
             )}
             {userConfirm ? (
-              <div>
+              <div className="edit-delete">
                 <button className="edit-btn">
                   <img
                     src={edit}

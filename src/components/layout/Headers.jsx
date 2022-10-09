@@ -9,6 +9,7 @@ import igoLogo from "../../asset/igoLogo.png";
 const Headers = () => {
   const navigate = useNavigate();
   const myinfo = useSelector((state) => state?.myinfo?.myinfo);
+
   const NICKNAME = localStorage.getItem("nickname");
   //로그아웃
   const logoutHandler = () => {
@@ -62,34 +63,66 @@ const Headers = () => {
       ) : (
         <div className="Sign-box">
           {myinfo === undefined ? (
-            <p
-              style={{ fontWeight: "bold", fontSize: "1em", color: "#555555" }}
-            >
-              {NICKNAME}님
-            </p>
+            <div className="hearders-nickWrap">
+              <p
+                className="headers-nick"
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "1em",
+                  color: "#555555",
+                }}
+              >
+                {NICKNAME}
+              </p>
+              님
+              <button
+                className="Signbtn"
+                style={{
+                  width: "35%",
+                }}
+                onClick={logoutHandler}
+              >
+                <img
+                  src={logout}
+                  alt="로그아웃"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              </button>
+            </div>
           ) : (
-            <p
-              style={{ fontWeight: "bold", fontSize: "1em", color: "#555555" }}
-            >
-              {myinfo[0].nickname}님
-            </p>
+            <div className="hearders-nickWrap">
+              <div className="headers-님">
+                <p
+                  className="headers-nick"
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "1em",
+                    color: "#555555",
+                  }}
+                >
+                  {myinfo[0].nickname}
+                </p>
+                님
+              </div>
+              <button
+                className="Signbtn"
+                style={{
+                  width: "35%",
+                }}
+                onClick={logoutHandler}
+              >
+                <img
+                  src={logout}
+                  alt="로그아웃"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              </button>
+            </div>
           )}
-
-          <button
-            className="Signbtn"
-            style={{
-              width: "35%",
-            }}
-            onClick={logoutHandler}
-          >
-            <img
-              src={logout}
-              alt="로그아웃"
-              style={{
-                width: "100%",
-              }}
-            />
-          </button>
         </div>
       )}
     </div>
