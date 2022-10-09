@@ -40,7 +40,7 @@ export default function InterestedPostList(){
     ];
     const getInterestList =async () => {
       const response = await instance.get(`/api/post/interest?type=interest`);
-      console.log(response)
+  
       return response.data;
     
     };

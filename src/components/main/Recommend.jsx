@@ -12,6 +12,9 @@ const Recommend = () => {
   const { isLoading, error, recommend } = useSelector((state) => state.posts);
 
   const dispatch = useDispatch();
+  // const tags = useSelector((state) => state.tags.tags);
+  // console.log
+
 
   useEffect(() => {
     dispatch(getRecommendPosts());
