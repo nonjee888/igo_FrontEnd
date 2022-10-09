@@ -28,7 +28,7 @@ const PostKakaoMap = (props) => {
   const mapData = overlayData; //맵데이터
   const searchPlace = props.searchPlace; //키워드검색
   const tags = props.props.data.tags; //tag선택
-  console.log(tags);
+
   const handleRegisterButton = async () => {
     if (title.trim() === "" || content.trim() === "" || tags == "") {
       Swal.fire({

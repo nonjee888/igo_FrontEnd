@@ -9,7 +9,7 @@ import { getDetailPosts } from "../../redux/modules/posts";
 
 import { Map, Polyline, MapMarker } from "react-kakao-maps-sdk";
 import Swal from "sweetalert2";
-
+import dompurify from "dompurify";
 import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
@@ -20,7 +20,7 @@ import deleteimg from "../../asset/deleteimg.png";
 const PostDetail = () => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-
+  const sanitizer = dompurify.sanitize;
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
@@ -37,6 +37,7 @@ const PostDetail = () => {
 
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
+
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
   };
@@ -216,7 +217,7 @@ const PostDetail = () => {
 
           <div
             className="html-wrapper"
-            dangerouslySetInnerHTML={{ __html: detail?.content }}
+            dangerouslySetInnerHTML={{ __html: sanitizer(detail?.content) }}
           ></div>
           <div className="map-wrapper">
             {center?.length === 0 && poly.length === 0 ? ( //맵선택안함
