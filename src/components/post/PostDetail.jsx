@@ -16,9 +16,8 @@ import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
-import PostTags from "./PostTags";
 
-const PostDetail = ({ props }) => {
+const PostDetail = () => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
 

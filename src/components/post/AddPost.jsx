@@ -20,7 +20,7 @@ import InterestModal from "../postmodal/InterestModal";
 import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
-const AddPost = () => {
+const AddPost = ({ props }) => {
   const inputFocus = useRef(null);
   const dispatch = useDispatch();
   const { detail } = useSelector((state) => state?.posts);
@@ -157,7 +157,7 @@ const AddPost = () => {
               ❤ 경로업데이트 | 여행경로수정 버튼으로 경로를 지도에 저장해주세요!   
               ❤ 게시물작성 또는 게시물수정 버튼을 누르면 공유 완료!
               "
-              initialValue=" "
+              initialValue=""
               previewStyle="vertical"
               height="calc(100vh - 390px)"
               initialEditType="wysiwyg"

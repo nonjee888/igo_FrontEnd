@@ -73,6 +73,8 @@
   margin-right: 1rem;
   border: none;
   background: none;
+  width: 20%;
+  height: 10%;
   font-family: "Noto Sans KR", sans-serif;
   &:hover {
     font-weight: bold;
@@ -84,18 +86,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  grid-template-columns: auto;
 }
 //헤더 nick+님 div
 .headers-님 {
+  padding: 10%;
   display: flex;
+  vertical-align: text-bottom;
 }
 //헤더 닉네임 p
 .headers-nick {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 50%;
-  margin: auto;
+  width: 45%;
+
   text-align: right;
 }
 

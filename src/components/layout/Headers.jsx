@@ -94,7 +94,7 @@ const Headers = () => {
           ) : (
             <div className="hearders-nickWrap">
               <div className="headers-님">
-                <p
+                <div
                   className="headers-nick"
                   style={{
                     fontWeight: "bold",
@@ -103,7 +103,7 @@ const Headers = () => {
                   }}
                 >
                   {myinfo[0].nickname}
-                </p>
+                </div>
                 님
               </div>
               <button
