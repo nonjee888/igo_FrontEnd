@@ -35,6 +35,10 @@ const AddPost = ({ props }) => {
 
   const [title, setTitle] = useState("");
   const [editor, setEditor] = useState("");
+  const [overlayData, setOverlayData] = useState({
+    marker: [],
+    polyline: [],
+  });
   const [isActive, setIsActive] = useState(false);
   const content = editor;
 
@@ -61,11 +65,6 @@ const AddPost = ({ props }) => {
     cost: "",
   });
   const tags = Object.values(checkedItems);
-
-  const [overlayData, setOverlayData] = useState({
-    marker: [],
-    polyline: [],
-  });
 
   const [openRegionModal, setOpenRegionModal] = useState(false);
   const [openInterestModal, setOpenInterestModal] = useState(false);

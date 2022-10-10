@@ -316,6 +316,17 @@
 .userNick {
   width: 100%;
 }
+.map-detail {
+  background: linear-gradient(to left, #4eb4d8, #f5c9e0);
+  border: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 900;
+  float: right;
+  margin-right: 3%;
+}
 //PostComment.jsx
 .commentContainer {
   max-width: 428px;
