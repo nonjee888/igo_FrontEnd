@@ -20,13 +20,13 @@ import deleteimg from "../../asset/deleteimg.png";
 const PostDetail = () => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-  const sanitizer = dompurify.sanitize;
+
+  const [center, setCenter] = useState();
+  const [poly, setPoly] = useState();
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
   });
-  const [center, setCenter] = useState();
-  const [poly, setPoly] = useState();
 
   function pointsToPath(points) {
     return points.map((point) => ({
@@ -46,6 +46,7 @@ const PostDetail = () => {
     fetch();
   }, []);
 
+  const sanitizer = dompurify.sanitize;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const writerId = detail.nickname;
