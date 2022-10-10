@@ -22,7 +22,7 @@ const { kakao } = window;
 const PostDetail = () => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-
+  const [user, setUser] = useState();
   const [center, setCenter] = useState();
   const [poly, setPoly] = useState();
 
@@ -40,7 +40,7 @@ const PostDetail = () => {
 
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
-    console.log(data?.data?.nickname);
+    // console.log(data?.data?.nickname);
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
     setUser(data?.data?.nickname);
@@ -141,11 +141,9 @@ const PostDetail = () => {
             <div className="title">{detail?.title}</div>
           </div>
           <div className="detail-btns">
-
             <h4 className="detail-nickname">{writerId}</h4>
             <div>조회수:{detail?.viewCount}</div>
             <div className="heart-num">
-
               <button onClick={onLike} className="liked-post-btn">
                 <img src={heart} className="liked-post-icon" alt="관심게시글" />
               </button>
