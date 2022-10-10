@@ -58,16 +58,27 @@ export default function RegionModal({
                 value={item.tag}
                 onChange={changeHandler}
               />
-              <div>{item.tag}</div>
+              <div
+               style=
+               {{width:"40%",
+               position:"relative",
+               display:"inline-block",
+               textAlign:"center",
+               margin:"5px 10px 5px 10px",
+               borderRadius:"22px",
+               background:"#BDE8F8"
+       
+ 
+               }}>{item.tag}</div>
             </label>
           ))}
         </div>
         <div className="buttonbox">
-          <button className="닫기버튼" onClick={() => closeModal(false)}>
+          <button className="closebtn" onClick={() => closeModal(false)}>
             취소
           </button>
           <button
-            className="다음"
+            className="closebtn"
             onClick={() => {
               openRegionNextModal();
               submitHandler();
