@@ -2086,7 +2086,6 @@
   dependencies:
     "@types/react" "*"
 
-
 "@types/react@*":
   version "17.0.50"
   resolved "https://registry.npmjs.org/@types/react/-/react-17.0.50.tgz"
@@ -3587,9 +3586,7 @@ debug@2.6.9, debug@^2.6.0, debug@^2.6.9:
 
 debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.4:
   version "4.3.4"
-
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
-
   integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
   dependencies:
     ms "2.1.2"
@@ -3807,6 +3804,11 @@ domhandler@^4.0.0, domhandler@^4.2.0, domhandler@^4.3.1:
 dompurify@^2.3.3:
   version "2.4.0"
   resolved "https://registry.npmjs.org/dompurify/-/dompurify-2.4.0.tgz"
+  integrity sha512-Be9tbQMZds4a3C6xTmz68NlMfeONA//4dOavl/1rNw50E+/QO0KVpbcU0PcaW0nsQxurXls9ZocqFxk8R2mWEA==
+
+dompurify@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.4.0.tgz#c9c88390f024c2823332615c9e20a453cf3825dd"
   integrity sha512-Be9tbQMZds4a3C6xTmz68NlMfeONA//4dOavl/1rNw50E+/QO0KVpbcU0PcaW0nsQxurXls9ZocqFxk8R2mWEA==
 
 domutils@^1.7.0:
@@ -8528,12 +8530,10 @@ sweetalert2-react-content@^5.0.3:
   resolved "https://registry.npmjs.org/sweetalert2-react-content/-/sweetalert2-react-content-5.0.3.tgz"
   integrity sha512-DQXblZn0LHTvmaZquNQncZIE3Ljox85sAKKbXjYlDyFejyOibHwprAVvtQQpAUG3bgvyDUeAOE/BDFcVx6KUow==
 
-
 sweetalert2@^11.4.35:
   version "11.4.35"
   resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.35.tgz#61ee8591798bc82c5ca23479406c0f367c9eb108"
   integrity sha512-nifH7Hd8oSIO8qf6GHhob6xZK2KoX7+EalTFm3nHshdQ38TY/r0m/QiuJCDL0cTGbRhzMWL7WYBSA3fjnh+F1g==
-
 
 symbol-tree@^3.2.4:
   version "3.2.4"

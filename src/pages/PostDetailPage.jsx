@@ -5,11 +5,11 @@ import Footers from "../components/layout/Footers";
 import PageContainer from "../components/wrapper/PageContainer";
 import PostDetailFooters from "../components/post/PostDetailFooters";
 
-const PostDetailPage = (props) => {
+const PostDetailPage = () => {
   return (
     <PageContainer>
       <Headers />
-      <PostDetail props={props} />
+      <PostDetail />
       <PostDetailFooters />
     </PageContainer>
   );

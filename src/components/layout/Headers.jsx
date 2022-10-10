@@ -1,14 +1,20 @@
 import React from "react";
 import "./style.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logout from "../../asset/logout.png";
 import igoLogo from "../../asset/igoLogo.png";
+import { getMyinfo } from "../../redux/modules/myinfo";
+import { useEffect } from "react";
 
 const Headers = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const myinfo = useSelector((state) => state?.myinfo?.myinfo);
+  useEffect(() => {
+    dispatch(getMyinfo());
+  }, []);
   const NICKNAME = localStorage.getItem("nickname");
   //로그아웃
   const logoutHandler = () => {
@@ -36,6 +42,7 @@ const Headers = () => {
       }
     });
   };
+
   return (
     <div className="Header-wrapper">
       <div className="HeaderForm">
@@ -62,34 +69,66 @@ const Headers = () => {
       ) : (
         <div className="Sign-box">
           {myinfo === undefined ? (
-            <p
-              style={{ fontWeight: "bold", fontSize: "1em", color: "#555555" }}
-            >
-              {NICKNAME}님
-            </p>
+            <div className="hearders-nickWrap">
+              <p
+                className="headers-nick"
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "1em",
+                  color: "#555555",
+                }}
+              >
+                {NICKNAME}
+              </p>
+              님
+              <button
+                className="Signbtn"
+                style={{
+                  width: "35%",
+                }}
+                onClick={logoutHandler}
+              >
+                <img
+                  src={logout}
+                  alt="로그아웃"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              </button>
+            </div>
           ) : (
-            <p
-              style={{ fontWeight: "bold", fontSize: "1em", color: "#555555" }}
-            >
-              {myinfo[0].nickname}님
-            </p>
+            <div className="hearders-nickWrap">
+              <div className="headers-님">
+                <div
+                  className="headers-nick"
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "1em",
+                    color: "#555555",
+                  }}
+                >
+                  {myinfo[0].nickname}
+                </div>
+                님
+              </div>
+              <button
+                className="Signbtn"
+                style={{
+                  width: "35%",
+                }}
+                onClick={logoutHandler}
+              >
+                <img
+                  src={logout}
+                  alt="로그아웃"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              </button>
+            </div>
           )}
-
-          <button
-            className="Signbtn"
-            style={{
-              width: "35%",
-            }}
-            onClick={logoutHandler}
-          >
-            <img
-              src={logout}
-              alt="로그아웃"
-              style={{
-                width: "100%",
-              }}
-            />
-          </button>
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 import "./style.scss";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import { instance } from "../../shared/api";
 import { useParams, useNavigate } from "react-router";
 import { onLikePost } from "../../redux/modules/posts";
@@ -9,25 +9,27 @@ import { getDetailPosts } from "../../redux/modules/posts";
 
 import { Map, Polyline, MapMarker } from "react-kakao-maps-sdk";
 import Swal from "sweetalert2";
-
+import dompurify from "dompurify";
 import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
-import PostTags from "./PostTags";
+
+const { kakao } = window;
 
 const PostDetail = () => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
+
+  const [center, setCenter] = useState();
+  const [poly, setPoly] = useState();
+
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
   });
-  const [center, setCenter] = useState();
-  const [poly, setPoly] = useState();
-  const [user, setUser] = useState();
 
   function pointsToPath(points) {
     return points.map((point) => ({
@@ -48,6 +50,24 @@ const PostDetail = () => {
     fetch();
   }, []);
 
+  const mapRef = useRef();
+
+  const bounds = useMemo(() => {
+    const bounds = new kakao.maps.LatLngBounds();
+
+    if (center?.length === 0 && poly[0]?.points.length !== 0) {
+      poly[0]?.points?.forEach((point) => {
+        bounds.extend(new kakao.maps.LatLng(point.y, point.x));
+      });
+    } else {
+      center?.forEach((point) => {
+        bounds.extend(new kakao.maps.LatLng(point.y, point.x));
+      });
+    }
+    return bounds;
+  }, [center, poly]);
+
+  const sanitizer = dompurify.sanitize;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const writerId = detail.nickname;
@@ -113,35 +133,25 @@ const PostDetail = () => {
     }
   };
 
-  // console.log(center?.length === 0 && poly[0]?.points.length !== 0); //폴리선택
-  // console.log(poly[0]?.points[0]); //폴리만 선택 좌표
-  // console.log(center?.length === 0 && poly.length === 0); //지도 선택 안할경우
-  // console.log(center?.length !== 0); //마커만 찍은 경우
-  // console.log(center === undefined); // 데이터 늦게 들어올때
-
   return (
     <>
       <div className="allPost">
         <div className="detail-wrapper">
           <div className="detail-title">
-            <h3 className="title">{detail?.title}</h3>
+            <div className="title">{detail?.title}</div>
           </div>
           <div className="detail-btns">
-            <h4 className="writer">{writerId}</h4>
-            <div>
-              <img />
-              조회수:{detail?.viewCount}
-            </div>
-            <div>
-              <img />
+
+            <h4 className="detail-nickname">{writerId}</h4>
+            <div>조회수:{detail?.viewCount}</div>
+            <div className="heart-num">
+
               <button onClick={onLike} className="liked-post-btn">
                 <img src={heart} className="liked-post-icon" alt="관심게시글" />
               </button>
               {detail?.heartNum}
             </div>
-            <div>
-              <img />
-            </div>
+
             {userConfirm ? null : (
               <button
                 onClick={() => {
@@ -153,7 +163,7 @@ const PostDetail = () => {
               </button>
             )}
             {userConfirm ? (
-              <div>
+              <div className="edit-delete">
                 <button className="edit-btn">
                   <img
                     src={edit}
@@ -193,7 +203,7 @@ const PostDetail = () => {
             <div
               className="tag"
               style={{
-                background: `linear-gradient(to left, #F5C9E0 30%,#47AFDB) 70%`,
+                background: `linear-gradient(to right, #F5C9E0 30%,#47AFDB) 70%`,
               }}
             >
               <span className="tag-text" style={{ color: "#fff" }}>
@@ -203,7 +213,7 @@ const PostDetail = () => {
             <div
               className="tag"
               style={{
-                background: `linear-gradient(to left, #F5C9E0 30%,#47AFDB) 70%`,
+                background: `linear-gradient(to right, #F5C9E0 30%,#47AFDB) 70%`,
               }}
             >
               <span className="tag-text" style={{ color: "#fff" }}>
@@ -213,7 +223,7 @@ const PostDetail = () => {
             <div
               className="tag"
               style={{
-                background: `linear-gradient(to left, #F5C9E0 30%,#47AFDB) 70%`,
+                background: `linear-gradient(to right, #F5C9E0 30%,#47AFDB) 70%`,
               }}
             >
               <span className="tag-text" style={{ color: "#fff" }}>
@@ -225,93 +235,53 @@ const PostDetail = () => {
 
           <div
             className="html-wrapper"
-            dangerouslySetInnerHTML={{ __html: detail?.content }}
+            dangerouslySetInnerHTML={{ __html: sanitizer(detail?.content) }}
           ></div>
           <div className="map-wrapper">
-            {center?.length === 0 && poly.length === 0 ? ( //맵선택안함
+            {center === undefined && poly === undefined ? (
               <> {detail.nickname}님은 경로를 공유하지 않았습니다. </>
-            ) : center === undefined || poly === undefined ? ( //오류방지
-              <Map // 로드뷰를 표시할 Container
-                center={{
-                  lat: 37.566826,
-                  lng: 126.9786567,
-                }}
-                style={{
-                  width: "100%",
-                  height: "300px",
-                }}
-                level={5}
-              >
-                {overlayData.polyline.map(({ points, options }, i) => (
-                  <Polyline key={i} path={pointsToPath(points)} {...options} />
-                ))}
-
-                {overlayData.marker.map(({ x, y, zIndex }, i) => (
-                  <MapMarker
-                    key={i}
-                    position={{
-                      lat: y,
-                      lng: x,
-                    }}
-                    zIndex={zIndex}
-                  />
-                ))}
-              </Map>
-            ) : center?.length === 0 && poly[0]?.points.length !== 0 ? ( //폴리만 선택
-              <Map
-                center={{
-                  lat: poly[0]?.points[0].y,
-                  lng: poly[0]?.points[0].x,
-                }}
-                style={{
-                  width: "100%",
-                  height: "300px",
-                }}
-                level={4}
-              >
-                {overlayData.polyline.map(({ points, options }, i) => (
-                  <Polyline key={i} path={pointsToPath(points)} {...options} />
-                ))}
-
-                {overlayData.marker.map(({ x, y, zIndex }, i) => (
-                  <MapMarker
-                    key={i}
-                    position={{
-                      lat: y,
-                      lng: x,
-                    }}
-                    zIndex={zIndex}
-                  />
-                ))}
-              </Map>
+            ) : center?.length === 0 && poly?.length === 0 ? (
+              <> {detail.nickname}님은 경로를 공유하지 않았습니다. </>
             ) : (
-              //마커있을때
-              <Map
-                center={{
-                  lat: center[0]?.y || "",
-                  lng: center[0]?.x || "",
-                }}
-                style={{
-                  width: "100%",
-                  height: "300px",
-                }}
-                level={3}
-              >
-                {overlayData.polyline.map(({ points, options }, i) => (
-                  <Polyline key={i} path={pointsToPath(points)} {...options} />
-                ))}
+              <>
+                <button
+                  className="map-detail"
+                  onClick={() => {
+                    const map = mapRef.current;
+                    if (map) map.setBounds(bounds);
+                  }}
+                >
+                  눌러서경로보기
+                </button>
+                <Map // 지도를 표시할 Container
+                  center={{
+                    // 지도의 중심좌표
+                    lat: 33.450701,
+                    lng: 126.570667,
+                  }}
+                  style={{
+                    width: "100%",
+                    height: "300px",
+                  }}
+                  level={3} // 지도의 확대 레벨
+                  ref={mapRef}
+                >
+                  {center?.map((point) => (
+                    <MapMarker
+                      key={`${point.y}-${point.x}`}
+                      position={{ lat: point.y, lng: point.x }}
+                    />
+                  ))}
 
-                {overlayData.marker.map(({ x, y, zIndex }, i) => (
-                  <MapMarker
-                    key={i}
-                    position={{
-                      lat: y,
-                      lng: x,
-                    }}
-                    zIndex={zIndex}
-                  />
-                ))}
-              </Map>
+                  {overlayData.polyline.map(({ points, options }, i) => (
+                    <Polyline
+                      key={i}
+                      path={pointsToPath(points)}
+                      {...options}
+                    />
+                  ))}
+                </Map>
+              </>
             )}
           </div>
         </div>
