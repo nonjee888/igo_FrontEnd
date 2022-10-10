@@ -127,7 +127,9 @@
   align-items: center;
   bottom: 20px;
   display: grid;
+
   grid-template-columns: 70% 30% 5%;
+
 }
 .post-title {
   overflow: hidden;
@@ -178,6 +180,7 @@
   text-overflow: ellipsis;
 }
 .detail-title {
+  margin-top: 6%;
   width: 100%;
   height: 6%;
   font-size: x-large;
@@ -187,6 +190,12 @@
   margin: 5px auto;
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: nowrap;
+}
+.writer {
+  width: 20%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 .detail-content {
@@ -206,7 +215,7 @@
   position: relative;
 }
 .img-container {
-  margin: 5%;
+  margin: 10% 5% 5% 5%;
   width: 90%;
   height: 100%;
   border-radius: 15px;
@@ -247,7 +256,6 @@
 }
 .html-wrapper {
   margin-top: 10% !important;
-
   width: 95%;
   margin: auto;
   overflow: auto;

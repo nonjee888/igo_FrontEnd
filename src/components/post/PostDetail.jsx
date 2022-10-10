@@ -25,6 +25,7 @@ const PostDetail = () => {
 
   const [center, setCenter] = useState();
   const [poly, setPoly] = useState();
+
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
@@ -39,8 +40,10 @@ const PostDetail = () => {
 
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
+    console.log(data?.data?.nickname);
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
+    setUser(data?.data?.nickname);
   };
 
   useEffect(() => {
@@ -68,8 +71,8 @@ const PostDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const writerId = detail.nickname;
-  const NICKNAME = localStorage.getItem("nickname");
-  const userConfirm = NICKNAME === writerId;
+
+  const userConfirm = user === writerId;
 
   useEffect(() => {
     if (id !== undefined) {
@@ -138,9 +141,11 @@ const PostDetail = () => {
             <div className="title">{detail?.title}</div>
           </div>
           <div className="detail-btns">
+
             <h4 className="detail-nickname">{writerId}</h4>
             <div>조회수:{detail?.viewCount}</div>
             <div className="heart-num">
+
               <button onClick={onLike} className="liked-post-btn">
                 <img src={heart} className="liked-post-icon" alt="관심게시글" />
               </button>
