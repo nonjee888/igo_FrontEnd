@@ -304,22 +304,23 @@
 }
 
 .MyplanPostAddbuttons {
-  display: flex;
-  margin: 5% 0 0 20%;
+  display: grid;
+  grid-template-columns: 30% 100%;
+  margin: 5% 0 0 25%;
+  width: 50%;
 }
 
 .MyplanPostAdd {
   border: none;
   background-color: transparent;
-  margin-left: -20%;
   img {
-    width: 48%;
+    width: 100%;
+    height: 100%;
   }
+  width: 60%;
 }
 .MyplanPostGoback {
   border: none;
   background-color: transparent;
-  img {
-    width: 65%;
-  }
+  width: 80%;
 }

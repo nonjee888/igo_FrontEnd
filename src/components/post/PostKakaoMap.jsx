@@ -6,20 +6,20 @@ import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 import goback from "../../asset/goback.png";
 import editpost from "../../asset/editpost.png";
 import submitpost from "../../asset/submitpost.png";
+import noSubmitBtn from "../../asset/noSubmitBtn.png";
+import Swal from "sweetalert2";
 
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
+  // console.log(props.props);
   const navigate = useNavigate();
-  const nickname = localStorage.getItem("nickname");
-  const writerId = props.props.writerId;
   const isEdit = props.props.isEdit;
-  // const userConfirm = nickname === writerId;
   const managerRef = useRef(null);
   const id = props.props.id;
-  const editMap = props.props.editMap;
   const overlayData = props.props.overlayData;
   const setOverlayData = props.props.setOverlayData;
+  const isActive = props.props.isActive;
 
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
@@ -243,14 +243,27 @@ const PostKakaoMap = (props) => {
           >
             <img className="edit-icon" src={editpost} alt="수정" />
           </button>
-        ) : (
+        ) : isActive ? (
           <button
+            type="submit"
+            disabled={content.length > 12 && title.length >= 3 ? false : true}
             className="submit-post"
             onClick={() => {
               handleRegisterButton();
             }}
           >
             <img className="submit-icon" src={submitpost} alt="등록" />
+          </button>
+        ) : (
+          <button
+            type="submit"
+            disabled={content.length > 12 && title.length >= 3 ? false : true}
+            className="noSubmit-post"
+            onClick={() => {
+              handleRegisterButton();
+            }}
+          >
+            <img className="noSubmit-icon" src={noSubmitBtn} alt="등록" />
           </button>
         )}
       </div>

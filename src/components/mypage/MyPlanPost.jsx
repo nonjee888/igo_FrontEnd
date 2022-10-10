@@ -30,14 +30,6 @@ const MyPlanPost = () => {
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
 
-  const data = {
-    title: title,
-    content: content,
-    time: time,
-  };
-  //value를 setState해준다
-  // console.log(data);
-
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     let req = {
@@ -62,7 +54,6 @@ const MyPlanPost = () => {
     dispatch(postMyplans(formData));
     resetStates();
     navigate("/myplan");
-    // window.location.reload();
   };
 
   return (
@@ -97,7 +88,7 @@ const MyPlanPost = () => {
             <img
               alt="이미지를 업로드 해주세요."
               src={preview ? preview : photo1}
-              style={{ display: "flex", width: "100%", height: "130px" }}
+              style={{ display: "flex", width: "100%", height: "125px" }}
             />
             <label htmlFor="file" className="planImginputLabel">
               변경하기
@@ -123,14 +114,14 @@ const MyPlanPost = () => {
             </div>
           </div>
           <div className="MyplanPostAddbuttons">
-            <button
-              className="MyplanPostGoback"
+            <img
+              src={goback}
+              alt="뒤로"
               onClick={() => {
                 navigate(-1);
               }}
-            >
-              <img src={goback} alt="뒤로" />
-            </button>
+              className="MyplanPostGoback"
+            />
             <button className="MyplanPostAdd" type="submit">
               <img src={calendar} alt="일정등록" />
             </button>
