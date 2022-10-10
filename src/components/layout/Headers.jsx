@@ -1,15 +1,20 @@
 import React from "react";
 import "./style.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logout from "../../asset/logout.png";
 import igoLogo from "../../asset/igoLogo.png";
+import { getMyinfo } from "../../redux/modules/myinfo";
+import { useEffect } from "react";
 
 const Headers = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const myinfo = useSelector((state) => state?.myinfo?.myinfo);
-
+  useEffect(() => {
+    dispatch(getMyinfo());
+  }, []);
   const NICKNAME = localStorage.getItem("nickname");
   //로그아웃
   const logoutHandler = () => {
@@ -37,6 +42,7 @@ const Headers = () => {
       }
     });
   };
+
   return (
     <div className="Header-wrapper">
       <div className="HeaderForm">
