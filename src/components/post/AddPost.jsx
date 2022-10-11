@@ -50,6 +50,16 @@ const AddPost = () => {
   const [openRegionModal, setOpenRegionModal] = useState(false);
   const [openInterestModal, setOpenInterestModal] = useState(false);
   const [openCostModal, setOpenCostModal] = useState(false);
+  
+  const openInterestNextModal =() => {
+    setOpenInterestModal(false);
+    setOpenRegionModal(true);
+  }
+  const openRegionNextModal =() => {
+    setOpenRegionModal(false);
+    setOpenCostModal(true);
+  }
+
   console.log(checkedItems);
   useEffect(() => {
     if (id !== undefined) {
