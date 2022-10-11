@@ -56,7 +56,6 @@ export default function RegionPostList() {
 
     const getRegionList =async () => {
         const response = await instance.get(`/api/post/region?type=region`);
-        console.log(response)
         return response.data;
       };
       

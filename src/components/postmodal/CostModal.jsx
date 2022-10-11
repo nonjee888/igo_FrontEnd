@@ -33,29 +33,40 @@ export default function CostModal({
         <div className="conStyle">
           {costList.map((item) => (
             <label key={item.tag}>
-              <input
+              <input className="tagselectbox"
+              style={{display:"none"}}
                 type="checkbox"
-                style={{ display: "none" }}
                 name="tag"
                 value={item.tag}
                 onChange={changeHandler}
               />
-              <div>{item.tag}</div>
+              <div
+              style=
+              {{width:"40%",
+              position:"relative",
+              display:"inline-block",
+              textAlign:"center",
+              margin:"5px 10px 5px 10px",
+              borderRadius:"22px",
+              background:"#BDE8F8"
+      
+
+              }}>{item.tag}</div>
             </label>
           ))}
         </div>
         <div className="buttonbox">
-          <button className="닫기버튼" onClick={() => closeModal(false)}>
+          <button className="closebtn" onClick={() => closeModal(false)}>
             취소
           </button>
           <button
-            className="다음"
+            className="closebtn"
             onClick={() => {
               closeModal(false);
               submitHandler();
             }}
           >
-            다음단게
+            선택완료
           </button>
         </div>
       </div>

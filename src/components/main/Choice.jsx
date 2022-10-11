@@ -38,7 +38,7 @@ const Choice = () => {
     let payload = {
       interested: [...checkedItems],
     };
-    const response = await instance.post("/api/member/tag", payload);
+    const response = await instance.put("/api/member/tag", payload);
     console.log(response);
     // if(response.data.suscess){ //이 데이터가 체크되지 않았으면 추천페이지로 못감 
     //     navigate("/recommend");

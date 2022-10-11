@@ -19,9 +19,10 @@ import deleteimg from "../../asset/deleteimg.png";
 
 const { kakao } = window;
 
-const PostDetail = () => {
+const PostDetail = ({ props }) => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
+
   const [user, setUser] = useState();
   const [center, setCenter] = useState();
   const [poly, setPoly] = useState();
@@ -30,6 +31,7 @@ const PostDetail = () => {
     marker: [],
     polyline: [],
   });
+
 
   function pointsToPath(points) {
     return points.map((point) => ({
@@ -41,9 +43,9 @@ const PostDetail = () => {
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
     // console.log(data?.data?.nickname);
+
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
-    setUser(data?.data?.nickname);
   };
 
   useEffect(() => {
@@ -70,9 +72,10 @@ const PostDetail = () => {
   const sanitizer = dompurify.sanitize;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const writerId = detail.nickname;
 
-  const userConfirm = user === writerId;
+  const writerId = detail.nickname;
+  const NICKNAME = localStorage.getItem("nickname");
+  const userConfirm = NICKNAME === writerId;
 
   useEffect(() => {
     if (id !== undefined) {
@@ -141,6 +144,7 @@ const PostDetail = () => {
             <div className="title">{detail?.title}</div>
           </div>
           <div className="detail-btns">
+
             <h4 className="detail-nickname">{writerId}</h4>
             <div>조회수:{detail?.viewCount}</div>
             <div className="heart-num">

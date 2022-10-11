@@ -21,7 +21,7 @@ import InterestModal from "../postmodal/InterestModal";
 import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
-const AddPost = ({ props }) => {
+const AddPost = () => {
   const inputFocus = useRef(null);
   const dispatch = useDispatch();
   const { detail } = useSelector((state) => state?.posts);
@@ -29,36 +29,17 @@ const AddPost = ({ props }) => {
   const writerId = detail.nickname;
   const isEdit = id !== undefined;
   const NICKNAME = localStorage.getItem("nickname");
-
+  
+ 
   window.Buffer = window.Buffer || require("buffer").Buffer;
   const editorRef = useRef();
 
-  const [title, setTitle] = useState("");
-  const [editor, setEditor] = useState("");
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
   });
-  const [isActive, setIsActive] = useState(false);
-  const content = editor;
-
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
-  };
-  const handleEditor = (e) => {
-    const innerText = editorRef.current?.getInstance().getHTML();
-    setEditor(innerText);
-  };
-  const isSubmitPost = () => {
-    if (content !== "<p><br></p>" && title !== "") {
-      if (content.length > 12 && title.length >= 3) {
-        setIsActive(true);
-      } else {
-        setIsActive(false);
-      }
-    }
-  };
-
+  const [title, setTitle] = useState("");
+  const [editor, setEditor] = useState("");
   const [checkedItems, setCheckedItems] = useState({
     interest: "",
     region: "",
@@ -69,7 +50,17 @@ const AddPost = ({ props }) => {
   const [openRegionModal, setOpenRegionModal] = useState(false);
   const [openInterestModal, setOpenInterestModal] = useState(false);
   const [openCostModal, setOpenCostModal] = useState(false);
+  
+  const openInterestNextModal =() => {
+    setOpenInterestModal(false);
+    setOpenRegionModal(true);
+  }
+  const openRegionNextModal =() => {
+    setOpenRegionModal(false);
+    setOpenCostModal(true);
+  }
 
+  console.log(checkedItems);
   useEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
@@ -78,11 +69,6 @@ const AddPost = ({ props }) => {
           editorRef.current?.getInstance().setHTML(response.payload.content)
         );
         setOverlayData(response.payload.mapData);
-        setCheckedItems({
-          interest: response.payload.tags[0],
-          region: response.payload.tags[1],
-          cost: response.payload.tags[2],
-        });
       });
     } else {
       setTitle("");
@@ -96,10 +82,6 @@ const AddPost = ({ props }) => {
     tags: tags,
   };
 
-  useEffect(() => {
-    inputFocus.current.focus();
-  }, []);
-
   return (
     <>
       {NICKNAME ? (
@@ -111,16 +93,17 @@ const AddPost = ({ props }) => {
               type="text"
               name="title"
               value={title}
-              onChange={handleTitle}
-              onKeyUp={isSubmitPost}
+              onChange={(event) => setTitle(event.target.value)}
+              required
               ref={inputFocus}
             />
           </div>
           <div className="tagsbox">
-            <button
-              className="tagmodalbtn"
+            <button className="tagmodalbtn"
               onClick={() => {
                 setOpenInterestModal(true);
+                setOpenRegionModal(false);
+                setOpenCostModal(false);
               }}
             >
               관심사
@@ -130,28 +113,33 @@ const AddPost = ({ props }) => {
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
                 closeInterestModal={setOpenInterestModal}
+                openInterestNextModal={openInterestNextModal}
               />
             )}
-            <button
-              className="tagmodalbtn"
+            <button className="tagmodalbtn"
               onClick={() => {
                 setOpenRegionModal(true);
+                setOpenInterestModal(false);
+                setOpenCostModal(false);
               }}
             >
               지역
             </button>
-
+           
             {openRegionModal && (
               <RegionModal
                 closeModal={setOpenRegionModal}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
+                openRegionNextModal={openRegionNextModal}
               />
             )}
-            <button
-              className="tagmodalbtn"
+            <button className="tagmodalbtn"
+
               onClick={() => {
                 setOpenCostModal(true);
+                setOpenRegionModal(false);
+                setOpenInterestModal(false);
               }}
             >
               여행경비

@@ -5,8 +5,11 @@ export default function InterestModal({
   checkedItems,
   setCheckedItems,
   closeInterestModal,
+  openInterestNextModal,
 }) {
   const [isChecked, setIsChecked] = useState(false); //체크여부
+
+  
 
   const interestedList = [
     { id: 1, tag: "혼자여행" },
@@ -45,25 +48,36 @@ export default function InterestModal({
                 value={item.tag}
                 onChange={changeHandler}
               />
-              <div>{item.tag}</div>
+              <div
+               style=
+               {{width:"40%",
+               position:"relative",
+               display:"inline-block",
+               textAlign:"center",
+               margin:"5px 10px 5px 10px",
+               borderRadius:"22px",
+               background:"#BDE8F8"
+       
+ 
+               }}>{item.tag}</div>
             </label>
           ))}
         </div>
         <div className="buttonbox">
           <button
-            className="닫기버튼"
+            className="closebtn"
             onClick={() => closeInterestModal(false)}
           >
             취소
           </button>
           <button
-            className="다음"
+            className="closebtn"
             onClick={() => {
-              closeInterestModal(false);
+              openInterestNextModal();
               submitHandler();
             }}
           >
-            다음단게
+            다음단계
           </button>
         </div>
       </div>

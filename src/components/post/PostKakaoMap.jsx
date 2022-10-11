@@ -9,14 +9,19 @@ import submitpost from "../../asset/submitpost.png";
 import noSubmitBtn from "../../asset/noSubmitBtn.png";
 import Swal from "sweetalert2";
 
+
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
   // console.log(props.props);
   const navigate = useNavigate();
+  const nickname = localStorage.getItem("nickname");
+  const writerId = props.props.writerId;
   const isEdit = props.props.isEdit;
+  // const userConfirm = nickname === writerId;
   const managerRef = useRef(null);
   const id = props.props.id;
+  const editMap = props.props.editMap;
   const overlayData = props.props.overlayData;
   const setOverlayData = props.props.setOverlayData;
   const isActive = props.props.isActive;

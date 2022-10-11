@@ -20,6 +20,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllCategoryList from "../components/category/AllCategoryList";
 
 const Router = () => {
+  const [overlayData, setOverlayData] = useState({
+    marker: [],
+    polyline: [],
+  });
+
   return (
     <div>
       <BrowserRouter>
@@ -42,9 +47,36 @@ const Router = () => {
           <Route path="/myplanpost" element={<MyPlanPostPage />} exact />
           <Route path="/mypostlist" element={<MyPostsListPage />} exact />
           <Route path="*" element={<div>없는 페이지입니다.</div>} />
-          <Route path="/addpost" element={<AddPostPage />} exact />
-          <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
-          <Route path="/postdetail/:id" element={<PostDetailPage />} exact />
+          <Route
+            path="/addpost"
+            element={
+              <AddPostPage
+                overlayData={overlayData}
+                setOverlayData={setOverlayData}
+              />
+            }
+            exact
+          />
+          <Route
+            path="/addpost/edit/:id"
+            element={
+              <AddPostPage
+                overlayData={overlayData}
+                setOverlayData={setOverlayData}
+              />
+            }
+            exact
+          />
+          <Route
+            path="/postdetail/:id"
+            element={
+              <PostDetailPage
+                overlayData={overlayData}
+                setOverlayData={setOverlayData}
+              />
+            }
+            exact
+          />
         </Routes>
       </BrowserRouter>
     </div>
