@@ -12,6 +12,7 @@ const Headers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const myinfo = useSelector((state) => state?.myinfo?.myinfo);
+
   useEffect(() => {
     dispatch(getMyinfo());
   }, []);

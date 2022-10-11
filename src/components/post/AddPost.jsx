@@ -21,7 +21,7 @@ import InterestModal from "../postmodal/InterestModal";
 import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
-const AddPost = () => {
+const AddPost = ({ props }) => {
   const inputFocus = useRef(null);
   const dispatch = useDispatch();
   const { detail } = useSelector((state) => state?.posts);
@@ -29,17 +29,36 @@ const AddPost = () => {
   const writerId = detail.nickname;
   const isEdit = id !== undefined;
   const NICKNAME = localStorage.getItem("nickname");
-  
- 
+
   window.Buffer = window.Buffer || require("buffer").Buffer;
   const editorRef = useRef();
 
+  const [title, setTitle] = useState("");
+  const [editor, setEditor] = useState("");
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
   });
-  const [title, setTitle] = useState("");
-  const [editor, setEditor] = useState("");
+  const [isActive, setIsActive] = useState(false);
+  const content = editor;
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value);
+  };
+  const handleEditor = (e) => {
+    const innerText = editorRef.current?.getInstance().getHTML();
+    setEditor(innerText);
+  };
+  const isSubmitPost = () => {
+    if (content !== "<p><br></p>" && title !== "") {
+      if (content.length > 12 && title.length >= 3) {
+        setIsActive(true);
+      } else {
+        setIsActive(false);
+      }
+    }
+  };
+
   const [checkedItems, setCheckedItems] = useState({
     interest: "",
     region: "",
@@ -50,17 +69,16 @@ const AddPost = () => {
   const [openRegionModal, setOpenRegionModal] = useState(false);
   const [openInterestModal, setOpenInterestModal] = useState(false);
   const [openCostModal, setOpenCostModal] = useState(false);
-  
-  const openInterestNextModal =() => {
+
+  const openInterestNextModal = () => {
     setOpenInterestModal(false);
     setOpenRegionModal(true);
-  }
-  const openRegionNextModal =() => {
+  };
+  const openRegionNextModal = () => {
     setOpenRegionModal(false);
     setOpenCostModal(true);
-  }
+  };
 
-  console.log(checkedItems);
   useEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
@@ -69,6 +87,11 @@ const AddPost = () => {
           editorRef.current?.getInstance().setHTML(response.payload.content)
         );
         setOverlayData(response.payload.mapData);
+        setCheckedItems({
+          interest: response.payload.tags[0],
+          region: response.payload.tags[1],
+          cost: response.payload.tags[2],
+        });
       });
     } else {
       setTitle("");
@@ -82,6 +105,10 @@ const AddPost = () => {
     tags: tags,
   };
 
+  useEffect(() => {
+    inputFocus.current.focus();
+  }, []);
+
   return (
     <>
       {NICKNAME ? (
@@ -93,17 +120,16 @@ const AddPost = () => {
               type="text"
               name="title"
               value={title}
-              onChange={(event) => setTitle(event.target.value)}
-              required
+              onChange={handleTitle}
+              onKeyUp={isSubmitPost}
               ref={inputFocus}
             />
           </div>
           <div className="tagsbox">
-            <button className="tagmodalbtn"
+            <button
+              className="tagmodalbtn"
               onClick={() => {
                 setOpenInterestModal(true);
-                setOpenRegionModal(false);
-                setOpenCostModal(false);
               }}
             >
               관심사
@@ -116,7 +142,8 @@ const AddPost = () => {
                 openInterestNextModal={openInterestNextModal}
               />
             )}
-            <button className="tagmodalbtn"
+            <button
+              className="tagmodalbtn"
               onClick={() => {
                 setOpenRegionModal(true);
                 setOpenInterestModal(false);
@@ -125,7 +152,7 @@ const AddPost = () => {
             >
               지역
             </button>
-           
+
             {openRegionModal && (
               <RegionModal
                 closeModal={setOpenRegionModal}
@@ -134,8 +161,8 @@ const AddPost = () => {
                 openRegionNextModal={openRegionNextModal}
               />
             )}
-            <button className="tagmodalbtn"
-
+            <button
+              className="tagmodalbtn"
               onClick={() => {
                 setOpenCostModal(true);
                 setOpenRegionModal(false);
