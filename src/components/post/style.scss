@@ -13,27 +13,26 @@
   border-bottom: 1px solid rgba(215, 215, 215, 0.933);
 }
 
-.tagmodalbtn{
-width: 30%;
-height:4vh;
-margin: 6px 6px 6px 6px;
-display: inline-block;
-justify-content: center;
-align-items: center;
-border-radius: 22px;
-border: none;
-color:white;
-font-weight: bold;
-font-size: 18px;
-background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
-&:focus {
-  border: 5px solid linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
-  color: #555555;
+.tagmodalbtn {
+  width: 30%;
+  height: 4vh;
+  margin: 6px 6px 6px 6px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
+  border: none;
+  color: white;
   font-weight: bold;
   font-size: 18px;
-  background:#fff;
-}
-
+  background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
+  &:focus {
+    border: 5px solid linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
+    color: #555555;
+    font-weight: bold;
+    font-size: 18px;
+    background: #fff;
+  }
 }
 .editor-wrapper {
   position: relative;
@@ -150,11 +149,8 @@ background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
   gap: 10px;
   align-items: center;
   bottom: 20px;
-
   display: grid;
-
   grid-template-columns: 70% 30% 5%;
-
 }
 .post-title {
   overflow: hidden;
@@ -171,7 +167,6 @@ background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
   white-space: nowrap;
   width: 20%;
 }
-
 .heart-btn-img {
   width: 20px;
 }
@@ -179,7 +174,6 @@ background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
   width: 100%;
   height: 250px;
   margin-bottom: 5%;
-
   & img {
     object-fit: cover;
   }
@@ -190,6 +184,7 @@ background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
   width: 99.5%;
   height: 75%;
   overflow: auto;
+  // background-color: #f5f5f5;
 }
 .detail-tag {
   width: 90%;
@@ -206,10 +201,10 @@ background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
   text-overflow: ellipsis;
 }
 .detail-title {
+  margin-top: 5%;
   width: 100%;
   height: 6%;
   font-size: x-large;
-
 }
 .title {
   text-align: center;
@@ -226,6 +221,9 @@ background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
 .heart-num {
   display: flex;
   align-items: baseline;
+}
+.number {
+  margin-bottom: 10%;
 }
 .edit-delete {
   display: flex;
@@ -255,27 +253,27 @@ background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
   gap: 10px;
   border: none;
   display: grid;
-  grid-template-columns: 30% 20% 10% 10% 10%;
+  grid-template-columns: 30% 26% 10% 7% 7%;
 }
 .edit-btn {
   background: none;
   border: none;
 }
 .edit-detail-icon {
-  width: 35px;
-  height: 30px;
+  width: 30px;
+  height: 25px;
 }
 .delete-btn {
   background: none;
   border: none;
 }
 .delete-icon {
-  width: 23px;
-  height: 28px;
+  width: 18px;
+  height: 22px;
   cursor: pointer;
 }
 .html-wrapper {
-  margin-top: 10% !important;
+  margin-top: 3% !important;
   width: 95%;
   margin: auto;
   overflow: auto;
@@ -284,12 +282,14 @@ background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
   }
 }
 .liked-post-btn {
+  margin-left: 15%;
   border: none;
   background: none;
 }
 .liked-post-icon {
-  width: 25px;
-  height: 27px;
+  margin-bottom: 10%;
+  width: 22px;
+  height: 20px;
   cursor: pointer;
 }
 .report-post-btn {
@@ -297,8 +297,8 @@ background: linear-gradient(to left, #F5C9E0 30%,#47AFDB 70%);
   background: none;
 }
 .report-post-icon {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 //PostCommentList.jsx

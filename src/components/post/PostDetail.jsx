@@ -22,21 +22,20 @@ const { kakao } = window;
 const PostDetail = () => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
+
   const [user, setUser] = useState();
   const [center, setCenter] = useState();
   const [poly, setPoly] = useState();
-
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
   });
 
-  function pointsToPath(points) {
-    return points.map((point) => ({
-      lat: point.y,
-      lng: point.x,
-    }));
-  }
+  const sanitizer = dompurify.sanitize;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const writerId = detail.nickname;
+  const userConfirm = user === writerId;
 
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
@@ -51,7 +50,6 @@ const PostDetail = () => {
   }, []);
 
   const mapRef = useRef();
-
   const bounds = useMemo(() => {
     const bounds = new kakao.maps.LatLngBounds();
 
@@ -67,12 +65,12 @@ const PostDetail = () => {
     return bounds;
   }, [center, poly]);
 
-  const sanitizer = dompurify.sanitize;
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const writerId = detail.nickname;
-
-  const userConfirm = user === writerId;
+  function pointsToPath(points) {
+    return points.map((point) => ({
+      lat: point.y,
+      lng: point.x,
+    }));
+  }
 
   useEffect(() => {
     if (id !== undefined) {
@@ -147,7 +145,7 @@ const PostDetail = () => {
               <button onClick={onLike} className="liked-post-btn">
                 <img src={heart} className="liked-post-icon" alt="관심게시글" />
               </button>
-              {detail?.heartNum}
+              <p>{detail?.heartNum}</p>
             </div>
 
             {userConfirm ? null : (
@@ -261,13 +259,14 @@ const PostDetail = () => {
                     width: "100%",
                     height: "300px",
                   }}
-                  level={3} // 지도의 확대 레벨
+                  level={4} // 지도의 확대 레벨
                   ref={mapRef}
                 >
                   {center?.map((point) => (
                     <MapMarker
                       key={`${point.y}-${point.x}`}
                       position={{ lat: point.y, lng: point.x }}
+                      text="xxx"
                     />
                   ))}
 
