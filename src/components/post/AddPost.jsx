@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
+import { numberCheck } from "../../redux/modules/posts";
 
 import PostSearchPlace from "./PostSearchPlace";
 
@@ -20,19 +21,23 @@ import InterestModal from "../postmodal/InterestModal";
 import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
-const AddPost = ({ props }) => {
+const AddPost = () => {
+  const inputFocus = useRef(null);
   const dispatch = useDispatch();
   const { detail } = useSelector((state) => state?.posts);
-  const writerId = detail.nickname;
-  const NICKNAME = localStorage.getItem("nickname");
-  const overlayData = props.overlayData;
-  const setOverlayData = props.setOverlayData;
-  window.Buffer = window.Buffer || require("buffer").Buffer;
-
   const { id } = useParams();
+  const writerId = detail.nickname;
   const isEdit = id !== undefined;
+  const NICKNAME = localStorage.getItem("nickname");
+  
+ 
+  window.Buffer = window.Buffer || require("buffer").Buffer;
   const editorRef = useRef();
 
+  const [overlayData, setOverlayData] = useState({
+    marker: [],
+    polyline: [],
+  });
   const [title, setTitle] = useState("");
   const [editor, setEditor] = useState("");
   const [checkedItems, setCheckedItems] = useState({
@@ -45,17 +50,7 @@ const AddPost = ({ props }) => {
   const [openRegionModal, setOpenRegionModal] = useState(false);
   const [openInterestModal, setOpenInterestModal] = useState(false);
   const [openCostModal, setOpenCostModal] = useState(false);
-
-  const openInterestNextModal =() => {
-    setOpenInterestModal(false);
-    setOpenRegionModal(true);
-  }
-  const openRegionNextModal =() => {
-    setOpenRegionModal(false);
-    setOpenCostModal(true);
-  }
-
-
+  console.log(checkedItems);
   useEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
@@ -90,6 +85,7 @@ const AddPost = ({ props }) => {
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               required
+              ref={inputFocus}
             />
           </div>
           <div className="tagsbox">
@@ -149,30 +145,18 @@ const AddPost = ({ props }) => {
           <div className="editor-wrapper">
             <Editor
               ref={editorRef}
-              placeholder="
-            ❤내돈내여 여행공유 작성 tip ❤                                                      
-              ❤ 태그는 3개 선택 할 수 있어요!                                                      
-              ❤ …을 누르면 사진을 업로드 할 수 있어요!                                      
-              ❤ 사진 크기는 428*300px 에 최적화 되어있습니다.                          
-              ❤ 지도 하단 여행경로 버튼을 누르면 여행 경로를 그릴 수 있어요!           
-              ❤ 출발지 | 도착지 버튼으로 출발지와 도착지를 표시 해 보세요!           
-              ❤ 경로업데이트 | 여행경로수정 버튼으로 경로를 지도에 저장해주세요!   
-              ❤ 게시물작성 또는 게시물수정 버튼을 누르면 공유 완료!
-              "
-              initialValue=" "
+              placeholder=""
+              initialValue=""
               previewStyle="vertical"
               height="calc(100vh - 390px)"
               initialEditType="wysiwyg"
               useCommandShortcut={false}
-              onChange={() => {
-                const innerText = editorRef.current?.getInstance().getHTML();
-                setEditor(innerText);
-              }}
+              onChange={handleEditor}
+              onKeyup={isSubmitPost}
               hideModeSwitch={true}
               plugins={[colorSyntax]}
               language="ko-KR"
               name="editor"
-              required
               hooks={{
                 addImageBlobHook: async (blob, callback) => {
                   const config = {
@@ -199,6 +183,7 @@ const AddPost = ({ props }) => {
                 id={id}
                 data={data}
                 writerId={writerId}
+                isActive={isActive}
                 isEdit={isEdit}
                 overlayData={overlayData}
                 setOverlayData={setOverlayData}

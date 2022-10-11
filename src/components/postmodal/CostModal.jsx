@@ -20,7 +20,7 @@ export default function CostModal({
     if (isChecked) {
       setCheckedItems(checkedItems);
     }
-    console.log(e.target.value);
+
     setIsChecked(!isChecked);
     setCheckedItems({ ...checkedItems, cost: value });
   };
@@ -54,7 +54,6 @@ export default function CostModal({
               }}>{item.tag}</div>
             </label>
           ))}
-
         </div>
         <div className="buttonbox">
           <button className="closebtn" onClick={() => closeModal(false)}>

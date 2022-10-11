@@ -28,7 +28,7 @@ export default function InterestModal({
     if (isChecked) {
       setCheckedItems(checkedItems);
     }
-    console.log(e.target.value);
+
     setIsChecked(!isChecked);
     setCheckedItems({ ...checkedItems, interest: value });
   };

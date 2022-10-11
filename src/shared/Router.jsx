@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AddPostPage from "../pages/AddPostPage";
 import KaKaoLoading from "../pages/KaKaoLoading";
 import NaverLoading from "../pages/NaverLoading";
