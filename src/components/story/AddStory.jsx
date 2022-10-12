@@ -16,7 +16,7 @@ const AddStory = () => {
   const [videos, setVideos] = useState([]);
   const [preview, setPreview] = useState("");
 
-  const FILE_SIZE_MAX_LIMIT = 10000;
+  // const FILE_SIZE_MAX_LIMIT = 10000;
 
   const resetStates = () => {
     setVideos();
@@ -25,18 +25,18 @@ const AddStory = () => {
   const onChangeVideos = (e) => {
     console.log(e.target.files);
     setVideos(e.target.files[0]);
-    if (videos.size >= FILE_SIZE_MAX_LIMIT) {
-      Swal.fire({
-        icon: "error",
-        text: "200MB이하의 영상만 첨부 가능합니다.",
-        confirmButtonColor: "#BDE8F8",
-        confirmButtonText: "확인",
-      }).then((result) => {
-        if (result.isConfirmed) {
-        }
-      });
-      return;
-    }
+    // if (videos.size >= FILE_SIZE_MAX_LIMIT) {
+    //   Swal.fire({
+    //     icon: "error",
+    //     text: "200MB이하의 영상만 첨부 가능합니다.",
+    //     confirmButtonColor: "#BDE8F8",
+    //     confirmButtonText: "확인",
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //     }
+    //   });
+    //   return;
+    // }
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
 
