@@ -1,5 +1,5 @@
-import AdminLogin from "../components/admin/AdminLogin";
-import AdminHeaders from "../components/admin/AdminHeaders";
+import AdminLogin from "../components/adminLogin/AdminLogin";
+import AdminHeaders from "../components/adminLogin/AdminHeaders";
 import PageContainer from "../components/wrapper/PageContainer";
 
 const LoginAdmin = () => {
