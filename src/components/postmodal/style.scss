@@ -29,12 +29,18 @@
   
 .buttonbox{
 display: inline-block;
+align-content: center;
+justify-content: center;
 width: 100%;
 height: 20%;
 
 
 }
-.닫기버튼 {
-    display: inline-block;
+.closebtn {
+    display: inline-flex;
+    margin: 5% 2% auto 2%;
+    align-content: center;
+    justify-content: center;
 
 }
+

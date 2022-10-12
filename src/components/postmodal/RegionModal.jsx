@@ -5,9 +5,10 @@ export default function RegionModal({
   closeModal,
   checkedItems,
   setCheckedItems,
+  openRegionNextModal,
+  regionChecked,
+  setRegionChecked,
 }) {
-  const [isChecked, setIsChecked] = useState(false); //체크여부
-
   const regionList = [
     { id: 1, tag: "전체" },
     { id: 2, tag: "서울/경기" },
@@ -24,10 +25,10 @@ export default function RegionModal({
     { id: 13, tag: "경상도" },
     { id: 14, tag: "제주도" },
   ];
-
+  const [isChecked, setIsChecked] = useState(false);
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    if (isChecked) {
+    if (regionChecked) {
       setCheckedItems(checkedItems);
     }
     if (checkedItems.size > 1) {
@@ -36,7 +37,7 @@ export default function RegionModal({
       e.preventDefault();
       window.alert("최대 3개까지 선택가능합니다");
     } else {
-      setIsChecked(!isChecked);
+      setRegionChecked(!regionChecked);
       setCheckedItems({ ...checkedItems, region: value });
     }
   };
@@ -57,26 +58,37 @@ export default function RegionModal({
                 value={item.tag}
                 onChange={changeHandler}
               />
-              <div>{item.tag}</div>
+              <div
+                style={{
+                  width: "40%",
+                  position: "relative",
+                  display: "inline-block",
+                  textAlign: "center",
+                  margin: "5px 10px 5px 10px",
+                  borderRadius: "22px",
+                  background: "#BDE8F8",
+                }}
+              >
+                {item.tag}
+              </div>
             </label>
           ))}
         </div>
         <div className="buttonbox">
-          <button className="닫기버튼" onClick={() => closeModal(false)}>
-            취소
+          <button className="closebtn" onClick={() => closeModal(false)}>
+            닫기
           </button>
           <button
-            className="다음"
+            className="closebtn"
             onClick={() => {
-              closeModal(false);
+              openRegionNextModal();
               submitHandler();
             }}
           >
-            다음단게
+            다음단계
           </button>
         </div>
       </div>
     </div>
   );
 }
-

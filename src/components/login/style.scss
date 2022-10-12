@@ -5,6 +5,12 @@
   gap: 10px;
 }
 
+.LogoAdmin {
+  width: 95%;
+  height: 60%;
+  margin: 27% 20% 0 27%;
+}
+
 .loginButton {
   border: 2px solid white;
   border-radius: 5px;
@@ -13,4 +19,24 @@
   font-weight: 900;
   font-size: 15px;
   color: white;
+}
+
+.Admin-SignBox {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin: 5% 2% 0 10%;
+}
+.Admin-Signbtn {
+  font-size: 18px;
+  position: relative;
+  margin-left: 5rem;
+  border: none;
+  background: none;
+  height: 10%;
+  font-family: "Noto Sans KR", sans-serif;
+  &:hover {
+    font-weight: bold;
+    color: #47afdb;
+  }
 }

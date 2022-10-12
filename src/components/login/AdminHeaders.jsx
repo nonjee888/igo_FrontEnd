@@ -24,7 +24,7 @@ const Headers = () => {
       title: "로그아웃",
       text: "정말로 로그아웃하시겠어요?",
       showCancelButton: true,
-      confirmButtonColor: "#47AFDB",
+      confirmButtonColor: "#80bbd0",
       cancelButtonColor: "#D9D9D9",
       confirmButtonText: "확인",
       cancelButtonText: "취소",
@@ -48,7 +48,7 @@ const Headers = () => {
     <div className="Header-wrapper">
       <div className="HeaderForm">
         <img
-          className="Logo"
+          className="LogoAdmin"
           onClick={() => {
             navigate("/post/all"); // 나중에 /recommend로 바꾸기
           }}
@@ -57,18 +57,18 @@ const Headers = () => {
         />
       </div>
       {NICKNAME === null ? (
-        <div className="Sign-box">
+        <div className="Admin-SignBox">
           <button
-            className="Signbtn"
+            className="Admin-Signbtn"
             onClick={() => {
               navigate("/");
             }}
           >
-            로그인/회원가입
+            소셜로그인하기
           </button>
         </div>
       ) : (
-        <div className="Sign-box">
+        <div className="Admin-SignBox">
           {myinfo === undefined ? (
             <div className="hearders-nickWrap">
               <p

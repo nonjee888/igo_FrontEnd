@@ -29,7 +29,7 @@ export default function CostPostList() {
 //
      const getCostList =async () => {
         const response = await instance.get(`/api/post/cost?type=cost`);
-        console.log(response)
+     
         return response.data;
       };
       

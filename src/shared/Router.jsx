@@ -1,8 +1,8 @@
-import { useState } from "react";
 import AddPostPage from "../pages/AddPostPage";
 import KaKaoLoading from "../pages/KaKaoLoading";
 import NaverLoading from "../pages/NaverLoading";
 import Loginpage from "../pages/Loginpage";
+import LoginAdmin from "../pages/LoginAdmin";
 import ChoiceCategory from "../pages/ChoiceCategory";
 import MainRecommend from "../pages/MainRecommend";
 //카테고리추가해서 페이지로 이동할거
@@ -21,11 +21,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllCategoryList from "../components/category/AllCategoryList";
 
 const Router = () => {
-  const [overlayData, setOverlayData] = useState({
-    marker: [],
-    polyline: [],
-  });
-
   return (
     <div>
       <BrowserRouter>
@@ -33,6 +28,7 @@ const Router = () => {
           <Route path="/kakaoloading" element={<KaKaoLoading />} exact />
           <Route path="/naverloading" element={<NaverLoading />} exact />
           <Route path="/" element={<Loginpage />} exact />
+          <Route path="/admin" element={<LoginAdmin />} exact />
           <Route path="/choice" element={<ChoiceCategory />} exact />
           <Route path="/recommend" element={<MainRecommend />} exact />
           <Route path="/post/:category" element={<AllCategoryList />} exact />
@@ -48,36 +44,9 @@ const Router = () => {
           <Route path="/myplanpost" element={<MyPlanPostPage />} exact />
           <Route path="/mypostlist" element={<MyPostsListPage />} exact />
           <Route path="*" element={<div>없는 페이지입니다.</div>} />
-          <Route
-            path="/addpost"
-            element={
-              <AddPostPage
-                overlayData={overlayData}
-                setOverlayData={setOverlayData}
-              />
-            }
-            exact
-          />
-          <Route
-            path="/addpost/edit/:id"
-            element={
-              <AddPostPage
-                overlayData={overlayData}
-                setOverlayData={setOverlayData}
-              />
-            }
-            exact
-          />
-          <Route
-            path="/postdetail/:id"
-            element={
-              <PostDetailPage
-                overlayData={overlayData}
-                setOverlayData={setOverlayData}
-              />
-            }
-            exact
-          />
+          <Route path="/addpost" element={<AddPostPage />} exact />
+          <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
+          <Route path="/postdetail/:id" element={<PostDetailPage />} exact />
         </Routes>
       </BrowserRouter>
     </div>
