@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Stories from "react-insta-stories";
 import { useDispatch, useSelector } from "react-redux";
 import { getStory } from "../../redux/modules/story";
 //스와이퍼
@@ -8,16 +9,18 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
+
 const VideoStory = () => {
   const dispatch = useDispatch();
   const story = useSelector((state) => state.story?.story);
-  console.log(story);
+  // console.log(story);
 
   // 리덕스에서 리스트를 로딩
   useEffect(() => {
     dispatch(getStory());
   }, [dispatch]);
 
+  const [stories, setStories] = React.useState(initialStories);
   return (
     <div className="All">
       <Swiper
@@ -50,6 +53,7 @@ const VideoStory = () => {
         })}
       </Swiper>
     </div>
+
   );
 };
 

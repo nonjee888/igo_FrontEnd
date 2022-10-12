@@ -12,6 +12,28 @@
   color: rgb(168, 166, 166);
   border-bottom: 1px solid rgba(215, 215, 215, 0.933);
 }
+
+.tagmodalbtn {
+  width: 30%;
+  height: 4vh;
+  margin: 6px 6px 6px 6px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
+  &:focus {
+    border: 5px solid linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
+    color: #555555;
+    font-weight: bold;
+    font-size: 18px;
+    background: #fff;
+  }
+}
 .editor-wrapper {
   position: relative;
   max-width: 428px;
@@ -25,6 +47,14 @@
   right: 0px !important;
 }
 .submit-post {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 120px;
+  height: 40px;
+  background: none;
+  border: none;
+}
+.noSubmit-post {
   margin-top: 10px;
   margin-bottom: 10px;
   width: 120px;
@@ -46,6 +76,11 @@
   justify-content: center;
 }
 .submit-icon {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.noSubmit-icon {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -114,8 +149,24 @@
   gap: 10px;
   align-items: center;
   bottom: 20px;
+  display: grid;
+  grid-template-columns: 70% 30% 5%;
 }
-
+.post-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 50%;
+  font-size: 20px;
+  font-weight: 900;
+  color: black;
+}
+.post-nick {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 20%;
+}
 .heart-btn-img {
   width: 20px;
 }
@@ -123,7 +174,6 @@
   width: 100%;
   height: 250px;
   margin-bottom: 5%;
-
   & img {
     object-fit: cover;
   }
@@ -134,8 +184,9 @@
   width: 99.5%;
   height: 75%;
   overflow: auto;
+  // background-color: #f5f5f5;
 }
-.tag-wrapper {
+.detail-tag {
   width: 90%;
   margin: auto;
   display: flex;
@@ -144,26 +195,45 @@
   flex-wrap: wrap;
   border: 1px solid transparent;
 }
+.detail-nickname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .detail-title {
-  margin-top: 6%;
+  margin-top: 5%;
   width: 100%;
-  font-size: larger;
+  height: 6%;
+  font-size: x-large;
 }
 .title {
   text-align: center;
   margin: 5px auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .detail-content {
   width: 100%;
   height: 100%;
   overflow: auto;
 }
+.heart-num {
+  display: flex;
+  align-items: baseline;
+}
+.number {
+  margin-bottom: 10%;
+}
+.edit-delete {
+  display: flex;
+}
 .pic-wrapper {
   width: 100%;
   position: relative;
 }
 .img-container {
-  margin: 10% 5% 5% 5%;
+  margin: 5%;
   width: 90%;
   height: 100%;
   border-radius: 15px;
@@ -176,47 +246,50 @@
   height: 50%;
 }
 .detail-btns {
-  margin-left: 25%;
   padding: 5px 0 5px 0;
+  text-align: center;
   align-items: baseline;
   display: flex;
   gap: 10px;
   border: none;
+  display: grid;
+  grid-template-columns: 30% 26% 10% 7% 7%;
 }
 .edit-btn {
   background: none;
   border: none;
 }
 .edit-detail-icon {
-  width: 35px;
-  height: 30px;
+  width: 30px;
+  height: 25px;
 }
 .delete-btn {
   background: none;
   border: none;
 }
 .delete-icon {
-  width: 23px;
-  height: 28px;
+  width: 18px;
+  height: 22px;
   cursor: pointer;
 }
 .html-wrapper {
-  max-width: 428px;
+  margin-top: 3% !important;
   width: 95%;
-  margin: 10% 0 0 2.8%;
-
+  margin: auto;
   overflow: auto;
   & img {
     width: 100%;
   }
 }
 .liked-post-btn {
+  margin-left: 15%;
   border: none;
   background: none;
 }
 .liked-post-icon {
-  width: 25px;
-  height: 22px;
+  margin-bottom: 10%;
+  width: 22px;
+  height: 20px;
   cursor: pointer;
 }
 .report-post-btn {
@@ -224,8 +297,8 @@
   background: none;
 }
 .report-post-icon {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 //PostCommentList.jsx
@@ -255,7 +328,7 @@
   justify-content: space-between;
   flex-direction: row;
   height: 100px;
-  padding: 0 20px;
+  padding: 0 10px;
   border-top: 1px solid #eee;
 }
 .profileImg {
@@ -268,12 +341,25 @@
 .nickname {
   text-align: center;
 }
-
+.userNick {
+  width: 100%;
+}
+.map-detail {
+  background: linear-gradient(to left, #4eb4d8, #f5c9e0);
+  border: none;
+  width: 100px;
+  height: 30px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 900;
+  float: right;
+  margin-right: 3%;
+}
 //PostComment.jsx
 .commentContainer {
   max-width: 428px;
   position: fixed;
-  bottom: 10%;
+  bottom: 7%;
   width: 100%;
   z-index: 1;
   transition: all 1000ms;
@@ -284,8 +370,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: row;
-  height: 100px;
+  height: 25%;
   padding: 0 20px;
   border-top: 1px solid #eee;
 }
@@ -302,7 +387,6 @@
   bottom: 0;
   background-color: white;
   max-width: 428px;
-  z-index: 1;
 }
 
 //글쓰기,관심목록,마이페이지 담긴 아이콘박스

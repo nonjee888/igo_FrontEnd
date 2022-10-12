@@ -172,4 +172,5 @@ export const posts = createSlice({
   },
 });
 
+export const { numberCheck } = posts.actions;
 export default posts.reducer;
