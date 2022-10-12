@@ -65,7 +65,9 @@ const AddPost = ({ props }) => {
     cost: "",
   });
   const tags = Object.values(checkedItems);
-
+  const [regionChecked, setRegionChecked] = useState(false);
+  const [interestChecked, setInterestChecked] = useState(false);
+  const [costChecked, setCostChecked] = useState(false);
   const [openRegionModal, setOpenRegionModal] = useState(false);
   const [openInterestModal, setOpenInterestModal] = useState(false);
   const [openCostModal, setOpenCostModal] = useState(false);
@@ -78,7 +80,7 @@ const AddPost = ({ props }) => {
     setOpenRegionModal(false);
     setOpenCostModal(true);
   };
-
+  console.log(checkedItems);
   useEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
@@ -132,10 +134,12 @@ const AddPost = ({ props }) => {
                 setOpenInterestModal(true);
               }}
             >
-              관심사
+              {interestChecked ? checkedItems.interest : "관심사"}
             </button>
             {openInterestModal && (
               <InterestModal
+                interestChecked={interestChecked}
+                setInterestChecked={setInterestChecked}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
                 closeInterestModal={setOpenInterestModal}
@@ -150,11 +154,13 @@ const AddPost = ({ props }) => {
                 setOpenCostModal(false);
               }}
             >
-              지역
+              {regionChecked ? checkedItems.region : "지역"}
             </button>
 
             {openRegionModal && (
               <RegionModal
+                regionChecked={regionChecked}
+                setRegionChecked={setRegionChecked}
                 closeModal={setOpenRegionModal}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
@@ -169,10 +175,12 @@ const AddPost = ({ props }) => {
                 setOpenInterestModal(false);
               }}
             >
-              여행경비
+              {costChecked ? checkedItems.cost : "여행경비"}
             </button>
             {openCostModal && (
               <CostModal
+                costChecked={costChecked}
+                setCostChecked={setCostChecked}
                 closeModal={setOpenCostModal}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}

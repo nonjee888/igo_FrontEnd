@@ -24,7 +24,7 @@ const Search = () => {
 
   const getSearchTerm = () => {
     if (searchTerm === "") {
-      Swal({
+      new Swal({
         title: "키워드를 입력해주세요!",
         icon: "warning",
         closeOnClickOutside: false,
@@ -34,9 +34,9 @@ const Search = () => {
     dispatch(searchPosts(searchTerm));
     navigate("/search/" + searchTerm);
   };
-
+  console.log(searchTerm);
   const { isLoading, error, posts } = useSelector((state) => state?.posts);
-
+  console.log(posts);
   useEffect(() => {
     dispatch(searchPosts(searchTerm));
   }, [dispatch]);
