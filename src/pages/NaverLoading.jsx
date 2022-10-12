@@ -28,12 +28,13 @@ const NaverLoading = () => {
       localStorage.setItem("nickname", data.data.data.nickname); //로컬스토리지에 닉넴 저장
       localStorage.setItem("isLogin", data.headers.authorization);
       const nickname = data.data.data.nickname;
+
       setTimeout(() => {
         Swal.fire({
           icon: "success",
           title: nickname + "님",
           text: "환영합니다!",
-          confirmButtonColor: "#80bbd0",
+          confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         }).then((result) => {
           if (result.isConfirmed) {

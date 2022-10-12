@@ -76,7 +76,7 @@ const Myplan = () => {
                       imageWidth: 50,
                       imageHeight: 50,
                       showCancelButton: true,
-                      confirmButtonColor: "#BDE8F8",
+                      confirmButtonColor: "#47AFDB",
                       cancelButtonColor: "#D9D9D9",
                       confirmButtonText: "삭제",
                       cancelButtonText: "취소",
@@ -98,7 +98,7 @@ const Myplan = () => {
                   className="buttonAll"
                   onClick={() => {
                     dispatch(postMyplanDone(myplans.id));
-                    window.location.replace("myplan");
+                    window.location.reload();
                   }}
                 >
                   완료
@@ -135,7 +135,7 @@ const Myplan = () => {
                       imageWidth: 50,
                       imageHeight: 50,
                       showCancelButton: true,
-                      confirmButtonColor: "#BDE8F8",
+                      confirmButtonColor: "#47AFDB",
                       cancelButtonColor: "#D9D9D9",
                       confirmButtonText: "삭제",
                       cancelButtonText: "취소",
@@ -157,7 +157,7 @@ const Myplan = () => {
                   className="buttonAll"
                   onClick={() => {
                     dispatch(postMyplanCancel(myplans.id));
-                    window.location.replace("myplan");
+                    window.location.reload();
                   }}
                 >
                   취소
