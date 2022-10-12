@@ -25,12 +25,13 @@ const KaKaoLoading = () => {
       localStorage.setItem("nickname", data.data.data.nickname);
       localStorage.setItem("isLogin", data.headers.authorization);
       const nickname = data.data.data.nickname;
+
       setTimeout(() => {
         Swal.fire({
           icon: "success",
           title: nickname + "님",
           text: "환영합니다!",
-          confirmButtonColor: "#80bbd0",
+          confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         }).then((result) => {
           if (result.isConfirmed) {
@@ -38,6 +39,7 @@ const KaKaoLoading = () => {
           }
         });
       }, 1000);
+
       return data;
     } catch (error) {
       window.alert(error.message); //navigate로 바꾸면 isLogin.state가 false. 새로고침해야 true

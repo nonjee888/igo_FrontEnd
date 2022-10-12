@@ -12,3 +12,34 @@
 .VideoimgBox {
   width: 90%;
 }
+
+//리스트
+.videoUser {
+  display: flex;
+  margin: 5%;
+  z-index: 1;
+  position: absolute;
+  font-weight: 900;
+  text-shadow: -1px 0 #555555, 0 1px #555555, 1px 0 #555555, 0 -1px #555555;
+  color: #ececec;
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 70%;
+    border: 1px solid #ececec;
+    margin: 0 5px 0 0;
+  }
+}
+
+.videoSwiper {
+  background-color: black;
+}
+
+.swiper-button-prev {
+  color: transparent;
+}
+
+.swiper-button-next {
+  color: transparent;
+}

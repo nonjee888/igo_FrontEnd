@@ -50,7 +50,7 @@
 .profileNickname {
   display: flex;
   justify-content: center;
-  margin: 2% 0 0 22%;
+  margin: 2% 0 0 25%;
   font-size: 1.1rem;
   font-weight: 900;
   width: 50%;
@@ -58,7 +58,7 @@
 }
 
 .profileNickameinput {
-  border: none;
+  border: 2px solid #555555;
   width: 50%;
   text-align: right;
   font-size: 1rem;
@@ -186,6 +186,7 @@
   border-left: 1px solid #ececec;
   display: flex;
   justify-content: space-between;
+  font-weight: bold;
   img {
     width: 10%;
     padding: 0 5% 2% 0;

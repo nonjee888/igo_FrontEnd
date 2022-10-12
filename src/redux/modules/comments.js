@@ -40,7 +40,7 @@ export const removeComment = createAsyncThunk(
         Swal.fire({
           icon: "info",
           text: "댓글이 삭제되었습니다",
-          confirmButtonColor: "#80bbd0",
+          confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         });
       }

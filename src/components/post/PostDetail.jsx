@@ -101,7 +101,7 @@ const PostDetail = () => {
         imageWidth: 50,
         imageHeight: 50,
         text: "신고완료!",
-        confirmButtonColor: "#80bbd0",
+        confirmButtonColor: "#47AFDB",
         confirmButtonText: "확인",
       }).then((result) => {
         navigate("/post/all");
@@ -114,7 +114,7 @@ const PostDetail = () => {
           imageWidth: 50,
           imageHeight: 50,
           text: "이미 신고한 게시물입니다.",
-          confirmButtonColor: "#80bbd0",
+          confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         }).then((result) => {
           navigate("/post/all");
@@ -177,7 +177,7 @@ const PostDetail = () => {
                       imageWidth: 50,
                       imageHeight: 50,
                       text: "게시글을 삭제할까요?",
-                      confirmButtonColor: "#80bbd0",
+                      confirmButtonColor: "#47AFDB",
                       confirmButtonText: "삭제 확인",
                     }).then((result) => {
                       if (result.isConfirmed) {
