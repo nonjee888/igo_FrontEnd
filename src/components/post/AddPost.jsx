@@ -193,7 +193,7 @@ const AddPost = ({ props }) => {
               placeholder=""
               initialValue=""
               previewStyle="vertical"
-              height="calc(100vh - 390px)"
+              height="calc(95vh - 390px)"
               initialEditType="wysiwyg"
               useCommandShortcut={false}
               onChange={handleEditor}

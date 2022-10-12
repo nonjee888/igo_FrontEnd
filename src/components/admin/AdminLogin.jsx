@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import AdminSignup from "./AdminSignup";
 const Admin = () => {
   const dispatch = useDispatch();
   const initialState = {
-    nickname: "",
+    id: "",
     password: "",
   };
 
@@ -16,15 +17,23 @@ const Admin = () => {
 
   return (
     <>
+      {modal ? <AdminSignup /> : null}
       <div>
-        <input />
+        <input className="Admin-input" />
       </div>
       <div>
-        <input />
+        <input className="Admin-input" />
       </div>
       <div>
-        <button>관리자 로그인</button>
-        <button>회원가입</button>
+        <button className="Admin-btn">관리자 로그인</button>
+        <button
+          className="Admin-btn"
+          onClick={() => {
+            setModal(true);
+          }}
+        >
+          회원가입
+        </button>
       </div>
     </>
   );
