@@ -123,14 +123,14 @@ const MyPlanPost = () => {
             </div>
           </div>
           <div className="MyplanPostAddbuttons">
-            <button
-              className="MyplanPostGoback"
+            <img
+              src={goback}
+              alt="뒤로"
               onClick={() => {
                 navigate(-1);
               }}
-            >
-              <img src={goback} alt="뒤로" />
-            </button>
+              style={{ height: "50%" }}
+            />
             <button className="MyplanPostAdd" type="submit">
               <img src={calendar} alt="일정등록" />
             </button>

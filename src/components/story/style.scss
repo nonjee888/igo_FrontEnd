@@ -5,12 +5,28 @@
   width: 100%;
   height: 50vh;
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
-  border: 5px solid black;
   margin: 5%;
 }
 
 .VideoimgBox {
   width: 90%;
+}
+
+.videoAddbuttons {
+  display: flex;
+  margin: 5% 0 0 31%;
+  img {
+    width: 17%;
+  }
+}
+
+.videoAdd {
+  border: none;
+  background-color: transparent;
+  width: 50%;
+  img {
+    width: 100%;
+  }
 }
 
 //리스트
@@ -36,10 +52,10 @@
   background-color: black;
 }
 
-.swiper-button-prev {
+.swiper-button-prev:after {
   color: transparent;
 }
 
-.swiper-button-next {
+.swiper-button-next:after {
   color: transparent;
 }

@@ -1,3 +1,4 @@
+import "./style.scss";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -6,6 +7,7 @@ import Swal from "sweetalert2";
 //이미지
 import video from "../../asset/assetVideo/video.png";
 import addVideo from "../../asset/assetVideo/addVideo.png";
+import goback from "../../asset/goback.png";
 
 const AddStory = () => {
   const navigate = useNavigate();
@@ -75,9 +77,19 @@ const AddStory = () => {
               multiple="multiple"
             />
           </div>
-          <button className="MyplanPostAddbutton" type="submit">
-            <img src={addVideo} alt="영상등록" />
-          </button>
+          <div className="videoAddbuttons">
+            <img
+              src={goback}
+              alt="뒤로"
+              onClick={() => {
+                navigate(-1);
+              }}
+              style={{ height: "50%" }}
+            />
+            <button className="videoAdd" type="submit">
+              <img src={addVideo} alt="영상등록" />
+            </button>
+          </div>
         </form>
       </div>
     </div>
