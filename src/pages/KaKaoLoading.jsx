@@ -29,7 +29,7 @@ const KaKaoLoading = () => {
         icon: "success",
         title: nickname + "님",
         text: "환영합니다!",
-        confirmButtonColor: "#80bbd0",
+        confirmButtonColor: "#47AFDB",
         confirmButtonText: "확인",
       }).then((result) => {
         if (result.isConfirmed) {

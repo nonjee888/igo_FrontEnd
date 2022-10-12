@@ -24,6 +24,7 @@
     "redux": "^4.2.0",
     "sweetalert2": "^11.4.35",
     "sweetalert2-react-content": "^5.0.3",
+    "swiper": "^8.4.3",
     "web-vitals": "^2.1.0"
   },
   "scripts": {

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postStory } from "../../redux/modules/story";
+import Swal from "sweetalert2";
 //이미지
 import video from "../../asset/assetVideo/video.png";
 import addVideo from "../../asset/assetVideo/addVideo.png";
@@ -14,13 +15,27 @@ const AddStory = () => {
   const [videos, setVideos] = useState([]);
   const [preview, setPreview] = useState("");
 
+  const FILE_SIZE_MAX_LIMIT = 10000;
+
   const resetStates = () => {
     setVideos();
   };
-
+  console.log(videos.size);
   const onChangeVideos = (e) => {
     console.log(e.target.files);
     setVideos(e.target.files[0]);
+    if (videos.size >= FILE_SIZE_MAX_LIMIT) {
+      Swal.fire({
+        icon: "error",
+        text: "200MB이하의 영상만 첨부 가능합니다.",
+        confirmButtonColor: "#BDE8F8",
+        confirmButtonText: "확인",
+      }).then((result) => {
+        if (result.isConfirmed) {
+        }
+      });
+      return;
+    }
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
 

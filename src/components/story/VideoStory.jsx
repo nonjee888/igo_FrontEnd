@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStory } from "../../redux/modules/story";
+//스와이퍼
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const VideoStory = () => {
   const dispatch = useDispatch();
@@ -14,21 +20,35 @@ const VideoStory = () => {
 
   return (
     <div className="All">
-      <div
-        className="videoAll"
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
+      <Swiper
+        pagination={{
+          type: "progressbar",
         }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="videoSwiper"
+        style={{ height: "100%" }}
       >
         {story?.map((story) => {
           return (
-            <video controls width="100%" key={story.id} autoplay poster>
-              <source src={story.video}></source>
-            </video>
+            <SwiperSlide key={story?.id}>
+              <div className="videoUser">
+                <img src={story.profileImage} alt="프로필 이미지" />
+                <p>{story.nickname}</p>
+              </div>
+              <video
+                key={story.id}
+                controls
+                controlsList="nodownload"
+                width="100%"
+                height="100%"
+              >
+                <source src={story.video} />
+              </video>
+            </SwiperSlide>
           );
         })}
-      </div>
+      </Swiper>
     </div>
   );
 };

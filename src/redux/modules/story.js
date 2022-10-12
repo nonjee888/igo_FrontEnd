@@ -14,7 +14,7 @@ export const postStory = createAsyncThunk(
       if (data.data.success === false) alert(data.data.error.message);
       // 일정등록 성공 메세지 죽여둠
       // else alert(data.data.data);
-      return thunkAPI.fulfillWithValue(data.data);
+      return thunkAPI.fulfillWithValue(data.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -47,16 +47,30 @@ export const story = createSlice({
   reducers: {},
 
   extraReducers: {
-    //전체내일정 가져오기
+    //전체리스트 가져오기
     [getStory.pending]: (state) => {
       state.isLoading = true;
     },
     [getStory.fulfilled]: (state, action) => {
       // console.log(action);
+      console.log(action.payload);
       state.isLoading = false;
       state.story = action.payload;
     },
     [getStory.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    //새로고침없이 자동등록
+    [postStory.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [postStory.fulfilled]: (state, action) => {
+      console.log(action.payload);
+      state.isLoading = false;
+      state.story.push(action.payload.data);
+    },
+    [postStory.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },

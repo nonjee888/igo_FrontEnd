@@ -17,7 +17,7 @@ const Headers = () => {
       title: "로그아웃",
       text: "정말로 로그아웃하시겠어요?",
       showCancelButton: true,
-      confirmButtonColor: "#80bbd0",
+      confirmButtonColor: "#47AFDB",
       cancelButtonColor: "#D9D9D9",
       confirmButtonText: "확인",
       cancelButtonText: "취소",

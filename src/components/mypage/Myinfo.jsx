@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { putMyinfo, getMyinfo } from "../../redux/modules/myinfo";
-import Swal from "sweetalert2";
 //이미지
 import profileImg from "../../asset/assetMypage/profileImg1.png";
 import edit from "../../asset/edit.png";
@@ -29,7 +28,7 @@ const Myinfo = () => {
   };
 
   const onChangeImage = (e) => {
-    console.log(e.target.files);
+    // console.log(e.target.files);
     setProfileImage(e.target.files[0]);
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
@@ -50,7 +49,6 @@ const Myinfo = () => {
     dispatch(putMyinfo(formData));
     resetStates();
     navigate("/myinfo");
-    // window.location.reload();
   };
 
   return (
@@ -90,18 +88,6 @@ const Myinfo = () => {
             <button
               type="submit"
               style={{ border: "none", background: "transparent" }}
-              onClick={() => {
-                Swal.fire({
-                  icon: "success",
-                  text: "닉네임이 변경되었습니다.",
-                  confirmButtonColor: "#BDE8F8",
-                  confirmButtonText: "확인",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    window.location.reload();
-                  }
-                });
-              }}
             >
               <img
                 src={edit}
@@ -146,18 +132,6 @@ const Myinfo = () => {
             <button
               type="submit"
               style={{ border: "none", background: "transparent" }}
-              onClick={() => {
-                Swal.fire({
-                  icon: "success",
-                  text: "닉네임이 변경되었습니다.",
-                  confirmButtonColor: "#BDE8F8",
-                  confirmButtonText: "확인",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    window.location.reload();
-                  }
-                });
-              }}
             >
               <img
                 src={edit}
@@ -190,9 +164,10 @@ const Myinfo = () => {
           </div>
           {/* 닉네임, 수정버튼 */}
           <div className="profileNickname">
+            <button>{myinfo[0].nickname}</button>
             <input
               type="text"
-              placeholder={myinfo[0].nickname}
+              placeholder="변경할 닉네임을 적어주세요."
               value={nickname}
               className="profileNickameinput"
               onChange={(e) => {
@@ -202,18 +177,6 @@ const Myinfo = () => {
             <button
               type="submit"
               style={{ border: "none", background: "transparent" }}
-              onClick={() => {
-                Swal.fire({
-                  icon: "success",
-                  text: "닉네임이 변경되었습니다.",
-                  confirmButtonColor: "#BDE8F8",
-                  confirmButtonText: "확인",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    window.location.reload();
-                  }
-                });
-              }}
             >
               <img
                 src={edit}

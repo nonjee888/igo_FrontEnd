@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../../shared/api";
+import Swal from "sweetalert2";
 
 export const putMyinfo = createAsyncThunk(
   "myinfo/put",
@@ -12,7 +13,17 @@ export const putMyinfo = createAsyncThunk(
         },
       });
       if (data.data.success === false) alert(data.data.error.message);
-      // else alert(data.data.data);
+      else
+        Swal.fire({
+          icon: "success",
+          text: "닉네임이 변경되었습니다.",
+          confirmButtonColor: "#BDE8F8",
+          confirmButtonText: "확인",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
