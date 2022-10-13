@@ -11,7 +11,6 @@ const PostComment = () => {
   let username = localStorage.getItem("nickname");
   const { detail } = useSelector((state) => state.posts);
   const { isLoading, error, comments } = useSelector((state) => state.comments);
-
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 

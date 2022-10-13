@@ -10,16 +10,30 @@ export default function InterestModal({
   setInterestChecked,
 }) {
   const interestedList = [
-    { id: 1, tag: "혼자여행" },
-    { id: 2, tag: "둘이여행" },
-    { id: 3, tag: "단체여행" },
-    { id: 4, tag: "가성비" },
-    { id: 5, tag: "럭셔리" },
-    { id: 6, tag: "힐링" },
-    { id: 7, tag: "액티비티" },
-    { id: 8, tag: "식도락" },
-    { id: 9, tag: "인스타감성" },
+    { id: 0, tag: "혼자여행" },
+    { id: 1, tag: "둘이여행" },
+    { id: 2, tag: "단체여행" },
+    { id: 3, tag: "가성비" },
+    { id: 4, tag: "럭셔리" },
+    { id: 5, tag: "힐링" },
+    { id: 6, tag: "액티비티" },
+    { id: 7, tag: "식도락" },
+    { id: 8, tag: "인스타감성" },
   ];
+
+  const [InterestList]=useState(interestedList);
+  const[choiceTagID,setChoiceTagID]=useState(0);
+  const[clickValue,setClickValue] =useState(false);
+  const[btnActive,setBtnActive]=useState("");
+
+  const clickTagBtn =(id) => {
+    setChoiceTagID(id);
+    setClickValue(!clickValue);
+    InterestList[id].isChecked = !clickValue;
+    setBtnActive((prev) => {
+      return prev;
+    });
+  };
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -30,23 +44,40 @@ export default function InterestModal({
     setInterestChecked(!interestChecked);
     setCheckedItems({ ...checkedItems, interest: value });
   };
-  const submitHandler = (e) => {
+  const submitHandler = () => {
     setCheckedItems({ ...checkedItems });
   };
   return (
     <div className="modalBackground">
       <div className="modalContainer">
         <div className="conStyle">
-          {interestedList.map((item) => (
-            <label key={item.tag}>
+          {InterestList.map((item) => (
+            <label tag={item} key={item.id}>
               <input
-                type="checkbox"
+                className="tagselectbox"
                 style={{ display: "none" }}
+                type="checkbox"
                 name="tag"
+                id={item.id}
                 value={item.tag}
                 onChange={changeHandler}
+                onClick={()=>clickTagBtn(item.id)}
               />
-              <div
+              {item.isChecked ? (  <div
+                  style={{
+                    width: "40%",
+                    position: "relative",
+                    display: "inline-block",
+                    textAlign: "center",
+                    margin: "5px 10px 5px 10px",
+                    borderRadius: "22px",
+                    background: "#ffffff",
+                  }}
+                >
+                  {item.tag}
+                </div>
+                ):(
+                <div
                 style={{
                   width: "40%",
                   position: "relative",
@@ -58,7 +89,8 @@ export default function InterestModal({
                 }}
               >
                 {item.tag}
-              </div>
+              </div>)}
+              
             </label>
           ))}
         </div>
