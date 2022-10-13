@@ -74,35 +74,20 @@ export default function RegionModal({
                   ClickTagBtn(item.id);
                 }}
               />
-              {item.isChecked ? (
-                <div
-                  style={{
-                    width: "40%",
-                    position: "relative",
-                    display: "inline-block",
-                    textAlign: "center",
-                    margin: "5px 10px 5px 10px",
-                    borderRadius: "22px",
-                    background: "#ffffff",
-                  }}
-                >
-                  {item.tag}
-                </div>
-              ) : (
-                <div
-                  style={{
-                    width: "40%",
-                    position: "relative",
-                    display: "inline-block",
-                    textAlign: "center",
-                    margin: "5px 10px 5px 10px",
-                    borderRadius: "22px",
-                    background: "#BDE8F8",
-                  }}
-                >
-                  {item.tag}
-                </div>
-              )}
+
+              <div
+                style={{
+                  width: "40%",
+                  position: "relative",
+                  display: "inline-block",
+                  textAlign: "center",
+                  margin: "5px 10px 5px 10px",
+                  borderRadius: "22px",
+                  background: "#BDE8F8",
+                }}
+              >
+                {item.tag}
+              </div>
             </label>
           ))}
         </div>

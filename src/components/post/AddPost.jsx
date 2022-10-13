@@ -192,7 +192,7 @@ const AddPost = () => {
           <div className="editor-wrapper">
             <Editor
               ref={editorRef}
-              placeholder="내용을 입력 할 때 ... 을 누르면 사진을 공유 할 수 있어요!                        제목은 두글자, 내용은 세글자 입력해야 게시물 등록이 가능합니다.
+              placeholder="내용을 입력 할 때 ... 을 누르면 사진을 공유 할 수 있어요!                       제목은 두글자, 내용은 세글자 입력해야 게시물 등록이 가능합니다.
               "
               initialValue=""
               previewStyle="vertical"
