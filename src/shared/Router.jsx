@@ -28,7 +28,7 @@ const Router = () => {
           <Route path="/kakaoloading" element={<KaKaoLoading />} exact />
           <Route path="/naverloading" element={<NaverLoading />} exact />
           <Route path="/" element={<Loginpage />} exact />
-          <Route path="/admin" element={<LoginAdmin />} exact />
+          <Route path="/login" element={<LoginAdmin />} exact />
           <Route path="/choice" element={<ChoiceCategory />} exact />
           <Route path="/recommend" element={<MainRecommend />} exact />
           <Route path="/post/:category" element={<AllCategoryList />} exact />

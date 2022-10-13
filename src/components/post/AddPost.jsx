@@ -1,4 +1,5 @@
 //에디터
+import Swal from "sweetalert2";
 import S3 from "react-aws-s3";
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/i18n/ko-kr";
@@ -7,31 +8,27 @@ import "tui-color-picker/dist/tui-color-picker.css";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 
-import Swal from "sweetalert2";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
-import { numberCheck } from "../../redux/modules/posts";
 
 import PostSearchPlace from "./PostSearchPlace";
-
 import InterestModal from "../postmodal/InterestModal";
 import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
-const AddPost = ({ props }) => {
-  const inputFocus = useRef(null);
+const AddPost = () => {
+  window.Buffer = window.Buffer || require("buffer").Buffer;
   const dispatch = useDispatch();
+  const inputFocus = useRef(null);
+  const editorRef = useRef();
   const { detail } = useSelector((state) => state?.posts);
   const { id } = useParams();
-  const writerId = detail.nickname;
   const isEdit = id !== undefined;
+  const writerId = detail.nickname;
   const NICKNAME = localStorage.getItem("nickname");
-
-  window.Buffer = window.Buffer || require("buffer").Buffer;
-  const editorRef = useRef();
 
   const [title, setTitle] = useState("");
   const [editor, setEditor] = useState("");
@@ -51,7 +48,7 @@ const AddPost = ({ props }) => {
   };
   const isSubmitPost = () => {
     if (content !== "<p><br></p>" && title !== "") {
-      if (content.length > 12 && title.length >= 3) {
+      if (content.length > 10 && title.length >= 2) {
         setIsActive(true);
       } else {
         setIsActive(false);
@@ -80,7 +77,7 @@ const AddPost = ({ props }) => {
     setOpenRegionModal(false);
     setOpenCostModal(true);
   };
-  console.log(checkedItems);
+
   useEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
@@ -190,10 +187,10 @@ const AddPost = ({ props }) => {
           <div className="editor-wrapper">
             <Editor
               ref={editorRef}
-              placeholder=""
+              placeholder="내용을 입력 할 때 ... 을 누르면 사진을 공유 할 수 있어요!"
               initialValue=""
               previewStyle="vertical"
-              height="calc(100vh - 390px)"
+              height="calc(95vh - 390px)"
               initialEditType="wysiwyg"
               useCommandShortcut={false}
               onChange={handleEditor}

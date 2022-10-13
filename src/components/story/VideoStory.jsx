@@ -9,7 +9,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-
 const VideoStory = () => {
   const dispatch = useDispatch();
   const story = useSelector((state) => state.story?.story);
@@ -20,7 +19,7 @@ const VideoStory = () => {
     dispatch(getStory());
   }, [dispatch]);
 
-  const [stories, setStories] = React.useState(initialStories);
+  // const [stories, setStories] = React.useState(initialStories);
   return (
     <div className="All">
       <Swiper
@@ -53,7 +52,6 @@ const VideoStory = () => {
         })}
       </Swiper>
     </div>
-
   );
 };
 
