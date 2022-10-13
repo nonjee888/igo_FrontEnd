@@ -35,16 +35,16 @@ const VideoStory = () => {
             <SwiperSlide key={story?.id}>
               <div className="videoUser">
                 <img src={story?.profileImage} alt="프로필 이미지" />
-                <p>{story.nickname}</p>
+                <p>{story?.nickname}</p>
               </div>
               <video
-                key={story.id}
+                key={story?.id}
                 controls
                 controlsList="nodownload"
                 width="100%"
                 height="100%"
               >
-                <source src={story.video} />
+                <source src={story?.video} />
               </video>
             </SwiperSlide>
           );
