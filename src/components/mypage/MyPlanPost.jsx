@@ -97,7 +97,7 @@ const MyPlanPost = () => {
             <img
               alt="이미지를 업로드 해주세요."
               src={preview ? preview : photo1}
-              style={{ display: "flex", width: "100%", height: "130px" }}
+              style={{ display: "flex", width: "100%", height: "100%" }}
             />
             <label htmlFor="file" className="planImginputLabel">
               변경하기
