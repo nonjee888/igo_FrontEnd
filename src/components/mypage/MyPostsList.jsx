@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyposts } from "../../redux/modules/myposts";
 import photo from "../../asset/assetMypage/photo.png";
+import filledHeart from "../../asset/filledHeart.png";
 
 const MyPostsList = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const myposts = useSelector((state) => state.myposts.myposts);
-  // console.log(myposts);
+  console.log(myposts);
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
@@ -48,7 +49,12 @@ const MyPostsList = () => {
                     alt="내게시글이미지"
                   />
                 )}
-                <div className="MyPostTitle">{myposts.title}</div>
+                <div className="AllMyPostList">
+                  <div className="MyPostTitle">{myposts.title}</div>
+                  <p className="MyPostNick">{myposts.nickname}</p>
+                  <img src={filledHeart} style={{ height: "30%" }} alt="" />
+                  {myposts.heartNum}
+                </div>
               </div>
             );
           })}
