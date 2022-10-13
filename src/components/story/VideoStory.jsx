@@ -1,5 +1,5 @@
+import "./style.scss";
 import React, { useEffect } from "react";
-import Stories from "react-insta-stories";
 import { useDispatch, useSelector } from "react-redux";
 import { getStory } from "../../redux/modules/story";
 //스와이퍼
@@ -8,7 +8,6 @@ import { Pagination, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 
 const VideoStory = () => {
   const dispatch = useDispatch();
@@ -20,7 +19,6 @@ const VideoStory = () => {
     dispatch(getStory());
   }, [dispatch]);
 
-  const [stories, setStories] = React.useState(initialStories);
   return (
     <div className="All">
       <Swiper
@@ -53,7 +51,6 @@ const VideoStory = () => {
         })}
       </Swiper>
     </div>
-
   );
 };
 
