@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "../../redux/modules/posts";
+import { instance } from "../../shared/api";
 import Tags from "./Tags";
 import Post from "../post/Post";
 
 // ~순 카테고리목록
 export default function AllPostList() {
-  const dispatch = useDispatch();
-
   const [sort, setSort] = useState("create");
-  const [status, setStatus] = useState(false);
+  const [create, setCreate] = useState();
+  const [like, setLike] = useState();
+  const [view, setView] = useState();
+
   const sortList = [
     {
       name: "create",
@@ -24,19 +24,28 @@ export default function AllPostList() {
       value: "조회순",
     },
   ];
-  useEffect(() => {}, [sort]);
-  const { isLoading, error, posts } = useSelector((state) => state?.posts);
+
+  const getCreatePost = async () => {
+    const response = await instance.get(`/api/post/group?type=create`);
+    setCreate(response.data.data);
+    return response.data.data;
+  };
+  const getHeartPost = async () => {
+    const response = await instance.get(`/api/post/group?type=heart`);
+    setLike(response.data.data);
+    return response.data.data;
+  };
+  const getViewPost = async () => {
+    const response = await instance.get(`/api/post/group?type=view`);
+    setView(response.data.data);
+    return response.data.data;
+  };
 
   useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
-  if (isLoading) {
-    return <div>로딩 중....</div>;
-  }
-
-  if (error) {
-    return <div>{error.message}</div>;
-  }
+    getCreatePost();
+    getHeartPost();
+    getViewPost();
+  }, [sort]);
 
   return (
     <div className="All">
@@ -47,22 +56,29 @@ export default function AllPostList() {
             selected={sort === item.name}
             handler={() => setSort(item.name)}
             name={item.value}
+            onClick={() => {}}
           />
         ))}
       </div>
       <div className="post-list-wrapper">
         <div className="content-wrapper">
-          {posts?.map((post) => {
-            return (
-              <Post
-                post={post}
-                key={post.id}
-                createdAt={post.createdAt}
-                name={post.nickname}
-                profileimage={post.profileimage}
-              />
-            );
-          })}
+          {sort === "create"
+            ? create?.map((post) => {
+                return (
+                  <Post post={post} key={post.id} createdAt={post.createdAt} />
+                );
+              })
+            : sort === "like"
+            ? like?.map((post) => {
+                return (
+                  <Post post={post} key={post.id} createdAt={post.createdAt} />
+                );
+              })
+            : view?.map((post) => {
+                return (
+                  <Post post={post} key={post.id} createdAt={post.createdAt} />
+                );
+              })}
         </div>
       </div>
     </div>

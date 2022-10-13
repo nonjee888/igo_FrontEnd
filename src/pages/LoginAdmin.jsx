@@ -1,16 +1,12 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import Admin from "../components/login/Admin";
-import LoginHeaders from "../components/login/AdminHeaders";
+import AdminLogin from "../components/adminLogin/AdminLogin";
+import AdminHeaders from "../components/adminLogin/AdminHeaders";
 import PageContainer from "../components/wrapper/PageContainer";
 
 const LoginAdmin = () => {
   return (
     <>
       <PageContainer>
-        <LoginHeaders />
-        <Admin />
+        <AdminLogin />
       </PageContainer>
     </>
   );

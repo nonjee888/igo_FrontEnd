@@ -4,11 +4,11 @@ import Headers from "../components/layout/Headers";
 import AddPost from "../components/post/AddPost";
 import Footers from "../components/layout/Footers";
 
-const AddPostPage = (props) => {
+const AddPostPage = () => {
   return (
     <div>
       <PageContainer>
-        <AddPost props={props} />
+        <AddPost />
       </PageContainer>
     </div>
   );
