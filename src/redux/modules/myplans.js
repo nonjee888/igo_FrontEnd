@@ -139,10 +139,6 @@ export const myplans = createSlice({
       );
       state.myplans.splice(index, 1);
     },
-    [deleteMyplans.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
   },
 });
 

@@ -1,3 +1,4 @@
+import "./style.scss";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -6,6 +7,7 @@ import Swal from "sweetalert2";
 //이미지
 import video from "../../asset/assetVideo/video.png";
 import addVideo from "../../asset/assetVideo/addVideo.png";
+import goback from "../../asset/goback.png";
 
 const AddStory = () => {
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ const AddStory = () => {
   const [videos, setVideos] = useState([]);
   const [preview, setPreview] = useState("");
 
-  const FILE_SIZE_MAX_LIMIT = 10000;
+  // const FILE_SIZE_MAX_LIMIT = 10000;
 
   const resetStates = () => {
     setVideos();
@@ -23,18 +25,18 @@ const AddStory = () => {
   const onChangeVideos = (e) => {
     console.log(e.target.files);
     setVideos(e.target.files[0]);
-    if (videos.size >= FILE_SIZE_MAX_LIMIT) {
-      Swal.fire({
-        icon: "error",
-        text: "200MB이하의 영상만 첨부 가능합니다.",
-        confirmButtonColor: "#BDE8F8",
-        confirmButtonText: "확인",
-      }).then((result) => {
-        if (result.isConfirmed) {
-        }
-      });
-      return;
-    }
+    // if (videos.size >= FILE_SIZE_MAX_LIMIT) {
+    //   Swal.fire({
+    //     icon: "error",
+    //     text: "200MB이하의 영상만 첨부 가능합니다.",
+    //     confirmButtonColor: "#BDE8F8",
+    //     confirmButtonText: "확인",
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //     }
+    //   });
+    //   return;
+    // }
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -75,9 +77,19 @@ const AddStory = () => {
               multiple="multiple"
             />
           </div>
-          <button className="MyplanPostAddbutton" type="submit">
-            <img src={addVideo} alt="영상등록" />
-          </button>
+          <div className="videoAddbuttons">
+            <img
+              src={goback}
+              alt="뒤로"
+              onClick={() => {
+                navigate(-1);
+              }}
+              style={{ height: "50%" }}
+            />
+            <button className="videoAdd" type="submit">
+              <img src={addVideo} alt="영상등록" />
+            </button>
+          </div>
         </form>
       </div>
     </div>

@@ -34,7 +34,7 @@ const VideoStory = () => {
           return (
             <SwiperSlide key={story?.id}>
               <div className="videoUser">
-                <img src={story.profileImage} alt="프로필 이미지" />
+                <img src={story?.profileImage} alt="프로필 이미지" />
                 <p>{story.nickname}</p>
               </div>
               <video
