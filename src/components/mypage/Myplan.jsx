@@ -20,7 +20,7 @@ const Myplan = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const myplans = useSelector((state) => state.myplans.myplans);
-  // console.log(myplans);
+  console.log(myplans);
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
     dispatch(getMyplans());
@@ -52,6 +52,7 @@ const Myplan = () => {
             flexWrap: "wrap",
           }}
         >
+          {Origin?.length === 0 ? <p>➕을 눌러 일정을 작성해보세요.</p> : <></>}
           {Origin?.map((myplans) => {
             return (
               <div className="Myplan" key={myplans.id}>
@@ -83,7 +84,6 @@ const Myplan = () => {
                     }).then((result) => {
                       if (result.isConfirmed) {
                         dispatch(deleteMyplans(myplans.id));
-                        // window.location.reload();
                       }
                     });
                   }}
@@ -98,7 +98,7 @@ const Myplan = () => {
                   className="buttonAll"
                   onClick={() => {
                     dispatch(postMyplanDone(myplans.id));
-                    window.location.reload();
+                    // window.location.reload();
                   }}
                 >
                   완료
@@ -114,6 +114,7 @@ const Myplan = () => {
             flexWrap: "wrap",
           }}
         >
+          {Done?.length === 0 ? <p>완료된 일정이 없습니다.</p> : <></>}
           {Done?.map((myplans) => {
             return (
               <div className="Myplan" key={myplans.id}>
@@ -157,7 +158,7 @@ const Myplan = () => {
                   className="buttonAll"
                   onClick={() => {
                     dispatch(postMyplanCancel(myplans.id));
-                    window.location.reload();
+                    // window.location.reload();
                   }}
                 >
                   취소

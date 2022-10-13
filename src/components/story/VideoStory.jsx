@@ -1,5 +1,5 @@
+import "./style.scss";
 import React, { useEffect } from "react";
-import Stories from "react-insta-stories";
 import { useDispatch, useSelector } from "react-redux";
 import { getStory } from "../../redux/modules/story";
 //스와이퍼
@@ -19,7 +19,6 @@ const VideoStory = () => {
     dispatch(getStory());
   }, [dispatch]);
 
-  // const [stories, setStories] = React.useState(initialStories);
   return (
     <div className="All">
       <Swiper
@@ -35,7 +34,7 @@ const VideoStory = () => {
           return (
             <SwiperSlide key={story?.id}>
               <div className="videoUser">
-                <img src={story.profileImage} alt="프로필 이미지" />
+                <img src={story?.profileImage} alt="프로필 이미지" />
                 <p>{story.nickname}</p>
               </div>
               <video

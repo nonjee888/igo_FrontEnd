@@ -97,7 +97,7 @@ const MyPlanPost = () => {
             <img
               alt="이미지를 업로드 해주세요."
               src={preview ? preview : photo1}
-              style={{ display: "flex", width: "100%", height: "130px" }}
+              style={{ display: "flex", width: "100%", height: "100%" }}
             />
             <label htmlFor="file" className="planImginputLabel">
               변경하기
@@ -123,14 +123,14 @@ const MyPlanPost = () => {
             </div>
           </div>
           <div className="MyplanPostAddbuttons">
-            <button
-              className="MyplanPostGoback"
+            <img
+              src={goback}
+              alt="뒤로"
               onClick={() => {
                 navigate(-1);
               }}
-            >
-              <img src={goback} alt="뒤로" />
-            </button>
+              style={{ height: "50%" }}
+            />
             <button className="MyplanPostAdd" type="submit">
               <img src={calendar} alt="일정등록" />
             </button>
