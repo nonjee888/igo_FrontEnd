@@ -39,7 +39,7 @@ const PostDetail = () => {
 
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
-    // console.log(data?.data?.nickname);
+
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
     setUser(data?.data?.nickname);
@@ -266,7 +266,6 @@ const PostDetail = () => {
                     <MapMarker
                       key={`${point.y}-${point.x}`}
                       position={{ lat: point.y, lng: point.x }}
-                      text="xxx"
                     />
                   ))}
 

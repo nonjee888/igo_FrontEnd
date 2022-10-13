@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeComment } from "../../redux/modules/comments";
 import deleteimg from "../../asset/deleteimg.png";
 import deleteNemo from "../../asset/deleteNemo.png";
@@ -13,6 +13,7 @@ const CommentList = (props) => {
   const content = props.comment.content;
   const postId = props.postId;
   const commentId = props.comment.id;
+  const myinfo = useSelector((state) => state.myinfo.myinfo);
 
   const payload = {
     postId,
@@ -24,10 +25,10 @@ const CommentList = (props) => {
       <div className="ment-listWrapper">
         <div className="ment-wrapper">
           <div className="nickname">
-            {commentProfile === null ? (
+            {myinfo[0].profileImage === null ? (
               <img className="profileImg" src={profileImg} alt="" />
             ) : (
-              <img className="profileImg" src={commentProfile} alt="" />
+              <img className="profileImg" src={myinfo[0].profileImage} alt="" />
             )}
             <p className="userNick">{nickname}</p>
           </div>

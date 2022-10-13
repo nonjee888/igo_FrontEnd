@@ -20,16 +20,15 @@ import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
 const AddPost = () => {
-  const inputFocus = useRef(null);
+  window.Buffer = window.Buffer || require("buffer").Buffer;
   const dispatch = useDispatch();
+  const inputFocus = useRef(null);
+  const editorRef = useRef();
   const { detail } = useSelector((state) => state?.posts);
   const { id } = useParams();
-  const writerId = detail.nickname;
   const isEdit = id !== undefined;
+  const writerId = detail.nickname;
   const NICKNAME = localStorage.getItem("nickname");
-
-  window.Buffer = window.Buffer || require("buffer").Buffer;
-  const editorRef = useRef();
 
   const [title, setTitle] = useState("");
   const [editor, setEditor] = useState("");
