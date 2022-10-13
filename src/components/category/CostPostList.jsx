@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { instance } from "../../shared/api";
 import Tags from "./Tags";
+import Post from "../post/Post";
 
 // 가격 카테고리목록
 export default function CostPostList() {
   const [postList, setPostList] = useState();
   const [cost, setCost] = useState(1);
+
   const costList = [
     {
       name: "10만원대",
@@ -27,26 +29,26 @@ export default function CostPostList() {
 
   //----------------가격별분류-----------------//
 
-  //   let ten = postList.filter((post) => {
-  //     return cost === 1;
-  //   });
+  let ten = postList?.filter((post) => {
+    return cost === "10만원대";
+  });
 
-  //   let twenty = postList.filter((post) => {
-  //     return cost === 2;
-  //   });
+  let twenty = postList?.filter((post) => {
+    return cost === "20만원대";
+  });
 
-  //   let thirty = postList.filter((post) => {
-  //     return cost === 3;
-  //   });
+  let thirty = postList?.filter((post) => {
+    return cost === "30만원대";
+  });
 
-  //   let overThirty = postList.filter((post) => {
-  //     return cost === 4;
-  //   });
+  let overThirty = postList?.filter((post) => {
+    return cost === "30만원이상";
+  });
 
   //----------------가격별분류-----------------//
 
   const getCostList = async () => {
-    const response = await instance.get(`/api/post/cost?type=cost`);
+    const response = await instance.get(`/api/post/cost?type=${cost}`);
     setPostList(response.data.data);
     return response.data.data;
   };
@@ -61,8 +63,8 @@ export default function CostPostList() {
         {costList.map((item) => (
           <Tags
             key={item.name}
-            selected={cost === item.value} //Tags 프롭스에서 selected는 아이템이름과 같은지 안같은지 판단
-            handler={() => setCost(item.value)}
+            selected={cost === item.name} //Tags 프롭스에서 selected는 아이템이름과 같은지 안같은지 판단
+            handler={() => setCost(item.name)}
             name={item.name}
             onClick={getCostList}
           />
@@ -70,19 +72,19 @@ export default function CostPostList() {
       </div>
       <div className="post-list-wrapper">
         <div className="content-wrapper">
-          {/* {cost === 1
+          {cost === "10만원대"
             ? ten?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-            : cost === 2
+            : cost === "20만원대"
             ? twenty?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-            : cost === 3
+            : cost === "30만원대"
             ? thirty?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
@@ -92,7 +94,7 @@ export default function CostPostList() {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
-              })} */}
+              })}
         </div>
       </div>
     </div>
