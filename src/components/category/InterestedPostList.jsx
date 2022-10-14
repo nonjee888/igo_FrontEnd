@@ -29,46 +29,49 @@ export default function InterestedPostList() {
 
   //----------------관심사별분류-----------------//
 
-  // let alone = postList.filter((post) => {
-  //   return interested === "혼자여행";
-  // });
+  let alone = postList?.filter((post) => {
+    return interested === "혼자여행";
+  });
 
-  // let couple = postList.filter((post) => {
-  //   return interested === "둘이여행";
-  // });
+  let couple = postList?.filter((post) => {
+    return interested === "둘이여행";
+  });
 
-  // let group = postList.filter((post) => {
-  //   return interested === "단체여행";
-  // });
+  let group = postList?.filter((post) => {
+    return interested === "단체여행";
+  });
 
-  // let costWorthy = postList.filter((post) => {
-  //   return interested === "가성비";
-  // });
+  let costWorthy = postList?.filter((post) => {
+    return interested === "가성비";
+  });
 
-  // let luxury = postList.filter((post) => {
-  //   return interested === "럭셔리";
-  // });
+  let luxury = postList?.filter((post) => {
+    return interested === "럭셔리";
+  });
 
-  // let relaxing = postList.filter((post) => {
-  //   return interested === "힐링";
-  // });
+  let relaxing = postList?.filter((post) => {
+    return interested === "힐링";
+  });
 
-  // let active = postList.filter((post) => {
-  //   return interested === "액티비티";
-  // });
+  let active = postList?.filter((post) => {
+    return interested === "액티비티";
+  });
 
-  // let foodie = postList.filter((post) => {
-  //   return interested === "식도락";
-  // });
+  let foodie = postList?.filter((post) => {
+    return interested === "식도락";
+  });
 
-  // let insta = postList.filter((post) => {
-  //   return interested === "인스타감성";
-  // });
+  let insta = postList?.filter((post) => {
+    return interested === "인스타감성";
+  });
 
   //----------------관심사별분류-----------------//
 
   const getInterestList = async () => {
-    const response = await instance.get(`/api/post/interest?type=interest`);
+    const response = await instance.get(
+      `/api/post/interest?type=${interested}`
+    );
+    console.log(interested);
     setPostList(response.data.data);
     return response.data.data;
   };
@@ -92,7 +95,7 @@ export default function InterestedPostList() {
       </div>
       <div className="post-list-wrapper">
         <div className="content-wrapper">
-          {/* {interested === "혼자여행"
+          {interested === "혼자여행"
             ? alone?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
@@ -104,48 +107,47 @@ export default function InterestedPostList() {
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : interested === "단체여행"
+            : interested === "단체여행"
             ? group?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : interested === "가성비"
+            : interested === "가성비"
             ? costWorthy?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : interested === "럭셔리"
+            : interested === "럭셔리"
             ? luxury?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : interested === "힐링"
+            : interested === "힐링"
             ? relaxing?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : interested === "액티비티"
+            : interested === "액티비티"
             ? active?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : interested === "식도락"
+            : interested === "식도락"
             ? foodie?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-                          
             : insta?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
-              })} */}
+              })}
         </div>
       </div>
     </div>

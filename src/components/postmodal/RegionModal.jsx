@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import "./style.scss";
 
 export default function RegionModal({
+  isChecked,
+  setIsChecked,
   closeModal,
   checkedItems,
   setCheckedItems,
-  openRegionNextModal,
-  regionChecked,
-  setRegionChecked,
 }) {
   const regionList = [
     { id: 0, tag: "전체" },
@@ -26,25 +25,23 @@ export default function RegionModal({
     { id: 13, tag: "제주도" },
   ];
 
-  const[RegionList]=useState(regionList)
-  const[choiceTagID,setChoiceTagID]=useState(0);
-  const[clickValue,setClickValue] =useState(false);
-  const[btnActive,setBtnActive] =useState("");
+  const [RegionList] = useState(regionList);
+  const [choiceTagID, setChoiceTagID] = useState(0);
+  const [clickValue, setClickValue] = useState(false);
+  const [btnActive, setBtnActive] = useState("");
 
-  const ClickTagBtn=(id) => {
+  const ClickTagBtn = (id) => {
     setChoiceTagID(id);
     setClickValue(!clickValue);
-      RegionList[id].isChecked = !clickValue;
+    RegionList[id].isChecked = !clickValue;
     setBtnActive((prev) => {
       return prev;
     });
-    };
-
-
+  };
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    if (regionChecked) {
+    if (isChecked) {
       setCheckedItems(checkedItems);
     }
     if (checkedItems.size > 1) {
@@ -53,14 +50,12 @@ export default function RegionModal({
       e.preventDefault();
       window.alert("최대 3개까지 선택가능합니다");
     } else {
-      setRegionChecked(!regionChecked);
+      setIsChecked(!isChecked);
       setCheckedItems({ ...checkedItems, region: value });
+      closeModal(false);
     }
   };
 
-  const submitHandler = () => {
-    setCheckedItems({ ...checkedItems });
-  };
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -68,28 +63,19 @@ export default function RegionModal({
           {RegionList.map((item) => (
             <label tag={item} key={item.tag}>
               <input
-              className="tagselectbox"
-              style={{ display: "none" }}
+                className="tagselectbox"
+                style={{ display: "none" }}
                 type="checkbox"
                 name="tag"
                 id={item.id}
                 value={item.tag}
                 onChange={changeHandler}
-                onClick={()=>ClickTagBtn(item.id)}
+                onClick={() => {
+                  ClickTagBtn(item.id);
+                }}
               />
-              {item.isChecked ? (<div
-                  style={{
-                    width: "40%",
-                    position: "relative",
-                    display: "inline-block",
-                    textAlign: "center",
-                    margin: "5px 10px 5px 10px",
-                    borderRadius: "22px",
-                    background: "#ffffff",
-                  }}
-                >
-                  {item.tag}
-                </div>):(<div
+
+              <div
                 style={{
                   width: "40%",
                   position: "relative",
@@ -101,24 +87,9 @@ export default function RegionModal({
                 }}
               >
                 {item.tag}
-              </div>)}
-              
+              </div>
             </label>
           ))}
-        </div>
-        <div className="buttonbox">
-          <button className="closebtn" onClick={() => closeModal(false)}>
-            닫기
-          </button>
-          <button
-            className="closebtn"
-            onClick={() => {
-              openRegionNextModal();
-              submitHandler();
-            }}
-          >
-            다음단계
-          </button>
         </div>
       </div>
     </div>
