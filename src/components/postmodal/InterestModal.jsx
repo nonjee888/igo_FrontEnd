@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import "./style.scss";
 
 export default function InterestModal({
+  isChecked,
+  setIsChecked,
   checkedItems,
   setCheckedItems,
   closeInterestModal,
-  openInterestNextModal,
-  interestChecked,
-  setInterestChecked,
 }) {
   const interestedList = [
     { id: 0, tag: "혼자여행" },
@@ -21,14 +20,14 @@ export default function InterestModal({
     { id: 8, tag: "인스타감성" },
   ];
 
-  const [InterestList]=useState(interestedList);
-  const[choiceTagID,setChoiceTagID]=useState(0);
-  const[clickValue,setClickValue] =useState(false);
-  const[btnActive,setBtnActive]=useState("");
+  const [InterestList] = useState(interestedList);
+  const [choiceTagID, setChoiceTagID] = useState(0);
+  const [clickValue, setClickValue] = useState(false);
+  const [btnActive, setBtnActive] = useState("");
 
-  const clickTagBtn =(id) => {
+  const clickTagBtn = (id) => {
     setChoiceTagID(id);
-    setClickValue(!clickValue);
+    // setClickValue(!clickValue);
     InterestList[id].isChecked = !clickValue;
     setBtnActive((prev) => {
       return prev;
@@ -37,12 +36,12 @@ export default function InterestModal({
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    if (interestChecked) {
+    if (isChecked) {
       setCheckedItems(checkedItems);
     }
-
-    setInterestChecked(!interestChecked);
+    setIsChecked(!isChecked);
     setCheckedItems({ ...checkedItems, interest: value });
+    closeInterestModal(false);
   };
   const submitHandler = () => {
     setCheckedItems({ ...checkedItems });
@@ -61,23 +60,12 @@ export default function InterestModal({
                 id={item.id}
                 value={item.tag}
                 onChange={changeHandler}
-                onClick={()=>clickTagBtn(item.id)}
+                onClick={() => {
+                  clickTagBtn(item.id);
+                }}
               />
-              {item.isChecked ? (  <div
-                  style={{
-                    width: "40%",
-                    position: "relative",
-                    display: "inline-block",
-                    textAlign: "center",
-                    margin: "5px 10px 5px 10px",
-                    borderRadius: "22px",
-                    background: "#ffffff",
-                  }}
-                >
-                  {item.tag}
-                </div>
-                ):(
-                <div
+
+              <div
                 style={{
                   width: "40%",
                   position: "relative",
@@ -89,27 +77,9 @@ export default function InterestModal({
                 }}
               >
                 {item.tag}
-              </div>)}
-              
+              </div>
             </label>
           ))}
-        </div>
-        <div className="buttonbox">
-          <button
-            className="closebtn"
-            onClick={() => closeInterestModal(false)}
-          >
-            닫기
-          </button>
-          <button
-            className="closebtn"
-            onClick={() => {
-              openInterestNextModal();
-              submitHandler();
-            }}
-          >
-            다음단계
-          </button>
         </div>
       </div>
     </div>

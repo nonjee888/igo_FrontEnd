@@ -14,7 +14,7 @@ export const postStory = createAsyncThunk(
       if (data.data.success === false) alert(data.data.error.message);
       // 일정등록 성공 메세지 죽여둠
       // else alert(data.data.data);
-      return thunkAPI.fulfillWithValue(data.data.data);
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -52,8 +52,7 @@ export const story = createSlice({
       state.isLoading = true;
     },
     [getStory.fulfilled]: (state, action) => {
-      // console.log(action);
-      console.log(action.payload);
+      // console.log(action.payload);
       state.isLoading = false;
       state.story = action.payload;
     },
@@ -66,7 +65,6 @@ export const story = createSlice({
       state.isLoading = true;
     },
     [postStory.fulfilled]: (state, action) => {
-      console.log(action.payload);
       state.isLoading = false;
       state.story.push(action.payload.data);
     },
