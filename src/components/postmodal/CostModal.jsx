@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import "./style.scss";
 
 export default function CostModal({
+  isChecked,
+  setIsChecked,
   closeModal,
   checkedItems,
   setCheckedItems,
-  costChecked,
-  setCostChecked,
 }) {
   const costList = [
-    { id: 1, tag: "10만원대" },
-    { id: 2, tag: "20만원대" },
-    { id: 3, tag: "30만원대" },
-    { id: 4, tag: "30만원이상" },
+    { id: 0, tag: "10만원대" },
+    { id: 1, tag: "20만원대" },
+    { id: 2, tag: "30만원대" },
+    { id: 3, tag: "30만원이상" },
   ];
 
   const [CostList] = useState(costList);
@@ -24,7 +23,7 @@ export default function CostModal({
   const clickTagBtn = (id) => {
     setChoiceTagID(id);
     setClickValue(!clickValue);
-    CostList[id - 1].isChecked = !clickValue;
+    CostList[id].isChecked = !clickValue;
     setBtnActive((prev) => {
       return prev;
     });
@@ -32,15 +31,13 @@ export default function CostModal({
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    if (costChecked) {
+    if (isChecked) {
       setCheckedItems(checkedItems);
     }
 
-    setCostChecked(!costChecked);
+    setIsChecked(!isChecked);
     setCheckedItems({ ...checkedItems, cost: value });
-  };
-  const submitHandler = () => {
-    setCheckedItems({ ...checkedItems });
+    closeModal(false);
   };
 
   return (
@@ -59,50 +56,36 @@ export default function CostModal({
                 onChange={changeHandler}
                 onClick={() => clickTagBtn(item.id)}
               />
-              {item.isChecked ? (
-                <div
-                  style={{
-                    width: "40%",
-                    position: "relative",
-                    display: "inline-block",
-                    textAlign: "center",
-                    margin: "5px 10px 5px 10px",
-                    borderRadius: "22px",
-                    background: "#ffffff",
-                  }}
-                >
-                  {item.tag}
-                </div>
-              ) : (
-                <div
-                  style={{
-                    width: "40%",
-                    position: "relative",
-                    display: "inline-block",
-                    textAlign: "center",
-                    margin: "5px 10px 5px 10px",
-                    borderRadius: "22px",
-                    background: "#BDE8F8",
-                  }}
-                >
-                  {item.tag}
-                </div>
-              )}
+
+              <div
+                style={{
+                  width: "40%",
+                  position: "relative",
+                  display: "inline-block",
+                  textAlign: "center",
+                  margin: "5px 10px 5px 10px",
+                  borderRadius: "22px",
+                  background: "#BDE8F8",
+                }}
+              >
+                {item.tag}
+              </div>
             </label>
           ))}
         </div>
         <div className="buttonbox">
-          <button className="closebtn" onClick={() => closeModal(false)}>
-            닫기
-          </button>
           <button
             className="closebtn"
             onClick={() => {
+              setCheckedItems({
+                region: "지역 선택",
+                cost: "비용 선택",
+                interest: "관심사 선택",
+              });
               closeModal(false);
-              submitHandler();
             }}
           >
-            선택완료
+            모든선택 초기화
           </button>
         </div>
       </div>

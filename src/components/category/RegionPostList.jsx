@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { instance } from "../../shared/api";
 import Tags from "./Tags";
+import Post from "../post/Post";
 
 // 지역 카테고리목록
 export default function RegionPostList() {
@@ -54,66 +55,66 @@ export default function RegionPostList() {
 
   //-----------------지역별분류-------------------//
 
-  //   let allRegion = postList.filter((post) => {
-  //     return region === "전체";
-  //   });
+  let allRegion = postList?.filter((post) => {
+    return region === "전체";
+  });
 
-  //   let seoul = postList.filter((post) => {
-  //     return region === "서울/경기권";
-  //   });
+  let seoul = postList?.filter((post) => {
+    return region === "서울/경기권";
+  });
 
-  //   let daejeon = postList.filter((post) => {
-  //     return region === "대전";
-  //   });
+  let daejeon = postList?.filter((post) => {
+    return region === "대전";
+  });
 
-  //   let sejeong = postList.filter((post) => {
-  //     return region === "세종";
-  //   });
+  let sejeong = postList?.filter((post) => {
+    return region === "세종";
+  });
 
-  //   let incheon = postList.filter((post) => {
-  //     return region === "인천";
-  //   });
+  let incheon = postList?.filter((post) => {
+    return region === "인천";
+  });
 
-  //   let daegu = postList.filter((post) => {
-  //     return region === "대구";
-  //   });
+  let daegu = postList?.filter((post) => {
+    return region === "대구";
+  });
 
-  //   let gangwon = postList.filter((post) => {
-  //     return region === "강원도";
-  //   });
+  let gangwon = postList?.filter((post) => {
+    return region === "강원도";
+  });
 
-  //   let ulsan = postList.filter((post) => {
-  //     return region === "울산";
-  //   });
+  let ulsan = postList?.filter((post) => {
+    return region === "울산";
+  });
 
-  //   let chungcheong = postList.filter((post) => {
-  //     return region === "충청도";
-  //   });
+  let chungcheong = postList?.filter((post) => {
+    return region === "충청도";
+  });
 
-  //   let gwangju = postList.filter((post) => {
-  //     return region === "광주";
-  //   });
+  let gwangju = postList?.filter((post) => {
+    return region === "광주";
+  });
 
-  //   let jeolla = postList.filter((post) => {
-  //     return region === "전라도";
-  //   });
+  let jeolla = postList?.filter((post) => {
+    return region === "전라도";
+  });
 
-  //   let busan = postList.filter((post) => {
-  //     return region === "부산";
-  //   });
+  let busan = postList?.filter((post) => {
+    return region === "부산";
+  });
 
-  //   let gyeongsang = postList.filter((post) => {
-  //     return region === "경상도";
-  //   });
+  let gyeongsang = postList?.filter((post) => {
+    return region === "경상도";
+  });
 
-  //   let jeju = postList.filter((post) => {
-  //     return region === "제주도";
-  //   });
+  let jeju = postList?.filter((post) => {
+    return region === "제주도";
+  });
 
   //-----------------지역별분류-------------------//
 
   const getRegionList = async () => {
-    const response = await instance.get(`/api/post/region?type=region`);
+    const response = await instance.get(`/api/post/region?type=${region}`);
     setPostList(response.data.data);
     return response.data.data;
   };
@@ -137,7 +138,7 @@ export default function RegionPostList() {
       </div>
       <div className="post-list-wrapper">
         <div className="content-wrapper">
-          {/* {region === "전체"
+          {region === "전체"
             ? allRegion?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
@@ -149,67 +150,67 @@ export default function RegionPostList() {
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "대전"
+            : region === "대전"
             ? daejeon?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "세종"
+            : region === "세종"
             ? sejeong?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "인천"
+            : region === "인천"
             ? incheon?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "대구"
+            : region === "대구"
             ? daegu?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "강원도"
+            : region === "강원도"
             ? gangwon?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "울산"
+            : region === "울산"
             ? ulsan?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "충청도"
+            : region === "충청도"
             ? chungcheong?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "광주"
+            : region === "광주"
             ? gwangju?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "전라도"
+            : region === "전라도"
             ? jeolla?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "부산"
+            : region === "부산"
             ? busan?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-              : region === "경상도"
+            : region === "경상도"
             ? gyeongsang?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
@@ -219,7 +220,7 @@ export default function RegionPostList() {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
-              })} */}
+              })}
         </div>
       </div>
     </div>

@@ -48,7 +48,7 @@ const AddPost = () => {
   };
   const isSubmitPost = () => {
     if (content !== "<p><br></p>" && title !== "") {
-      if (content.length > 10 && title.length >= 2) {
+      if (content.length > 9 && title.length >= 2) {
         setIsActive(true);
       } else {
         setIsActive(false);
@@ -57,26 +57,15 @@ const AddPost = () => {
   };
 
   const [checkedItems, setCheckedItems] = useState({
-    interest: "",
-    region: "",
-    cost: "",
+    interest: "관심사 선택",
+    region: "지역 선택",
+    cost: "비용 선택",
   });
   const tags = Object.values(checkedItems);
-  const [regionChecked, setRegionChecked] = useState(false);
-  const [interestChecked, setInterestChecked] = useState(false);
-  const [costChecked, setCostChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const [openRegionModal, setOpenRegionModal] = useState(false);
   const [openInterestModal, setOpenInterestModal] = useState(false);
   const [openCostModal, setOpenCostModal] = useState(false);
-
-  const openInterestNextModal = () => {
-    setOpenInterestModal(false);
-    setOpenRegionModal(true);
-  };
-  const openRegionNextModal = () => {
-    setOpenRegionModal(false);
-    setOpenCostModal(true);
-  };
 
   useEffect(() => {
     if (id !== undefined) {
@@ -126,58 +115,74 @@ const AddPost = () => {
           </div>
           <div className="tagsbox">
             <button
-              className="tagmodalbtn"
+              className={
+                checkedItems.interest === "관심사 선택"
+                  ? "tagmodalbtn"
+                  : "selectedtagmodalbtn"
+              }
               onClick={() => {
                 setOpenInterestModal(true);
+                setOpenRegionModal(false);
+                setOpenCostModal(false);
               }}
             >
-              {interestChecked ? checkedItems.interest : "관심사"}
+              {checkedItems.interest}
             </button>
+
             {openInterestModal && (
               <InterestModal
-                interestChecked={interestChecked}
-                setInterestChecked={setInterestChecked}
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
                 closeInterestModal={setOpenInterestModal}
-                openInterestNextModal={openInterestNextModal}
               />
             )}
+
             <button
-              className="tagmodalbtn"
+              className={
+                checkedItems.region === "지역 선택"
+                  ? "tagmodalbtn"
+                  : "selectedtagmodalbtn"
+              }
               onClick={() => {
                 setOpenRegionModal(true);
                 setOpenInterestModal(false);
                 setOpenCostModal(false);
               }}
             >
-              {regionChecked ? checkedItems.region : "지역"}
+              {checkedItems.region}
             </button>
 
             {openRegionModal && (
               <RegionModal
-                regionChecked={regionChecked}
-                setRegionChecked={setRegionChecked}
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
                 closeModal={setOpenRegionModal}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
-                openRegionNextModal={openRegionNextModal}
               />
             )}
+
             <button
-              className="tagmodalbtn"
+              className={
+                checkedItems.cost === "비용 선택"
+                  ? "tagmodalbtn"
+                  : "selectedtagmodalbtn"
+              }
               onClick={() => {
                 setOpenCostModal(true);
                 setOpenRegionModal(false);
                 setOpenInterestModal(false);
               }}
             >
-              {costChecked ? checkedItems.cost : "여행경비"}
+              {checkedItems.cost}
             </button>
+
             {openCostModal && (
               <CostModal
-                costChecked={costChecked}
-                setCostChecked={setCostChecked}
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
                 closeModal={setOpenCostModal}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
@@ -187,7 +192,8 @@ const AddPost = () => {
           <div className="editor-wrapper">
             <Editor
               ref={editorRef}
-              placeholder="내용을 입력 할 때 ... 을 누르면 사진을 공유 할 수 있어요!"
+              placeholder="내용을 입력 할 때 ... 을 누르면 사진을 공유 할 수 있어요!                       제목은 두글자, 내용은 세글자 입력해야 게시물 등록이 가능합니다.
+              "
               initialValue=""
               previewStyle="vertical"
               height="calc(95vh - 390px)"
@@ -229,6 +235,7 @@ const AddPost = () => {
                 isEdit={isEdit}
                 overlayData={overlayData}
                 setOverlayData={setOverlayData}
+                checkedItems={checkedItems}
               />
             </div>
           </div>
