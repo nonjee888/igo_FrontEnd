@@ -38,23 +38,27 @@
 
 //포스트페이지 로그인,회원가입,로고포함 헤더
 .Header-wrapper {
-  height: 13vh;
-  border-bottom: 1px solid #d9d9d9;
+  height: 8vh;
   display: flex;
   max-width: 428px;
   font-family: "NotoSansKR";
+  border-bottom: 1px solid #e2e2e2;
 }
 //로고가 담긴 콘테이너
 .HeaderForm {
-  width: 30%;
+  width: 90%;
   height: auto;
 }
 
 //내돈내여 로고
 .Logo {
-  width: 95%;
-  height: 60%;
-  margin: 27% 0 0 27%;
+  width: 70%;
+  height: auto;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18%;
+  
 }
 
 //로그인,회원가입 담긴 헤더
@@ -70,7 +74,7 @@
 .Signbtn {
   font-size: 18px;
   position: relative;
-  margin-right: 1rem;
+  
   border: none;
   background: none;
   height: 10%;
@@ -100,41 +104,43 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 45%;
-
   text-align: right;
 }
 
 //풋컨테이너
 .Footer-Container {
-  border-top: 1px solid #d9d9d9;
-  height: 70px;
+  height: 30%;
   width: 100%;
   position: fixed;
   bottom: 0;
-  background-color: white;
+  border: 1px solid transparent;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
   max-width: 428px;
   z-index: 1;
 }
 
 //글쓰기,관심목록,마이페이지 담긴 아이콘박스
 .Icon-box {
-  height: 90%;
+  height: 60%;
   display: flex;
   justify-content: center;
+
+  margin: auto;
 }
 
 //추천아이콘 사이즈 맞추기
 .recomendIcon {
-  height: 110%;
+  height: 30%;
 }
 
 //푸터 아이콘들
 .FootersIcon {
-  width: 100%;
+  width: 40%;
 }
 
 //아이콘각각 담아준박스
 .btnbox {
   display: flex;
-  margin: 3% 4%;
+  margin: 10% 10%;
 }

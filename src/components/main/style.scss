@@ -1,20 +1,41 @@
 .choiceBox {
   width: 80%;
-  height: 60vh;
-  border: 1px solid black;
+  height: 55vh;
+  
   position: relative;
   margin: 10% auto 10%;
 }
 
-.conStyle {
-  display: inline-block;
-  &:focus {
-    font-weight: bold;
-    color: white;
-    border: 2px solid #5e7fdc;
-    background: none;
-  }
+.interestcheck{ 
+  display: none;
 }
+
+.tagcheck {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5% 2% 2% 4.5%;
+  background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
+  border-radius: 22px;
+  width: 90%;
+  height: 2.5rem;
+  font-size: 1.2rem;
+}
+ 
+.untagcheck {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5% 2% 2% 4.5%;
+  background: none;
+  border-radius: 22px;
+  width: 90%;
+  height: 2.5rem;
+  font-size: 1.2rem;
+ }
+
+
+
 
 .likebox {
   width: 10%;
@@ -31,25 +52,28 @@
 .btnBox {
   width: 100%;
   height: 10%;
-  display: flex;
-  padding: auto;
+  display:block;
+  margin: 5% 2% 2% 5%;;
+  
+
 }
 .joinbtn {
-  display: block;
+  display: inline-block;
   align-items: center;
   justify-content: center;
-  width: 40%;
-  height: 60%;
+  width: 35%;
+  height: 70%;
   font-size: 100%;
   color: white;
-  background-color: #5e7fdc;
-  border-radius: 12px;
+  background-color: #A3D7ED;
+  border-radius: 22px;
   border: 1px solid transparent;
-  margin: auto;
+  margin: 2.5% 2% 2% 2.5%;;
+  
   &:hover {
     font-weight: bold;
     color: black;
-    border: 2px solid #5e7fdc;
+    border: 3px solid #A3D7ED;
     background: none;
   }
 }
@@ -87,11 +111,11 @@
 }
 
 .Recommend-logo {
-  width: 70%;
-  margin: 5% 14% 5% 14%;
+  width: 100%;
+  
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
 }
 
 //추천게시물title
