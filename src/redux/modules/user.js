@@ -8,35 +8,24 @@ export const memberLogin = createAsyncThunk(
   "user/userLogin",
   async (payload, thunkAPI) => {
     try {
-      const data = await instance.post("/api/memeber/login", payload);
-      localStorage.setItem("ACCESS_TOKEN");
-      localStorage.setItem("REFRESH_TOKEN");
-      localStorage.setItem("nickname");
-      localStorage.setItem("isLogin");
+      const data = await instance.post("/api/member/login", payload);
+      console.log(data);
       const nickname = data.data.data.nickname;
-
-      setTimeout(() => {
-        Swal.fire({
-          icon: "success",
-          title: nickname + "님",
-          text: "환영합니다!",
-          confirmButtonColor: "#47AFDB",
-          confirmButtonText: "확인",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.href("/post/all"); //나중에 /recommend 로 바꾸기
-          }
-        });
-      }, 1000);
-      return (
-        <div>
-          <img
-            src={loading}
-            style={{ width: "50%", margin: "60% 25% 0 25%", display: "block" }}
-            alt="스피너"
-          />
-        </div>
-      );
+      localStorage.setItem("ACCESS_TOKEN", data.headers.authorization);
+      localStorage.setItem("REFRESH_TOKEN", data.headers.refreshtoken);
+      localStorage.setItem("nickname", data.data.data.nickname);
+      localStorage.setItem("isLogin", data.data.data.nickname);
+      Swal.fire({
+        icon: "success",
+        title: `${nickname}` + "님",
+        text: "환영합니다!",
+        confirmButtonColor: "#47AFDB",
+        confirmButtonText: "확인",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // window.location.replace("/choice");
+        }
+      });
     } catch (error) {
       return thunkAPI.fulfillWithValue(error);
     }

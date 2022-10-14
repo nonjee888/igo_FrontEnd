@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { memberLogin } from "../../redux/modules/user";
+import { useNavigate } from "react-router-dom";
 import AdminSignup from "./AdminSignup";
 import igoLogo from "../../asset/igoLogo.png";
 import Swal from "sweetalert2";
-import { Navigate, useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const initialState = {
-    id: "",
+    memberId: "",
     password: "",
   };
   const [user, setUser] = useState(initialState);
@@ -18,12 +18,15 @@ const Admin = () => {
   const close = () => {
     setModal(false);
   };
+
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
+
+  console.log(user);
   const loginHandler = () => {
-    if (user.id.trim() === "" || user.password.trim() === "")
+    if (user.memberId.trim() === "" || user.password.trim() === "")
       return Swal.fire({
         icon: "info",
         text: "ID, 비밀번호 모두 입력해주세요",
@@ -31,7 +34,7 @@ const Admin = () => {
         confirmButtonText: "확인",
       });
     dispatch(memberLogin(user));
-    navigate("/recommend");
+    navigate("/choice");
   };
   return (
     <>
@@ -42,8 +45,8 @@ const Admin = () => {
           <input
             className="Login-input"
             type="text"
-            name="id"
-            value={user.id}
+            name="memberId"
+            value={user.memberId}
             onChange={onChangeHandler}
             placeholder="아이디를 입력하세요"
           />
