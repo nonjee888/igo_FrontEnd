@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { putMyinfo, getMyinfo } from "../../redux/modules/myinfo";
+import Modal from "./MyProfileModal";
 //이미지
-import profileImg from "../../asset/assetMypage/profileImg1.png";
+import profileImg1 from "../../asset/assetMypage/profileImg1.png";
+import profileImg from "../../asset/assetMypage/profileImg.png";
 import edit from "../../asset/edit.png";
 
 const Myinfo = () => {
@@ -17,7 +19,6 @@ const Myinfo = () => {
     dispatch(getMyinfo());
   }, [dispatch]);
 
-  const NICKNAME = localStorage.getItem("nickname");
   const [nickname, setNickname] = useState("");
   const [profileImage, setProfileImage] = useState([]);
   const [preview, setPreview] = useState("");
@@ -51,15 +52,54 @@ const Myinfo = () => {
     navigate("/myinfo");
   };
 
+  //수정창 모달
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <div className="All">
-      {myinfo === undefined ? (
+      <div className="profileImage">
+        {myinfo === undefined ? (
+          <>
+            <img src={profileImg} alt="프로필이미지" />
+          </>
+        ) : myinfo[0].profileImage === null ? (
+          <>
+            <img src={profileImg} alt="프로필이미지" />
+            <div className="profileNickname1">
+              {myinfo[0]?.nickname}
+              <button onClick={openModal}>
+                <img
+                  src={edit}
+                  style={{ width: "30px", height: "25px" }}
+                  alt="닉네임수정버튼"
+                />
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <img src={myinfo[0].profileImage} alt="프로필이미지" />
+            <div className="profileNickname1">
+              <h4>{myinfo[0]?.nickname}</h4>
+              <img src={edit} alt="닉네임수정버튼" onClick={openModal} />
+            </div>
+          </>
+        )}
+      </div>
+      {/* 수정모달창 */}
+      <Modal open={modalOpen} close={closeModal}>
         <form onSubmit={onSubmitHandler}>
           {/* 프로필사진 */}
           <div className="profileImage">
             <img
               alt="이미지를 업로드 해주세요."
-              src={preview ? preview : profileImg}
+              src={preview ? preview : profileImg1}
             />
             <label htmlFor="file" className="profileImginputLabel">
               변경하기
@@ -78,115 +118,20 @@ const Myinfo = () => {
           <div className="profileNickname">
             <input
               type="text"
-              placeholder={NICKNAME}
               value={nickname}
+              placeholder="6글자이내"
               className="profileNickameinput"
               onChange={(e) => {
                 setNickname(e.target.value);
               }}
             />
-            <button
-              type="submit"
-              style={{ border: "none", background: "transparent" }}
-            >
-              <img
-                src={edit}
-                style={{ width: "30px", height: "25px" }}
-                alt="닉네임수정버튼"
-              />
+            <button type="submit" className="changeButton">
+              변경
             </button>
           </div>
         </form>
-      ) : myinfo[0].profileImage === null ? (
-        <form onSubmit={onSubmitHandler}>
-          {/* 프로필사진 */}
-          <div className="profileImage">
-            <img
-              alt="이미지를 업로드 해주세요."
-              src={preview ? preview : profileImg}
-            />
-            <label htmlFor="file" className="profileImginputLabel">
-              변경하기
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              name="profileImage"
-              id="file"
-              className="profileImginput"
-              onChange={onChangeImage}
-              multiple="multiple"
-            />
-          </div>
-          {/* 닉네임, 수정버튼 */}
-          <div className="profileNickname">
-            <input
-              type="text"
-              placeholder={NICKNAME}
-              value={nickname}
-              className="profileNickameinput"
-              onChange={(e) => {
-                setNickname(e.target.value);
-              }}
-            />
-            <button
-              type="submit"
-              style={{ border: "none", background: "transparent" }}
-            >
-              <img
-                src={edit}
-                style={{ width: "30px", height: "25px" }}
-                alt="닉네임수정버튼"
-              />
-            </button>
-          </div>
-        </form>
-      ) : (
-        <form onSubmit={onSubmitHandler}>
-          {/* 프로필사진 */}
-          <div className="profileImage">
-            <img
-              alt="이미지를 업로드 해주세요."
-              src={preview ? preview : myinfo[0].profileImage}
-            />
-            <label htmlFor="file" className="profileImginputLabel">
-              변경하기
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              name="profileImage"
-              id="file"
-              className="profileImginput"
-              onChange={onChangeImage}
-              multiple="multiple"
-            />
-          </div>
-          {/* 닉네임, 수정버튼 */}
-          <div className="profileNickname">
-            <button>{myinfo[0].nickname}</button>
-            <input
-              type="text"
-              placeholder="변경할 닉네임을 적어주세요."
-              value={nickname}
-              className="profileNickameinput"
-              onChange={(e) => {
-                setNickname(e.target.value);
-              }}
-            />
-            <button
-              type="submit"
-              style={{ border: "none", background: "transparent" }}
-            >
-              <img
-                src={edit}
-                style={{ width: "30px", height: "25px" }}
-                alt="닉네임수정버튼"
-              />
-            </button>
-          </div>
-        </form>
-      )}
+      </Modal>
+
       {/* 관심 여행 키워드, 수정버튼 */}
       <div className="profileCategory">
         <div className="CategoryTitle">
@@ -201,6 +146,7 @@ const Myinfo = () => {
           여기에카테고리겟으로가져오기 혼자 | 식도락| 액티브 |룰라랄라라라
         </div>
       </div>
+
       {/* 모아보기, 나의 일정 */}
       <div className="myListAll">
         <p
