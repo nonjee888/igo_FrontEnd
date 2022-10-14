@@ -62,9 +62,21 @@ const AddStory = () => {
             <img
               alt="영상을 업로드 해주세요."
               src={preview ? preview : video}
-              style={{ display: "flex", width: "100%", height: "130px" }}
+              style=
+              {{ display: "flex",
+              alignContent:"center",
+              justifyContent:"center", 
+              width: "30%", 
+              height: "auto",
+              marginLeft:"15%",
+              padding:"20%" ,
+              
+              }}
             />
-            <label htmlFor="file" className="videoinputLabel">
+            <label htmlFor="file" className="videoinputLabel"
+              style={{display: "flex",
+              alignContent:"center",
+              justifyContent:"center", }}>
               변경하기
             </label>
             <input
@@ -84,7 +96,7 @@ const AddStory = () => {
               onClick={() => {
                 navigate(-1);
               }}
-              style={{ height: "50%" }}
+              style={{ width:"15%",height: "30%" }}
             />
             <button className="videoAdd" type="submit">
               <img src={addVideo} alt="영상등록" />
