@@ -48,7 +48,7 @@ export default function AllPostList() {
   }, [sort]);
 
   return (
-    <div className="All">
+    <div className="postListAll">
       <div className="tag-wrapper">
         {sortList.map((item) => (
           <Tags

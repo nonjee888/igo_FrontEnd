@@ -1,7 +1,7 @@
 //카테고리 전체컨테이너
 .category-wrapper {
   width: 100%;
-  height: auto;
+  height: 6vh;
   display: flex;
   position: relative;
   align-items: center;
@@ -58,4 +58,13 @@
   display: flex;
   text-align: center;
   justify-content: center;
+}
+
+//포스트리스트
+.postListAll {
+  height: 73vh;
+  overflow: auto;
+  width: 100%;
+  font-family: "NotoSansKR";
+  color: #555555;
 }

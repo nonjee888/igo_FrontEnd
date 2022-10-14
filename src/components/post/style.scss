@@ -203,7 +203,7 @@
 //PostDetail.jsx
 .detail-wrapper {
   width: 99.5%;
-  height: 75%;
+  height: 72.5vh;
   overflow: auto;
 }
 .detail-tag {
@@ -379,12 +379,13 @@
 .commentContainer {
   max-width: 428px;
   position: fixed;
-  bottom: 7%;
+  bottom: 5%;
   width: 100%;
   z-index: 1;
   transition: all 1000ms;
   overflow: auto;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
+  // border-top: blueviolet 1px solid;
 }
 .toggle-comment-wrapper {
   display: flex;
@@ -395,8 +396,9 @@
   border-top: 1px solid #eee;
 }
 .comment-tap {
-  margin-left: 50%;
+  width: 100%;
   font-weight: bolder;
+  background-color: red;
 }
 //PostDetailFooters.jsx
 .Footer-Container {

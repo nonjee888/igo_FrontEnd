@@ -30,14 +30,6 @@ const MyPlanPost = () => {
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
 
-  const data = {
-    title: title,
-    content: content,
-    time: time,
-  };
-  //value를 setState해준다
-  // console.log(data);
-
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     let req = {
@@ -109,7 +101,6 @@ const MyPlanPost = () => {
               id="file"
               className="planImginput"
               onChange={onChangeImage}
-              multiple="multiple"
             />
             <div className="MyplanPostContents">
               <textarea

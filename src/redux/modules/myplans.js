@@ -139,6 +139,13 @@ export const myplans = createSlice({
       );
       state.myplans.splice(index, 1);
     },
+    [postMyplanDone.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [postMyplanDone.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.myplans.filter((v) => v.done === 0);
+    },
   },
 });
 

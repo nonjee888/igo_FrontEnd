@@ -1,5 +1,14 @@
 //혜림담당
 
+//프로필사진 모달
+.myProfileAll {
+  width: 100%;
+  color: #999999;
+  font-size: 12px;
+  border-top: 1px solid rgb(229, 229, 229);
+  padding-top: 1rem;
+}
+
 // 나의페이지
 .imgBox {
   border-radius: 70%;
@@ -53,17 +62,51 @@
   margin: 2% 0 0 25%;
   font-size: 1.1rem;
   font-weight: 900;
-  width: 50%;
+  width: 55%;
   height: 5%;
 }
 
-.profileNickameinput {
-  border: 2px solid #555555;
-  width: 50%;
+.profileNickname1 {
+  display: flex;
+  align-items: center;
   text-align: right;
+  margin-top: 127px;
+  font-size: 1.1rem;
+  font-weight: 900;
+  width: 30%;
+  height: 25px;
+  position: absolute;
+  // background-color: #47afdb;
+  h4 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 85%;
+  }
+  img {
+    width: 27px;
+    height: 23px;
+  }
+}
+
+.profileNickameinput {
+  border: 2px solid #999999;
+  width: 50%;
+  text-align: center;
   font-size: 1rem;
-  font-weight: 700;
   background-color: transparent;
+  height: 30px;
+}
+
+.changeButton {
+  border: none;
+  background: linear-gradient(to right, #f5c9e0 5%, #47afdb 70%);
+  color: white;
+  font-weight: bold;
+  width: 60px;
+  border-radius: 5px;
+  margin-left: 5px;
+  font-size: 15px;
 }
 
 .profileCategory {
@@ -97,7 +140,35 @@
     font-size: 1.1rem;
   }
 }
-// 나의 게시글, 관심, 일정 리스트
+// 나의 게시글, 관심리스트
+.AllMyPostList {
+  background-color: rgba(255, 255, 255, 0.524);
+  border-radius: 0 0 10px 10px;
+  width: 85%;
+  position: absolute;
+  z-index: 1;
+  margin-top: 147px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 45% 23% 5% 10%;
+  gap: 5%;
+  align-items: center;
+  padding: 0 0 1% 5%;
+}
+.MyPostTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  font-weight: 900;
+  color: black;
+}
+.MyPostNick {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
 .MyPostsList {
   display: flex;
   width: 100%;
@@ -117,17 +188,6 @@
   padding: 1%;
   border-radius: 10px;
   width: 100%;
-}
-
-.MyPostTitle {
-  background-color: white;
-  opacity: 0.7;
-  padding: 3% 0 5% 5%;
-  border-radius: 0 0 10px 10px;
-  width: 85%;
-  position: absolute;
-  z-index: 1;
-  margin-top: 155px;
 }
 
 //나의 일정관리하기
@@ -318,5 +378,71 @@
   width: 40%;
   img {
     width: 100%;
+  }
+}
+
+//프로필이미지수정 모달
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal button {
+  outline: none;
+  cursor: pointer;
+  border: 0;
+}
+.modal > section {
+  width: 95%;
+  height: 210px;
+  max-width: 428px;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  animation: modal-show 0.3s;
+  overflow: hidden;
+}
+
+.modal.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
+}
+.modal > section > header {
+  position: relative;
+}
+.modal > section > header button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: #999;
+  background-color: transparent;
+}
+
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

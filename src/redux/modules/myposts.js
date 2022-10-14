@@ -24,7 +24,7 @@ export const myposts = createSlice({
   reducers: {},
 
   extraReducers: {
-    //전체내일정 가져오기
+    //전체 포스트 가져오기
     [getMyposts.pending]: (state) => {
       state.isLoading = true;
     },
