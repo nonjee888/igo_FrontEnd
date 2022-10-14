@@ -32,9 +32,7 @@ const Post = (props) => {
         <div className="pic-wrapper">
           <div className="post-content">
             <div className="post-title">{title}</div>
-            <p className="post-nick">{name}</p>
-            <img className="heart-btn-img" src={filledHeart} alt="" />
-            {heart}
+            <div className="post-heart">♥{heart}</div>
           </div>
         </div>
       </div>
