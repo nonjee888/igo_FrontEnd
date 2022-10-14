@@ -65,17 +65,6 @@ export const myinfo = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    // [putMyinfo.pending]: (state) => {
-    //   state.isLoading = true;
-    // },
-    // [putMyinfo.fulfilled]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.myinfo.splice(0, 1, state.myinfo[0]);
-    // },
-    // [putMyinfo.rejected]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
   },
 });
 

@@ -13,7 +13,6 @@ const CommentList = (props) => {
   const content = props.comment.content;
   const postId = props.postId;
   const commentId = props.comment.id;
-  const myinfo = useSelector((state) => state.myinfo.myinfo);
 
   const payload = {
     postId,
@@ -25,10 +24,10 @@ const CommentList = (props) => {
       <div className="ment-listWrapper">
         <div className="ment-wrapper">
           <div className="nickname">
-            {myinfo[0].profileImage === null ? (
+            {commentProfile === null ? (
               <img className="profileImg" src={profileImg} alt="" />
             ) : (
-              <img className="profileImg" src={myinfo[0].profileImage} alt="" />
+              <img className="profileImg" src={commentProfile} alt="" />
             )}
             <p className="userNick">{nickname}</p>
           </div>

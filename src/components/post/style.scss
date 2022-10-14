@@ -25,15 +25,23 @@
   color: white;
   font-weight: bold;
   font-size: 18px;
-  background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
-  &:focus {
-    border: 5px solid linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
-    color: #555555;
-    font-weight: bold;
-    font-size: 18px;
-    background: #fff;
-  }
+  background: linear-gradient(to left, #bababa 30%, #838383 70%);
 }
+.selectedtagmodalbtn {
+  width: 30%;
+  height: 4vh;
+  margin: 6px 6px 6px 6px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
+}
+
 .editor-wrapper {
   position: relative;
   max-width: 428px;
@@ -47,20 +55,33 @@
   right: 0px !important;
 }
 .submit-post {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 120px;
-  height: 40px;
-  background: none;
+  width: 25%;
+  height: 4vh;
+  margin: 6px 6px 6px 6px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
   border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
 }
+
 .noSubmit-post {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 120px;
-  height: 40px;
-  background: none;
+  width: 25%;
+  height: 4vh;
+  margin: 6px 6px 6px 6px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
   border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  background: linear-gradient(to left, #bababa 30%, #838383 70%);
 }
 .edit-post {
   margin-top: 10px;
@@ -182,9 +203,8 @@
 //PostDetail.jsx
 .detail-wrapper {
   width: 99.5%;
-  height: 75%;
+  height: 72.5vh;
   overflow: auto;
-  // background-color: #f5f5f5;
 }
 .detail-tag {
   width: 90%;
@@ -359,12 +379,13 @@
 .commentContainer {
   max-width: 428px;
   position: fixed;
-  bottom: 7%;
+  bottom: 5%;
   width: 100%;
   z-index: 1;
   transition: all 1000ms;
   overflow: auto;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
+  // border-top: blueviolet 1px solid;
 }
 .toggle-comment-wrapper {
   display: flex;
@@ -375,8 +396,9 @@
   border-top: 1px solid #eee;
 }
 .comment-tap {
-  margin-left: 50%;
+  width: 100%;
   font-weight: bolder;
+  background-color: red;
 }
 //PostDetailFooters.jsx
 .Footer-Container {

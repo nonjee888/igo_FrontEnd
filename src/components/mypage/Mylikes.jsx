@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMylikes } from "../../redux/modules/mylikes";
 import photo from "../../asset/assetMypage/photo.png";
+import filledHeart from "../../asset/filledHeart.png";
 
 const Mylikes = () => {
   let navigate = useNavigate();
@@ -49,8 +50,12 @@ const Mylikes = () => {
                     alt="내게시글이미지"
                   />
                 )}
-
-                <div className="MyPostTitle">{mylikes.title}</div>
+                <div className="AllMyPostList">
+                  <div className="MyPostTitle">{mylikes.title}</div>
+                  <p className="MyPostNick">{mylikes.nickname}</p>
+                  <img src={filledHeart} style={{ height: "30%" }} alt="" />
+                  {mylikes.heartNum}
+                </div>
               </div>
             );
           })}

@@ -8,13 +8,14 @@ import { Pagination, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+//이미지
+import profileImg from "../../asset/assetMypage/profileImg1.png";
 
 const VideoStory = () => {
   const dispatch = useDispatch();
   const story = useSelector((state) => state.story?.story);
   // console.log(story);
 
-  // 리덕스에서 리스트를 로딩
   useEffect(() => {
     dispatch(getStory());
   }, [dispatch]);
@@ -34,7 +35,13 @@ const VideoStory = () => {
           return (
             <SwiperSlide key={story?.id}>
               <div className="videoUser">
-                <img src={story?.profileImage} alt="프로필 이미지" />
+
+                {story.profileImage === null ? (
+                  <img src={profileImg} alt="기본이미지" />
+                ) : (
+                  <img src={story?.profileImage} alt="프로필 이미지" />
+                )}
+
                 <p>{story?.nickname}</p>
               </div>
               <video
