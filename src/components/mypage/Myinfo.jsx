@@ -11,12 +11,26 @@ import edit from "../../asset/edit.png";
 const Myinfo = () => {
   let navigate = useNavigate();
   let dispatch = useDispatch();
+ 
+  const [interest, setInterest] = useState();
+  
+  useEffect(() => {
+    if (localStorage.getItem("ACCESS_TOKEN") !== null) {
+      dispatch(getMyinfo()).then((response) => {
+        if(!response.payload[0].interested)
+        return;
+        console.log(response.payload[0].interested);
+        setInterest(response.payload[0])
+        if (response.payload[0].interested === null) {
+          navigate("/choice");
+        }
+      });
+    }
+  },[]);
+// console.log(interest?.interested[0]);
   const myinfo = useSelector((state) => state.myinfo.myinfo);
   // console.log(myinfo);
 
-  useEffect(() => {
-    dispatch(getMyinfo());
-  }, [dispatch]);
 
   const [nickname, setNickname] = useState("");
   const [profileImage, setProfileImage] = useState([]);
@@ -59,6 +73,8 @@ const Myinfo = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+// console.log(myinfo?.interested[0])
 
   return (
     <div className="All">
@@ -132,10 +148,11 @@ const Myinfo = () => {
             src={edit}
             style={{ width: "7%", height: "7%" }}
             alt="태그수정버튼"
+            onClick={()=>navigate("/choice")}
           />
         </div>
         <div className="categoryGet">
-          여기에카테고리겟으로가져오기 혼자 | 식도락| 액티브 |룰라랄라라라
+          {interest?.interested[0]} | {interest?.interested[1]} | {interest?.interested[2]}       
         </div>
       </div>
 
