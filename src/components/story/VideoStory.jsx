@@ -14,9 +14,8 @@ import profileImg from "../../asset/assetMypage/profileImg1.png";
 const VideoStory = () => {
   const dispatch = useDispatch();
   const story = useSelector((state) => state.story?.story);
-  console.log(story);
+  // console.log(story);
 
-  // 리덕스에서 리스트를 로딩
   useEffect(() => {
     dispatch(getStory());
   }, [dispatch]);
