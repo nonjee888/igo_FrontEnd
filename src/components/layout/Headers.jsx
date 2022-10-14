@@ -93,7 +93,7 @@ const Headers = () => {
                   src={logout}
                   alt="로그아웃"
                   style={{
-                    width: "100%",
+                    width: "70%",
                   }}
                 />
               </button>

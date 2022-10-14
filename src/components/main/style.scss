@@ -53,6 +53,8 @@
   width: 100%;
   height: 10%;
   display:block;
+  margin: 5% 2% 2% 5%;;
+  
 
 }
 .joinbtn {
@@ -66,7 +68,7 @@
   background-color: #A3D7ED;
   border-radius: 22px;
   border: 1px solid transparent;
-  margin: 2.5% 2% 2% 4.5%;;
+  margin: 2.5% 2% 2% 2.5%;;
   
   &:hover {
     font-weight: bold;
@@ -109,11 +111,11 @@
 }
 
 .Recommend-logo {
-  width: 70%;
-  margin: 5% 14% 5% 14%;
+  width: 100%;
+  
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
 }
 
 //추천게시물title
