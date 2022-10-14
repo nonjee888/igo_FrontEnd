@@ -38,82 +38,74 @@
 
 //포스트페이지 로그인,회원가입,로고포함 헤더
 .Header-wrapper {
-  height: 8vh;
-  display: flex;
+  height: 6vh;
   max-width: 428px;
   font-family: "NotoSansKR";
   border-bottom: 1px solid #e2e2e2;
-}
-//로고가 담긴 콘테이너
-.HeaderForm {
-  width: 90%;
-  height: auto;
+  display: flex;
+  align-items: center;
 }
 
 //내돈내여 로고
 .Logo {
-  width: 70%;
-  height: auto;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18%;
-  
+  width: 60%;
+  height: 60%;
+  margin: 7% 0 0 7%;
+  object-fit: cover;
 }
 
 //로그인,회원가입 담긴 헤더
 .Sign-box {
-  display: flex;
   width: 100%;
+  display: flex;
   align-items: center;
-  justify-content: end;
-  margin: 5% 2% 0 10%;
 }
 
 //로그인,회원가입 버튼
 .Signbtn {
-  font-size: 18px;
-  position: relative;
-  
+  width: 70%;
+  object-fit: cover;
   border: none;
-  background: none;
-  height: 10%;
-  font-family: "Noto Sans KR", sans-serif;
-  &:hover {
-    font-weight: bold;
-    color: #47afdb;
+  background-color: transparent;
+  .loginButton {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    margin: 7% 0 0 25%;
+  }
+  .logoutButton {
+    width: 85%;
+    height: 85%;
+    object-fit: cover;
+    margin-top: 7%;
+    // background-color: aqua;
   }
 }
 //헤더 nickname+btn div
 .hearders-nickWrap {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  grid-template-columns: auto;
+  margin-top: 7%;
 }
 //헤더 nick+님 div
 .headers-님 {
-  padding: 10%;
   display: flex;
-  vertical-align: text-bottom;
-  width: 40%;
+  justify-content: right;
+  width: 100%;
 }
 //헤더 닉네임 p
 .headers-nick {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 45%;
   text-align: right;
 }
 
 //풋컨테이너
 .Footer-Container {
-  height: 30%;
+  height: 7vh;
   width: 100%;
-  position: fixed;
-  bottom: 0;
-  border: 1px solid transparent;
+  border-top: 1px solid #d9d9d9;
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
   max-width: 428px;
@@ -122,25 +114,7 @@
 
 //글쓰기,관심목록,마이페이지 담긴 아이콘박스
 .Icon-box {
-  height: 60%;
-  display: flex;
-  justify-content: center;
-
   margin: auto;
-}
-
-//추천아이콘 사이즈 맞추기
-.recomendIcon {
-  height: 30%;
-}
-
-//푸터 아이콘들
-.FootersIcon {
-  width: 40%;
-}
-
-//아이콘각각 담아준박스
-.btnbox {
-  display: flex;
-  margin: 10% 10%;
+  width: 100%;
+  gap: 2.5%;
 }
