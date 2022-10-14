@@ -9,7 +9,7 @@ const MyPostsList = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const myposts = useSelector((state) => state.myposts.myposts);
-  console.log(myposts);
+  // console.log(myposts);
 
   // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {

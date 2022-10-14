@@ -14,7 +14,6 @@ const Myinfo = () => {
   const myinfo = useSelector((state) => state.myinfo.myinfo);
   // console.log(myinfo);
 
-  // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
     dispatch(getMyinfo());
   }, [dispatch]);
@@ -72,14 +71,8 @@ const Myinfo = () => {
           <>
             <img src={profileImg} alt="프로필이미지" />
             <div className="profileNickname1">
-              {myinfo[0]?.nickname}
-              <button onClick={openModal}>
-                <img
-                  src={edit}
-                  style={{ width: "30px", height: "25px" }}
-                  alt="닉네임수정버튼"
-                />
-              </button>
+              <h4>{myinfo[0]?.nickname}</h4>
+              <img src={edit} alt="닉네임수정버튼" onClick={openModal} />
             </div>
           </>
         ) : (
@@ -111,7 +104,6 @@ const Myinfo = () => {
               id="file"
               className="profileImginput"
               onChange={onChangeImage}
-              multiple="multiple"
             />
           </div>
           {/* 닉네임, 수정버튼 */}
