@@ -12,7 +12,6 @@ const Mylikes = () => {
   const mylikes = useSelector((state) => state.mylikes.mylike);
   // console.log(mylikes);
 
-  // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
     dispatch(getMylikes());
   }, [dispatch]);
