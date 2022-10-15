@@ -46,10 +46,14 @@
   align-items: center;
 }
 
+.HeaderForm {
+  width: 50%;
+}
+
 //내돈내여 로고
 .Logo {
-  width: 60%;
-  height: 60%;
+  width: 80%;
+  height: 80%;
   margin: 7% 0 0 7%;
   object-fit: cover;
 }
@@ -68,24 +72,22 @@
   border: none;
   background-color: transparent;
   .loginButton {
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
     object-fit: cover;
-    margin: 7% 0 0 25%;
+    margin: 7% 0 0 70%;
   }
   .logoutButton {
-    width: 85%;
-    height: 85%;
+    width: 80%;
+    height: 80%;
     object-fit: cover;
-    margin-top: 7%;
-    // background-color: aqua;
   }
 }
 //헤더 nickname+btn div
 .hearders-nickWrap {
   display: flex;
   align-items: center;
-  margin-top: 7%;
+  margin-top: 5%;
 }
 //헤더 nick+님 div
 .headers-님 {
@@ -99,6 +101,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: right;
+  margin-bottom: 2%;
 }
 
 //풋컨테이너
