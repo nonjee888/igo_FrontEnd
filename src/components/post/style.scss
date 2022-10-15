@@ -157,49 +157,6 @@
   font-weight: 900;
 }
 
-//Post.jsx
-.post-content {
-  margin-left: 5%;
-  padding: 5%;
-  background-color: rgba(255, 255, 255, 0.524);
-  width: 80%;
-  height: 30px;
-  position: absolute;
-  overflow: hidden;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  bottom: 20px;
-  display: grid;
-  grid-template-columns: 70% 30% 5%;
-}
-.post-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 50%;
-  font-size: 20px;
-  font-weight: 900;
-  color: black;
-}
-.post-nick {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 20%;
-}
-.heart-btn-img {
-  width: 20px;
-}
-.post-body {
-  width: 100%;
-  height: 250px;
-  margin-bottom: 5%;
-  & img {
-    object-fit: cover;
-  }
-}
-
 //PostDetail.jsx
 .detail-wrapper {
   width: 99.5%;
@@ -253,10 +210,9 @@
   position: relative;
 }
 .img-container {
-  margin: 5%;
-  width: 90%;
+  width: 95%;
   height: 100%;
-  border-radius: 15px;
+  border-radius: 5px;
   overflow: hidden;
   position: relative;
 }
@@ -376,10 +332,15 @@
   margin-right: 3%;
 }
 //PostComment.jsx
+.icon-comment {
+  width: 7.5%;
+  margin-bottom: 2.5%;
+  margin-left: 2.5%;
+}
 .commentContainer {
   max-width: 428px;
   position: fixed;
-  bottom: 5%;
+  bottom: 7%;
   width: 100%;
   z-index: 1;
   transition: all 1000ms;
@@ -398,7 +359,8 @@
 .comment-tap {
   width: 100%;
   font-weight: bolder;
-  background-color: red;
+  display: flex;
+  justify-content: center;
 }
 //PostDetailFooters.jsx
 .Footer-Container {

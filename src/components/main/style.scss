@@ -1,17 +1,17 @@
 .choiceBox {
   width: 80%;
   height: 55vh;
-  
+
   position: relative;
   margin: 10% auto 10%;
 }
 
-.interestcheck{ 
+.interestcheck {
   display: none;
 }
 
 .tagcheck {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin: 2.5% 2% 2% 4.5%;
@@ -21,9 +21,9 @@
   height: 2.5rem;
   font-size: 1.2rem;
 }
- 
+
 .untagcheck {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin: 2.5% 2% 2% 4.5%;
@@ -32,10 +32,7 @@
   width: 90%;
   height: 2.5rem;
   font-size: 1.2rem;
- }
-
-
-
+}
 
 .likebox {
   width: 10%;
@@ -58,6 +55,7 @@
   
   
 
+
 }
 .joinbtn {
   display: inline-block;
@@ -67,15 +65,16 @@
   height: 70%;
   font-size: 90%;
   color: white;
-  background-color: #A3D7ED;
+  background-color: #a3d7ed;
   border-radius: 22px;
   border: 1px solid transparent;
   margin: 2.5% 0% 0% 2.5%;;
   
+
   &:hover {
     font-weight: bold;
     color: black;
-    border: 3px solid #A3D7ED;
+    border: 3px solid #a3d7ed;
     background: none;
   }
 }
@@ -90,13 +89,9 @@
 
 //추천게시물 박스
 .Recommend-List {
-  width: 90%;
-  height: 30vh;
-  margin-top: 2rem;
-  margin: auto;
-  display: inline;
-  align-content: center;
-  justify-content: center;
+  margin-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 //추천게시물 타이틀 border
@@ -114,7 +109,7 @@
 
 .Recommend-logo {
   width: 100%;
-  
+
   display: flex;
   // justify-content: center;
   // align-items: center;
@@ -144,28 +139,35 @@
 }
 
 //RecommendPost.jsx
-.post-content {
-  margin-left: 5%;
+.rec-post-content {
   padding: 5%;
   background-color: rgba(255, 255, 255, 0.524);
-  width: 80%;
-  height: 30px;
+  width: 100%;
+  height: 5%;
   position: absolute;
   overflow: hidden;
   display: flex;
+  bottom: 5px;
   gap: 10px;
   align-items: center;
-  bottom: 20px;
+  display: flex;
+}
+.rec-post-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 70%;
+  font-size: 16px;
+  font-weight: 900;
 }
 
-.heart-btn-img {
-  width: 20px;
+.rec-heart {
+  font-size: 14px;
 }
-.post-body {
-  width: 100%;
-  height: 250px;
-  margin-bottom: 5%;
-
+.rec-post-body {
+  width: 50%;
+  height: 125px;
+  margin-bottom: 2.5%;
   & img {
     object-fit: cover;
   }

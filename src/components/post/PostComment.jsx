@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetailPosts } from "../../redux/modules/posts";
 import { createComment, getComments } from "../../redux/modules/comments";
 import PostCommentList from "./PostCommentList";
+import commentIcon from "../../asset/commentIcon.png";
 import profileImg from "../../asset/assetMypage/profileImg.png";
 
 const PostComment = () => {
@@ -44,7 +44,7 @@ const PostComment = () => {
       className="commentContainer"
     >
       <p className="comment-tap" onClick={openModal}>
-        …
+        <img className="icon-comment" src={commentIcon} />
       </p>
       {!loading && modalOpen && (
         <>
