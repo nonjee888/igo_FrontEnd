@@ -1,9 +1,9 @@
 .choiceBox {
   width: 80%;
-  height: 55vh;
+  height: 70vh;
 
   position: relative;
-  margin: 10% auto 10%;
+  margin: 0% auto 0;
 }
 
 .interestcheck {
@@ -14,10 +14,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2.5% 2% 2% 4.5%;
+  margin: 2.5% 2% 2% 15%;
   background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
   border-radius: 22px;
-  width: 90%;
+  width: 70%;
   height: 2.5rem;
   font-size: 1.2rem;
 }
@@ -34,29 +34,17 @@
   font-size: 1.2rem;
 }
 
-.likebox {
-  width: 10%;
-  display: inline-block;
-  justify-content: space-between;
-  &:focus {
-    font-weight: bold;
-    color: white;
-    border: 2px solid #5e7fdc;
-    background: none;
-  }
-}
 
 .btnBox {
   width: 95%;
   height: 10%;
+  margin-top: 10px;
   display:flex;
   align-items: center;
   justify-content: center;
-  
-  
-
-
 }
+
+
 .joinbtn {
   display: inline-block;
   align-items: center;

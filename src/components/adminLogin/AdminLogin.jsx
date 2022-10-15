@@ -24,6 +24,50 @@ const Admin = () => {
     setUser({ ...user, [name]: value });
   };
 
+  const notice = async () => {
+    const response = await instance.get("/api/member/subscribe");
+
+    console.log("구독성공");
+
+    response.addEventListener("sse", function (event) {
+      console.log(event.data);
+
+      const data = JSON.parse(event.data);
+
+      (async () => {
+        //브라우저 알림
+        const showNotification = () => {
+          const notification = new Notification("알림", {
+            body: data.content,
+          });
+
+          setTimeout(() => {
+            notification.close();
+          }, 10 * 1000);
+
+          notification.addEventListener("click", () => {
+            window.open(data.url, "_blank");
+          });
+        };
+
+        //브라우저 알림 허용 권한
+
+        let granted = false;
+
+        if (Notification.permission === "granted") {
+          granted = true;
+        } else if (Notification.permission !== "denied") {
+          let permission = await Notification.requestPermission();
+          granted = permission === "granted";
+        }
+        //알림 보여주기
+        if (granted) {
+          showNotification();
+        }
+      })();
+    });
+  };
+
   const loginHandler = async () => {
     if (user.memberId.trim() === "" || user.password.trim() === "")
       return Swal.fire({
@@ -40,7 +84,7 @@ const Admin = () => {
       localStorage.setItem("REFRESH_TOKEN", data.headers.refreshtoken);
       localStorage.setItem("nickname", data.data.data.nickname);
       localStorage.setItem("isLogin", data.data.data.nickname);
-
+      notice();
       Swal.fire({
         icon: "success",
         title: `${nickname}` + "님",

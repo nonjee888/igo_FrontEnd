@@ -10,7 +10,8 @@ const PostComment = () => {
   let dispatch = useDispatch();
   let username = localStorage.getItem("nickname");
   const { detail } = useSelector((state) => state.posts);
-  const { isLoading, error, comments } = useSelector((state) => state.comments);
+  const { myinfo } = useSelector((state) => state.myinfo);
+  const { comments } = useSelector((state) => state.comments);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -30,17 +31,10 @@ const PostComment = () => {
   useEffect(() => {
     dispatch(getComments(id));
   }, [dispatch, id]);
-  if (isLoading) {
-    return <div>...로딩중</div>;
-  }
-  if (error) {
-    return <div>{error.message}</div>;
-  }
-  const userProfile = detail.profile;
 
   return (
     <div
-      style={{ height: modalOpen ? "50%" : "6%" }}
+      style={{ height: modalOpen ? "50%" : "8%" }}
       className="commentContainer"
     >
       <div className="comment-tap" onClick={openModal}>
@@ -50,10 +44,14 @@ const PostComment = () => {
         <>
           <div className="toggle-comment-wrapper">
             <div className="nickname">
-              {userProfile === null ? (
+              {myinfo[0]?.profileImage === null || undefined ? (
                 <img className="profileImg" src={profileImg} alt="" />
               ) : (
-                <img className="profileImg" src={userProfile} alt="" />
+                <img
+                  className="profileImg"
+                  src={myinfo[0]?.profileImage}
+                  alt=""
+                />
               )}
               <p className="userNick">{username}</p>
             </div>
