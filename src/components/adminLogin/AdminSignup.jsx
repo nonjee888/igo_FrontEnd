@@ -73,7 +73,13 @@ const AdminSignup = ({ setModal }) => {
       const { data } = await instance.post("/api/member/signup", user);
       console.log(data);
       if (data.success) {
-        navigate("/choice"); // 나중에 /recommend 로 바꾸기
+        Swal.fire({
+          icon: "info",
+          text: `${data.data}`,
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        });
+        window.location.reload(); // 나중에 /recommend 로 바꾸기
       }
       if (data.error.message) {
         const message = data.error.message;

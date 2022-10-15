@@ -11,11 +11,14 @@ const NaverLoading = () => {
   const dispatch = useDispatch();
   const params = new URLSearchParams(window.location.search); //주소뒤의 ? 가 파라미터를 전달해준다는 뜻 //?code=..이면 주소창이 전달해주는 파라미터의 이름은 code 이다.
   let code = params.get("code");
-  // console.log(code); //주소창에서 localhost3000/naverloading/?code= ....  에서 code= "~~~" 가져오기
+
+  const nickname = localStorage.getItem("nickname");
 
   const notice = async () => {
     const response = await instance.get("/api/member/subscribe");
+
     console.log("구독성공");
+
     response.addEventListener("sse", function (event) {
       console.log(event.data);
 
@@ -24,7 +27,7 @@ const NaverLoading = () => {
       (async () => {
         //브라우저 알림
         const showNotification = () => {
-          const notification = new Notification("알림옴", {
+          const notification = new Notification("알림", {
             body: data.content,
           });
 
