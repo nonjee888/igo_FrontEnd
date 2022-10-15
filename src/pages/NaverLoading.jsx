@@ -11,7 +11,52 @@ const NaverLoading = () => {
   const dispatch = useDispatch();
   const params = new URLSearchParams(window.location.search); //주소뒤의 ? 가 파라미터를 전달해준다는 뜻 //?code=..이면 주소창이 전달해주는 파라미터의 이름은 code 이다.
   let code = params.get("code");
-  // console.log(code); //주소창에서 localhost3000/naverloading/?code= ....  에서 code= "~~~" 가져오기
+
+  const nickname = localStorage.getItem("nickname");
+
+  const notice = async () => {
+    const response = await instance.get("/api/member/subscribe");
+
+    console.log("구독성공");
+
+    response.addEventListener("sse", function (event) {
+      console.log(event.data);
+
+      const data = JSON.parse(event.data);
+
+      (async () => {
+        //브라우저 알림
+        const showNotification = () => {
+          const notification = new Notification("알림", {
+            body: data.content,
+          });
+
+          setTimeout(() => {
+            notification.close();
+          }, 10 * 1000);
+
+          notification.addEventListener("click", () => {
+            window.open(data.url, "_blank");
+          });
+        };
+
+        //브라우저 알림 허용 권한
+
+        let granted = false;
+
+        if (Notification.permission === "granted") {
+          granted = true;
+        } else if (Notification.permission !== "denied") {
+          let permission = await Notification.requestPermission();
+          granted = permission === "granted";
+        }
+        //알림 보여주기
+        if (granted) {
+          showNotification();
+        }
+      })();
+    });
+  };
 
   useEffect(() => {
     dispatch(naver); //주소창에서 뗀 code를 토큰 가져오는 함수에 보내줌
@@ -29,6 +74,7 @@ const NaverLoading = () => {
       localStorage.setItem("isLogin", data.headers.authorization);
       const nickname = data.data.data.nickname;
 
+      notice();
       setTimeout(() => {
         Swal.fire({
           icon: "success",

@@ -71,7 +71,7 @@ export default function InterestedPostList() {
     const response = await instance.get(
       `/api/post/interest?type=${interested}`
     );
-    console.log(interested);
+
     setPostList(response.data.data);
     return response.data.data;
   };

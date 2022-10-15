@@ -7534,6 +7534,7 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
+
 react-insta-stories@^2.4.2:
   version "2.4.2"
   resolved "https://registry.npmjs.org/react-insta-stories/-/react-insta-stories-2.4.2.tgz"

@@ -17,7 +17,7 @@ export const putMyinfo = createAsyncThunk(
         Swal.fire({
           icon: "success",
           text: "닉네임이 변경되었습니다.",
-          confirmButtonColor: "#BDE8F8",
+          confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         }).then((result) => {
           if (result.isConfirmed) {
