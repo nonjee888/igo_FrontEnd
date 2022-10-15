@@ -317,9 +317,11 @@
 }
 .nickname {
   text-align: center;
+  width: 25%;
 }
 .userNick {
   width: 80%;
+  margin-left: 10%;
 }
 .map-detail {
   background: linear-gradient(to left, #4eb4d8, #f5c9e0);
@@ -347,7 +349,6 @@
   transition: all 1000ms;
   overflow: auto;
   background-color: white;
-  // border-top: blueviolet 1px solid;
 }
 .toggle-comment-wrapper {
   display: flex;
