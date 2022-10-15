@@ -145,7 +145,7 @@ const PostDetail = () => {
               <button onClick={onLike} className="liked-post-btn">
                 <img src={heart} className="liked-post-icon" alt="관심게시글" />
               </button>
-              <p>{detail?.heartNum}</p>
+              <div className="number">{detail?.heartNum}</div>
             </div>
 
             {userConfirm ? null : (
