@@ -13,6 +13,48 @@ const NaverLoading = () => {
   let code = params.get("code");
   // console.log(code); //주소창에서 localhost3000/naverloading/?code= ....  에서 code= "~~~" 가져오기
 
+  const notice = async () => {
+    const response = await instance.get("/api/member/subscribe");
+    console.log("구독성공");
+    response.addEventListener("sse", function (event) {
+      console.log(event.data);
+
+      const data = JSON.parse(event.data);
+
+      (async () => {
+        //브라우저 알림
+        const showNotification = () => {
+          const notification = new Notification("알림옴", {
+            body: data.content,
+          });
+
+          setTimeout(() => {
+            notification.close();
+          }, 10 * 1000);
+
+          notification.addEventListener("click", () => {
+            window.open(data.url, "_blank");
+          });
+        };
+
+        //브라우저 알림 허용 권한
+
+        let granted = false;
+
+        if (Notification.permission === "granted") {
+          granted = true;
+        } else if (Notification.permission !== "denied") {
+          let permission = await Notification.requestPermission();
+          granted = permission === "granted";
+        }
+        //알림 보여주기
+        if (granted) {
+          showNotification();
+        }
+      })();
+    });
+  };
+
   useEffect(() => {
     dispatch(naver); //주소창에서 뗀 code를 토큰 가져오는 함수에 보내줌
   }, []);
@@ -29,6 +71,7 @@ const NaverLoading = () => {
       localStorage.setItem("isLogin", data.headers.authorization);
       const nickname = data.data.data.nickname;
 
+      notice();
       setTimeout(() => {
         Swal.fire({
           icon: "success",
