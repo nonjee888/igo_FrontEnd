@@ -6,7 +6,7 @@ import Post from "../post/Post";
 // 가격 카테고리목록
 export default function CostPostList() {
   const [postList, setPostList] = useState();
-  const [cost, setCost] = useState(1);
+  const [cost, setCost] = useState("10만원대");
 
   const costList = [
     {
