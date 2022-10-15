@@ -5,6 +5,25 @@
   width: 100%;
   height: 50vh;
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  img {
+    width: 30%;
+    height: 10vh;
+    display: block;
+    margin: auto;
+    padding: 7% 0 5% 0;
+  }
+}
+
+.videoAddInfo {
+  position: absolute;
+  margin: 0 5%;
+  width: 80%;
+  height: 30vh;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .videoAddbuttons {
@@ -14,14 +33,39 @@
   img {
     width: 17%;
   }
+  .videoAdd {
+    border: none;
+    background-color: transparent;
+    width: 50%;
+    img {
+      width: 90%;
+    }
+  }
 }
 
-.videoAdd {
-  border: none;
-  background-color: transparent;
-  width: 50%;
+.videoXBtn {
+  position: absolute;
+  z-index: 2;
+  margin: 3% 0 0 75%;
   img {
     width: 70%;
+    height: 100%;
+    box-shadow: 0 2px 5px 1px rgba(255, 255, 255, 0.16);
+  }
+}
+
+.videoPreview {
+  display: flex;
+  justify-content: center;
+  height: 90%;
+  video {
+    width: 90%;
+    height: 70%;
+    // object-fit: cover;
+    background-color: black;
+    border-radius: 10px;
+    border: 5px solid #ececec;
+    z-index: 1;
   }
 }
 
