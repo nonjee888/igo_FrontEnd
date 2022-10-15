@@ -40,7 +40,7 @@ const PostComment = () => {
 
   return (
     <div
-      style={{ height: modalOpen ? "50%" : "6%" }}
+      style={{ height: modalOpen ? "50%" : "8%" }}
       className="commentContainer"
     >
       <div className="comment-tap" onClick={openModal}>
