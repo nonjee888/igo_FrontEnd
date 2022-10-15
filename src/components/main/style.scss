@@ -47,10 +47,15 @@
 }
 
 .btnBox {
-  width: 100%;
+  width: 95%;
   height: 10%;
-  display: block;
-  margin: 5% 2% 2% 5%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  
+  
+
+
 }
 .joinbtn {
   display: inline-block;
@@ -58,12 +63,13 @@
   justify-content: center;
   width: 35%;
   height: 70%;
-  font-size: 100%;
+  font-size: 90%;
   color: white;
   background-color: #a3d7ed;
   border-radius: 22px;
   border: 1px solid transparent;
-  margin: 2.5% 2% 2% 2.5%;
+  margin: 2.5% 0% 0% 2.5%;;
+  
 
   &:hover {
     font-weight: bold;
