@@ -40,12 +40,12 @@ const PostComment = () => {
 
   return (
     <div
-      style={{ height: modalOpen ? "50%" : "9%" }}
+      style={{ height: modalOpen ? "50%" : "6%" }}
       className="commentContainer"
     >
-      <p className="comment-tap" onClick={openModal}>
+      <div className="comment-tap" onClick={openModal}>
         <img className="icon-comment" src={commentIcon} />
-      </p>
+      </div>
       {!loading && modalOpen && (
         <>
           <div className="toggle-comment-wrapper">
