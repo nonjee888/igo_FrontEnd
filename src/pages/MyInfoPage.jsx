@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState } from "react";
 import Myinfo from "../components/mypage/Myinfo";
 import Headers from "../components/layout/Headers";
 import Footers from "../components/layout/Footers";
@@ -8,7 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { getMyinfo } from "../redux/modules/myinfo";
 
+
+
 const MyInfoPage = () => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -21,10 +24,11 @@ const MyInfoPage = () => {
     }
   });
 
+
   return (
     <PageContainer>
       <Headers />
-      <Myinfo />
+      <Myinfo/>
       <Footers />
     </PageContainer>
   );

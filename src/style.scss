@@ -14,3 +14,41 @@
   position: relative;
   color: #555555;
 }
+
+//Post.jsx
+.post-content {
+  padding: 5%;
+  background-color: rgba(255, 255, 255, 0.524);
+  width: 90%;
+  height: 5%;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  bottom: 5px;
+  gap: 10px;
+  align-items: center;
+  display: flex;
+}
+.post-title {
+  margin-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 70%;
+  font-size: 16px;
+  font-weight: 900;
+}
+.post-heart {
+  font-size: 14px;
+}
+.heart-btn-img {
+  width: 10px;
+}
+.post-body {
+  width: 50%;
+  height: 125px;
+  margin-bottom: 2.5%;
+  & img {
+    object-fit: cover;
+  }
+}

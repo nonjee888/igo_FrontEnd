@@ -1,7 +1,6 @@
 import "./style.scss";
 import recom from "../../asset/recom.png";
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecommendPosts } from "../../redux/modules/posts";
 import RecommendPost from "./RecommendPost";
@@ -14,7 +13,6 @@ const Recommend = () => {
   const dispatch = useDispatch();
   // const tags = useSelector((state) => state.tags.tags);
   // console.log
-
 
   useEffect(() => {
     dispatch(getRecommendPosts());
@@ -30,10 +28,11 @@ const Recommend = () => {
     <div className="All">
       <div className="Recommend-Container">
         <img className="Recommend-logo" src={recom} alt="추천" />
-        <div className="Recommend-List"></div>
-        {recommend?.map((item) => {
-          return <RecommendPost item={item} key={item.id} />;
-        })}
+        <div className="Recommend-List">
+          {recommend?.map((item) => {
+            return <RecommendPost item={item} key={item.id} />;
+          })}
+        </div>
       </div>
     </div>
   );
