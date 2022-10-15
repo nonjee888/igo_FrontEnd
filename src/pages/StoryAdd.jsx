@@ -8,14 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { getMyinfo } from "../redux/modules/myinfo";
 
-
 const Story = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("ACCESS_TOKEN") !== null) {
       dispatch(getMyinfo()).then((response) => {
-        console.log(response.payload[0].interested);
         if (response.payload[0].interested === null) {
           navigate("/choice");
         }
@@ -23,13 +21,13 @@ const Story = () => {
     }
   });
 
-  return(
+  return (
     <PageContainer>
-      <Headers/>
-      <AddStory/>
-      <Footers/>
+      <Headers />
+      <AddStory />
+      <Footers />
     </PageContainer>
-    );
+  );
 };
 
 export default Story;

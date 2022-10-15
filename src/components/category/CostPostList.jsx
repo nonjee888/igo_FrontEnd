@@ -58,7 +58,7 @@ export default function CostPostList() {
   }, [cost]);
 
   return (
-    <div className="All">
+    <div className="postListAll">
       <div className="tag-wrapper">
         {costList.map((item) => (
           <Tags

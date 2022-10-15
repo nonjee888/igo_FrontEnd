@@ -124,7 +124,7 @@ export default function RegionPostList() {
   }, [region]);
 
   return (
-    <div className="All">
+    <div className="postListAll">
       <div className="tag-wrapper">
         {regionList.map((item) => (
           <Tags

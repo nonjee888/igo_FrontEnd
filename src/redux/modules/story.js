@@ -66,7 +66,7 @@ export const story = createSlice({
     },
     [postStory.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.story.push(action.payload.data);
+      state.story.unshift(action.payload.data);
     },
     [postStory.rejected]: (state, action) => {
       state.isLoading = false;
