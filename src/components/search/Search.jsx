@@ -33,9 +33,9 @@ const Search = () => {
     dispatch(searchPosts(searchTerm));
     navigate("/search/" + searchTerm);
   };
-  console.log(searchTerm);
+
   const { isLoading, error, posts } = useSelector((state) => state?.posts);
-  console.log(posts);
+
   useEffect(() => {
     dispatch(searchPosts(searchTerm));
   }, [dispatch]);
@@ -66,7 +66,7 @@ const Search = () => {
           </button>
         </div>
         <div className="search-wrapper">
-          {posts.map((post) => {
+          {posts?.map((post) => {
             return <Post post={post} key={post.id} />;
           })}
         </div>

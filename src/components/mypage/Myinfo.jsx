@@ -11,27 +11,24 @@ import edit from "../../asset/edit.png";
 const Myinfo = () => {
   let navigate = useNavigate();
   let dispatch = useDispatch();
- 
+
+  //관심여행 키워드
   const [interest, setInterest] = useState();
-  
   useEffect(() => {
     if (localStorage.getItem("ACCESS_TOKEN") !== null) {
       dispatch(getMyinfo()).then((response) => {
-        if(!response.payload[0].interested)
-        return;
-        console.log(response.payload[0].interested);
-        setInterest(response.payload[0])
+        if (!response.payload[0].interested) return;
+        setInterest(response.payload[0]);
         if (response.payload[0].interested === null) {
           navigate("/choice");
         }
       });
     }
-  },[]);
-// console.log(interest?.interested[0]);
+  }, []);
+  // console.log(interest?.interested[0]);
+
   const myinfo = useSelector((state) => state.myinfo.myinfo);
   // console.log(myinfo);
-
-
   const [nickname, setNickname] = useState("");
   const [profileImage, setProfileImage] = useState([]);
   const [preview, setPreview] = useState("");
@@ -74,8 +71,6 @@ const Myinfo = () => {
     setModalOpen(false);
   };
 
-// console.log(myinfo?.interested[0])
-
   return (
     <div className="All">
       <div className="profileImage">
@@ -87,7 +82,7 @@ const Myinfo = () => {
           <>
             <img src={profileImg} alt="프로필이미지" />
             <div className="profileNickname1">
-              <h4>{myinfo[0]?.nickname}</h4>
+              {myinfo[0]?.nickname}
               <img src={edit} alt="닉네임수정버튼" onClick={openModal} />
             </div>
           </>
@@ -95,7 +90,7 @@ const Myinfo = () => {
           <>
             <img src={myinfo[0].profileImage} alt="프로필이미지" />
             <div className="profileNickname1">
-              <h4>{myinfo[0]?.nickname}</h4>
+              {myinfo[0]?.nickname}
               <img src={edit} alt="닉네임수정버튼" onClick={openModal} />
             </div>
           </>
@@ -148,11 +143,20 @@ const Myinfo = () => {
             src={edit}
             style={{ width: "7%", height: "7%" }}
             alt="태그수정버튼"
-            onClick={()=>navigate("/choice")}
+            onClick={() => navigate("/choice")}
           />
         </div>
         <div className="categoryGet">
-          {interest?.interested[0]} | {interest?.interested[1]} | {interest?.interested[2]}       
+          {myinfo === undefined ? (
+            <>선택된 관심 여행 키워드가 없습니다.</>
+          ) : interest?.interested[0] === "" ? (
+            <>선택된 관심 여행 키워드가 없습니다.</>
+          ) : (
+            <div style={{ fontWeight: "bold" }}>
+              {interest?.interested[0]} | {interest?.interested[1]} |{" "}
+              {interest?.interested[2]}
+            </div>
+          )}
         </div>
       </div>
 

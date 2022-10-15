@@ -33,7 +33,6 @@ export default function Category() {
             }
             onClick={() => navigate("/post/" + item.path)}
           >
-            {" "}
             {/*대카테고리선택시 해당하는 카테고리로 이동*/}
             {item.name}
             {path.category === item.path && "+"}

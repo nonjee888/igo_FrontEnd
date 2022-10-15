@@ -2,7 +2,6 @@
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import photo from "../../asset/assetMypage/photo.png";
-import filledHeart from "../../asset/filledHeart.png";
 
 const Post = (props) => {
   const navigate = useNavigate();
@@ -18,21 +17,23 @@ const Post = (props) => {
 
   return (
     <>
-      <div
-        className="post-body"
-        onClick={() => {
-          navigate("/postdetail/" + id);
-        }}
-      >
-        {url === null ? (
-          <img className="img-container" src={photo} />
-        ) : (
-          <img className="img-container" src={url[1]} />
-        )}
-        <div className="pic-wrapper">
-          <div className="post-content">
-            <div className="post-title">{title}</div>
-            <div className="post-heart">♥{heart}</div>
+      <div className="post-wrapper">
+        <div
+          className="post-body"
+          onClick={() => {
+            navigate("/postdetail/" + id);
+          }}
+        >
+          {url === null ? (
+            <img className="img-container" src={photo} />
+          ) : (
+            <img className="img-container" src={url[1]} />
+          )}
+          <div className="pic-wrapper">
+            <div className="post-content">
+              <div className="post-title">{title}</div>
+              <div className="post-heart">♥{heart}</div>
+            </div>
           </div>
         </div>
       </div>
