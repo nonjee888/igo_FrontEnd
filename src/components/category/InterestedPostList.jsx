@@ -81,7 +81,7 @@ export default function InterestedPostList() {
   }, [interested]);
 
   return (
-    <div className="All">
+    <div className="postListAll">
       <div className="tag-wrapper">
         {interestedList.map((item) => (
           <Tags

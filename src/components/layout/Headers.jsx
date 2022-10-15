@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logout from "../../asset/logout.png";
 import igoLogo from "../../asset/igoLogo.png";
+import loginRegister from "../../asset/loginRegister.png";
 import { getMyinfo } from "../../redux/modules/myinfo";
 import { useEffect } from "react";
 
@@ -64,7 +65,11 @@ const Headers = () => {
               navigate("/");
             }}
           >
-            로그인/회원가입
+            <img
+              src={loginRegister}
+              alt="로그인회원가입"
+              className="loginButton"
+            />
           </button>
         </div>
       ) : (
@@ -89,13 +94,7 @@ const Headers = () => {
                 }}
                 onClick={logoutHandler}
               >
-                <img
-                  src={logout}
-                  alt="로그아웃"
-                  style={{
-                    width: "70%",
-                  }}
-                />
+                <img src={logout} alt="로그아웃" className="logoutButton" />
               </button>
             </div>
           ) : (
@@ -113,20 +112,8 @@ const Headers = () => {
                 </div>
                 님
               </div>
-              <button
-                className="Signbtn"
-                style={{
-                  width: "35%",
-                }}
-                onClick={logoutHandler}
-              >
-                <img
-                  src={logout}
-                  alt="로그아웃"
-                  style={{
-                    width: "100%",
-                  }}
-                />
+              <button className="Signbtn" onClick={logoutHandler}>
+                <img src={logout} alt="로그아웃" className="logoutButton" />
               </button>
             </div>
           )}

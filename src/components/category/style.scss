@@ -62,9 +62,15 @@
 
 //포스트리스트
 .postListAll {
-  height: 73vh;
+  height: 81vh;
   overflow: auto;
   width: 100%;
   font-family: "NotoSansKR";
   color: #555555;
+}
+
+.content-wrapper {
+  margin-top: 2.5%;
+  display: flex;
+  flex-wrap: wrap;
 }

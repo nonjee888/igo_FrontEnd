@@ -20,8 +20,8 @@ const Myplan = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const myplans = useSelector((state) => state.myplans.myplans);
-  console.log(myplans);
-  // 리덕스에서 포스트 리스트를 로딩
+  // console.log(myplans);
+
   useEffect(() => {
     dispatch(getMyplans());
   }, [dispatch]);
@@ -57,10 +57,7 @@ const Myplan = () => {
             return (
               <div className="Myplan" key={myplans.id}>
                 <div className="MyplanDate">{myplans.time}</div>
-                <div className="MyplanTitle">
-                  {myplans.title}
-                  {/* <img src={edit} alt="수정하기" /> */}
-                </div>
+                <div className="MyplanTitle">{myplans.title}</div>
                 <img
                   src={myplans.imgUrl}
                   className="MyplanImg"
@@ -98,7 +95,7 @@ const Myplan = () => {
                   className="buttonAll"
                   onClick={() => {
                     dispatch(postMyplanDone(myplans.id));
-                    // window.location.reload();
+                    window.location.reload();
                   }}
                 >
                   완료
@@ -143,7 +140,6 @@ const Myplan = () => {
                     }).then((result) => {
                       if (result.isConfirmed) {
                         dispatch(deleteMyplans(myplans.id));
-                        // window.location.reload();
                       }
                     });
                   }}
@@ -158,7 +154,7 @@ const Myplan = () => {
                   className="buttonAll"
                   onClick={() => {
                     dispatch(postMyplanCancel(myplans.id));
-                    // window.location.reload();
+                    window.location.reload();
                   }}
                 >
                   취소

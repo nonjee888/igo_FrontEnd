@@ -1,7 +1,6 @@
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import photo from "../../asset/assetMypage/photo.png";
-import filledHeart from "../../asset/filledHeart.png";
 
 const RecommendPost = ({ item }) => {
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ const RecommendPost = ({ item }) => {
   return (
     <>
       <div
-        className="post-body"
+        className="rec-post-body"
         onClick={() => {
           navigate("/postdetail/" + item.id);
         }}
@@ -24,11 +23,9 @@ const RecommendPost = ({ item }) => {
           <img className="img-container" src={url[1]} />
         )}
         <div className="pic-wrapper">
-          <div className="post-content">
-            <p>{item.title}</p>
-            <p>{item.member.nickname}</p>
-            <img className="heart-btn-img" src={filledHeart} alt="" />
-            {item.heartNum}
+          <div className="rec-post-content">
+            <p className="rec-post-title">{item.title}</p>
+            <p className="rec-heart">♥{item.heartNum}</p>
           </div>
         </div>
       </div>

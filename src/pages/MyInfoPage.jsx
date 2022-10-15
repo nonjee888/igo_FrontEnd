@@ -12,6 +12,18 @@ import { getMyinfo } from "../redux/modules/myinfo";
 
 const MyInfoPage = () => {
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("ACCESS_TOKEN") !== null) {
+      dispatch(getMyinfo()).then((response) => {
+        if (response.payload[0].interested === null) {
+          navigate("/choice");
+        }
+      });
+    }
+  });
+
 
   return (
     <PageContainer>

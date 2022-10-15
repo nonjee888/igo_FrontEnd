@@ -57,7 +57,7 @@ const Footers = () => {
         <div className="Icon-box">
           <div className="btnbox">
             <img
-              className="recomendIcon"
+              className="FootersIcon"
               onClick={Alert}
               src={recomendIcon}
               alt="추천"
@@ -104,7 +104,7 @@ const Footers = () => {
         <div className="Icon-box">
           <div className="btnbox">
             <img
-              className="recomendIcon"
+              className="FootersIcon"
               onClick={() => {
                 navigate("/recommend");
               }}
