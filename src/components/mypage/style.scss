@@ -69,14 +69,13 @@
 .profileNickname1 {
   display: flex;
   align-items: center;
-  text-align: right;
-  margin-top: 127px;
+  justify-content: center;
+  margin: 127px 0 0 -3%;
   font-size: 1.1rem;
   font-weight: 900;
-  width: 30%;
+  width: 45%;
   height: 25px;
   position: absolute;
-  // background-color: #47afdb;
   h4 {
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -110,7 +109,7 @@
 }
 
 .profileCategory {
-  margin-top: 15%;
+  margin-top: 25%;
 }
 
 .CategoryTitle {
