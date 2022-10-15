@@ -10,15 +10,16 @@ const Choice = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const interestedList = [
-    { id: 0, tag: "혼자여행" },
-    { id: 1, tag: "둘이여행" },
-    { id: 2, tag: "단체여행" },
-    { id: 3, tag: "가성비" },
-    { id: 4, tag: "럭셔리" },
-    { id: 5, tag: "힐링" },
-    { id: 6, tag: "액티비티" },
-    { id: 7, tag: "식도락" },
-    { id: 8, tag: "인스타감성" },
+    { id: 0, tag: "" },
+    { id: 1, tag: "혼자여행" },
+    { id: 2, tag: "둘이여행" },
+    { id: 3, tag: "단체여행" },
+    { id: 4, tag: "가성비" },
+    { id: 5, tag: "럭셔리" },
+    { id: 6, tag: "힐링" },
+    { id: 7, tag: "액티비티" },
+    { id: 8, tag: "식도락" },
+    { id: 9, tag: "인스타감성" },
   ];
 
   const [isChecked, setIsChecked] = useState(false); //체크여부
@@ -106,7 +107,6 @@ const Choice = () => {
   return (
     <div className="All">
       <div className="choiceBox">
-        <div className="conStyle">
           {InterestedList.map((item) => (
             <label tag={item} key={item.id}>
               <input
@@ -120,13 +120,9 @@ const Choice = () => {
                 disabled={checkedItems.size >= 3 ? true : false}
               />
               <div className={item.isChecked? "tagcheck":"untagcheck"}>{item.tag}</div>
-
-            
-               
             </label>
           ))}
         </div>
-      </div>
       <div className="btnBox">
         <button className="joinbtn" onClick={()=>{setClickValue(true);
         window.location.reload()}}>다시선택하기</button>
