@@ -20,7 +20,6 @@ import StoryAdd from "../pages/StoryAdd";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllCategoryList from "../components/category/AllCategoryList";
 import { useEffect } from "react";
-import { instance } from "./api";
 import axios from "axios";
 
 const Router = () => {
@@ -30,7 +29,7 @@ const Router = () => {
 
   const reToken = async () => {
     await axios
-      .get(process.env.REACT_APP_MAIN_HOST + `/refresh`, {
+      .get(process.env.REACT_APP_MAIN_HOST + `refresh`, {
         headers: { RefreshToken: localStorage.getItem("REFRESH_TOKEN") },
       })
       .then((res) => {
