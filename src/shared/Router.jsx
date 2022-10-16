@@ -16,6 +16,7 @@ import MyLikesPage from "../pages/MyLikesPage";
 import MyPlanPage from "../pages/MyPlanPage";
 import MyPlanPostPage from "../pages/MyPlanPostPage";
 import MyPostsListPage from "../pages/MyPostsListPage";
+import Notice from "../pages/Notice";
 import StoryAdd from "../pages/StoryAdd";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllCategoryList from "../components/category/AllCategoryList";
@@ -62,6 +63,7 @@ const Router = () => {
           <Route path="/myplan" element={<MyPlanPage />} exact />
           <Route path="/myplanpost" element={<MyPlanPostPage />} exact />
           <Route path="/mypostlist" element={<MyPostsListPage />} exact />
+          <Route path="/notification" element={<Notice />} exact />
           <Route path="*" element={<div>없는 페이지입니다.</div>} />
           <Route path="/addpost" element={<AddPostPage />} exact />
           <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
