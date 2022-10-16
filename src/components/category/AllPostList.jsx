@@ -26,25 +26,13 @@ export default function AllPostList() {
   ];
 
   const getCreatePost = async () => {
-    const response = await instance.get(`/api/post/group?type=create`);
+    const response = await instance.get(`/api/post/group?type=${sort}`);
     setCreate(response.data.data);
-    return response.data.data;
-  };
-  const getHeartPost = async () => {
-    const response = await instance.get(`/api/post/group?type=heart`);
-    setLike(response.data.data);
-    return response.data.data;
-  };
-  const getViewPost = async () => {
-    const response = await instance.get(`/api/post/group?type=view`);
-    setView(response.data.data);
     return response.data.data;
   };
 
   useEffect(() => {
     getCreatePost();
-    getHeartPost();
-    getViewPost();
   }, [sort]);
 
   return (

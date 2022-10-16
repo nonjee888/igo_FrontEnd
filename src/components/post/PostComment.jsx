@@ -27,7 +27,9 @@ const PostComment = () => {
   const openModal = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
-
+  const payload = {
+    review,
+  };
   useEffect(() => {
     dispatch(getComments(id));
   }, [dispatch, id]);

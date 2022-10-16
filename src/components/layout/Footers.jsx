@@ -151,7 +151,6 @@ const Footers = () => {
               src={mypageIcon}
               alt="마이페이지"
             />
-            <div className="notification" />
           </div>
         </div>
       )}

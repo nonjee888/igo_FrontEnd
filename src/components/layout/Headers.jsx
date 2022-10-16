@@ -8,6 +8,7 @@ import igoLogo from "../../asset/igoLogo.png";
 import loginRegister from "../../asset/loginRegister.png";
 import { getMyinfo } from "../../redux/modules/myinfo";
 import { useEffect } from "react";
+import { deleteCookie } from "../../shared/cookie";
 
 const Headers = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Headers = () => {
         localStorage.removeItem(
           "TOAST UI color-picker for localhost: Statistics"
         );
+        deleteCookie("Authorization");
         navigate("/");
         window.location.reload();
       }
