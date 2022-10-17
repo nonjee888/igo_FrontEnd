@@ -15,7 +15,6 @@ const MainRecommend = () => {
   useEffect(() => {
     if (localStorage.getItem("ACCESS_TOKEN") !== null) {
       dispatch(getMyinfo()).then((response) => {
-        console.log(response.payload[0].interested);
         if (response.payload[0].interested === null) {
           navigate("/choice");
         }

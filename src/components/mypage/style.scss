@@ -445,3 +445,44 @@
     opacity: 1;
   }
 }
+
+//MyNotification.jsx
+.profile-wrap {
+  gap: 10%;
+  margin-bottom: 20%;
+  text-align: center;
+  .noti-nick {
+    margin-top: 10%;
+  }
+}
+
+.noti-div {
+  margin: 5% auto;
+  height: auto;
+  font-weight: bold;
+  background-color: #ececec;
+  width: 90%;
+  border-radius: 10px;
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 85% 15%;
+  align-items: baseline;
+  .noti-title {
+    padding: 7.5%;
+    vertical-align: center;
+  }
+  .x-button {
+    float: right;
+    border: none;
+    background: none;
+    height: 45px;
+    width: 45px;
+
+    .noti-delete {
+      width: 50%;
+      height: 50%;
+      cursor: pointer;
+      object-fit: cover;
+    }
+  }
+}

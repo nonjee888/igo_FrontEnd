@@ -183,6 +183,13 @@ const Myinfo = () => {
         >
           나의 일정 관리하기
         </p>
+        <p
+          onClick={() => {
+            navigate("/notification");
+          }}
+        >
+          알림
+        </p>
       </div>
     </div>
   );
