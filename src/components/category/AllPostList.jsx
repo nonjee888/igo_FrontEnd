@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { instance } from "../../shared/api";
 import Tags from "./Tags";
 import Post from "../post/Post";
+import { useNavigate } from "react-router-dom";
 
 // ~순 카테고리목록
 export default function AllPostList() {
@@ -9,6 +10,7 @@ export default function AllPostList() {
   const [create, setCreate] = useState();
   const [like, setLike] = useState();
   const [view, setView] = useState();
+  const navigate = useNavigate();
 
   const sortList = [
     {
@@ -16,7 +18,7 @@ export default function AllPostList() {
       value: "최신순",
     },
     {
-      name: "like",
+      name: "heart",
       value: "좋아요순",
     },
     {
@@ -26,25 +28,16 @@ export default function AllPostList() {
   ];
 
   const getCreatePost = async () => {
-    const response = await instance.get(`/api/post/group?type=create`);
+    const response = await instance.get(`/api/post/group?type=${sort}`);
     setCreate(response.data.data);
-    return response.data.data;
-  };
-  const getHeartPost = async () => {
-    const response = await instance.get(`/api/post/group?type=heart`);
     setLike(response.data.data);
-    return response.data.data;
-  };
-  const getViewPost = async () => {
-    const response = await instance.get(`/api/post/group?type=view`);
     setView(response.data.data);
+
     return response.data.data;
   };
 
   useEffect(() => {
     getCreatePost();
-    getHeartPost();
-    getViewPost();
   }, [sort]);
 
   return (
@@ -63,23 +56,29 @@ export default function AllPostList() {
       <div className="post-list-wrapper">
         <div className="content-wrapper">
           {sort === "create"
-            ? create?.map((post) => {
+            ? create &&
+              create?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-            : sort === "like"
-            ? like?.map((post) => {
+            : sort === "heart"
+            ? like &&
+              like?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-            : view?.map((post) => {
+            : view &&
+              view?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })}
         </div>
+        <button className="research" onClick={() => {
+            navigate("/tutorial");
+          }}>튜토리얼보고 커피받기</button>
       </div>
     </div>
   );

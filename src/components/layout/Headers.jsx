@@ -8,6 +8,7 @@ import igoLogo from "../../asset/igoLogo.png";
 import loginRegister from "../../asset/loginRegister.png";
 import { getMyinfo } from "../../redux/modules/myinfo";
 import { useEffect } from "react";
+import { deleteCookie } from "../../shared/cookie";
 
 const Headers = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const Headers = () => {
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
+        deleteCookie("Authorization");
         localStorage.removeItem("ACCESS_TOKEN");
         localStorage.removeItem("nickname");
         localStorage.removeItem("REFRESH_TOKEN");
@@ -40,6 +42,7 @@ const Headers = () => {
         localStorage.removeItem(
           "TOAST UI color-picker for localhost: Statistics"
         );
+
         navigate("/");
         window.location.reload();
       }
