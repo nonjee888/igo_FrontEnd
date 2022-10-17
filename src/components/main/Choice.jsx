@@ -65,8 +65,8 @@ const Choice = () => {
         setCheackedItems(checkedItems);
 
         Swal.fire({
-          icon: "info",
-          text: "최대 3개 선택 가능합니다.",
+          icon: "success",
+          text: "3개 선택 완료",
           confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         });
