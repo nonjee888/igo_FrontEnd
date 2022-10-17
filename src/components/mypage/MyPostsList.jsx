@@ -20,12 +20,7 @@ const MyPostsList = () => {
     <div className="All">
       <div className="MyPosts">
         <h3>나의 작성 게시글</h3>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-          }}
-        >
+        <div className="MyListsAll">
           {myposts?.map((myposts) => {
             return (
               <div
@@ -50,9 +45,7 @@ const MyPostsList = () => {
                   />
                 )}
                 <div className="AllMyPostList">
-                  <div className="MyPostTitle">{myposts.title}</div>
-                  <p className="MyPostNick">{myposts.nickname}</p>
-                  <img src={filledHeart} style={{ height: "30%" }} alt="" />
+                  <div className="MyPostTitle">{myposts.title}</div>♥
                   {myposts.heartNum}
                 </div>
               </div>

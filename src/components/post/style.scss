@@ -300,11 +300,11 @@
 }
 .ment-wrapper {
   display: flex;
+  margin-bottom: 2%;
   width: 110%;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  height: 100px;
   padding: 0 10px;
   border-top: 1px solid #eee;
 }
@@ -314,10 +314,12 @@
   height: 30px;
   border-radius: 50%;
   background-color: #eee;
+  border: 1px solid #ececec;
 }
 .nickname {
   text-align: center;
   width: 25%;
+  margin-bottom: 5%;
 }
 .userNick {
   width: 80%;
@@ -332,7 +334,8 @@
   color: white;
   font-weight: 900;
   float: right;
-  margin-right: 3%;
+  width: 40%;
+  margin-bottom: 1%;
 }
 //PostComment.jsx
 .icon-comment {
@@ -354,7 +357,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 25%;
+  height: 20%;
   padding: 0 20px;
   border-top: 1px solid #eee;
 }

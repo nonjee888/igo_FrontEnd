@@ -46,9 +46,9 @@ const Choice = () => {
     let payload = {
       interested: [...checkedItems],
     };
-    console.log(payload);
+    // console.log(payload);
     const response = await instance.patch("/api/member/tag", payload);
-    console.log(response.data.success === true);
+    // console.log(response.data.success === true);
     if (response.data.success === true) {
       //이 데이터가 체크되지 않았으면 추천페이지로 못감
       return Navigate("/recommend");
@@ -83,22 +83,24 @@ const Choice = () => {
   return (
     <div className="All">
       <div className="choiceBox">
-          {InterestedList.map((item) => (
-            <label tag={item} key={item.id}>
-              <input
-                className="interestcheck"
-                type="checkbox"
-                name="tag"
-                id={item.id}
-                value={item.tag}
-                onChange={(e) => checkHandler(e)}
-                onClick={() => clickTagbtn(item.id)}
-                disabled={checkedItems.size >= 3 ? true : false}
-              />
-              <div className={item.isChecked? "tagcheck":"untagcheck"}>{item.tag}</div>
-            </label>
-          ))}
-        </div>
+        {InterestedList.map((item) => (
+          <label tag={item} key={item.id}>
+            <input
+              className="interestcheck"
+              type="checkbox"
+              name="tag"
+              id={item.id}
+              value={item.tag}
+              onChange={(e) => checkHandler(e)}
+              onClick={() => clickTagbtn(item.id)}
+              disabled={checkedItems.size >= 3 ? true : false}
+            />
+            <div className={item.isChecked ? "tagcheck" : "untagcheck"}>
+              {item.tag}
+            </div>
+          </label>
+        ))}
+      </div>
       <div className="btnBox">
         <button
           className="joinbtn"
@@ -107,7 +109,7 @@ const Choice = () => {
             window.location.reload();
           }}
         >
-          다시선택하기
+          선택초기화
         </button>
         <button
           className="joinbtn"
@@ -115,7 +117,7 @@ const Choice = () => {
             submitHandler();
           }}
         >
-          내돈내여 시작하기
+          선택완료
         </button>
       </div>
     </div>

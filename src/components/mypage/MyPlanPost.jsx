@@ -79,7 +79,7 @@ const MyPlanPost = () => {
               <input
                 type="text"
                 style={{ width: "75%", border: "none" }}
-                placeholder="날짜를 선택하고, 제목을 입력해주세요."
+                placeholder="날짜를 선택하고, 제목을 작성해주세요."
                 onChange={(e) => {
                   setTitle(e.target.value);
                 }}
@@ -105,7 +105,7 @@ const MyPlanPost = () => {
             <div className="MyplanPostContents">
               <textarea
                 name="content"
-                placeholder="일정을 입력해주세요."
+                placeholder="*사진첨부필수*  일정을 작성해주세요. "
                 onChange={(e) => {
                   setContent(e.target.value);
                 }}

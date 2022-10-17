@@ -29,21 +29,29 @@ export default function CostPostList() {
 
   //----------------가격별분류-----------------//
 
-  let ten = postList?.filter((post) => {
-    return cost === "10만원대";
-  });
+  let ten =
+    postList &&
+    postList?.filter((post) => {
+      return cost === "10만원대";
+    });
 
-  let twenty = postList?.filter((post) => {
-    return cost === "20만원대";
-  });
+  let twenty =
+    postList &&
+    postList?.filter((post) => {
+      return cost === "20만원대";
+    });
 
-  let thirty = postList?.filter((post) => {
-    return cost === "30만원대";
-  });
+  let thirty =
+    postList &&
+    postList?.filter((post) => {
+      return cost === "30만원대";
+    });
 
-  let overThirty = postList?.filter((post) => {
-    return cost === "30만원이상";
-  });
+  let overThirty =
+    postList &&
+    postList?.filter((post) => {
+      return cost === "30만원이상";
+    });
 
   //----------------가격별분류-----------------//
 
@@ -73,24 +81,28 @@ export default function CostPostList() {
       <div className="post-list-wrapper">
         <div className="content-wrapper">
           {cost === "10만원대"
-            ? ten?.map((post) => {
+            ? ten &&
+              ten?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : cost === "20만원대"
-            ? twenty?.map((post) => {
+            ? twenty &&
+              twenty?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : cost === "30만원대"
-            ? thirty?.map((post) => {
+            ? thirty &&
+              thirty?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-            : overThirty?.map((post) => {
+            : overThirty &&
+              overThirty?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );

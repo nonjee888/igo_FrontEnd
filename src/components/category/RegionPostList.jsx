@@ -55,61 +55,89 @@ export default function RegionPostList() {
 
   //-----------------지역별분류-------------------//
 
-  let allRegion = postList?.filter((post) => {
-    return region === "전체";
-  });
+  let allRegion =
+    postList &&
+    postList?.filter((post) => {
+      return region === "전체";
+    });
 
-  let seoul = postList?.filter((post) => {
-    return region === "서울/경기권";
-  });
+  let seoul =
+    postList &&
+    postList?.filter((post) => {
+      return region === "서울/경기권";
+    });
 
-  let daejeon = postList?.filter((post) => {
-    return region === "대전";
-  });
+  let daejeon =
+    postList &&
+    postList?.filter((post) => {
+      return region === "대전";
+    });
 
-  let sejeong = postList?.filter((post) => {
-    return region === "세종";
-  });
+  let sejeong =
+    postList &&
+    postList?.filter((post) => {
+      return region === "세종";
+    });
 
-  let incheon = postList?.filter((post) => {
-    return region === "인천";
-  });
+  let incheon =
+    postList &&
+    postList?.filter((post) => {
+      return region === "인천";
+    });
 
-  let daegu = postList?.filter((post) => {
-    return region === "대구";
-  });
+  let daegu =
+    postList &&
+    postList?.filter((post) => {
+      return region === "대구";
+    });
 
-  let gangwon = postList?.filter((post) => {
-    return region === "강원도";
-  });
+  let gangwon =
+    postList &&
+    postList?.filter((post) => {
+      return region === "강원도";
+    });
 
-  let ulsan = postList?.filter((post) => {
-    return region === "울산";
-  });
+  let ulsan =
+    postList &&
+    postList?.filter((post) => {
+      return region === "울산";
+    });
 
-  let chungcheong = postList?.filter((post) => {
-    return region === "충청도";
-  });
+  let chungcheong =
+    postList &&
+    postList?.filter((post) => {
+      return region === "충청도";
+    });
 
-  let gwangju = postList?.filter((post) => {
-    return region === "광주";
-  });
+  let gwangju =
+    postList &&
+    postList?.filter((post) => {
+      return region === "광주";
+    });
 
-  let jeolla = postList?.filter((post) => {
-    return region === "전라도";
-  });
+  let jeolla =
+    postList &&
+    postList?.filter((post) => {
+      return region === "전라도";
+    });
 
-  let busan = postList?.filter((post) => {
-    return region === "부산";
-  });
+  let busan =
+    postList &&
+    postList?.filter((post) => {
+      return region === "부산";
+    });
 
-  let gyeongsang = postList?.filter((post) => {
-    return region === "경상도";
-  });
+  let gyeongsang =
+    postList &&
+    postList?.filter((post) => {
+      return region === "경상도";
+    });
 
-  let jeju = postList?.filter((post) => {
-    return region === "제주도";
-  });
+  let jeju =
+    postList &&
+    postList?.filter((post) => {
+      return region === "제주도";
+    });
 
   //-----------------지역별분류-------------------//
 
@@ -139,84 +167,98 @@ export default function RegionPostList() {
       <div className="post-list-wrapper">
         <div className="content-wrapper">
           {region === "전체"
-            ? allRegion?.map((post) => {
+            ? allRegion &&
+              allRegion?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "서울/경기권"
-            ? seoul?.map((post) => {
+            ? seoul &&
+              seoul?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "대전"
-            ? daejeon?.map((post) => {
+            ? daejeon &&
+              daejeon?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "세종"
-            ? sejeong?.map((post) => {
+            ? sejeong &&
+              sejeong?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "인천"
-            ? incheon?.map((post) => {
+            ? incheon &&
+              incheon?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "대구"
-            ? daegu?.map((post) => {
+            ? daegu &&
+              daegu?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "강원도"
-            ? gangwon?.map((post) => {
+            ? gangwon &&
+              gangwon?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "울산"
-            ? ulsan?.map((post) => {
+            ? ulsan &&
+              ulsan?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "충청도"
-            ? chungcheong?.map((post) => {
+            ? chungcheong &&
+              chungcheong?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "광주"
-            ? gwangju?.map((post) => {
+            ? gwangju &&
+              gwangju?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "전라도"
-            ? jeolla?.map((post) => {
+            ? jeolla &&
+              jeolla?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "부산"
-            ? busan?.map((post) => {
+            ? busan &&
+              busan?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
             : region === "경상도"
-            ? gyeongsang?.map((post) => {
+            ? gyeongsang &&
+              gyeongsang?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-            : jeju?.map((post) => {
+            : jeju &&
+              jeju?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );

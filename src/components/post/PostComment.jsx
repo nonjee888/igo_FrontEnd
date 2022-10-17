@@ -27,7 +27,9 @@ const PostComment = () => {
   const openModal = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
-
+  const payload = {
+    review,
+  };
   useEffect(() => {
     dispatch(getComments(id));
   }, [dispatch, id]);
@@ -53,7 +55,7 @@ const PostComment = () => {
                   alt=""
                 />
               )}
-              <p className="userNick">{username}</p>
+              <div className="userNick">{username}</div>
             </div>
             <input
               type="text"
@@ -82,18 +84,19 @@ const PostComment = () => {
             </button>
           </div>
           <div className="commentList">
-            {comments?.map((comment) => {
-              return (
-                <PostCommentList
-                  comment={comment}
-                  key={comment.id}
-                  postId={postId}
-                  profile={detail.profile}
-                  setComments={setComments}
-                  commentList={comments}
-                />
-              );
-            })}
+            {comments &&
+              comments?.map((comment) => {
+                return (
+                  <PostCommentList
+                    comment={comment}
+                    key={comment?.id}
+                    postId={postId}
+                    profile={detail?.profile}
+                    setComments={setComments}
+                    commentList={comments}
+                  />
+                );
+              })}
           </div>
         </>
       )}
