@@ -55,7 +55,7 @@ const PostComment = () => {
                   alt=""
                 />
               )}
-              <p className="userNick">{username}</p>
+              <div className="userNick">{username}</div>
             </div>
             <input
               type="text"

@@ -48,7 +48,7 @@
   z-index: 2;
   margin: 3% 0 0 75%;
   img {
-    width: 70%;
+    width: 50%;
     height: 100%;
     box-shadow: 0 2px 5px 1px rgba(255, 255, 255, 0.16);
   }
@@ -61,7 +61,6 @@
   video {
     width: 90%;
     height: 70%;
-    // object-fit: cover;
     background-color: black;
     border-radius: 10px;
     border: 5px solid #ececec;
@@ -75,9 +74,12 @@
   margin: 5%;
   z-index: 1;
   position: absolute;
-  font-weight: 900;
-  text-shadow: -1px 0 #555555, 0 1px #555555, 1px 0 #555555, 0 -1px #555555;
-  color: #ececec;
+  p {
+    font-weight: 900;
+    font-size: medium;
+    color: #ececec;
+    text-shadow: -1px 0 #555555, 0 1px #555555, 1px 0 #555555, 0 -1px #555555;
+  }
   img {
     width: 50px;
     height: 50px;
@@ -85,9 +87,18 @@
     border-radius: 70%;
     border: 1px solid #ececec;
     margin: 0 5px 0 0;
+    background-color: #ececec;
   }
 }
-
+.storyDelete {
+  z-index: 1;
+  position: absolute;
+  margin: 8% 0 0 90%;
+  img {
+    width: 50%;
+    box-shadow: 0 2px 5px 1px rgba(255, 255, 255, 0.16);
+  }
+}
 .videoSwiper {
   background-color: black;
 }

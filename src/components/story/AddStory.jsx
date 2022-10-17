@@ -35,7 +35,7 @@ const AddStory = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const validateSelectedFile = (e) => {
-    const MAX_FILE_SIZE = 20; // 200MB
+    const MAX_FILE_SIZE = 209715200; // 200MB
     const fileSizeKiloBytes = videos.size / 1024;
 
     if (fileSizeKiloBytes > MAX_FILE_SIZE) {
@@ -108,9 +108,6 @@ const AddStory = () => {
                 onClick={() => filePicekerRef.current.click()}
               >
                 <img src={video} alt="영상을 업로드 해주세요." />
-                <div className="videoAddInfo">
-                  <img src={videoInfo} alt="영상첨부시정보" />
-                </div>
               </div>
               {videoPreview && (
                 <div className="videoXBtn" onClick={clearFiles}>
@@ -118,7 +115,9 @@ const AddStory = () => {
                 </div>
               )}
             </div>
-
+            <div className="videoAddInfo">
+              <img src={videoInfo} alt="영상첨부정보" />
+            </div>
             <div className="videoPreview">
               {videoPreview != null && <video src={videoPreview} />}
             </div>

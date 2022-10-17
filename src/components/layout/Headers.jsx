@@ -18,6 +18,7 @@ const Headers = () => {
   useEffect(() => {
     dispatch(getMyinfo());
   }, []);
+
   const NICKNAME = localStorage.getItem("nickname");
   //로그아웃
   const logoutHandler = () => {
@@ -79,24 +80,20 @@ const Headers = () => {
         <div className="Sign-box">
           {myinfo === undefined ? (
             <div className="hearders-nickWrap">
-              <p
-                className="headers-nick"
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "1em",
-                  color: "#555555",
-                }}
-              >
-                {NICKNAME}
-              </p>
-              님
-              <button
-                className="Signbtn"
-                style={{
-                  width: "35%",
-                }}
-                onClick={logoutHandler}
-              >
+              <div className="headers-님">
+                <div
+                  className="headers-nick"
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "1em",
+                    color: "#555555",
+                  }}
+                >
+                  {NICKNAME}
+                </div>
+                님
+              </div>
+              <button className="Signbtn" onClick={logoutHandler}>
                 <img src={logout} alt="로그아웃" className="logoutButton" />
               </button>
             </div>

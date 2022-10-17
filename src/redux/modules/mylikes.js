@@ -5,7 +5,7 @@ export const getMylikes = createAsyncThunk(
   "mylikes/get",
   async (_, thunkAPI) => {
     try {
-      const data = await instance.get("api/mypage/likepost", {
+      const data = await instance.get("/api/mypage/likepost", {
         headers: {
           REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
         },

@@ -12,11 +12,21 @@ export const putMyinfo = createAsyncThunk(
           REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
         },
       });
-      if (data.data.success === false) alert(data.data.error.message);
+      if (data.data.success === false)
+        Swal.fire({
+          icon: "error",
+          text: "이미 사용중인 닉네임입니다.",
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
       else
         Swal.fire({
           icon: "success",
-          text: "닉네임이 변경되었습니다.",
+          text: "프로필이 변경되었습니다.",
           confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         }).then((result) => {

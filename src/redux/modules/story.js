@@ -36,6 +36,23 @@ export const getStory = createAsyncThunk("story/get", async (_, thunkAPI) => {
   }
 });
 
+//삭제
+export const deleteStory = createAsyncThunk(
+  "story/delete",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await instance.delete(`/api/story/${payload}`, {
+        headers: {
+          REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
+        },
+      });
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const story = createSlice({
   name: "story",
   initialState: {
@@ -72,6 +89,18 @@ export const story = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    //스토리삭제
+    // [deleteStory.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   let index = state.story.findIndex(
+    //     (story) => story.id === action.payload.data
+    //   );
+    //   state.story.splice(index, 1);
+    // },
+    // [deleteStory.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
   },
 });
 
