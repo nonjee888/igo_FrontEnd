@@ -16,7 +16,7 @@ export default function AllPostList() {
       value: "최신순",
     },
     {
-      name: "like",
+      name: "heart",
       value: "좋아요순",
     },
     {
@@ -26,25 +26,16 @@ export default function AllPostList() {
   ];
 
   const getCreatePost = async () => {
-    const response = await instance.get(`/api/post/group?type=create`);
+    const response = await instance.get(`/api/post/group?type=${sort}`);
     setCreate(response.data.data);
-    return response.data.data;
-  };
-  const getHeartPost = async () => {
-    const response = await instance.get(`/api/post/group?type=heart`);
     setLike(response.data.data);
-    return response.data.data;
-  };
-  const getViewPost = async () => {
-    const response = await instance.get(`/api/post/group?type=view`);
     setView(response.data.data);
+
     return response.data.data;
   };
 
   useEffect(() => {
     getCreatePost();
-    getHeartPost();
-    getViewPost();
   }, [sort]);
 
   return (
@@ -63,18 +54,21 @@ export default function AllPostList() {
       <div className="post-list-wrapper">
         <div className="content-wrapper">
           {sort === "create"
-            ? create?.map((post) => {
+            ? create &&
+              create?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-            : sort === "like"
-            ? like?.map((post) => {
+            : sort === "heart"
+            ? like &&
+              like?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
               })
-            : view?.map((post) => {
+            : view &&
+              view?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
