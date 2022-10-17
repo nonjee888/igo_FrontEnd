@@ -135,16 +135,9 @@ export const myplans = createSlice({
     [deleteMyplans.fulfilled]: (state, action) => {
       state.isLoading = false;
       let index = state.myplans.findIndex(
-        (comment) => comment.id === action.payload.data
+        (myplan) => myplan.id === action.payload.data
       );
       state.myplans.splice(index, 1);
-    },
-    [postMyplanDone.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [postMyplanDone.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.myplans.filter((v) => v.done === 0);
     },
   },
 });

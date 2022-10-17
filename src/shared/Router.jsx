@@ -29,7 +29,7 @@ const Router = () => {
 
   const reToken = async () => {
     await axios
-      .get(process.env.REACT_APP_MAIN_HOST + `refresh`, {
+      .get(process.env.REACT_APP_MAIN_HOST + `/refresh`, {
         headers: { RefreshToken: localStorage.getItem("REFRESH_TOKEN") },
       })
       .then((res) => {
