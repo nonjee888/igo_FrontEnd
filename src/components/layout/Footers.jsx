@@ -8,10 +8,15 @@ import recomendIcon from "../../asset/assetFooter/recomendIcon.png";
 import mypageIcon from "../../asset/assetFooter/mypageIcon.png";
 import addIcon from "../../asset/assetFooter/addIcon.png";
 import storyIcon from "../../asset/assetFooter/storyIcon.png";
+import { instance } from "../../shared/api";
+import { useEffect } from "react";
 
 const Footers = () => {
   const navigate = useNavigate();
   const NICKNAME = localStorage.getItem("nickname");
+
+  const [notice, setNotice] = useState([]);
+
   //로그인해야 사용 가능
   const Alert = () => {
     Swal.fire({
@@ -50,6 +55,18 @@ const Footers = () => {
       }
     });
   };
+
+  const notifications = async () => {
+    const { data } = await instance.get("/api/member/notifications");
+    // console.log(data);
+    setNotice(data.notificationResponses);
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("ACCESS_TOKEN")) {
+      notifications();
+    }
+  }, []);
 
   return (
     <div className="Footer-Container">
@@ -151,6 +168,7 @@ const Footers = () => {
               src={mypageIcon}
               alt="마이페이지"
             />
+            {notice.length !== 0 ? <div className="notification" /> : null}
           </div>
         </div>
       )}

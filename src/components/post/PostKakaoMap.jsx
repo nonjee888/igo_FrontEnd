@@ -5,14 +5,11 @@ import { useEffect, useState, useRef } from "react";
 import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 import goback from "../../asset/goback.png";
 import editpost from "../../asset/editpost.png";
-import submitpost from "../../asset/submitpost.png";
-import noSubmitBtn from "../../asset/noSubmitBtn.png";
 import Swal from "sweetalert2";
 
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
-  console.log(props.props);
   const navigate = useNavigate();
   const isEdit = props.props.isEdit;
   const managerRef = useRef(null);

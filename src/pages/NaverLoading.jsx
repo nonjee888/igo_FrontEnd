@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { setCookie } from "../shared/cookie";
+import { EventSourcePolyfill } from "event-source-polyfill";
 
 const NaverLoading = () => {
   const navigate = useNavigate();
@@ -16,6 +17,59 @@ const NaverLoading = () => {
   useEffect(() => {
     dispatch(naver); //주소창에서 뗀 code를 토큰 가져오는 함수에 보내줌
   }, []);
+
+  // let eventSource = undefined;
+
+  // const isSSE = async () => {
+  //   console.log("알림 실행");
+  //   eventSource = new EventSourcePolyfill(
+  //     process.env.REACT_APP_MAIN_HOST + `/api/member/subscribe`,
+  //     {
+  //       headers: {
+  //         Authorization: localStorage.getItem("ACCESS_TOKKEN"),
+  //       },
+  //       heartbeatTimeout: 1000 * 60 * 20,
+  //     }
+  //   ); //구독
+  //   console.log("구독성공");
+  //   eventSource.addEventListener("sse", function (event) {
+  //     const data = JSON.parse(event.data);
+  //     (async () => {
+  //       // 브라우저 알림
+  //       const showNotification = () => {
+  //         const notification = new Notification(
+  //           "내돈내여로부터 알림이 도착했습니다.",
+  //           {
+  //             body: data.content,
+  //           }
+  //         );
+  //         console.log("알림성공");
+  //         setTimeout(() => {
+  //           notification.close();
+  //         }, 10 * 1000);
+
+  //         notification.addEventListener("click", () => {
+  //           window.open(data.url, "_blank");
+  //         });
+  //       };
+
+  //       // 브라우저 알림 허용 권한
+  //       let granted = false;
+
+  //       if (Notification.permission === "granted") {
+  //         granted = true;
+  //       } else if (Notification.permission !== "denied") {
+  //         let permission = await Notification.requestPermission();
+  //         granted = permission === "granted";
+  //       }
+
+  //       // 알림 보여주기
+  //       if (granted === true) {
+  //         showNotification();
+  //       }
+  //     })();
+  //   });
+  // };
 
   const naver = async () => {
     try {
@@ -32,6 +86,9 @@ const NaverLoading = () => {
 
       if (data.data.data.interested.length === 1) {
         setTimeout(() => {
+          // console.log("로그인");
+          // isSSE();
+
           Swal.fire({
             icon: "success",
             title: nickname + "님",
@@ -46,6 +103,8 @@ const NaverLoading = () => {
         }, 1000);
       } else {
         setTimeout(() => {
+          // console.log("로그인");
+          // isSSE();
           Swal.fire({
             icon: "success",
             title: nickname + "님",

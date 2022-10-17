@@ -16,6 +16,7 @@ import MyLikesPage from "../pages/MyLikesPage";
 import MyPlanPage from "../pages/MyPlanPage";
 import MyPlanPostPage from "../pages/MyPlanPostPage";
 import MyPostsListPage from "../pages/MyPostsListPage";
+import Notice from "../pages/Notice";
 import StoryAdd from "../pages/StoryAdd";
 import { Route, Routes } from "react-router-dom";
 import AllCategoryList from "../components/category/AllCategoryList";
@@ -27,15 +28,9 @@ import { instance } from "./api";
 
 const Router = () => {
   let eventSource = undefined;
-
   let token = localStorage.getItem("ACCESS_TOKEN");
 
   const isSSE = async () => {
-    const res = await instance.get("/api/member/notifications", {
-      headers: {
-        token,
-      },
-    });
     eventSource = new EventSourcePolyfill(
       process.env.REACT_APP_MAIN_HOST + `/api/member/subscribe`,
       {
@@ -45,16 +40,19 @@ const Router = () => {
         heartbeatTimeout: 1000 * 60 * 20,
       }
     ); //구독
-
+    console.log("구독성공");
     eventSource.addEventListener("sse", function (event) {
       const data = JSON.parse(event.data);
       (async () => {
         // 브라우저 알림
         const showNotification = () => {
-          const notification = new Notification("알림이 왔어요.", {
-            body: data.content,
-          });
-
+          const notification = new Notification(
+            "내돈내여로부터 알림이 도착했습니다.",
+            {
+              body: data.content,
+            }
+          );
+          console.log("알림성공");
           setTimeout(() => {
             notification.close();
           }, 10 * 1000);
@@ -83,13 +81,13 @@ const Router = () => {
   };
 
   useEffect(() => {
-    if (getCookie("Authorization")) {
-      isSSE();
-    } else {
-      if (!getCookie("Authorization")) return;
-    }
+    isSSE();
+
     setInterval(() => {
-      if (!getCookie("Authorization")) reToken();
+      if (!getCookie("Authorization")) {
+        reToken();
+        // window.alert("쿠키확인");
+      }
     }, 1000);
   }, []);
 
@@ -131,6 +129,7 @@ const Router = () => {
         <Route path="/myplan" element={<MyPlanPage />} exact />
         <Route path="/myplanpost" element={<MyPlanPostPage />} exact />
         <Route path="/mypostlist" element={<MyPostsListPage />} exact />
+        <Route path="/notification" element={<Notice />} exact />
         <Route path="*" element={<div>없는 페이지입니다.</div>} />
         <Route path="/addpost" element={<AddPostPage />} exact />
         <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />

@@ -75,7 +75,6 @@ export const comments = createSlice({
       state.isLoading = true;
     },
     [createComment.fulfilled]: (state, action) => {
-      // console.log(action.payload);
       state.isLoading = false;
       state.comments.push(action.payload.data);
     },

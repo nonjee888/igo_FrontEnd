@@ -32,6 +32,7 @@ const Headers = () => {
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
+        deleteCookie("Authorization");
         localStorage.removeItem("ACCESS_TOKEN");
         localStorage.removeItem("nickname");
         localStorage.removeItem("REFRESH_TOKEN");
@@ -40,7 +41,7 @@ const Headers = () => {
         localStorage.removeItem(
           "TOAST UI color-picker for localhost: Statistics"
         );
-        deleteCookie("Authorization");
+
         navigate("/");
         window.location.reload();
       }

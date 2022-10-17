@@ -3,7 +3,7 @@ import comments from "../modules/comments";
 import myinfo from "../modules/myinfo";
 import posts from "../modules/posts";
 import story from "../modules/story";
-import user from "../modules/user";
+import notice from "../modules/notice";
 import myplans from "../modules/myplans";
 import mylikes from "../modules/mylikes";
 import myposts from "../modules/myposts";
@@ -13,7 +13,7 @@ const store = configureStore({
     comments,
     posts,
     story,
-    user,
+    notice,
     myinfo,
     myplans,
     mylikes,
