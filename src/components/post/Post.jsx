@@ -8,7 +8,6 @@ const Post = (props) => {
   const id = props.post.id;
   const title = props.post.title;
   const content = props.post.content;
-  const name = props?.post?.member?.nickname;
   const heart = props.post.heartNum;
 
   // html에서 정규표현식으로 썸네일 추출

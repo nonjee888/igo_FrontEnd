@@ -10,7 +10,6 @@ import Swal from "sweetalert2";
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
-
   const navigate = useNavigate();
   const isEdit = props.props.isEdit;
   const managerRef = useRef(null);

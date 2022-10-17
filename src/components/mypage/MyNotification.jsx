@@ -12,7 +12,7 @@ const MyNotification = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const notice = useSelector((state) => state?.notice.notice);
+  const { notice } = useSelector((state) => state?.notice);
 
   const [profile, setProfile] = useState("");
   const [nickname, setNickname] = useState(""); //getMyinfo에서 얻은 유저 닉네임
@@ -20,7 +20,7 @@ const MyNotification = () => {
 
   useEffect(() => {
     dispatch(getNotice()).then((res) => {
-      setUnread(res?.payload.data.unreadCount);
+      setUnread(res.payload.unreadCount);
     });
   }, [dispatch]);
 
@@ -32,7 +32,7 @@ const MyNotification = () => {
           navigate("/choice");
         } else {
           setNickname(response?.payload[0]?.nickname);
-          setProfile(response?.payload[0]?.profileImg);
+          setProfile(response?.payload[0]?.profileImage);
         }
       });
     }
@@ -46,7 +46,7 @@ const MyNotification = () => {
             {profile === undefined || profile === null ? (
               <img src={profileImg} alt="기본프로필이미지" />
             ) : (
-              <img src={profileImg} alt="유저프로필이미지" />
+              <img src={profile} alt="유저프로필이미지" />
             )}
           </div>
           <div className="noti-nick">{nickname}</div>
@@ -58,8 +58,8 @@ const MyNotification = () => {
               : `${unRead}개의 알림이 있습니다.`}
           </div>
         </div>
-        {notice?.data?.notificationResponses &&
-          notice?.data?.notificationResponses?.map((notice) => {
+        {notice &&
+          notice.map((notice) => {
             return (
               <div className="noti-div" key={notice.id}>
                 <div className="noti-title">
