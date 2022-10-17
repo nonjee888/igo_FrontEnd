@@ -29,7 +29,7 @@ const CommentList = (props) => {
             ) : (
               <img className="profileImg" src={commentProfile} alt="" />
             )}
-            <p className="userNick">{nickname}</p>
+            <div className="userNick">{nickname}</div>
           </div>
           <div className="comment">{content}</div>
           {userConfirm ? (

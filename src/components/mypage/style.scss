@@ -42,7 +42,7 @@
   background-color: transparent;
   position: absolute;
   height: 120px;
-  width: 33%;
+  width: 140px;
   border-radius: 70%;
   color: transparent;
 }
@@ -140,19 +140,25 @@
   }
 }
 // 나의 게시글, 관심리스트
+.MyListsAll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4%;
+}
 .AllMyPostList {
   background-color: rgba(255, 255, 255, 0.524);
   border-radius: 0 0 10px 10px;
-  width: 85%;
+  width: 40%;
+  height: 30px;
   position: absolute;
   z-index: 1;
-  margin-top: 147px;
+  margin-top: 103px;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 45% 23% 5% 10%;
-  gap: 5%;
+  grid-template-columns: 79% 5% 16%;
   align-items: center;
-  padding: 0 0 1% 5%;
+  padding-left: 3%;
+  font-size: small;
 }
 .MyPostTitle {
   overflow: hidden;
@@ -160,7 +166,6 @@
   white-space: nowrap;
   width: 100%;
   font-weight: 900;
-  color: black;
 }
 .MyPostNick {
   overflow: hidden;
@@ -170,11 +175,11 @@
 }
 .MyPostsList {
   display: flex;
-  width: 100%;
+  width: 48%;
   margin-bottom: 3%;
   img {
     width: 98.5%;
-    height: 200px;
+    height: 130px;
   }
 }
 

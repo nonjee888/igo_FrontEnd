@@ -34,16 +34,14 @@
   font-size: 1.2rem;
 }
 
-
 .btnBox {
   width: 95%;
   height: 10%;
   margin-top: 10px;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 .joinbtn {
   display: inline-block;
@@ -56,9 +54,8 @@
   background-color: #a3d7ed;
   border-radius: 22px;
   border: 1px solid transparent;
-  margin: 2.5% 0% 0% 2.5%;;
-  
-
+  margin: 2.5% 0% 0% 2.5%;
+  font-weight: bold;
   &:hover {
     font-weight: bold;
     color: black;
