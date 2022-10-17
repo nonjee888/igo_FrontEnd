@@ -8,6 +8,7 @@ import igoLogo from "../../asset/igoLogo.png";
 import loginRegister from "../../asset/loginRegister.png";
 import { getMyinfo } from "../../redux/modules/myinfo";
 import { useEffect } from "react";
+import { deleteCookie } from "../../shared/cookie";
 
 const Headers = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Headers = () => {
   useEffect(() => {
     dispatch(getMyinfo());
   }, []);
+
   const NICKNAME = localStorage.getItem("nickname");
   //로그아웃
   const logoutHandler = () => {
@@ -31,6 +33,7 @@ const Headers = () => {
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
+        deleteCookie("Authorization");
         localStorage.removeItem("ACCESS_TOKEN");
         localStorage.removeItem("nickname");
         localStorage.removeItem("REFRESH_TOKEN");
@@ -39,6 +42,7 @@ const Headers = () => {
         localStorage.removeItem(
           "TOAST UI color-picker for localhost: Statistics"
         );
+
         navigate("/");
         window.location.reload();
       }
@@ -76,24 +80,20 @@ const Headers = () => {
         <div className="Sign-box">
           {myinfo === undefined ? (
             <div className="hearders-nickWrap">
-              <p
-                className="headers-nick"
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "1em",
-                  color: "#555555",
-                }}
-              >
-                {NICKNAME}
-              </p>
-              님
-              <button
-                className="Signbtn"
-                style={{
-                  width: "35%",
-                }}
-                onClick={logoutHandler}
-              >
+              <div className="headers-님">
+                <div
+                  className="headers-nick"
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "1em",
+                    color: "#555555",
+                  }}
+                >
+                  {NICKNAME}
+                </div>
+                님
+              </div>
+              <button className="Signbtn" onClick={logoutHandler}>
                 <img src={logout} alt="로그아웃" className="logoutButton" />
               </button>
             </div>
