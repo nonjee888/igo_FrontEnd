@@ -21,15 +21,16 @@
   width: 50%;
 }
 .post-content {
-  padding: 5%;
   background-color: rgba(255, 255, 255, 0.524);
-  width: 90%;
-  height: 5%;
+  height: 3.3vh;
+  padding-bottom: 1%;
+  width: 100%;
+  border-radius: 0 0 5px 5px;
   position: absolute;
   overflow: hidden;
   display: flex;
   bottom: 5px;
-  gap: 10px;
+  gap: 1%;
   align-items: center;
   display: flex;
 }
@@ -39,7 +40,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 70%;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 900;
 }
 .post-heart {
@@ -49,7 +50,7 @@
   width: 10px;
 }
 .post-body {
-  width: 100%;
+  width: 95%;
   height: 17.6vh;
   margin-bottom: 5%;
   & img {

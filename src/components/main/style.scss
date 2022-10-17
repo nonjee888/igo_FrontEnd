@@ -75,6 +75,7 @@
 //추천게시물 박스
 .Recommend-List {
   margin-top: 5%;
+  gap: 3%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -125,35 +126,37 @@
 
 //RecommendPost.jsx
 .rec-post-content {
-  padding: 5%;
   background-color: rgba(255, 255, 255, 0.524);
   width: 100%;
-  height: 5%;
+  height: 3.3vh;
   position: absolute;
   overflow: hidden;
   display: flex;
   bottom: 5px;
-  gap: 10px;
+  gap: 1%;
   align-items: center;
   display: flex;
+  border-radius: 0 0 5px 5px;
+  padding-bottom: 1%;
 }
 .rec-post-title {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 70%;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 900;
+  margin: 1% 0 1% 7%;
 }
 
 .rec-heart {
   font-size: 14px;
 }
 .rec-post-body {
-  width: 50%;
-  height: 125px;
-  margin-bottom: 2.5%;
-  & img {
+  width: 48.5%;
+  height: 17.6vh;
+  margin-bottom: 3%;
+  img {
     object-fit: cover;
   }
 }

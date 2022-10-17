@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMylikes } from "../../redux/modules/mylikes";
 import photo from "../../asset/assetMypage/photo.png";
-import filledHeart from "../../asset/filledHeart.png";
 
 const Mylikes = () => {
   let navigate = useNavigate();

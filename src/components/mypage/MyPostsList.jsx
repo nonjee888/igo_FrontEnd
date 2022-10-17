@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyposts } from "../../redux/modules/myposts";
 import photo from "../../asset/assetMypage/photo.png";
-import filledHeart from "../../asset/filledHeart.png";
 
 const MyPostsList = () => {
   let navigate = useNavigate();
