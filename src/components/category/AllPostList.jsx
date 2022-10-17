@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { instance } from "../../shared/api";
 import Tags from "./Tags";
 import Post from "../post/Post";
+import { useNavigate } from "react-router-dom";
 
 // ~순 카테고리목록
 export default function AllPostList() {
@@ -9,6 +10,7 @@ export default function AllPostList() {
   const [create, setCreate] = useState();
   const [like, setLike] = useState();
   const [view, setView] = useState();
+  const navigate = useNavigate();
 
   const sortList = [
     {
@@ -80,6 +82,9 @@ export default function AllPostList() {
                 );
               })}
         </div>
+        <button className="research" onClick={() => {
+            navigate("/tutorial");
+          }}>튜토리얼보고 커피받기</button>
       </div>
     </div>
   );
