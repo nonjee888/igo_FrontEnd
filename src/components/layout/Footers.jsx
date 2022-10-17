@@ -17,7 +17,7 @@ const Footers = () => {
   const navigate = useNavigate();
   const NICKNAME = localStorage.getItem("nickname");
   const { notice } = useSelector((state) => state.notice);
-  console.log(notice);
+
   //로그인해야 사용 가능
   const Alert = () => {
     Swal.fire({
