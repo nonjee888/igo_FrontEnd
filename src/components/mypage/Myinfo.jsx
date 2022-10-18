@@ -1,3 +1,4 @@
+import "./style.scss";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +9,8 @@ import Modal from "./MyProfileModal";
 import profileImg1 from "../../asset/assetMypage/profileImg1.png";
 import profileImg from "../../asset/assetMypage/profileImg.png";
 import edit from "../../asset/edit.png";
+import notice from "../../asset/assetMypage/notice.png";
+import love from "../../asset/assetMypage/love1.png";
 
 const Myinfo = () => {
   let navigate = useNavigate();
@@ -175,11 +178,13 @@ const Myinfo = () => {
           작성 게시글 모아보기
         </p>
         <p
+          className="noticeImg"
           onClick={() => {
             navigate("/mylike");
           }}
         >
-          🤍게시글 모아보기
+          <img src={love} alt="좋아요" />
+          게시글 모아보기
         </p>
         <p
           onClick={() => {
@@ -188,12 +193,15 @@ const Myinfo = () => {
         >
           나의 일정 관리하기
         </p>
+
         <div
           className="my-alarm-div"
+
           onClick={() => {
             navigate("/notification");
           }}
         >
+          <img className="noticeImg" src={notice} alt="알림" />
           알림
           <div className="my-notification">
             <div style={{ margin: "auto", fontSize: "small" }}>{unRead}</div>
