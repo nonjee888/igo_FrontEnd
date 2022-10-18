@@ -23,7 +23,7 @@ export const postStory = createAsyncThunk(
 
 export const getStory = createAsyncThunk("story/get", async (_, thunkAPI) => {
   try {
-    const data = await instance.get("/api/story", {
+    const data = await instance.get("/api/storys", {
       headers: {
         REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
       },

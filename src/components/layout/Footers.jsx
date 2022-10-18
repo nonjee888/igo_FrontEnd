@@ -1,11 +1,14 @@
 import "./style.scss";
 import Swal from "sweetalert2";
 //이미지
+import pleaseLogin from "../../asset/pleaseLogin.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import recomendIcon from "../../asset/assetFooter/recomendIcon.png";
 import mypageIcon from "../../asset/assetFooter/mypageIcon.png";
 import addIcon from "../../asset/assetFooter/addIcon.png";
+import igomodalimg from "../../asset/igomodalimg.png";
 import storyIcon from "../../asset/assetFooter/storyIcon.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -21,8 +24,10 @@ const Footers = () => {
   //로그인해야 사용 가능
   const Alert = () => {
     Swal.fire({
-      icon: "info",
       text: "로그인을 하셔야 이용 가능합니다.",
+      imageUrl: pleaseLogin,
+      imageWidth: 200,
+      imageHeight: 100,
       showCancelButton: true,
       confirmButtonColor: "#47AFDB",
       cancelButtonColor: "#D9D9D9",
@@ -39,9 +44,9 @@ const Footers = () => {
     Swal.fire({
       showDenyButton: true,
       showCancelButton: true,
-      imageUrl: addIcon,
-      imageWidth: 50,
-      imageHeight: 50,
+      imageUrl: igomodalimg,
+      imageWidth: 200,
+      imageHeight: 200,
       confirmButtonColor: "#47AFDB",
       denyButtonColor: "#47AFDB",
       confirmButtonText: "여행남기기",
