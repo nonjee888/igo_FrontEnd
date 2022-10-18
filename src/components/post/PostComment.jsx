@@ -8,10 +8,10 @@ import profileImg from "../../asset/assetMypage/profileImg.png";
 
 const PostComment = () => {
   let dispatch = useDispatch();
-  let username = localStorage.getItem("nickname");
-  const { detail } = useSelector((state) => state.posts);
+
   const { myinfo } = useSelector((state) => state.myinfo);
   const { comments } = useSelector((state) => state.comments);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -55,7 +55,7 @@ const PostComment = () => {
                   alt=""
                 />
               )}
-              <div className="userNick">{username}</div>
+              <div className="userNick">{myinfo[0].nickname}</div>
             </div>
             <input
               type="text"
@@ -88,10 +88,10 @@ const PostComment = () => {
               comments?.map((comment) => {
                 return (
                   <PostCommentList
+                    myinfo={myinfo}
                     comment={comment}
                     key={comment?.id}
                     postId={postId}
-                    profile={detail?.profile}
                     setComments={setComments}
                     commentList={comments}
                   />

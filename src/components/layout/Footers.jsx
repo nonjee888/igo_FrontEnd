@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import "./style.scss";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 //이미지
 import listIcon from "../../asset/assetFooter/listIcon.png";
@@ -8,14 +6,17 @@ import recomendIcon from "../../asset/assetFooter/recomendIcon.png";
 import mypageIcon from "../../asset/assetFooter/mypageIcon.png";
 import addIcon from "../../asset/assetFooter/addIcon.png";
 import storyIcon from "../../asset/assetFooter/storyIcon.png";
-import { instance } from "../../shared/api";
+
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getNotice } from "../../redux/modules/notice";
 
 const Footers = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const NICKNAME = localStorage.getItem("nickname");
-
-  const [notice, setNotice] = useState([]);
+  const { notice } = useSelector((state) => state.notice);
 
   //로그인해야 사용 가능
   const Alert = () => {
@@ -56,17 +57,9 @@ const Footers = () => {
     });
   };
 
-  const notifications = async () => {
-    const { data } = await instance.get("/api/member/notifications");
-    // console.log(data);
-    setNotice(data.notificationResponses);
-  };
-
   useEffect(() => {
-    if (localStorage.getItem("ACCESS_TOKEN")) {
-      notifications();
-    }
-  }, []);
+    dispatch(getNotice());
+  }, [dispatch]);
 
   return (
     <div className="Footer-Container">

@@ -1,7 +1,7 @@
-import axios from "axios";
+import "./style.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import igoLogo from "../../asset/igoLogo.png";
+import tutorial9 from "../../asset/assetTutorial/tutorial9.png";
 import { instance } from "../../shared/api";
 import Swal from "sweetalert2";
 const AdminSignup = ({ setModal }) => {
@@ -24,7 +24,7 @@ const AdminSignup = ({ setModal }) => {
     else setUserIdError(true);
     setUserId(e.target.value);
   };
-  console.log(nickname, userId, password, confirmPassword);
+
   const onChangePassword = (e) => {
     const passwordRegex = /^[0-9a-zA-Z]{3,18}$/;
     if (!e.target.value || passwordRegex.test(e.target.value))
@@ -89,11 +89,10 @@ const AdminSignup = ({ setModal }) => {
           confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         });
-        // navigate("/login");
       } else {
         Swal.fire({
           icon: "info",
-          text: "회원가입에 실패했습니다. 관리자에게 문의하세요.",
+          text: "회원가입에 실패했습니다. 다시 시도해주세요.",
           confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         });
@@ -105,7 +104,7 @@ const AdminSignup = ({ setModal }) => {
     <>
       <div className="AdminModal-Back">
         <div className="AdminModal-container">
-          <img className="Admin-logo" src={igoLogo} />
+          <img className="Admin-logo" src={tutorial9} />
           <div className="Signup-form">
             <div className="Signup-inputs">
               <div className="input-id">
