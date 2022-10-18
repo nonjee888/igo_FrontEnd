@@ -20,6 +20,11 @@ const MyPostsList = () => {
       <div className="MyPosts">
         <h3>나의 작성 게시글</h3>
         <div className="MyListsAll">
+          {myposts?.length === 0 ? (
+            <div className="myPageNoInfo">아직 작성한 게시물이 없습니다.</div>
+          ) : (
+            <></>
+          )}
           {myposts?.map((myposts) => {
             return (
               <div

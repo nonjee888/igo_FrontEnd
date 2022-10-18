@@ -1,3 +1,4 @@
+import "./style.scss";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // 리덕스 관련 Imports
@@ -20,6 +21,11 @@ const Mylikes = () => {
       <div className="MyPosts">
         <h3>나의 🤍 게시글</h3>
         <div className="MyListsAll">
+          {mylikes?.length === 0 ? (
+            <div className="myPageNoInfo">아직 ♥를 누른 게시물이 없습니다.</div>
+          ) : (
+            <></>
+          )}
           {mylikes?.map((mylikes) => {
             return (
               <div
