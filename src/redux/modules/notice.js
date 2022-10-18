@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 import { instance } from "../../shared/api";
 
 //리듀서 -----------------------------------------------------------------------------------------------------
@@ -9,7 +10,7 @@ export const getNotice = createAsyncThunk(
     try {
       const data = await instance.get("/api/member/notifications");
 
-      return data;
+      return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -24,7 +25,7 @@ export const removeNotice = createAsyncThunk(
         `/api/member/notifications/${payload}`
       );
 
-      return data.data;
+      return data?.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -34,39 +35,39 @@ export const removeNotice = createAsyncThunk(
 export const notice = createSlice({
   name: "notice",
   initialState: {
-    notice: "",
+    notice: [],
     isLogin: false,
     error: null,
   },
   reducers: {},
 
   extraReducers: {
-    //노티스 목록 전체 조회
+    //노티스 전체 조회
     [getNotice.pending]: (state) => {
-      state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
+      state.isLoading = true;
     },
     [getNotice.fulfilled]: (state, action) => {
-      state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
-      state.notice = action.payload;
+      state.isLoading = false;
+      state.notice = action.payload.notificationResponses;
     },
     [getNotice.rejected]: (state, action) => {
-      state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
-      state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
+      state.isLoading = false;
+      state.error = action.payload;
     },
-    //노티스 목록 전체 조회
+    //노티스 삭제
     [removeNotice.pending]: (state) => {
-      state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
+      state.isLoading = true;
     },
     [removeNotice.fulfilled]: (state, action) => {
-      state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
+      state.isLoading = false;
       let index = state.notice.findIndex(
-        (notice) => notice.id === action.payload.data
+        (notice) => notice.id === action.payload
       );
       state.notice.splice(index, 1);
     },
     [removeNotice.rejected]: (state, action) => {
-      state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
-      state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });

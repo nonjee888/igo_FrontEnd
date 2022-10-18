@@ -25,9 +25,8 @@ import Tutorial from "../components/tutorial/Tutorial";
 import { getCookie, setCookie } from "./cookie";
 import { EventSourcePolyfill } from "event-source-polyfill";
 
-
 const Router = () => {
- let eventSource = undefined;
+  let eventSource = undefined;
   let token = localStorage.getItem("ACCESS_TOKEN");
 
   const isSSE = async () => {
@@ -77,7 +76,7 @@ const Router = () => {
           showNotification();
         }
       })();
-    })
+    });
   };
 
   useEffect(() => {
@@ -110,35 +109,31 @@ const Router = () => {
 
   return (
     <div>
-
-      
-        <Routes>
-          <Route path="/kakaoloading" element={<KaKaoLoading />} exact />
-          <Route path="/naverloading" element={<NaverLoading />} exact />
-          <Route path="/" element={<Loginpage />} exact />
-          <Route path="/login" element={<LoginAdmin />} exact />
-          <Route path="/choice" element={<ChoiceCategory />} exact />
-          <Route path="/recommend" element={<MainRecommend />} exact />
-          <Route path="/post/:category" element={<AllCategoryList />} exact />
-          {/*post/:region에서 앞에 :값을 제거해주니 세부카테고리 확인됨 */}
-          <Route path="/search/" element={<SearchPage />} exact />
-          <Route path="/search/:searchTerm" element={<SearchPage />} exact />
-          <Route path="/story" element={<Story />} exact />
-          <Route path="/addstory" element={<StoryAdd />} exact />
-          <Route path="/myinfo" element={<MyInfoPage />} exact />
-          <Route path="/mylike" element={<MyLikesPage />} exact />
-          <Route path="/myplan" element={<MyPlanPage />} exact />
-          <Route path="/myplanpost" element={<MyPlanPostPage />} exact />
-          <Route path="/mypostlist" element={<MyPostsListPage />} exact />
-          <Route path="/notification" element={<Notice />} exact />
-          <Route path="*" element={<div>없는 페이지입니다.</div>} />
-          <Route path="/addpost" element={<AddPostPage />} exact />
-          <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
-          <Route path="/postdetail/:id" element={<PostDetailPage />} exact />
-          <Route path="/tutorial" element={<Tutorial />} exact />
-        </Routes>
-     
-
+      <Routes>
+        <Route path="/kakaoloading" element={<KaKaoLoading />} exact />
+        <Route path="/naverloading" element={<NaverLoading />} exact />
+        <Route path="/" element={<Loginpage />} exact />
+        <Route path="/login" element={<LoginAdmin />} exact />
+        <Route path="/choice" element={<ChoiceCategory />} exact />
+        <Route path="/recommend" element={<MainRecommend />} exact />
+        <Route path="/post/:category" element={<AllCategoryList />} exact />
+        {/*post/:region에서 앞에 :값을 제거해주니 세부카테고리 확인됨 */}
+        <Route path="/search/" element={<SearchPage />} exact />
+        <Route path="/search/:searchTerm" element={<SearchPage />} exact />
+        <Route path="/story" element={<Story />} exact />
+        <Route path="/addstory" element={<StoryAdd />} exact />
+        <Route path="/myinfo" element={<MyInfoPage />} exact />
+        <Route path="/mylike" element={<MyLikesPage />} exact />
+        <Route path="/myplan" element={<MyPlanPage />} exact />
+        <Route path="/myplanpost" element={<MyPlanPostPage />} exact />
+        <Route path="/mypostlist" element={<MyPostsListPage />} exact />
+        <Route path="/notification" element={<Notice />} exact />
+        <Route path="*" element={<div>없는 페이지입니다.</div>} />
+        <Route path="/addpost" element={<AddPostPage />} exact />
+        <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
+        <Route path="/postdetail/:id" element={<PostDetailPage />} exact />
+        <Route path="/tutorial" element={<Tutorial />} exact />
+      </Routes>
     </div>
   );
 };
