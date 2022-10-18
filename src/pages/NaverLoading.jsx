@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { setCookie } from "../shared/cookie";
 import { EventSourcePolyfill } from "event-source-polyfill";
+import loginmodalCat from "../asset/loginmodalCat.png";
 
 const NaverLoading = () => {
   const navigate = useNavigate();
@@ -48,7 +49,9 @@ const NaverLoading = () => {
       } else {
         setTimeout(() => {
           Swal.fire({
-            icon: "success",
+            imageUrl:loginmodalCat,
+            imageWidth: 400,
+            imageHeight: 170,
             title: nickname + "님",
             text: "환영합니다!",
             confirmButtonColor: "#47AFDB",
