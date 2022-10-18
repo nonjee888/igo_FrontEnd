@@ -56,7 +56,7 @@ export default function CostPostList() {
   //----------------가격별분류-----------------//
 
   const getCostList = async () => {
-    const response = await instance.get(`/api/post/cost?type=${cost}`);
+    const response = await instance.get(`/api/posts/cost?type=${cost}`);
     setPostList(response.data.data);
     return response.data.data;
   };

@@ -200,9 +200,7 @@
   display: flex;
   align-items: center;
 }
-.number {
-  margin-bottom: 10%;
-}
+
 .edit-delete {
   margin-right: 10%;
   display: flex;
@@ -230,9 +228,10 @@
   gap: 2%;
   border: none;
   display: grid;
-  grid-template-columns: 30% 26% 10% 7% 7%;
+  grid-template-columns: 30% 25% 10% 7% 7%;
 }
 .edit-btn {
+  padding-left: 85%;
   background: none;
   border: none;
 }
@@ -241,11 +240,13 @@
   height: 25px;
 }
 .delete-btn {
+  padding-top: 10%;
+  padding-left: 10%;
   background: none;
   border: none;
 }
 .delete-icon {
-  width: 18px;
+  width: 20px;
   height: 22px;
   cursor: pointer;
 }
@@ -264,7 +265,6 @@
   background: none;
 }
 .liked-post-icon {
-  margin-bottom: 10%;
   width: 22px;
   height: 20px;
   cursor: pointer;
@@ -274,10 +274,31 @@
   background: none;
 }
 .report-post-icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 }
+//비회원 noUser-detail-btns
+.noUser-detail-btns {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  gap: 2%;
+  border: none;
+  display: grid;
+  grid-template-columns: 30% 30% 15% 10%;
+}
+//회원인데 본인게시글 아닐경우
+.notMy-detail-btns {
+  text-align: center;
+  align-items: baseline;
+  display: flex;
+  gap: 2%;
+  border: none;
+  display: grid;
+  grid-template-columns: 30% 30% 15% 10%;
+}
+
 //PostCommentList.jsx
 .delete-btn {
   background: none;
@@ -301,7 +322,7 @@
 .ment-wrapper {
   display: flex;
   margin-bottom: 2%;
-  width: 110%;
+  width: 120%;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
