@@ -52,7 +52,11 @@ const Myplan = () => {
             flexWrap: "wrap",
           }}
         >
-          {Origin?.length === 0 ? <p>➕을 눌러 일정을 작성해보세요.</p> : <></>}
+          {Origin?.length === 0 ? (
+            <p className="myPageNoInfo1">➕을 눌러 일정을 작성해보세요.</p>
+          ) : (
+            <></>
+          )}
           {Origin?.map((myplans) => {
             return (
               <div className="Myplan" key={myplans.id}>
@@ -111,7 +115,11 @@ const Myplan = () => {
             flexWrap: "wrap",
           }}
         >
-          {Done?.length === 0 ? <p>완료된 일정이 없습니다.</p> : <></>}
+          {Done?.length === 0 ? (
+            <p className="myPageNoInfo1">완료된 일정이 없습니다.</p>
+          ) : (
+            <></>
+          )}
           {Done?.map((myplans) => {
             return (
               <div className="Myplan" key={myplans.id}>
