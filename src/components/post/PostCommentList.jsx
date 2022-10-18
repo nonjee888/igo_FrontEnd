@@ -6,7 +6,8 @@ import profileImg from "../../asset/assetMypage/profileImg.png";
 
 const CommentList = (props) => {
   const dispatch = useDispatch();
-  const myName = props?.myinfo[0]?.nickname;
+  const myinfo = props?.myinfo;
+  const myName = props?.myinfo && myinfo[0]?.nickname;
   const writerId = props.comment.nickname;
   const commentProfile = props.comment.profile;
   const userConfirm = writerId === myName;

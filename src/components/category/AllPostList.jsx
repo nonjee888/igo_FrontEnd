@@ -28,7 +28,7 @@ export default function AllPostList() {
   ];
 
   const getCreatePost = async () => {
-    const response = await instance.get(`/api/post/group?type=${sort}`);
+    const response = await instance.get(`/api/posts/group?type=${sort}`);
     setCreate(response.data.data);
     setLike(response.data.data);
     setView(response.data.data);
@@ -76,9 +76,14 @@ export default function AllPostList() {
                 );
               })}
         </div>
-        <button className="research" onClick={() => {
+        <button
+          className="research"
+          onClick={() => {
             navigate("/tutorial");
-          }}>튜토리얼보고 커피받기</button>
+          }}
+        >
+          튜토리얼보고 커피받기
+        </button>
       </div>
     </div>
   );
