@@ -16,14 +16,15 @@ import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 
 const { kakao } = window;
 
 const PostDetail = () => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
+  const { myinfo } = useSelector((state) => state.myinfo);
 
-  const [user, setUser] = useState();
   const [center, setCenter] = useState();
   const [poly, setPoly] = useState();
   const [overlayData, setOverlayData] = useState({
@@ -35,6 +36,7 @@ const PostDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const writerId = detail.nickname;
+  const user = myinfo && myinfo[0]?.nickname;
   const userConfirm = user === writerId;
 
   const fetch = async () => {
@@ -42,7 +44,6 @@ const PostDetail = () => {
 
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
-    setUser(data?.data?.nickname);
   };
 
   useEffect(() => {
@@ -138,17 +139,80 @@ const PostDetail = () => {
           <div className="detail-title">
             <div className="title">{detail?.title}</div>
           </div>
-          <div className="detail-btns">
-            <h4 className="detail-nickname">{writerId}</h4>
-            <div>조회수:{detail?.viewCount}</div>
-            <div className="heart-num">
-              <button onClick={onLike} className="liked-post-btn">
-                <img src={heart} className="liked-post-icon" alt="관심게시글" />
+          {/* 비회원: 작성자, 조회수 보임 like, report 누르면 로그인하기 alert*/}
+          {!user ? (
+            <div className="noUser-detail-btns">
+              <h4 className="detail-nickname">{writerId}</h4>
+              <div>조회수:{detail?.viewCount}</div>
+              <div className="heart-num">
+                <button
+                  className="liked-post-btn"
+                  onClick={() => {
+                    Swal.fire({
+                      showCancelButton: true,
+                      imageUrl: pleaseLogin,
+                      imageWidth: 200,
+                      imageHeight: 100,
+                      text: "로그인이 필요합니다",
+                      confirmButtonColor: "#47AFDB",
+                      confirmButtonText: "로그인",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        navigate("/");
+                      } else if (result.isDenied) {
+                        return null;
+                      }
+                    });
+                  }}
+                >
+                  <img
+                    src={heart}
+                    className="liked-post-icon"
+                    alt="관심게시글"
+                  />
+                </button>
+                <div className="number">{detail?.heartNum}</div>
+              </div>
+              <button
+                className="report-post-btn"
+                onClick={() => {
+                  Swal.fire({
+                    showCancelButton: true,
+                    imageUrl: pleaseLogin,
+                    imageWidth: 200,
+                    imageHeight: 100,
+                    text: "로그인이 필요합니다",
+                    confirmButtonColor: "#47AFDB",
+                    confirmButtonText: "로그인",
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      navigate("/");
+                    } else if (result.isDenied) {
+                      return null;
+                    }
+                  });
+                }}
+              >
+                <img src={report} className="report-post-icon" />
               </button>
-              <div className="number">{detail?.heartNum}</div>
             </div>
+          ) : !userConfirm ? (
+            /* 회원 && !게시글 작성자 ? like, report 가능 */
+            <div className="notMy-detail-btns">
+              <h4 className="detail-nickname">{writerId}</h4>
+              <div>조회수:{detail?.viewCount}</div>
 
-            {userConfirm ? null : (
+              <div className="heart-num">
+                <button onClick={onLike} className="liked-post-btn">
+                  <img
+                    src={heart}
+                    className="liked-post-icon"
+                    alt="관심게시글"
+                  />
+                </button>
+                <div className="number">{detail?.heartNum}</div>
+              </div>
+
               <button
                 onClick={() => {
                   onReport(id);
@@ -157,8 +221,23 @@ const PostDetail = () => {
               >
                 <img src={report} className="report-post-icon" />
               </button>
-            )}
-            {userConfirm ? (
+            </div>
+          ) : (
+            /* 게시글 작성자 : like, edit, delete 가능 */
+            <div className="detail-btns">
+              <h4 className="detail-nickname">{writerId}</h4>
+              <div>조회수:{detail?.viewCount}</div>
+
+              <div className="heart-num">
+                <button onClick={onLike} className="liked-post-btn">
+                  <img
+                    src={heart}
+                    className="liked-post-icon"
+                    alt="관심게시글"
+                  />
+                </button>
+                <div className="number">{detail?.heartNum}</div>
+              </div>
               <div className="edit-delete">
                 <button className="edit-btn">
                   <img
@@ -170,6 +249,7 @@ const PostDetail = () => {
                   />
                 </button>
                 <button
+                  className="delete-btn"
                   onClick={() => {
                     Swal.fire({
                       showCancelButton: true,
@@ -187,13 +267,13 @@ const PostDetail = () => {
                       }
                     });
                   }}
-                  className="delete-btn"
                 >
                   <img src={deleteimg} className="delete-icon" />
                 </button>
               </div>
-            ) : null}
-          </div>
+            </div>
+          )}
+
           {/*태그*/}
           <div className="tag-wrapper">
             <div

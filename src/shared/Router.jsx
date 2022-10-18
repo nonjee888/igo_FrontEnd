@@ -29,7 +29,7 @@ const Router = () => {
   let eventSource = undefined;
   let token = localStorage.getItem("ACCESS_TOKEN");
 
-  const isSSE = async () => {
+  const isSSE = () => {
     eventSource = new EventSourcePolyfill(
       process.env.REACT_APP_MAIN_HOST + `/api/member/subscribe`,
       {

@@ -502,3 +502,22 @@
     }
   }
 }
+.my-alarm-div {
+  display: flex;
+  background-color: #ececec;
+  width: 90%;
+  padding: 2%;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  align-items: center;
+  .my-notification {
+    display: flex;
+    margin-left: 5%;
+    width: 3.2vh;
+    height: 2.3vh;
+    background-color: #47afdb;
+    border-radius: 25%;
+    color: white;
+    text-align: center;
+  }
+}
