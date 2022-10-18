@@ -9,6 +9,7 @@ import tutorial6 from "../../asset/assetTutorial/tutorial6.png";
 import tutorial7 from "../../asset/assetTutorial/tutorial7.png";
 import tutorial8 from "../../asset/assetTutorial/tutorial8.png";
 import tutorial9 from "../../asset/assetTutorial/tutorial9.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 import Swal from "sweetalert2";
 
 
@@ -40,7 +41,9 @@ export default function Tutorial () {
            <img className="tutorialboxs" src={tutorial9}/>
           
         </div>):( Swal.fire({
-          icon: "error",
+          imageUrl:pleaseLogin,
+          imageWidth: 400,
+          imageHeight: 170,
           text: "로그인을 하셔야 이용 가능합니다.",
           showCancelButton: true,
           confirmButtonColor: "#47AFDB",
