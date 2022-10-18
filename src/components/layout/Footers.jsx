@@ -8,6 +8,7 @@ import mypageIcon from "../../asset/assetFooter/mypageIcon.png";
 import addIcon from "../../asset/assetFooter/addIcon.png";
 import igomodalimg from "../../asset/igomodalimg.png";
 import storyIcon from "../../asset/assetFooter/storyIcon.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
