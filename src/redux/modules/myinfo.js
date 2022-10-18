@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../../shared/api";
+import Swal from "sweetalert2";
 
 export const putMyinfo = createAsyncThunk(
   "myinfo/put",
@@ -11,8 +12,28 @@ export const putMyinfo = createAsyncThunk(
           REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
         },
       });
-      if (data.data.success === false) alert(data.data.error.message);
-      // else alert(data.data.data);
+      if (data.data.success === false)
+        Swal.fire({
+          icon: "error",
+          text: "이미 사용중인 닉네임입니다.",
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
+      else
+        Swal.fire({
+          icon: "success",
+          text: "프로필이 변경되었습니다.",
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload();
+          }
+        });
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -54,17 +75,6 @@ export const myinfo = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    // [putMyinfo.pending]: (state) => {
-    //   state.isLoading = true;
-    // },
-    // [putMyinfo.fulfilled]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.myinfo.splice(0, 1, state.myinfo[0]);
-    // },
-    // [putMyinfo.rejected]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
   },
 });
 

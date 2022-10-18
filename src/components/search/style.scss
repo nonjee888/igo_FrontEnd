@@ -5,7 +5,6 @@
   border: none;
   outline: none;
   padding: 0;
-  background: transparent;
 }
 //search 돋보기
 .Icon {
@@ -32,30 +31,8 @@
   background: none;
   border: none;
 }
-//SearchPost.jsx
-.post-content {
-  margin-left: 5%;
-  padding: 5%;
-  background-color: rgba(255, 255, 255, 0.524);
-  width: 80%;
-  height: 30px;
-  position: absolute;
-  overflow: hidden;
+.search-wrapper {
+  margin: 3% 0 0 3%;
   display: flex;
-  gap: 10px;
-  align-items: center;
-  bottom: 20px;
-}
-
-.heart-btn-img {
-  width: 20px;
-}
-.post-body {
-  width: 100%;
-  height: 250px;
-  margin-bottom: 5%;
-
-  & img {
-    object-fit: cover;
-  }
+  flex-wrap: wrap;
 }

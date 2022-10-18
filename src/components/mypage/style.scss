@@ -1,5 +1,14 @@
 //혜림담당
 
+//프로필사진 모달
+.myProfileAll {
+  width: 100%;
+  color: #999999;
+  font-size: 12px;
+  border-top: 1px solid rgb(229, 229, 229);
+  padding-top: 1rem;
+}
+
 // 나의페이지
 .imgBox {
   border-radius: 70%;
@@ -33,7 +42,7 @@
   background-color: transparent;
   position: absolute;
   height: 120px;
-  width: 33%;
+  width: 140px;
   border-radius: 70%;
   color: transparent;
 }
@@ -50,24 +59,57 @@
 .profileNickname {
   display: flex;
   justify-content: center;
-  margin: 2% 0 0 22%;
+  margin: 2% 0 0 25%;
   font-size: 1.1rem;
   font-weight: 900;
-  width: 50%;
+  width: 55%;
   height: 5%;
 }
 
+.profileNickname1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 127px 0 0 -3%;
+  font-size: 1.1rem;
+  font-weight: 900;
+  width: 45%;
+  height: 25px;
+  position: absolute;
+  h4 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 85%;
+  }
+  img {
+    width: 27px;
+    height: 23px;
+  }
+}
+
 .profileNickameinput {
-  border: none;
+  border: 2px solid #999999;
   width: 50%;
-  text-align: right;
+  text-align: center;
   font-size: 1rem;
-  font-weight: 700;
   background-color: transparent;
+  height: 30px;
+}
+
+.changeButton {
+  border: none;
+  background: linear-gradient(to right, #f5c9e0 5%, #47afdb 70%);
+  color: white;
+  font-weight: bold;
+  width: 60px;
+  border-radius: 5px;
+  margin-left: 5px;
+  font-size: 15px;
 }
 
 .profileCategory {
-  margin-top: 15%;
+  margin-top: 25%;
 }
 
 .CategoryTitle {
@@ -97,37 +139,84 @@
     font-size: 1.1rem;
   }
 }
-// 나의 게시글, 관심, 일정 리스트
+.noticeImg {
+  display: flex;
+  align-items: center;
+  img {
+    width: 6%;
+    margin-right: 1%;
+  }
+}
+
+// 나의 게시글, 관심리스트
+.myPageNoInfo {
+  margin: 35vh auto;
+}
+
+.myPageNoInfo1 {
+  margin: 10vh auto;
+}
+
+.MyListsAll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
+.AllMyPostList {
+  background-color: rgba(255, 255, 255, 0.524);
+  border-radius: 0 0 10px 10px;
+  width: 41%;
+  height: 3.2vh;
+  position: absolute;
+  z-index: 1;
+  margin-top: 14.5vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 70% 5% 25%;
+  align-items: center;
+  padding-left: 3%;
+  font-size: 15px;
+}
+.MyPostTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  font-weight: 900;
+}
+.MyPostNick {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
 .MyPostsList {
   display: flex;
-  width: 100%;
+  width: 49%;
   margin-bottom: 3%;
   img {
     width: 98.5%;
-    height: 200px;
+    height: 17.6vh;
+    object-fit: cover;
   }
 }
 
 .MyPosts {
-  margin: 5% 5% 10% 5%;
+  margin: 5%;
+  h3 {
+    display: flex;
+    img {
+      width: 6.5%;
+      height: 6.5%;
+      object-fit: cover;
+      margin: 1% 2% 0 2%;
+    }
+  }
 }
 
 .MyPostImg {
-  background-color: #ececec;
-  padding: 1%;
   border-radius: 10px;
   width: 100%;
-}
-
-.MyPostTitle {
-  background-color: white;
-  opacity: 0.7;
-  padding: 3% 0 5% 5%;
-  border-radius: 0 0 10px 10px;
-  width: 85%;
-  position: absolute;
-  z-index: 1;
-  margin-top: 155px;
 }
 
 //나의 일정관리하기
@@ -186,6 +275,7 @@
   border-left: 1px solid #ececec;
   display: flex;
   justify-content: space-between;
+  font-weight: bold;
   img {
     width: 10%;
     padding: 0 5% 2% 0;
@@ -237,9 +327,9 @@
 .planImginputLabel {
   background-color: transparent;
   position: absolute;
-  height: 130px;
-  width: 50%;
-  margin: 20%;
+  height: 16%;
+  width: 90%;
+  margin-top: 18%;
   color: transparent;
 }
 
@@ -274,7 +364,7 @@
 .MyplanPostDate {
   background-color: #ececec;
   border-radius: 10px 10px 0 0;
-  padding: 2.5% 0 0 35%;
+  padding: 1.5% 0 0 35%;
 }
 
 .MyplanPostTitle {
@@ -304,23 +394,148 @@
 }
 
 .MyplanPostAddbuttons {
-  display: grid;
-  grid-template-columns: 30% 100%;
-  margin: 5% 0 0 25%;
-  width: 50%;
+  display: flex;
+  margin: 5% 0 0 27%;
+  img {
+    width: 15%;
+  }
 }
 
 .MyplanPostAdd {
   border: none;
   background-color: transparent;
+  width: 40%;
   img {
     width: 100%;
-    height: 100%;
   }
-  width: 60%;
 }
-.MyplanPostGoback {
-  border: none;
+
+//프로필이미지수정 모달
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal button {
+  outline: none;
+  cursor: pointer;
+  border: 0;
+}
+.modal > section {
+  width: 95%;
+  height: 210px;
+  max-width: 428px;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  animation: modal-show 0.3s;
+  overflow: hidden;
+}
+
+.modal.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
+}
+.modal > section > header {
+  position: relative;
+}
+.modal > section > header button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: #999;
   background-color: transparent;
-  width: 80%;
+}
+
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+//MyNotification.jsx
+.profile-wrap {
+  gap: 10%;
+  margin-bottom: 20%;
+  text-align: center;
+  font-weight: bold;
+  .noti-nick {
+    margin-top: 2%;
+  }
+}
+
+.noti-div {
+  margin: 5% auto;
+  height: auto;
+  font-weight: bold;
+  background-color: #ececec;
+  width: 90%;
+  border-radius: 10px;
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 85% 15%;
+  align-items: baseline;
+  .noti-title {
+    padding: 7.5%;
+    vertical-align: center;
+    .noti-btn {
+      color: #555555;
+    }
+  }
+  .x-button {
+    float: right;
+    border: none;
+    background: none;
+    height: 45px;
+    width: 45px;
+
+    .noti-delete {
+      width: 50%;
+      height: 50%;
+      cursor: pointer;
+      object-fit: cover;
+    }
+  }
+}
+.my-alarm-div {
+  display: flex;
+  background-color: #ececec;
+  width: 90%;
+  padding: 2%;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  align-items: center;
+  .my-notification {
+    display: flex;
+    margin-left: 5%;
+    width: 3.2vh;
+    height: 2.3vh;
+    background-color: #47afdb;
+    border-radius: 25%;
+    color: white;
+    text-align: center;
+  }
 }

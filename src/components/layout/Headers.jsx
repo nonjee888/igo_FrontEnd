@@ -5,16 +5,20 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logout from "../../asset/logout.png";
 import igoLogo from "../../asset/igoLogo.png";
+import loginRegister from "../../asset/loginRegister.png";
 import { getMyinfo } from "../../redux/modules/myinfo";
 import { useEffect } from "react";
+import { deleteCookie } from "../../shared/cookie";
 
 const Headers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const myinfo = useSelector((state) => state?.myinfo?.myinfo);
+
   useEffect(() => {
     dispatch(getMyinfo());
   }, []);
+
   const NICKNAME = localStorage.getItem("nickname");
   //로그아웃
   const logoutHandler = () => {
@@ -23,12 +27,13 @@ const Headers = () => {
       title: "로그아웃",
       text: "정말로 로그아웃하시겠어요?",
       showCancelButton: true,
-      confirmButtonColor: "#80bbd0",
+      confirmButtonColor: "#47AFDB",
       cancelButtonColor: "#D9D9D9",
       confirmButtonText: "확인",
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
+        deleteCookie("Authorization");
         localStorage.removeItem("ACCESS_TOKEN");
         localStorage.removeItem("nickname");
         localStorage.removeItem("REFRESH_TOKEN");
@@ -37,6 +42,7 @@ const Headers = () => {
         localStorage.removeItem(
           "TOAST UI color-picker for localhost: Statistics"
         );
+
         navigate("/");
         window.location.reload();
       }
@@ -63,38 +69,32 @@ const Headers = () => {
               navigate("/");
             }}
           >
-            로그인/회원가입
+            <img
+              src={loginRegister}
+              alt="로그인회원가입"
+              className="loginButton"
+            />
           </button>
         </div>
       ) : (
         <div className="Sign-box">
           {myinfo === undefined ? (
             <div className="hearders-nickWrap">
-              <p
-                className="headers-nick"
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "1em",
-                  color: "#555555",
-                }}
-              >
-                {NICKNAME}
-              </p>
-              님
-              <button
-                className="Signbtn"
-                style={{
-                  width: "35%",
-                }}
-                onClick={logoutHandler}
-              >
-                <img
-                  src={logout}
-                  alt="로그아웃"
+              <div className="headers-님">
+                <div
+                  className="headers-nick"
                   style={{
-                    width: "100%",
+                    fontWeight: "bold",
+                    fontSize: "1em",
+                    color: "#555555",
                   }}
-                />
+                >
+                  {NICKNAME}
+                </div>
+                님
+              </div>
+              <button className="Signbtn" onClick={logoutHandler}>
+                <img src={logout} alt="로그아웃" className="logoutButton" />
               </button>
             </div>
           ) : (
@@ -112,20 +112,8 @@ const Headers = () => {
                 </div>
                 님
               </div>
-              <button
-                className="Signbtn"
-                style={{
-                  width: "35%",
-                }}
-                onClick={logoutHandler}
-              >
-                <img
-                  src={logout}
-                  alt="로그아웃"
-                  style={{
-                    width: "100%",
-                  }}
-                />
+              <button className="Signbtn" onClick={logoutHandler}>
+                <img src={logout} alt="로그아웃" className="logoutButton" />
               </button>
             </div>
           )}

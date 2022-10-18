@@ -1,55 +1,64 @@
 .choiceBox {
   width: 80%;
-  height: 60vh;
-  border: 1px solid black;
+  height: 65vh;
   position: relative;
-  margin: 10% auto 10%;
+  margin: 0 auto 0;
 }
 
-.conStyle {
-  display: inline-block;
-  &:focus {
-    font-weight: bold;
-    color: white;
-    border: 2px solid #5e7fdc;
-    background: none;
-  }
+.interestcheck {
+  display: none;
 }
 
-.likebox {
-  width: 10%;
-  display: inline-block;
-  justify-content: space-between;
-  &:focus {
-    font-weight: bold;
-    color: white;
-    border: 2px solid #5e7fdc;
-    background: none;
-  }
+.tagcheck {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5% 2% 2% 15%;
+  background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
+  border-radius: 22px;
+  width: 70%;
+  height: 2.5rem;
+  font-size: 1.2rem;
+}
+
+.untagcheck {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5% 2% 2% 4.5%;
+  background: none;
+  border-radius: 22px;
+  width: 90%;
+  height: 5vh;
+  font-size: 1.2rem;
 }
 
 .btnBox {
-  width: 100%;
+  width: 95%;
   height: 10%;
+  margin-top: 10px;
   display: flex;
-  padding: auto;
-}
-.joinbtn {
-  display: block;
   align-items: center;
   justify-content: center;
-  width: 40%;
-  height: 60%;
-  font-size: 100%;
+}
+
+.joinbtn {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: 50px;
+  font-size: 90%;
   color: white;
-  background-color: #5e7fdc;
-  border-radius: 12px;
+  background-color: #a3d7ed;
+  border-radius: 22px;
   border: 1px solid transparent;
-  margin: auto;
+  margin: 2.5% 0% 0% 2.5%;
+  font-weight: bold;
   &:hover {
     font-weight: bold;
     color: black;
-    border: 2px solid #5e7fdc;
+    border: 3px solid #a3d7ed;
     background: none;
   }
 }
@@ -64,13 +73,10 @@
 
 //추천게시물 박스
 .Recommend-List {
-  width: 90%;
-  height: 30vh;
-  margin-top: 2rem;
-  margin: auto;
-  display: inline;
-  align-content: center;
-  justify-content: center;
+  margin-top: 5%;
+  gap: 3%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 //추천게시물 타이틀 border
@@ -87,11 +93,11 @@
 }
 
 .Recommend-logo {
-  width: 70%;
-  margin: 5% 14% 5% 14%;
+  width: 100%;
+
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
 }
 
 //추천게시물title
@@ -118,30 +124,38 @@
 }
 
 //RecommendPost.jsx
-.post-content {
-  margin-left: 5%;
-  padding: 5%;
+.rec-post-content {
   background-color: rgba(255, 255, 255, 0.524);
-  width: 80%;
-  height: 30px;
+  width: 100%;
+  height: 3.3vh;
   position: absolute;
   overflow: hidden;
   display: flex;
-  gap: 10px;
+  bottom: 5px;
+  gap: 1%;
   align-items: center;
-  bottom: 20px;
-  font-weight: bold;
+  display: flex;
+  border-radius: 0 0 5px 5px;
+  padding-bottom: 1%;
+}
+.rec-post-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 70%;
+  font-size: 15px;
+  font-weight: 900;
+  margin: 1% 0 1% 7%;
 }
 
-.heart-btn-img {
-  width: 20px;
+.rec-heart {
+  font-size: 14px;
 }
-.post-body {
-  width: 100%;
-  height: 250px;
-  margin-bottom: 5%;
-
-  & img {
+.rec-post-body {
+  width: 48.5%;
+  height: 17.6vh;
+  margin-bottom: 3%;
+  img {
     object-fit: cover;
   }
 }

@@ -19,12 +19,12 @@ const MyPostsList = () => {
     <div className="All">
       <div className="MyPosts">
         <h3>나의 작성 게시글</h3>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-          }}
-        >
+        <div className="MyListsAll">
+          {myposts?.length === 0 ? (
+            <div className="myPageNoInfo">아직 작성한 게시물이 없습니다.</div>
+          ) : (
+            <></>
+          )}
           {myposts?.map((myposts) => {
             return (
               <div
@@ -48,7 +48,10 @@ const MyPostsList = () => {
                     alt="내게시글이미지"
                   />
                 )}
-                <div className="MyPostTitle">{myposts.title}</div>
+                <div className="AllMyPostList">
+                  <div className="MyPostTitle">{myposts.title}</div>♥
+                  {myposts.heartNum}
+                </div>
               </div>
             );
           })}

@@ -21,7 +21,7 @@ const Myplan = () => {
   const dispatch = useDispatch();
   const myplans = useSelector((state) => state.myplans.myplans);
   // console.log(myplans);
-  // 리덕스에서 포스트 리스트를 로딩
+
   useEffect(() => {
     dispatch(getMyplans());
   }, [dispatch]);
@@ -46,17 +46,17 @@ const Myplan = () => {
             }}
           />
         </div>
-        {Origin?.length === 0 ? (
-          <p>➕버튼을 눌러서 일정을 등록해주세요.</p>
-        ) : (
-          <></>
-        )}
         <div
           style={{
             display: "flex",
             flexWrap: "wrap",
           }}
         >
+          {Origin?.length === 0 ? (
+            <p className="myPageNoInfo1">➕을 눌러 일정을 작성해보세요.</p>
+          ) : (
+            <></>
+          )}
           {Origin?.map((myplans) => {
             return (
               <div className="Myplan" key={myplans.id}>
@@ -78,7 +78,7 @@ const Myplan = () => {
                       imageWidth: 50,
                       imageHeight: 50,
                       showCancelButton: true,
-                      confirmButtonColor: "#BDE8F8",
+                      confirmButtonColor: "#47AFDB",
                       cancelButtonColor: "#D9D9D9",
                       confirmButtonText: "삭제",
                       cancelButtonText: "취소",
@@ -99,7 +99,7 @@ const Myplan = () => {
                   className="buttonAll"
                   onClick={() => {
                     dispatch(postMyplanDone(myplans.id));
-                    window.location.replace("myplan");
+                    window.location.reload();
                   }}
                 >
                   완료
@@ -109,14 +109,17 @@ const Myplan = () => {
           })}
         </div>
         <h3 style={{ marginTop: "10%" }}>완료된 일정</h3>
-
         <div
           style={{
             display: "flex",
             flexWrap: "wrap",
           }}
         >
-          {Done?.length === 0 ? <p>완료된 일정이 없습니다.</p> : <></>}
+          {Done?.length === 0 ? (
+            <p className="myPageNoInfo1">완료된 일정이 없습니다.</p>
+          ) : (
+            <></>
+          )}
           {Done?.map((myplans) => {
             return (
               <div className="Myplan" key={myplans.id}>
@@ -138,7 +141,7 @@ const Myplan = () => {
                       imageWidth: 50,
                       imageHeight: 50,
                       showCancelButton: true,
-                      confirmButtonColor: "#BDE8F8",
+                      confirmButtonColor: "#47AFDB",
                       cancelButtonColor: "#D9D9D9",
                       confirmButtonText: "삭제",
                       cancelButtonText: "취소",
@@ -159,7 +162,7 @@ const Myplan = () => {
                   className="buttonAll"
                   onClick={() => {
                     dispatch(postMyplanCancel(myplans.id));
-                    window.location.replace("myplan");
+                    window.location.reload();
                   }}
                 >
                   취소

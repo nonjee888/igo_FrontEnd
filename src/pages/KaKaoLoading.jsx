@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import loading from "../asset/loading.gif";
 import Swal from "sweetalert2";
+import { setCookie } from "../shared/cookie";
 
 const KaKaoLoading = () => {
   const navigate = useNavigate();
@@ -20,27 +21,54 @@ const KaKaoLoading = () => {
   const kakao = async () => {
     try {
       const data = await instance.get(`/kakao/callback?code=${code}`);
+      setCookie("Authorization", data.headers.authorization);
       localStorage.setItem("ACCESS_TOKEN", data.headers.authorization);
       localStorage.setItem("REFRESH_TOKEN", data.headers.refreshtoken);
       localStorage.setItem("nickname", data.data.data.nickname);
       localStorage.setItem("isLogin", data.headers.authorization);
       const nickname = data.data.data.nickname;
-      setTimeout(() => {
-        Swal.fire({
-          icon: "success",
-          title: nickname + "님",
-          text: "환영합니다!",
-          confirmButtonColor: "#80bbd0",
-          confirmButtonText: "확인",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            navigate("/post/all"); // 나중에 /recommend로 바꾸기
-          }
-        });
-      }, 1000);
+
+      if (data.data.data.interested.length === 1) {
+        setTimeout(() => {
+          Swal.fire({
+            icon: "success",
+            title: nickname + "님",
+            text: "관심 태그를 3가지 골라주세요 :)",
+            confirmButtonColor: "#47AFDB",
+            confirmButtonText: "확인",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate("/choice");
+            }
+          });
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          Swal.fire({
+            icon: "success",
+            title: nickname + "님",
+            text: "환영합니다!",
+            confirmButtonColor: "#47AFDB",
+            confirmButtonText: "확인",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate("/recommend");
+            }
+          });
+        }, 1000);
+      }
       return data;
     } catch (error) {
-      window.alert(error.message); //navigate로 바꾸면 isLogin.state가 false. 새로고침해야 true
+      Swal.fire({
+        icon: "success",
+        text: error.message,
+        confirmButtonColor: "#47AFDB",
+        confirmButtonText: "확인",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/recommend");
+        }
+      });
     }
   };
   return (

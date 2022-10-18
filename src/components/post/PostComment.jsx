@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetailPosts } from "../../redux/modules/posts";
 import { createComment, getComments } from "../../redux/modules/comments";
 import PostCommentList from "./PostCommentList";
+import commentIcon from "../../asset/commentIcon.png";
 import profileImg from "../../asset/assetMypage/profileImg.png";
 
 const PostComment = () => {
   let dispatch = useDispatch();
-  let username = localStorage.getItem("nickname");
-  const { detail } = useSelector((state) => state.posts);
-  const { isLoading, error, comments } = useSelector((state) => state.comments);
 
+  const { myinfo } = useSelector((state) => state.myinfo);
+  const { comments } = useSelector((state) => state.comments);
+  const user = myinfo && myinfo[0]?.nickname;
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -27,76 +27,100 @@ const PostComment = () => {
   const openModal = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
-
+  const payload = {
+    review,
+  };
   useEffect(() => {
-    dispatch(getComments(id));
+    dispatch(getComments(id)).then((res) => {
+      if (!res) {
+        setLoading(true);
+      }
+    });
   }, [dispatch, id]);
-  if (isLoading) {
-    return <div>...로딩중</div>;
-  }
-  if (error) {
-    return <div>{error.message}</div>;
-  }
-  const userProfile = detail.profile;
 
   return (
     <div
-      style={{ height: modalOpen ? "50%" : "9%" }}
+      style={{ height: modalOpen ? "50%" : "8%" }}
       className="commentContainer"
     >
-      <p className="comment-tap" onClick={openModal}>
-        …
-      </p>
+      <div className="comment-tap" onClick={openModal}>
+        <img className="icon-comment" src={commentIcon} />
+      </div>
       {!loading && modalOpen && (
         <>
-          <div className="toggle-comment-wrapper">
-            <div className="nickname">
-              {userProfile === null ? (
-                <img className="profileImg" src={profileImg} alt="" />
-              ) : (
-                <img className="profileImg" src={userProfile} alt="" />
-              )}
-              <p className="userNick">{username}</p>
+          {!user ? (
+            <div className="toggle-comment-wrapper">
+              <div className="nickname">
+                {myinfo === undefined ? (
+                  <img className="profileImg" src={profileImg} alt="" />
+                ) : (
+                  <img
+                    className="profileImg"
+                    src={myinfo && myinfo[0]?.profileImage}
+                    alt=""
+                  />
+                )}
+                <div className="userNick">
+                  {myinfo && myinfo[0].nickname}비회원
+                </div>
+              </div>
+              로그인 후 댓글을 남겨 보세요!
             </div>
-            <input
-              type="text"
-              name="comments"
-              value={comment}
-              className="comment-input"
-              placeholder="댓글입력..."
-              onChange={(e) => {
-                setComments(e.target.value);
-                setReview({
-                  ...review,
-                  postId: id,
-                  content: e.target.value,
-                });
-              }}
-            />
-            <button
-              className="add-btn"
-              onClick={() => {
-                dispatch(createComment(review));
-                setReview(initialState);
-                setComments("");
-              }}
-            >
-              댓글
-            </button>
-          </div>
+          ) : (
+            <div className="toggle-comment-wrapper">
+              <div className="nickname">
+                {(myinfo && myinfo[0]?.profileImage === null) || undefined ? (
+                  <img className="profileImg" src={profileImg} alt="" />
+                ) : (
+                  <img
+                    className="profileImg"
+                    src={myinfo && myinfo[0]?.profileImage}
+                    alt=""
+                  />
+                )}
+                <div className="userNick">{myinfo && myinfo[0].nickname}</div>
+              </div>
+              <input
+                type="text"
+                name="comments"
+                value={comment}
+                className="comment-input"
+                placeholder="댓글입력..."
+                onChange={(e) => {
+                  setComments(e.target.value);
+                  setReview({
+                    ...review,
+                    postId: id,
+                    content: e.target.value,
+                  });
+                }}
+              />
+              <button
+                className="add-btn"
+                onClick={() => {
+                  dispatch(createComment(review));
+                  setReview(initialState);
+                  setComments("");
+                }}
+              >
+                댓글
+              </button>
+            </div>
+          )}
           <div className="commentList">
-            {comments?.map((comment) => {
-              return (
-                <PostCommentList
-                  comment={comment}
-                  key={comment.id}
-                  postId={postId}
-                  profile={detail.profile}
-                  setComments={setComments}
-                  commentList={comments}
-                />
-              );
-            })}
+            {comments &&
+              comments?.map((comment) => {
+                return (
+                  <PostCommentList
+                    myinfo={myinfo}
+                    comment={comment}
+                    key={comment?.id}
+                    postId={postId}
+                    setComments={setComments}
+                    commentList={comments}
+                  />
+                );
+              })}
           </div>
         </>
       )}

@@ -23,7 +23,7 @@ export const postStory = createAsyncThunk(
 
 export const getStory = createAsyncThunk("story/get", async (_, thunkAPI) => {
   try {
-    const data = await instance.get("/api/story", {
+    const data = await instance.get("/api/storys", {
       headers: {
         REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
       },
@@ -36,6 +36,23 @@ export const getStory = createAsyncThunk("story/get", async (_, thunkAPI) => {
   }
 });
 
+//삭제
+export const deleteStory = createAsyncThunk(
+  "story/delete",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await instance.delete(`/api/story/${payload}`, {
+        headers: {
+          REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
+        },
+      });
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const story = createSlice({
   name: "story",
   initialState: {
@@ -47,12 +64,12 @@ export const story = createSlice({
   reducers: {},
 
   extraReducers: {
-    //전체내일정 가져오기
+    //전체리스트 가져오기
     [getStory.pending]: (state) => {
       state.isLoading = true;
     },
     [getStory.fulfilled]: (state, action) => {
-      // console.log(action);
+      // console.log(action.payload);
       state.isLoading = false;
       state.story = action.payload;
     },
@@ -60,6 +77,30 @@ export const story = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    //새로고침없이 자동등록
+    [postStory.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [postStory.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.story.unshift(action.payload.data);
+    },
+    [postStory.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    //스토리삭제
+    // [deleteStory.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   let index = state.story.findIndex(
+    //     (story) => story.id === action.payload.data
+    //   );
+    //   state.story.splice(index, 1);
+    // },
+    // [deleteStory.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
   },
 });
 

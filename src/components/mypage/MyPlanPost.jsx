@@ -54,6 +54,7 @@ const MyPlanPost = () => {
     dispatch(postMyplans(formData));
     resetStates();
     navigate("/myplan");
+    // window.location.reload();
   };
 
   return (
@@ -78,7 +79,7 @@ const MyPlanPost = () => {
               <input
                 type="text"
                 style={{ width: "75%", border: "none" }}
-                placeholder="날짜를 선택하고, 제목을 입력해주세요."
+                placeholder="날짜를 선택하고, 제목을 작성해주세요."
                 onChange={(e) => {
                   setTitle(e.target.value);
                 }}
@@ -88,7 +89,7 @@ const MyPlanPost = () => {
             <img
               alt="이미지를 업로드 해주세요."
               src={preview ? preview : photo1}
-              style={{ display: "flex", width: "100%", height: "125px" }}
+              style={{ display: "flex", width: "100%", height: "100%" }}
             />
             <label htmlFor="file" className="planImginputLabel">
               변경하기
@@ -100,12 +101,11 @@ const MyPlanPost = () => {
               id="file"
               className="planImginput"
               onChange={onChangeImage}
-              multiple="multiple"
             />
             <div className="MyplanPostContents">
               <textarea
                 name="content"
-                placeholder="일정을 입력해주세요."
+                placeholder="*사진첨부필수*  일정을 작성해주세요. "
                 onChange={(e) => {
                   setContent(e.target.value);
                 }}
@@ -120,7 +120,7 @@ const MyPlanPost = () => {
               onClick={() => {
                 navigate(-1);
               }}
-              className="MyplanPostGoback"
+              style={{ height: "50%" }}
             />
             <button className="MyplanPostAdd" type="submit">
               <img src={calendar} alt="일정등록" />

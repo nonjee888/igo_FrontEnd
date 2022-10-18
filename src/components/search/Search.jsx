@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchPosts } from "../../redux/modules/posts";
-import SearchPost from "./SearchPost";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const Search = () => {
 
   const getSearchTerm = () => {
     if (searchTerm === "") {
-      Swal({
+      new Swal({
         title: "키워드를 입력해주세요!",
         icon: "warning",
         closeOnClickOutside: false,
@@ -66,9 +65,11 @@ const Search = () => {
             <img className="Icon" src={search} alt="search" />
           </button>
         </div>
-        {posts.map((post) => {
-          return <SearchPost post={post} key={post.id} />;
-        })}
+        <div className="search-wrapper">
+          {posts?.map((post) => {
+            return <Post post={post} key={post.id} />;
+          })}
+        </div>
       </div>
     </>
   );

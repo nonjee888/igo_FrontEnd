@@ -1,0 +1,105 @@
+//AdminSignup.jsx
+.Admin-logo {
+  margin: 10% 0 0 10%;
+  width: 80%;
+
+  object-fit: cover;
+}
+.AdminModal-Back {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+.AdminModal-container {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: inline-block;
+  z-index: 100;
+  .Signup-inputs {
+    margin-top: 18%;
+    display: blck;
+
+    .input-id {
+      gap: 5px;
+      align-items: baseline;
+      .Admin-input {
+        margin-top: 5%;
+        width: 70%;
+        height: 25px;
+      }
+      .Admin-input::placeholder {
+        text-align: center;
+      }
+    }
+    .input-nick {
+      gap: 5px;
+      align-items: baseline;
+    }
+  }
+  .Signup-form {
+    margin-left: 20%;
+  }
+  .Admin-input {
+    margin-top: 5%;
+    width: 70%;
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid rgb(173, 173, 173);
+  }
+  .Admin-input::placeholder {
+    text-align: center;
+  }
+  .invalid-input {
+    font-size: 11px;
+    width: 70%;
+    word-break: break-all;
+  }
+  .SignUp-btns {
+    display: flex;
+    gap: 5%;
+    margin-right: 15%;
+    .Admin-btn {
+      margin-top: 20%;
+      width: 40%;
+      height: 40px;
+      border: none;
+      color: white;
+      font-weight: 900;
+      font-size: large;
+      background: linear-gradient(to left, #3eb0da, #f5c9e0);
+    }
+  }
+}
+//AdminLogin.jsx
+.Login-wrap {
+  margin: 30% 0 0 20%;
+  .Login-input {
+    margin: 5% 0 0 3%;
+    width: 70%;
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid rgb(173, 173, 173);
+  }
+  .Login-input::placeholder {
+    text-align: center;
+  }
+  .Login-btns {
+    display: flex;
+    gap: 5%;
+    margin-right: 10%;
+    .Login-btn {
+      margin-top: 20%;
+      width: 40%;
+      height: 40px;
+      border: none;
+      color: white;
+      font-weight: 900;
+      font-size: large;
+      background: linear-gradient(to left, #3eb0da, #f5c9e0);
+    }
+  }
+}

@@ -5,14 +5,11 @@ import { useEffect, useState, useRef } from "react";
 import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 import goback from "../../asset/goback.png";
 import editpost from "../../asset/editpost.png";
-import submitpost from "../../asset/submitpost.png";
-import noSubmitBtn from "../../asset/noSubmitBtn.png";
 import Swal from "sweetalert2";
 
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
-  // console.log(props.props);
   const navigate = useNavigate();
   const isEdit = props.props.isEdit;
   const managerRef = useRef(null);
@@ -20,6 +17,7 @@ const PostKakaoMap = (props) => {
   const overlayData = props.props.overlayData;
   const setOverlayData = props.props.setOverlayData;
   const isActive = props.props.isActive;
+  const checkedItems = props.props.checkedItems;
 
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
@@ -33,18 +31,31 @@ const PostKakaoMap = (props) => {
   const tags = props.props.data.tags; //tag선택
 
   const handleRegisterButton = async () => {
-    let req = {
-      title: title,
-      content: content,
-      mapData: overlayData,
-      searchPlace: searchPlace,
-      tags: tags,
-    };
+    if (
+      checkedItems.cost === "비용 선택" ||
+      checkedItems.interest === "관심사 선택" ||
+      checkedItems.region === "지역 선택"
+    ) {
+      Swal.fire({
+        icon: "error",
+        text: "태그를 모두 선택 해주세요!",
+        confirmButtonColor: "#47AFDB",
+        confirmButtonText: "확인",
+      });
+    } else {
+      let req = {
+        title: title,
+        content: content,
+        mapData: overlayData,
+        searchPlace: searchPlace,
+        tags: tags,
+      };
 
-    const data = await instance.post("/api/post", req);
+      const data = await instance.post("/api/post", req);
 
-    if (data.data.success) {
-      navigate("/post/all");
+      if (data.data.success) {
+        navigate("/post/all");
+      }
     }
   };
 
@@ -126,7 +137,7 @@ const PostKakaoMap = (props) => {
         }}
         style={{
           width: "100%",
-          height: "220px",
+          height: "260px",
         }}
         level={3}
         onCreate={setMap}
@@ -246,24 +257,24 @@ const PostKakaoMap = (props) => {
         ) : isActive ? (
           <button
             type="submit"
-            disabled={content.length > 12 && title.length >= 3 ? false : true}
+            disabled={content.length > 9 && title.length >= 2 ? false : true}
             className="submit-post"
             onClick={() => {
               handleRegisterButton();
             }}
           >
-            <img className="submit-icon" src={submitpost} alt="등록" />
+            게시물 등록
           </button>
         ) : (
           <button
             type="submit"
-            disabled={content.length > 12 && title.length >= 3 ? false : true}
+            disabled={content.length > 9 && title.length >= 2 ? false : true}
             className="noSubmit-post"
             onClick={() => {
               handleRegisterButton();
             }}
           >
-            <img className="noSubmit-icon" src={noSubmitBtn} alt="등록" />
+            게시물 등록
           </button>
         )}
       </div>

@@ -6,7 +6,7 @@ export const getComments = createAsyncThunk(
   "comments/getComments",
   async (payload, thunkAPI) => {
     try {
-      const data = await instance.get(`/api/comment/${payload}`);
+      const data = await instance.get(`/api/comments/${payload}`);
 
       if (data.data.success) return data.data.data;
     } catch (error) {
@@ -18,7 +18,7 @@ export const createComment = createAsyncThunk(
   "comments/CreateComments",
   async (payload, thunkAPI) => {
     try {
-      const data = await instance.post("/api/comments", payload);
+      const data = await instance.post("/api/comment", payload);
 
       if (data.data.success) return data.data;
     } catch (error) {
@@ -32,7 +32,7 @@ export const removeComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     // console.log(payload.commentId);
     try {
-      const data = await instance.delete(`/api/comments/${payload.commentId}`, {
+      const data = await instance.delete(`/api/comment/${payload.commentId}`, {
         postId: payload.postId,
       });
 
@@ -40,7 +40,7 @@ export const removeComment = createAsyncThunk(
         Swal.fire({
           icon: "info",
           text: "댓글이 삭제되었습니다",
-          confirmButtonColor: "#80bbd0",
+          confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         });
       }

@@ -1,9 +1,11 @@
+import "./style.scss";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // 리덕스 관련 Imports
 import { useDispatch, useSelector } from "react-redux";
 import { getMylikes } from "../../redux/modules/mylikes";
 import photo from "../../asset/assetMypage/photo.png";
+import love from "../../asset/assetMypage/love.png";
 
 const Mylikes = () => {
   let navigate = useNavigate();
@@ -11,7 +13,6 @@ const Mylikes = () => {
   const mylikes = useSelector((state) => state.mylikes.mylike);
   // console.log(mylikes);
 
-  // 리덕스에서 포스트 리스트를 로딩
   useEffect(() => {
     dispatch(getMylikes());
   }, [dispatch]);
@@ -19,13 +20,15 @@ const Mylikes = () => {
   return (
     <div className="All">
       <div className="MyPosts">
-        <h3>나의 🤍 게시글</h3>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-          }}
-        >
+        <h3>
+          나의 <img src={love} alt="좋아요" /> 게시글
+        </h3>
+        <div className="MyListsAll">
+          {mylikes?.length === 0 ? (
+            <div className="myPageNoInfo">아직 ♥를 누른 게시물이 없습니다.</div>
+          ) : (
+            <></>
+          )}
           {mylikes?.map((mylikes) => {
             return (
               <div
@@ -49,8 +52,10 @@ const Mylikes = () => {
                     alt="내게시글이미지"
                   />
                 )}
-
-                <div className="MyPostTitle">{mylikes.title}</div>
+                <div className="AllMyPostList">
+                  <div className="MyPostTitle">{mylikes.title}</div>♥
+                  {mylikes.heartNum}
+                </div>
               </div>
             );
           })}
