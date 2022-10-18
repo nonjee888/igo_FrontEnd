@@ -52,11 +52,11 @@ const Login = () => {
             src={logo}
             alt="내돈내여로고"
             style={{
-              width: "170px",
-              height: "170px",
-              marginLeft: "4%",
-              paddingBottom: "50px",
-              marginTop: "30vh",
+              width: "180px",
+              height: "90px",
+              marginLeft: "2%",
+              paddingBottom: "40px",
+              marginTop: "45vh",
             }}
           />
 

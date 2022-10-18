@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import loading from "../asset/loading.gif";
 import Swal from "sweetalert2";
 import { setCookie } from "../shared/cookie";
+import loginmodalCat from "../asset/loginmodalCat.png";
 
 const KaKaoLoading = () => {
   const navigate = useNavigate();
@@ -45,7 +46,9 @@ const KaKaoLoading = () => {
       } else {
         setTimeout(() => {
           Swal.fire({
-            icon: "success",
+            imageUrl:loginmodalCat,
+            imageWidth: 400,
+            imageHeight: 170,
             title: nickname + "님",
             text: "환영합니다!",
             confirmButtonColor: "#47AFDB",
