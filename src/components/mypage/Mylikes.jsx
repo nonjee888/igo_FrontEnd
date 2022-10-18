@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMylikes } from "../../redux/modules/mylikes";
 import photo from "../../asset/assetMypage/photo.png";
+import love from "../../asset/assetMypage/love.png";
 
 const Mylikes = () => {
   let navigate = useNavigate();
@@ -19,7 +20,9 @@ const Mylikes = () => {
   return (
     <div className="All">
       <div className="MyPosts">
-        <h3>나의 🤍 게시글</h3>
+        <h3>
+          나의 <img src={love} alt="좋아요" /> 게시글
+        </h3>
         <div className="MyListsAll">
           {mylikes?.length === 0 ? (
             <div className="myPageNoInfo">아직 ♥를 누른 게시물이 없습니다.</div>
