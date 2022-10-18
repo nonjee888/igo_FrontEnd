@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { putMyinfo, getMyinfo } from "../../redux/modules/myinfo";
+import { getNotice } from "../../redux/modules/notice";
 import Modal from "./MyProfileModal";
 //이미지
 import profileImg1 from "../../asset/assetMypage/profileImg1.png";
@@ -14,6 +15,7 @@ const Myinfo = () => {
 
   //관심여행 키워드
   const [interest, setInterest] = useState();
+  const [unRead, setUnread] = useState(0);
   useEffect(() => {
     if (localStorage.getItem("ACCESS_TOKEN") !== null) {
       dispatch(getMyinfo()).then((response) => {
@@ -22,6 +24,9 @@ const Myinfo = () => {
         if (response.payload[0].interested === null) {
           navigate("/choice");
         }
+        dispatch(getNotice()).then((res) => {
+          setUnread(res.payload.unreadCount);
+        });
       });
     }
   }, []);
@@ -183,13 +188,17 @@ const Myinfo = () => {
         >
           나의 일정 관리하기
         </p>
-        <p
+        <div
+          className="my-alarm-div"
           onClick={() => {
             navigate("/notification");
           }}
         >
           알림
-        </p>
+          <div className="my-notification">
+            <div style={{ margin: "auto", fontSize: "small" }}>{unRead}</div>
+          </div>
+        </div>
       </div>
     </div>
   );

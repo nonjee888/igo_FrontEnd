@@ -1,6 +1,7 @@
 import "./style.scss";
 import Swal from "sweetalert2";
 //이미지
+import pleaseLogin from "../../asset/pleaseLogin.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import recomendIcon from "../../asset/assetFooter/recomendIcon.png";
 import mypageIcon from "../../asset/assetFooter/mypageIcon.png";
@@ -21,8 +22,10 @@ const Footers = () => {
   //로그인해야 사용 가능
   const Alert = () => {
     Swal.fire({
-      icon: "info",
       text: "로그인을 하셔야 이용 가능합니다.",
+      imageUrl: pleaseLogin,
+      imageWidth: 200,
+      imageHeight: 100,
       showCancelButton: true,
       confirmButtonColor: "#47AFDB",
       cancelButtonColor: "#D9D9D9",

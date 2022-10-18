@@ -142,7 +142,7 @@ export default function RegionPostList() {
   //-----------------지역별분류-------------------//
 
   const getRegionList = async () => {
-    const response = await instance.get(`/api/post/region?type=${region}`);
+    const response = await instance.get(`/api/posts/region?type=${region}`);
     setPostList(response.data.data);
     return response.data.data;
   };
