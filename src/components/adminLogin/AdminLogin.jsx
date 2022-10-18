@@ -1,14 +1,11 @@
+import "./style.scss";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { instance } from "../../shared/api";
-import { useNavigate } from "react-router-dom";
 import AdminSignup from "./AdminSignup";
-import igoLogo from "../../asset/igoLogo.png";
+import tutorial9 from "../../asset/assetTutorial/tutorial9.png";
 import Swal from "sweetalert2";
 
 const Admin = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const initialState = {
     memberId: "",
     password: "",
@@ -22,50 +19,6 @@ const Admin = () => {
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
-  };
-
-  const notice = async () => {
-    const response = await instance.get("/api/member/subscribe");
-
-    console.log("구독성공");
-
-    response.addEventListener("sse", function (event) {
-      console.log(event.data);
-
-      const data = JSON.parse(event.data);
-
-      (async () => {
-        //브라우저 알림
-        const showNotification = () => {
-          const notification = new Notification("알림", {
-            body: data.content,
-          });
-
-          setTimeout(() => {
-            notification.close();
-          }, 10 * 1000);
-
-          notification.addEventListener("click", () => {
-            window.open(data.url, "_blank");
-          });
-        };
-
-        //브라우저 알림 허용 권한
-
-        let granted = false;
-
-        if (Notification.permission === "granted") {
-          granted = true;
-        } else if (Notification.permission !== "denied") {
-          let permission = await Notification.requestPermission();
-          granted = permission === "granted";
-        }
-        //알림 보여주기
-        if (granted) {
-          showNotification();
-        }
-      })();
-    });
   };
 
   const loginHandler = async () => {
@@ -84,7 +37,7 @@ const Admin = () => {
       localStorage.setItem("REFRESH_TOKEN", data.headers.refreshtoken);
       localStorage.setItem("nickname", data.data.data.nickname);
       localStorage.setItem("isLogin", data.data.data.nickname);
-      notice();
+
       Swal.fire({
         icon: "success",
         title: `${nickname}` + "님",
@@ -110,7 +63,7 @@ const Admin = () => {
   return (
     <>
       {modal ? <AdminSignup close={close} setModal={setModal} /> : null}
-      <img className="Admin-logo" src={igoLogo} />
+      <img className="Admin-logo" src={tutorial9} />
       <div className="Login-wrap">
         <div className="Login-id">
           <input

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeComment } from "../../redux/modules/comments";
 import deleteimg from "../../asset/deleteimg.png";
 import deleteNemo from "../../asset/deleteNemo.png";
@@ -6,10 +6,10 @@ import profileImg from "../../asset/assetMypage/profileImg.png";
 
 const CommentList = (props) => {
   const dispatch = useDispatch();
-  const nickname = localStorage.getItem("nickname");
+  const myName = props?.myinfo[0]?.nickname;
   const writerId = props.comment.nickname;
   const commentProfile = props.comment.profile;
-  const userConfirm = writerId === nickname;
+  const userConfirm = writerId === myName;
   const content = props.comment.content;
   const postId = props.postId;
   const commentId = props.comment.id;
@@ -29,7 +29,7 @@ const CommentList = (props) => {
             ) : (
               <img className="profileImg" src={commentProfile} alt="" />
             )}
-            <div className="userNick">{nickname}</div>
+            <div className="userNick">{writerId}</div>
           </div>
           <div className="comment">{content}</div>
           {userConfirm ? (

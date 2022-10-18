@@ -1,33 +1,9 @@
-//AdminHeaders.jsx
-.LogoAdmin {
-  width: 95%;
-  height: 60%;
-  margin: 27% 20% 0 27%;
-}
-.Admin-SignBox {
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  margin: 5% 2% 0 10%;
-}
-.Admin-Signbtn {
-  font-size: 18px;
-  position: relative;
-  margin-left: 5rem;
-  border: none;
-  background: none;
-  height: 10%;
-  font-family: "Noto Sans KR", sans-serif;
-  &:hover {
-    font-weight: bold;
-    color: #47afdb;
-  }
-}
 //AdminSignup.jsx
 .Admin-logo {
-  margin: 40% 0 0 33%;
-  width: 35%;
-  height: 18%;
+  margin: 10% 0 0 10%;
+  width: 80%;
+
+  object-fit: cover;
 }
 .AdminModal-Back {
   width: 100%;
