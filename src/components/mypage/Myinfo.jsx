@@ -196,7 +196,6 @@ const Myinfo = () => {
 
         <div
           className="my-alarm-div"
-
           onClick={() => {
             navigate("/notification");
           }}
