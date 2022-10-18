@@ -200,7 +200,7 @@ const Myinfo = () => {
             navigate("/notification");
           }}
         >
-          <img className="noticeImg" src={notice} alt="알림" />
+          <img src={notice} alt="알림" />
           알림
           <div className="my-notification">
             <div style={{ margin: "auto", fontSize: "small" }}>{unRead}</div>
