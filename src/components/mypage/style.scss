@@ -139,6 +139,15 @@
     font-size: 1.1rem;
   }
 }
+.noticeImg {
+  display: flex;
+  align-items: center;
+  img {
+    width: 6%;
+    margin-right: 1%;
+  }
+}
+
 // 나의 게시글, 관심리스트
 .myPageNoInfo {
   margin: 35vh auto;
@@ -194,6 +203,15 @@
 
 .MyPosts {
   margin: 5%;
+  h3 {
+    display: flex;
+    img {
+      width: 6.5%;
+      height: 6.5%;
+      object-fit: cover;
+      margin: 1% 2% 0 2%;
+    }
+  }
 }
 
 .MyPostImg {
