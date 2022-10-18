@@ -1,7 +1,6 @@
 import "./style.scss";
 import Swal from "sweetalert2";
 //이미지
-import pleaseLogin from "../../asset/pleaseLogin.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import recomendIcon from "../../asset/assetFooter/recomendIcon.png";
 import mypageIcon from "../../asset/assetFooter/mypageIcon.png";
