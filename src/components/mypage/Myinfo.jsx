@@ -206,6 +206,13 @@ const Myinfo = () => {
             <div style={{ margin: "auto", fontSize: "small" }}>{unRead}</div>
           </div>
         </div>
+        <p
+          onClick={() => {
+            navigate("/withdrawal");
+          }}
+        >
+          회원탈퇴
+        </p>
       </div>
     </div>
   );

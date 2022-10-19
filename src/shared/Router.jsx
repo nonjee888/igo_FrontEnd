@@ -22,6 +22,7 @@ import AllCategoryList from "../components/category/AllCategoryList";
 import { useEffect } from "react";
 import axios from "axios";
 import Tutorial from "../components/tutorial/Tutorial";
+import WithDrawal from "../components/withDrawal/WithDrawal";
 import { getCookie, setCookie } from "./cookie";
 import { EventSourcePolyfill } from "event-source-polyfill";
 
@@ -133,6 +134,7 @@ const Router = () => {
         <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
         <Route path="/postdetail/:id" element={<PostDetailPage />} exact />
         <Route path="/tutorial" element={<Tutorial />} exact />
+        <Route path="/withdrawal" element={<WithDrawal />} exact />
       </Routes>
     </div>
   );
