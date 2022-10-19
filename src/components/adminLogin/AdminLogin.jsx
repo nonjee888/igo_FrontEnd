@@ -1,6 +1,7 @@
 import "./style.scss";
 import { useState } from "react";
 import { instance } from "../../shared/api";
+import { setCookie } from "../../shared/cookie";
 import AdminSignup from "./AdminSignup";
 import tutorial9 from "../../asset/assetTutorial/tutorial9.png";
 import Swal from "sweetalert2";
@@ -30,9 +31,10 @@ const Admin = () => {
         confirmButtonText: "확인",
       });
     const data = await instance.post("/api/member/login", user);
-    console.log(data);
+
     if (data.data.success === true) {
       const nickname = data.data.data.nickname;
+      setCookie("Authorization", data.headers.authorization);
       localStorage.setItem("ACCESS_TOKEN", data.headers.authorization);
       localStorage.setItem("REFRESH_TOKEN", data.headers.refreshtoken);
       localStorage.setItem("nickname", data.data.data.nickname);
@@ -52,7 +54,7 @@ const Admin = () => {
     }
     if (data.data.success === false) {
       Swal.fire({
-        icon: "success",
+        icon: "error",
         text: `${data.data.error.message}`,
         confirmButtonColor: "#47AFDB",
         confirmButtonText: "확인",

@@ -1,14 +1,13 @@
-import React, { useState } from "react";
 import "./style.scss";
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+
 import Swal from "sweetalert2";
 
 const Choice = () => {
-  const Navigate = useNavigate();
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const interestedList = [
     { id: 0, tag: "" },
     { id: 1, tag: "혼자여행" },
@@ -22,7 +21,6 @@ const Choice = () => {
     { id: 9, tag: "인스타감성" },
   ];
 
-  const [isChecked, setIsChecked] = useState(false); //체크여부
   const [checkedItems, setCheackedItems] = useState(new Set()); //체크된요소들
   const [InterestedList] = useState(interestedList);
   const [choiceTagID, setChoiceTagID] = useState(0);
@@ -46,12 +44,11 @@ const Choice = () => {
     let payload = {
       interested: [...checkedItems],
     };
-    // console.log(payload);
     const response = await instance.patch("/api/member/tag", payload);
-    // console.log(response.data.success === true);
+
     if (response.data.success === true) {
       //이 데이터가 체크되지 않았으면 추천페이지로 못감
-      return Navigate("/recommend");
+      return navigate("/recommend");
     }
   };
 
@@ -76,7 +73,6 @@ const Choice = () => {
       checkedItems.delete(id); //체크두번시삭제
       setCheackedItems(checkedItems);
     }
-
     return checkedItems;
   };
 

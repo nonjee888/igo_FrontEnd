@@ -17,25 +17,24 @@ import MyPlanPostPage from "../pages/MyPlanPostPage";
 import MyPostsListPage from "../pages/MyPostsListPage";
 import Notice from "../pages/Notice";
 import StoryAdd from "../pages/StoryAdd";
-import { Route, Routes } from "react-router-dom";
 import AllCategoryList from "../components/category/AllCategoryList";
-import { useEffect } from "react";
-import axios from "axios";
 import Tutorial from "../components/tutorial/Tutorial";
 import WithDrawal from "../components/withDrawal/WithDrawal";
+import axios from "axios";
+import { Route, Routes } from "react-router-dom";
 import { getCookie, setCookie } from "./cookie";
 import { EventSourcePolyfill } from "event-source-polyfill";
+import { useEffect } from "react";
 
 const Router = () => {
   let eventSource = undefined;
-  let token = localStorage.getItem("ACCESS_TOKEN");
 
   const isSSE = () => {
     eventSource = new EventSourcePolyfill(
       process.env.REACT_APP_MAIN_HOST + `/api/member/subscribe`,
       {
         headers: {
-          Authorization: token,
+          Authorization: localStorage.getItem("ACCESS_TOKEN"),
         },
         heartbeatTimeout: 1000 * 60 * 20,
       }
@@ -86,7 +85,7 @@ const Router = () => {
     setInterval(() => {
       if (!getCookie("Authorization")) {
         reToken();
-        // window.alert("쿠키확인");
+        // 쿠키가 삭제되었을 때 토큰 재발급 요청
       }
     }, 1000);
   }, []);

@@ -104,10 +104,8 @@ const PostDetail = () => {
         text: "신고완료!",
         confirmButtonColor: "#47AFDB",
         confirmButtonText: "확인",
-      }).then((result) => {
-        navigate("/post/all");
       });
-      navigate("/post/all");
+      return navigate(-1);
     } else {
       if (data.data.success === false) {
         Swal.fire({
