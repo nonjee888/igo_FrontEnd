@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import { act } from "react-dom/test-utils";
+import Swal from "sweetalert2";
 import { instance } from "../../shared/api";
 
 //리듀서 -----------------------------------------------------------------------------------------------------
@@ -26,6 +27,30 @@ export const removeNotice = createAsyncThunk(
       );
 
       return data?.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const confirmNotice = createAsyncThunk(
+  "notice/confirmNotice",
+  async (payload, thunkAPI) => {
+    console.log(payload);
+    try {
+      const data = await instance.patch(`/api/member/notifications/${payload}`);
+      console.log(data);
+      if (data.status === 204) {
+        Swal.fire({
+          text: "알림을 확인했습니다",
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            return data?.data;
+          }
+        });
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
