@@ -9,7 +9,7 @@ import addIcon from "../../asset/assetFooter/addIcon.png";
 import igomodalimg from "../../asset/igomodalimg.png";
 import storyIcon from "../../asset/assetFooter/storyIcon.png";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getNotice } from "../../redux/modules/notice";
