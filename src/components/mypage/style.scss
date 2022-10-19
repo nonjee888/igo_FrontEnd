@@ -496,7 +496,8 @@
   border-radius: 10px;
   font-size: 1rem;
   display: grid;
-  grid-template-columns: 85% 15%;
+  align-items: center;
+  grid-template-columns: 80% 7% 7%;
   align-items: baseline;
   .noti-title {
     padding: 7.5%;
@@ -515,6 +516,21 @@
     .noti-delete {
       width: 50%;
       height: 50%;
+      cursor: pointer;
+      object-fit: cover;
+    }
+  }
+  .confirm-button {
+    float: right;
+    border: none;
+    background: none;
+    height: 45px;
+    width: 45px;
+
+    .noti-confirm {
+      padding-top: 30%;
+      width: 2.6vh;
+      height: 2.6vh;
       cursor: pointer;
       object-fit: cover;
     }

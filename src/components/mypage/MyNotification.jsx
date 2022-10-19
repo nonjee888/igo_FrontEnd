@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import deleteimg from "../../asset/deleteimg.png";
 import profileImg from "../../asset/assetMypage/profileImg.png";
 import { getNotice } from "../../redux/modules/notice";
-import { removeNotice } from "../../redux/modules/notice";
+import { removeNotice, confirmNotice } from "../../redux/modules/notice";
+import confirm from "../../asset/assetMypage/confirm.png";
 
 const MyNotification = () => {
   const navigate = useNavigate();
@@ -67,6 +68,16 @@ const MyNotification = () => {
                     {notice.content}
                   </a>
                 </div>
+                {notice.read ? null : (
+                  <button
+                    className="confirm-button"
+                    onClick={() => {
+                      dispatch(confirmNotice(notice.id));
+                    }}
+                  >
+                    <img className="noti-confirm" src={confirm} />
+                  </button>
+                )}
                 <button
                   className="x-button"
                   onClick={() => {
