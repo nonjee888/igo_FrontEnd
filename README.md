@@ -33,7 +33,7 @@ Server Architecture
 ### 8. 게시글 추천수, 좋아요, 최신 순 정렬, 태그 별 정렬
 ### 9. 댓글 기능
 ### 10 알림 기능
-### 11. 무한 스크롤(Infinite Scrolling & Pagination)
+### 11. 무한 스크롤(Infinite Scrolling)
 
 😊기술스택
 -------------
