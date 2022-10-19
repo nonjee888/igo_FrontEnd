@@ -4,17 +4,16 @@ import "./style.scss";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getMyinfo } from "../../redux/modules/myinfo";
-import { navigate,useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import drawalimg from "../../asset/drawalimg.png";
 
 
 
 export default function WithDrawal () {
 
   const dispatch = useDispatch();
-  const navigate =useNavigate();
   const [isClick,setIsClick]=useState(false);
   const {myinfo} =useSelector((state)=>state?.myinfo);
   console.log(myinfo&&myinfo[0]?.id)
@@ -27,21 +26,29 @@ export default function WithDrawal () {
   const submitHandler = async (e) => {
     let id = myinfo && myinfo[0]?.id
     const response = await instance.delete(`/api/member/withdrawal/${id}`);
-    if (response.data.success) {
+    Swal.fire({
+      icon: "warning",
+      text: "정말 탈퇴하시겠습니까?",
+      showCancelButton: true,
+      confirmButtonColor: "#47AFDB",
+      cancelButtonColor: "#D9D9D9",
+      confirmButtonText: "탈퇴하기",
+      cancelButtonText: "취소",
+    }).then((result) => {
+      if (response.data.success) {
       window.location.replace("/")
     } 
-    console.log(response.data.success)
-  
-  }
+    
+    })}
       
   
         
-    //내일 백엔드분들이랑 데이터삭제되는거 머있는지 이야기해볼것.
   return (
 
     <div className="All">
         
         <div>
+        <img className="drawalimg" src={drawalimg}/>
         <div className="ListBox" >
             
             

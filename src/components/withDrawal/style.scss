@@ -1,7 +1,7 @@
 
 
 .ListBox {
-margin: 50% auto 5% auto;
+margin: 10% auto 5% auto;
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
@@ -59,4 +59,15 @@ cursor: pointer;
   align-items: center;
   margin: 5%;
   font-size: 85%;
+}
+
+.drawalimg{
+margin: 50% auto 0 auto;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+width: 40%;
+height: 10vh;
 }

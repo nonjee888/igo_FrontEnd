@@ -1,12 +1,9 @@
 import "./style.scss";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import tutorial9 from "../../asset/assetTutorial/tutorial9.png";
 import { instance } from "../../shared/api";
 import Swal from "sweetalert2";
 const AdminSignup = ({ setModal }) => {
-  const navigate = useNavigate();
-
   const [userId, setUserId] = useState("");
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +15,7 @@ const AdminSignup = ({ setModal }) => {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
   const onChangeUserId = (e) => {
-    const userIdRegex = /^[a-zA-Z0-9]{4,12}$/;
+    const userIdRegex = /^[a-zA-Z0-9]{4,12}$/; //4-12자리 소,대 영문자 + 숫자
     if (!e.target.value || userIdRegex.test(e.target.value))
       setUserIdError(false);
     else setUserIdError(true);
@@ -26,7 +23,7 @@ const AdminSignup = ({ setModal }) => {
   };
 
   const onChangePassword = (e) => {
-    const passwordRegex = /^[0-9a-zA-Z]{3,18}$/;
+    const passwordRegex = /^[0-9a-zA-Z]{3,18}$/; //3-18자리 소,대 영문자 + 숫자
     if (!e.target.value || passwordRegex.test(e.target.value))
       setPasswordError(false);
     else setPasswordError(true);
@@ -42,7 +39,7 @@ const AdminSignup = ({ setModal }) => {
   };
 
   const onChangeNickname = (e) => {
-    const nicknameRegex = /^[0-9a-zA-Zㄱ-ㅎ가-힣]{2,10}$/;
+    const nicknameRegex = /^[0-9a-zA-Zㄱ-ㅎ가-힣]{2,10}$/; //2-10자리 소,대 영문자 + 한글 + 숫자
     if (!e.target.value || nicknameRegex.test(e.target.value))
       setNicknameError(false);
     else setNicknameError(true);
@@ -61,14 +58,15 @@ const AdminSignup = ({ setModal }) => {
 
   const onSignup = async (event) => {
     event.preventDefault();
-    console.log("dd");
+
     const user = {
       memberId: userId,
       password: password,
       passwordConfirm: confirmPassword,
       nickname,
     };
-    console.log(user);
+
+    //유효성 검사가 성공적이면 회원가입 post 요청
     if (validation() === true) {
       const { data } = await instance.post("/api/member/signup", user);
       console.log(data);
@@ -79,7 +77,7 @@ const AdminSignup = ({ setModal }) => {
           confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         });
-        window.location.reload(); // 나중에 /recommend 로 바꾸기
+        window.location.replace("/login");
       }
       if (data.error.message) {
         const message = data.error.message;
