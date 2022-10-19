@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import comments from "../modules/comments";
 import myinfo from "../modules/myinfo";
 import posts from "../modules/posts";

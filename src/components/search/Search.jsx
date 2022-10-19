@@ -2,6 +2,7 @@ import "./style.scss";
 import Swal from "sweetalert2";
 import Post from "../post/Post";
 import search from "../../asset/search.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,8 +31,9 @@ const Search = () => {
       });
       return;
     }
-    dispatch(searchPosts(searchTerm));
-    navigate("/search/" + searchTerm);
+    dispatch(searchPosts(searchTerm)).then((res) => {
+      navigate("/search/" + searchTerm);
+    });
   };
 
   const { isLoading, error, posts } = useSelector((state) => state?.posts);
@@ -65,11 +67,19 @@ const Search = () => {
             <img className="Icon" src={search} alt="search" />
           </button>
         </div>
-        <div className="search-wrapper">
-          {posts?.map((post) => {
-            return <Post post={post} key={post.id} />;
-          })}
-        </div>
+        {posts.length === 0 ? (
+          <div className="no-result">
+            <img className="noResult-img" src={pleaseLogin} />
+            일치하는 검색결과가 없습니다.
+          </div>
+        ) : (
+          <div className="search-wrapper">
+            {posts &&
+              posts?.map((post) => {
+                return <Post post={post} key={post.id} />;
+              })}
+          </div>
+        )}
       </div>
     </>
   );
