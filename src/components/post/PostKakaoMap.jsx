@@ -1,21 +1,22 @@
 //카카오 맵
+import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
 import { useEffect, useState, useRef } from "react";
-import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
+import Swal from "sweetalert2";
+
 import goback from "../../asset/goback.png";
 import editpost from "../../asset/editpost.png";
-import Swal from "sweetalert2";
 
 const { kakao } = window;
 
 const PostKakaoMap = (props) => {
   const navigate = useNavigate();
-  const isEdit = props.props.isEdit;
   const managerRef = useRef(null);
   const id = props.props.id;
   const overlayData = props.props.overlayData;
   const setOverlayData = props.props.setOverlayData;
+  const isEdit = props.props.isEdit;
   const isActive = props.props.isActive;
   const checkedItems = props.props.checkedItems;
 
@@ -24,6 +25,7 @@ const PostKakaoMap = (props) => {
   const [map, setMap] = useState();
   const [isDone, setIsDone] = useState(false);
 
+  //게시물 등록시 서버로 전송될 데이터
   const title = props.props.data.title; //타이틀
   const content = props.props.data.editor; //에디터
   const mapData = overlayData; //맵데이터

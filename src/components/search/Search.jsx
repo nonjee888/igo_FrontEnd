@@ -1,12 +1,14 @@
 import "./style.scss";
 import Swal from "sweetalert2";
 import Post from "../post/Post";
-import search from "../../asset/search.png";
-import pleaseLogin from "../../asset/pleaseLogin.png";
+
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchPosts } from "../../redux/modules/posts";
+
+import search from "../../asset/search.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -27,7 +29,6 @@ const Search = () => {
       new Swal({
         title: "키워드를 입력해주세요!",
         icon: "warning",
-        closeOnClickOutside: false,
       });
       return;
     }
