@@ -1,18 +1,4 @@
 //은지 담당//
-.SearchBar {
-  font-size: 18px;
-  width: calc(100% - 40px);
-  border: none;
-  outline: none;
-  padding: 0;
-}
-//search 돋보기
-.Icon {
-  position: absolute;
-  right: 12px;
-  top: 5px;
-  width: 26px;
-}
 //search div박스
 .input-wrapper {
   position: relative;
@@ -26,18 +12,26 @@
   border-radius: 120px;
   background: #fff;
   margin: 1rem auto 1rem auto;
-}
-.search-btn {
-  background: none;
-  border: none;
-}
-.search-wrapper {
-  margin: 3% 0 0 3%;
-  display: flex;
-  flex-wrap: wrap;
+  .SearchBar {
+    font-size: 18px;
+    width: calc(100% - 40px);
+    border: none;
+    outline: none;
+    padding: 0;
+  }
+  .search-btn {
+    background: none;
+    border: none; //search 돋보기
+    .Icon {
+      position: absolute;
+      right: 12px;
+      top: 5px;
+      width: 26px;
+    }
+  }
 }
 .no-result {
-  margin-top: 50%;
+  margin-top: 35%;
   text-align: center;
 
   .noResult-img {
@@ -45,4 +39,9 @@
     height: 100%;
     margin-bottom: 10%;
   }
+}
+.search-wrapper {
+  margin: 3% 0 0 3%;
+  display: flex;
+  flex-wrap: wrap;
 }

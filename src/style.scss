@@ -19,41 +19,53 @@
 .post-wrapper {
   height: 50%;
   width: 50%;
+  .post-body {
+    width: 95%;
+    height: 17.6vh;
+    margin-bottom: 5%;
+    & img {
+      object-fit: cover;
+    }
+  }
+  .img-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+  .pic-wrapper {
+    width: 100%;
+    position: relative;
+    .post-content {
+      background-color: rgba(255, 255, 255, 0.524);
+      height: 3.3vh;
+      padding-bottom: 1%;
+      width: 100%;
+      border-radius: 0 0 5px 5px;
+      position: absolute;
+      overflow: hidden;
+      display: flex;
+      bottom: 5px;
+      gap: 1%;
+      align-items: center;
+      display: flex;
+      .post-title {
+        margin-left: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 70%;
+        font-size: 15px;
+        font-weight: 900;
+        .post-heart {
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }
-.post-content {
-  background-color: rgba(255, 255, 255, 0.524);
-  height: 3.3vh;
-  padding-bottom: 1%;
-  width: 100%;
-  border-radius: 0 0 5px 5px;
-  position: absolute;
-  overflow: hidden;
-  display: flex;
-  bottom: 5px;
-  gap: 1%;
-  align-items: center;
-  display: flex;
-}
-.post-title {
-  margin-left: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 70%;
-  font-size: 15px;
-  font-weight: 900;
-}
-.post-heart {
-  font-size: 14px;
-}
+
 .heart-btn-img {
   width: 10px;
-}
-.post-body {
-  width: 95%;
-  height: 17.6vh;
-  margin-bottom: 5%;
-  & img {
-    object-fit: cover;
-  }
 }
