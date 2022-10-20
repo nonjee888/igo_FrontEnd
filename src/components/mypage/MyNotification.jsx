@@ -54,9 +54,10 @@ const MyNotification = () => {
         </div>
         <div className="noti-div">
           <div className="noti-title">
-            {notice?.data?.notificationResponses?.length === 0
+            {notice?.data?.notificationResponses &&
+            notice?.data?.notificationResponses?.length === 0
               ? `새로운 알림이 없습니다.`
-              : `${unRead}개의 알림이 있습니다.`}
+              : `${unRead && unRead}개의 알림이 있습니다.`}
           </div>
         </div>
         {notice &&
