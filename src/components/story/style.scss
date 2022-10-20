@@ -2,21 +2,111 @@
 
 .AddVideo {
   border-radius: 10px;
-  width: 90%;
-  height: 35vh;
-  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
-  margin: 5%;
-}
-
-.VideoimgBox {
   width: 100%;
+  height: 50vh;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  img {
+    width: 30%;
+    height: 10vh;
+    display: block;
+    margin: auto;
+    padding: 7% 0 5% 0;
+  }
 }
 
-.videoAddbutton {
-  background-color: transparent;
-  border: none;
-  margin-left: 10%;
+.videoAddInfo {
+  position: absolute;
+  margin: 0 5%;
+  width: 80%;
+  height: 30vh;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.videoAddbuttons {
+  display: flex;
+  margin-left: 22%;
+  padding: 6%;
+  img {
+    width: 17%;
+  }
+  .videoAdd {
+    border: none;
+    background-color: transparent;
+    width: 50%;
+    img {
+      width: 90%;
+    }
+  }
+}
+
+.videoXBtn {
+  position: absolute;
+  z-index: 2;
+  margin: 3% 0 0 75%;
   img {
     width: 50%;
+    height: 100%;
+    box-shadow: 0 2px 5px 1px rgba(255, 255, 255, 0.16);
   }
+}
+
+.videoPreview {
+  display: flex;
+  justify-content: center;
+  height: 90%;
+  video {
+    width: 90%;
+    height: 70%;
+    background-color: black;
+    border-radius: 10px;
+    border: 5px solid #ececec;
+    z-index: 1;
+  }
+}
+
+//리스트
+.videoUser {
+  display: flex;
+  margin: 5%;
+  z-index: 1;
+  position: absolute;
+  p {
+    font-weight: 900;
+    font-size: medium;
+    color: #ececec;
+    text-shadow: -1px 0 #555555, 0 1px #555555, 1px 0 #555555, 0 -1px #555555;
+  }
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 70%;
+    border: 1px solid #ececec;
+    margin: 0 5px 0 0;
+    background-color: #ececec;
+  }
+}
+.storyDelete {
+  z-index: 1;
+  position: absolute;
+  margin: 8% 0 0 90%;
+  img {
+    width: 50%;
+    box-shadow: 0 2px 5px 1px rgba(255, 255, 255, 0.16);
+  }
+}
+.videoSwiper {
+  background-color: black;
+}
+
+.swiper-button-prev:after {
+  color: transparent;
+}
+
+.swiper-button-next:after {
+  color: transparent;
 }

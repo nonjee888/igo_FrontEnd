@@ -1,24 +1,42 @@
+import "./style.scss";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { putMyinfo, getMyinfo } from "../../redux/modules/myinfo";
-import Swal from "sweetalert2";
+import { getNotice } from "../../redux/modules/notice";
+import Modal from "./MyProfileModal";
 //이미지
-import profileImg from "../../asset/assetMypage/profileImg1.png";
+import profileImg1 from "../../asset/assetMypage/profileImg1.png";
+import profileImg from "../../asset/assetMypage/profileImg.png";
 import edit from "../../asset/edit.png";
+import notice from "../../asset/assetMypage/notice.png";
+import love from "../../asset/assetMypage/love1.png";
 
 const Myinfo = () => {
   let navigate = useNavigate();
   let dispatch = useDispatch();
-  const myinfo = useSelector((state) => state.myinfo.myinfo);
-  console.log(myinfo);
 
-  // 리덕스에서 포스트 리스트를 로딩
+  //관심여행 키워드
+  const [interest, setInterest] = useState();
+  const [unRead, setUnread] = useState(0);
   useEffect(() => {
-    dispatch(getMyinfo());
-  }, [dispatch]);
+    if (localStorage.getItem("ACCESS_TOKEN") !== null) {
+      dispatch(getMyinfo()).then((response) => {
+        if (!response.payload[0].interested) return;
+        setInterest(response.payload[0]);
+        if (response.payload[0].interested === null) {
+          navigate("/choice");
+        }
+        dispatch(getNotice()).then((res) => {
+          setUnread(res.payload.unreadCount);
+        });
+      });
+    }
+  }, []);
+  // console.log(interest?.interested[0]);
 
-  const NICKNAME = localStorage.getItem("nickname");
+  const myinfo = useSelector((state) => state.myinfo.myinfo);
+  // console.log(myinfo);
   const [nickname, setNickname] = useState("");
   const [profileImage, setProfileImage] = useState([]);
   const [preview, setPreview] = useState("");
@@ -29,7 +47,7 @@ const Myinfo = () => {
   };
 
   const onChangeImage = (e) => {
-    console.log(e.target.files);
+    // console.log(e.target.files);
     setProfileImage(e.target.files[0]);
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
@@ -50,18 +68,50 @@ const Myinfo = () => {
     dispatch(putMyinfo(formData));
     resetStates();
     navigate("/myinfo");
-    // window.location.reload();
+  };
+
+  //수정창 모달
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   return (
     <div className="All">
-      {myinfo === undefined ? (
+      <div className="profileImage">
+        {myinfo === undefined ? (
+          <>
+            <img src={profileImg} alt="프로필이미지" />
+          </>
+        ) : myinfo[0].profileImage === null ? (
+          <>
+            <img src={profileImg} alt="프로필이미지" />
+            <div className="profileNickname1">
+              {myinfo[0]?.nickname}
+              <img src={edit} alt="닉네임수정버튼" onClick={openModal} />
+            </div>
+          </>
+        ) : (
+          <>
+            <img src={myinfo[0].profileImage} alt="프로필이미지" />
+            <div className="profileNickname1">
+              {myinfo[0]?.nickname}
+              <img src={edit} alt="닉네임수정버튼" onClick={openModal} />
+            </div>
+          </>
+        )}
+      </div>
+      {/* 수정모달창 */}
+      <Modal open={modalOpen} close={closeModal}>
         <form onSubmit={onSubmitHandler}>
           {/* 프로필사진 */}
           <div className="profileImage">
             <img
               alt="이미지를 업로드 해주세요."
-              src={preview ? preview : profileImg}
+              src={preview ? preview : profileImg1}
             />
             <label htmlFor="file" className="profileImginputLabel">
               변경하기
@@ -73,171 +123,51 @@ const Myinfo = () => {
               id="file"
               className="profileImginput"
               onChange={onChangeImage}
-              multiple="multiple"
             />
           </div>
           {/* 닉네임, 수정버튼 */}
           <div className="profileNickname">
             <input
               type="text"
-              placeholder={NICKNAME}
               value={nickname}
+              placeholder="6글자이내"
               className="profileNickameinput"
               onChange={(e) => {
                 setNickname(e.target.value);
               }}
             />
-            <button
-              type="submit"
-              style={{ border: "none", background: "transparent" }}
-              onClick={() => {
-                Swal.fire({
-                  icon: "success",
-                  text: "닉네임이 변경되었습니다.",
-                  confirmButtonColor: "#BDE8F8",
-                  confirmButtonText: "확인",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    window.location.reload();
-                  }
-                });
-              }}
-            >
-              <img
-                src={edit}
-                style={{ width: "30px", height: "25px" }}
-                alt="닉네임수정버튼"
-              />
+            <button type="submit" className="changeButton">
+              변경
             </button>
           </div>
         </form>
-      ) : myinfo[0].profileImage === null ? (
-        <form onSubmit={onSubmitHandler}>
-          {/* 프로필사진 */}
-          <div className="profileImage">
-            <img
-              alt="이미지를 업로드 해주세요."
-              src={preview ? preview : profileImg}
-            />
-            <label htmlFor="file" className="profileImginputLabel">
-              변경하기
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              name="profileImage"
-              id="file"
-              className="profileImginput"
-              onChange={onChangeImage}
-              multiple="multiple"
-            />
-          </div>
-          {/* 닉네임, 수정버튼 */}
-          <div className="profileNickname">
-            <input
-              type="text"
-              placeholder={NICKNAME}
-              value={nickname}
-              className="profileNickameinput"
-              onChange={(e) => {
-                setNickname(e.target.value);
-              }}
-            />
-            <button
-              type="submit"
-              style={{ border: "none", background: "transparent" }}
-              onClick={() => {
-                Swal.fire({
-                  icon: "success",
-                  text: "닉네임이 변경되었습니다.",
-                  confirmButtonColor: "#BDE8F8",
-                  confirmButtonText: "확인",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    window.location.reload();
-                  }
-                });
-              }}
-            >
-              <img
-                src={edit}
-                style={{ width: "30px", height: "25px" }}
-                alt="닉네임수정버튼"
-              />
-            </button>
-          </div>
-        </form>
-      ) : (
-        <form onSubmit={onSubmitHandler}>
-          {/* 프로필사진 */}
-          <div className="profileImage">
-            <img
-              alt="이미지를 업로드 해주세요."
-              src={preview ? preview : myinfo[0].profileImage}
-            />
-            <label htmlFor="file" className="profileImginputLabel">
-              변경하기
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              name="profileImage"
-              id="file"
-              className="profileImginput"
-              onChange={onChangeImage}
-              multiple="multiple"
-            />
-          </div>
-          {/* 닉네임, 수정버튼 */}
-          <div className="profileNickname">
-            <input
-              type="text"
-              placeholder={myinfo[0].nickname}
-              value={nickname}
-              className="profileNickameinput"
-              onChange={(e) => {
-                setNickname(e.target.value);
-              }}
-            />
-            <button
-              type="submit"
-              style={{ border: "none", background: "transparent" }}
-              onClick={() => {
-                Swal.fire({
-                  icon: "success",
-                  text: "닉네임이 변경되었습니다.",
-                  confirmButtonColor: "#BDE8F8",
-                  confirmButtonText: "확인",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    window.location.reload();
-                  }
-                });
-              }}
-            >
-              <img
-                src={edit}
-                style={{ width: "30px", height: "25px" }}
-                alt="닉네임수정버튼"
-              />
-            </button>
-          </div>
-        </form>
-      )}
+      </Modal>
+
       {/* 관심 여행 키워드, 수정버튼 */}
       <div className="profileCategory">
         <div className="CategoryTitle">
           <h3 style={{ margin: "0 0 3% 5%" }}>관심 여행 키워드</h3>
           <img
             src={edit}
-            style={{ width: "7%", height: "7%" }}
+            style={{ width: "30px", height: "25px" }}
             alt="태그수정버튼"
+            onClick={() => navigate("/choice")}
           />
         </div>
         <div className="categoryGet">
-          여기에카테고리겟으로가져오기 혼자 | 식도락| 액티브 |룰라랄라라라
+          {myinfo === undefined ? (
+            <>선택된 관심 여행 키워드가 없습니다.</>
+          ) : interest?.interested[0] === "" ? (
+            <>선택된 관심 여행 키워드가 없습니다.</>
+          ) : (
+            <div style={{ fontWeight: "bold" }}>
+              {interest?.interested[0]} | {interest?.interested[1]} |{" "}
+              {interest?.interested[2]}
+            </div>
+          )}
         </div>
       </div>
+
       {/* 모아보기, 나의 일정 */}
       <div className="myListAll">
         <p
@@ -248,11 +178,13 @@ const Myinfo = () => {
           작성 게시글 모아보기
         </p>
         <p
+          className="noticeImg"
           onClick={() => {
             navigate("/mylike");
           }}
         >
-          🤍게시글 모아보기
+          <img src={love} alt="좋아요" />
+          게시글 모아보기
         </p>
         <p
           onClick={() => {
@@ -260,6 +192,26 @@ const Myinfo = () => {
           }}
         >
           나의 일정 관리하기
+        </p>
+
+        <div
+          className="my-alarm-div"
+          onClick={() => {
+            navigate("/notification");
+          }}
+        >
+          <img src={notice} alt="알림" />
+          알림
+          <div className="my-notification">
+            <div style={{ margin: "auto", fontSize: "small" }}>{unRead}</div>
+          </div>
+        </div>
+        <p
+          onClick={() => {
+            navigate("/withdrawal");
+          }}
+        >
+          회원탈퇴
         </p>
       </div>
     </div>

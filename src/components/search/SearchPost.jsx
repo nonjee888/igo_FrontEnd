@@ -1,6 +1,7 @@
 //PostList에 보여질 카드
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
+
 import photo from "../../asset/assetMypage/photo.png";
 import filledHeart from "../../asset/filledHeart.png";
 

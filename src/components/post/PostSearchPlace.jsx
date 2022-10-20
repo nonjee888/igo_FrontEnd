@@ -17,7 +17,7 @@ const SearchPlace = (props) => {
       <form className="map-inputForm" onSubmit={handleSearch}>
         <input
           className="map-input"
-          placeholder="Search Place..."
+          placeholder="장소를 검색해 주세요"
           onChange={(event) => setInputText(event.target.value)}
           value={inputText}
         />

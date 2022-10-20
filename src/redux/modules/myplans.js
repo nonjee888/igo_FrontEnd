@@ -135,13 +135,9 @@ export const myplans = createSlice({
     [deleteMyplans.fulfilled]: (state, action) => {
       state.isLoading = false;
       let index = state.myplans.findIndex(
-        (comment) => comment.id === action.payload.data
+        (myplan) => myplan.id === action.payload.data
       );
       state.myplans.splice(index, 1);
-    },
-    [deleteMyplans.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
     },
   },
 });

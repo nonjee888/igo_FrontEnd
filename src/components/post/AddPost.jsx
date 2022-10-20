@@ -1,4 +1,5 @@
-//에디터
+//Toast UI 에디터
+import Swal from "sweetalert2";
 import S3 from "react-aws-s3";
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/i18n/ko-kr";
@@ -7,32 +8,22 @@ import "tui-color-picker/dist/tui-color-picker.css";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 
-import Swal from "sweetalert2";
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
-import { numberCheck } from "../../redux/modules/posts";
 
 import PostSearchPlace from "./PostSearchPlace";
-
 import InterestModal from "../postmodal/InterestModal";
 import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
-const AddPost = ({ props }) => {
-  const inputFocus = useRef(null);
-  const dispatch = useDispatch();
-  const { detail } = useSelector((state) => state?.posts);
-  const { id } = useParams();
-  const writerId = detail.nickname;
-  const isEdit = id !== undefined;
-  const NICKNAME = localStorage.getItem("nickname");
-
+const AddPost = () => {
+  //Buffer: 브라우저에서 바이너리 데이터 조작하기 위함
   window.Buffer = window.Buffer || require("buffer").Buffer;
-  const editorRef = useRef();
 
+  //제목, 내용, 지도, 버튼활성화 state
   const [title, setTitle] = useState("");
   const [editor, setEditor] = useState("");
   const [overlayData, setOverlayData] = useState({
@@ -40,8 +31,20 @@ const AddPost = ({ props }) => {
     polyline: [],
   });
   const [isActive, setIsActive] = useState(false);
-  const content = editor;
 
+  const content = editor;
+  const editorRef = useRef();
+  const dispatch = useDispatch();
+  const inputFocus = useRef(null);
+  const { detail } = useSelector((state) => state?.posts);
+  const { id } = useParams();
+
+  //isEdit 게시물의 id가 param에 존재할 때
+  const isEdit = id !== undefined;
+  const writerId = detail.nickname;
+  const NICKNAME = localStorage.getItem("nickname");
+
+  //게시글Add changehandler
   const handleTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -49,9 +52,11 @@ const AddPost = ({ props }) => {
     const innerText = editorRef.current?.getInstance().getHTML();
     setEditor(innerText);
   };
+
+  //게시글등록 버튼: 제목, 내용이 각각 2, 9자리 글자 이하면 버튼 비활성화
   const isSubmitPost = () => {
     if (content !== "<p><br></p>" && title !== "") {
-      if (content.length > 12 && title.length >= 3) {
+      if (content.length > 9 && title.length >= 2) {
         setIsActive(true);
       } else {
         setIsActive(false);
@@ -59,17 +64,7 @@ const AddPost = ({ props }) => {
     }
   };
 
-  const [checkedItems, setCheckedItems] = useState({
-    interest: "",
-    region: "",
-    cost: "",
-  });
-  const tags = Object.values(checkedItems);
-
-  const [openRegionModal, setOpenRegionModal] = useState(false);
-  const [openInterestModal, setOpenInterestModal] = useState(false);
-  const [openCostModal, setOpenCostModal] = useState(false);
-
+  //게시글 Edit모드일때, 각 state에 게시물 상세조회 response에서 받은 데이터 저장
   useEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
@@ -84,11 +79,27 @@ const AddPost = ({ props }) => {
           cost: response.payload.tags[2],
         });
       });
+      //Edit모드가 아니라면 state초기화
     } else {
       setTitle("");
       setEditor(editorRef.current?.getInstance().getHTML());
     }
-  }, [id]);
+  }, [id]); //게시글의 id가 다를때마다 useEffect가 실행 됨
+
+  //태그 선택 state
+  const [checkedItems, setCheckedItems] = useState({
+    interest: "관심사선택",
+    region: "지역 선택",
+    cost: "비용 선택",
+  });
+
+  //Object를 List 형태로 변환
+  const tags = Object.values(checkedItems);
+
+  const [isChecked, setIsChecked] = useState(false);
+  const [openRegionModal, setOpenRegionModal] = useState(false);
+  const [openInterestModal, setOpenInterestModal] = useState(false);
+  const [openCostModal, setOpenCostModal] = useState(false);
 
   let data = {
     title: title,
@@ -112,52 +123,80 @@ const AddPost = ({ props }) => {
               name="title"
               value={title}
               onChange={handleTitle}
-              onKeyUp={isSubmitPost}
+              onKeyUp={isSubmitPost} //입력한 글자수 표시하기 위한 keyup이벤트
               ref={inputFocus}
             />
           </div>
           <div className="tagsbox">
             <button
-              className="tagmodalbtn"
+              className={
+                checkedItems.interest === "관심사선택" //initialState 일 때 === 아무것도 선택되지 않았을 때, 태그 색깔 달라짐
+                  ? "tagmodalbtn"
+                  : "selectedtagmodalbtn"
+              }
               onClick={() => {
                 setOpenInterestModal(true);
+                setOpenRegionModal(false);
+                setOpenCostModal(false);
               }}
             >
-              관심사
+              {checkedItems.interest}
             </button>
+
             {openInterestModal && (
               <InterestModal
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
                 closeInterestModal={setOpenInterestModal}
               />
             )}
+
             <button
-              className="tagmodalbtn"
+              className={
+                checkedItems.region === "지역 선택"
+                  ? "tagmodalbtn"
+                  : "selectedtagmodalbtn"
+              }
               onClick={() => {
                 setOpenRegionModal(true);
+                setOpenInterestModal(false);
+                setOpenCostModal(false);
               }}
             >
-              지역
+              {checkedItems.region}
             </button>
 
             {openRegionModal && (
               <RegionModal
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
                 closeModal={setOpenRegionModal}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
               />
             )}
+
             <button
-              className="tagmodalbtn"
+              className={
+                checkedItems.cost === "비용 선택"
+                  ? "tagmodalbtn"
+                  : "selectedtagmodalbtn"
+              }
               onClick={() => {
                 setOpenCostModal(true);
+                setOpenRegionModal(false);
+                setOpenInterestModal(false);
               }}
             >
-              여행경비
+              {checkedItems.cost}
             </button>
+
             {openCostModal && (
               <CostModal
+                isChecked={isChecked}
+                setIsChecked={setIsChecked}
                 closeModal={setOpenCostModal}
                 checkedItems={checkedItems}
                 setCheckedItems={setCheckedItems}
@@ -167,10 +206,10 @@ const AddPost = ({ props }) => {
           <div className="editor-wrapper">
             <Editor
               ref={editorRef}
-              placeholder=""
+              placeholder="... 을 누르면 사진을 공유 할 수 있어요 !   제목은 두글자, 내용은 세글자 입력해야 게시물 등록이 가능합니다."
               initialValue=""
               previewStyle="vertical"
-              height="calc(100vh - 390px)"
+              height="calc(95vh - 390px)"
               initialEditType="wysiwyg"
               useCommandShortcut={false}
               onChange={handleEditor}
@@ -179,6 +218,7 @@ const AddPost = ({ props }) => {
               plugins={[colorSyntax]}
               language="ko-KR"
               name="editor"
+              //이미지 첨부시 s3서버로 전송후 url받아옴
               hooks={{
                 addImageBlobHook: async (blob, callback) => {
                   const config = {
@@ -187,6 +227,7 @@ const AddPost = ({ props }) => {
                     accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
                     secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
                   };
+                  //file s3 저장시 이름 겹치지 않게 new Date()사용. replace()로 특수문자 제거
                   const newName = new Date().toString().replace(/ /g, "");
                   const replaced = newName.replace(
                     /[&\/\\#,+()$~%.'":*?<>{}]/g,
@@ -209,6 +250,7 @@ const AddPost = ({ props }) => {
                 isEdit={isEdit}
                 overlayData={overlayData}
                 setOverlayData={setOverlayData}
+                checkedItems={checkedItems}
               />
             </div>
           </div>

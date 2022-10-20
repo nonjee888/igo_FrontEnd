@@ -16,34 +16,34 @@ import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
 import listIcon from "../../asset/assetFooter/listIcon.png";
 import deleteimg from "../../asset/deleteimg.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 
 const { kakao } = window;
 
 const PostDetail = () => {
   const { id } = useParams();
   const { isLoading, error, detail } = useSelector((state) => state?.posts);
-  const [user, setUser] = useState();
+  const { myinfo } = useSelector((state) => state.myinfo);
+
   const [center, setCenter] = useState();
   const [poly, setPoly] = useState();
-
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
   });
 
-  function pointsToPath(points) {
-    return points.map((point) => ({
-      lat: point.y,
-      lng: point.x,
-    }));
-  }
+  const sanitizer = dompurify.sanitize;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const writerId = detail.nickname;
+  const user = myinfo && myinfo[0]?.nickname;
+  const userConfirm = user === writerId;
 
   const fetch = async () => {
     const { data } = await instance.get(`/api/detail/${id}`);
-    // console.log(data?.data?.nickname);
+
     setCenter(data?.data?.mapData?.marker);
     setPoly(data?.data?.mapData?.polyline);
-    setUser(data?.data?.nickname);
   };
 
   useEffect(() => {
@@ -51,7 +51,6 @@ const PostDetail = () => {
   }, []);
 
   const mapRef = useRef();
-
   const bounds = useMemo(() => {
     const bounds = new kakao.maps.LatLngBounds();
 
@@ -67,12 +66,12 @@ const PostDetail = () => {
     return bounds;
   }, [center, poly]);
 
-  const sanitizer = dompurify.sanitize;
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const writerId = detail.nickname;
-
-  const userConfirm = user === writerId;
+  function pointsToPath(points) {
+    return points.map((point) => ({
+      lat: point.y,
+      lng: point.x,
+    }));
+  }
 
   useEffect(() => {
     if (id !== undefined) {
@@ -103,12 +102,10 @@ const PostDetail = () => {
         imageWidth: 50,
         imageHeight: 50,
         text: "신고완료!",
-        confirmButtonColor: "#80bbd0",
+        confirmButtonColor: "#47AFDB",
         confirmButtonText: "확인",
-      }).then((result) => {
-        navigate("/post/all");
       });
-      navigate("/post/all");
+      return navigate(-1);
     } else {
       if (data.data.success === false) {
         Swal.fire({
@@ -116,7 +113,7 @@ const PostDetail = () => {
           imageWidth: 50,
           imageHeight: 50,
           text: "이미 신고한 게시물입니다.",
-          confirmButtonColor: "#80bbd0",
+          confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         }).then((result) => {
           navigate("/post/all");
@@ -140,17 +137,80 @@ const PostDetail = () => {
           <div className="detail-title">
             <div className="title">{detail?.title}</div>
           </div>
-          <div className="detail-btns">
-            <h4 className="detail-nickname">{writerId}</h4>
-            <div>조회수:{detail?.viewCount}</div>
-            <div className="heart-num">
-              <button onClick={onLike} className="liked-post-btn">
-                <img src={heart} className="liked-post-icon" alt="관심게시글" />
+          {/* 비회원: 작성자, 조회수 보임 like, report 누르면 로그인하기 alert*/}
+          {!user ? (
+            <div className="noUser-detail-btns">
+              <h4 className="detail-nickname">{writerId}</h4>
+              <div>조회수:{detail?.viewCount}</div>
+              <div className="heart-num">
+                <button
+                  className="liked-post-btn"
+                  onClick={() => {
+                    Swal.fire({
+                      showCancelButton: true,
+                      imageUrl: pleaseLogin,
+                      imageWidth: 200,
+                      imageHeight: 100,
+                      text: "로그인이 필요합니다",
+                      confirmButtonColor: "#47AFDB",
+                      confirmButtonText: "로그인",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        navigate("/");
+                      } else if (result.isDenied) {
+                        return null;
+                      }
+                    });
+                  }}
+                >
+                  <img
+                    src={heart}
+                    className="liked-post-icon"
+                    alt="관심게시글"
+                  />
+                </button>
+                <div className="number">{detail?.heartNum}</div>
+              </div>
+              <button
+                className="report-post-btn"
+                onClick={() => {
+                  Swal.fire({
+                    showCancelButton: true,
+                    imageUrl: pleaseLogin,
+                    imageWidth: 200,
+                    imageHeight: 100,
+                    text: "로그인이 필요합니다",
+                    confirmButtonColor: "#47AFDB",
+                    confirmButtonText: "로그인",
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      navigate("/");
+                    } else if (result.isDenied) {
+                      return null;
+                    }
+                  });
+                }}
+              >
+                <img src={report} className="report-post-icon" />
               </button>
-              {detail?.heartNum}
             </div>
+          ) : !userConfirm ? (
+            /* 회원 && !게시글 작성자 ? like, report 가능 */
+            <div className="notMy-detail-btns">
+              <h4 className="detail-nickname">{writerId}</h4>
+              <div>조회수:{detail?.viewCount}</div>
 
-            {userConfirm ? null : (
+              <div className="heart-num">
+                <button onClick={onLike} className="liked-post-btn">
+                  <img
+                    src={heart}
+                    className="liked-post-icon"
+                    alt="관심게시글"
+                  />
+                </button>
+                <div className="number">{detail?.heartNum}</div>
+              </div>
+
               <button
                 onClick={() => {
                   onReport(id);
@@ -159,8 +219,23 @@ const PostDetail = () => {
               >
                 <img src={report} className="report-post-icon" />
               </button>
-            )}
-            {userConfirm ? (
+            </div>
+          ) : (
+            /* 게시글 작성자 : like, edit, delete 가능 */
+            <div className="detail-btns">
+              <h4 className="detail-nickname">{writerId}</h4>
+              <div>조회수:{detail?.viewCount}</div>
+
+              <div className="heart-num">
+                <button onClick={onLike} className="liked-post-btn">
+                  <img
+                    src={heart}
+                    className="liked-post-icon"
+                    alt="관심게시글"
+                  />
+                </button>
+                <div className="number">{detail?.heartNum}</div>
+              </div>
               <div className="edit-delete">
                 <button className="edit-btn">
                   <img
@@ -172,6 +247,7 @@ const PostDetail = () => {
                   />
                 </button>
                 <button
+                  className="delete-btn"
                   onClick={() => {
                     Swal.fire({
                       showCancelButton: true,
@@ -179,7 +255,7 @@ const PostDetail = () => {
                       imageWidth: 50,
                       imageHeight: 50,
                       text: "게시글을 삭제할까요?",
-                      confirmButtonColor: "#80bbd0",
+                      confirmButtonColor: "#47AFDB",
                       confirmButtonText: "삭제 확인",
                     }).then((result) => {
                       if (result.isConfirmed) {
@@ -189,13 +265,13 @@ const PostDetail = () => {
                       }
                     });
                   }}
-                  className="delete-btn"
                 >
                   <img src={deleteimg} className="delete-icon" />
                 </button>
               </div>
-            ) : null}
-          </div>
+            </div>
+          )}
+
           {/*태그*/}
           <div className="tag-wrapper">
             <div
@@ -261,7 +337,7 @@ const PostDetail = () => {
                     width: "100%",
                     height: "300px",
                   }}
-                  level={3} // 지도의 확대 레벨
+                  level={4} // 지도의 확대 레벨
                   ref={mapRef}
                 >
                   {center?.map((point) => (

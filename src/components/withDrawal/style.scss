@@ -1,0 +1,73 @@
+
+
+.ListBox {
+margin: 10% auto 5% auto;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+width: 95%;
+height: 25vh;
+background: #f5f5f5;
+border-radius: 10px;
+text-align:left;
+}
+
+
+.listText {
+position: relative;
+list-style: none;
+width: 80%;
+font-weight: 400;
+font-size: 13px;
+color: #8d8d8d;
+padding-bottom: 5%;
+}
+
+.sumitbtn {
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0 auto;
+width: 50%;
+height: 5vh;
+border: none;
+border-radius: 30px;
+background-color:#47AFDB;
+font-size: 100%;
+color: white;
+cursor: pointer;
+}
+.unsumitbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 50%;
+  font-size: 100%;
+  border-radius: 30px;
+  height: 5vh;
+  border: 0;
+  cursor: pointer;
+  
+  }
+
+.inputBox {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  margin: 5%;
+  font-size: 85%;
+}
+
+.drawalimg{
+margin: 50% auto 0 auto;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+width: 40%;
+height: 10vh;
+}
