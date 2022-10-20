@@ -16,6 +16,10 @@ Server Architecture
 --------------------------
 ![image](https://user-images.githubusercontent.com/106578705/194592914-e330bd9f-8f62-4bbc-b500-6f4e22e886a3.png)
 
+컴포넌트 구조
+-------------
+![내돈내여 컴포넌트 구조](https://user-images.githubusercontent.com/106578705/196848710-8f1d68b9-3733-4a0d-8d46-1edc26099299.png)
+
 와이어프레임
 -------------
 ![KakaoTalk_Image_2022-10-08-00-50-10](https://user-images.githubusercontent.com/106578705/194595627-3f7b36d5-b543-42ad-8da5-b960fde4ccd0.png)
