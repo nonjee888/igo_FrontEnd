@@ -165,10 +165,9 @@ export default function AllPostList() {
             navigate("/tutorial");
           }}
         >
-          튜토리얼보고 커피받기
+          튜토리얼보고☕받기
         </button>
       </div>
     </div>
   );
 }
-
