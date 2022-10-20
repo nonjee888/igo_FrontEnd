@@ -9,19 +9,6 @@ export const getTags = createAsyncThunk("tags/get", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error);
   }
 });
-//myinfo 혜림님이 작성하신 put과 get을 참고해서 작성하였습니다.
-// export const putTags = createAsyncThunk(
-//     "tags/put",
-//     async (payload,thunkAPI) => {
-//         try {
-//             const data = await instance.put(`/api/member/tag`, payload, {
-//             });
-//             return data.data.data;
-//         }catch (error) {
-//             return thunkAPI.rejectWithValue(error);
-//         }
-//     }
-// );
 
 export const tags = createSlice({
   name: "tags",
