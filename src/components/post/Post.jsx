@@ -7,12 +7,8 @@ const Post = (props) => {
   const navigate = useNavigate();
   const id = props.post.id;
   const title = props.post.title;
-  const content = props.post.content;
+  const thumnail = props.post.thumnail;
   const heart = props.post.heartNum;
-
-  // html에서 정규표현식으로 썸네일 추출
-  const urlRegex = /(https?:\/\/[^>\"']*)/;
-  const url = content.match(urlRegex);
 
   return (
     <>
@@ -23,10 +19,10 @@ const Post = (props) => {
             navigate("/postdetail/" + id);
           }}
         >
-          {url === null ? (
+          {thumnail === "false" ? (
             <img className="img-container" src={photo} />
           ) : (
-            <img className="img-container" src={url[1]} />
+            <img className="img-container" src={thumnail} />
           )}
           <div className="pic-wrapper">
             <div className="post-content">
