@@ -14,7 +14,7 @@ const MyNotification = () => {
   const dispatch = useDispatch();
 
   const { notice } = useSelector((state) => state?.notice);
-
+  // console.log(notice);
   const [profile, setProfile] = useState("");
   const [nickname, setNickname] = useState(""); //getMyinfo에서 얻은 유저 닉네임
   const [unRead, setUnread] = useState(""); //읽지 않은 메세지 갯수
@@ -68,7 +68,7 @@ const MyNotification = () => {
                     {notice.content}
                   </a>
                 </div>
-                {notice.read ? null : (
+                {notice.read === null ? (
                   <button
                     className="confirm-button"
                     onClick={() => {
@@ -77,15 +77,26 @@ const MyNotification = () => {
                   >
                     <img className="noti-confirm" src={confirm} />
                   </button>
+                ) : notice.read === false ? (
+                  <button
+                    className="confirm-button"
+                    onClick={() => {
+                      dispatch(confirmNotice(notice.id));
+                      window.location.reload();
+                    }}
+                  >
+                    <img className="noti-confirm" src={confirm} />
+                  </button>
+                ) : (
+                  <button
+                    className="x-button"
+                    onClick={() => {
+                      dispatch(removeNotice(notice.id));
+                    }}
+                  >
+                    <img className="noti-delete" src={deleteimg} />
+                  </button>
                 )}
-                <button
-                  className="x-button"
-                  onClick={() => {
-                    dispatch(removeNotice(notice.id));
-                  }}
-                >
-                  <img className="noti-delete" src={deleteimg} />
-                </button>
               </div>
             );
           })}
