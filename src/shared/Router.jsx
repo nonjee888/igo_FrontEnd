@@ -39,7 +39,7 @@ const Router = () => {
         heartbeatTimeout: 1000 * 60 * 20,
       }
     ); //구독
-    console.log("구독성공");
+    // console.log("구독성공");
     eventSource.addEventListener("sse", function (event) {
       const data = JSON.parse(event.data);
       (async () => {
@@ -51,7 +51,7 @@ const Router = () => {
               body: data.content,
             }
           );
-          console.log("알림성공");
+          // console.log("알림성공");
           setTimeout(() => {
             notification.close();
           }, 10 * 1000);
