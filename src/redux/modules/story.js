@@ -89,18 +89,6 @@ export const story = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    //스토리삭제
-    // [deleteStory.fulfilled]: (state, action) => {
-    //   state.isLoading = false;
-    //   let index = state.story.findIndex(
-    //     (story) => story.id === action.payload.data
-    //   );
-    //   state.story.splice(index, 1);
-    // },
-    // [deleteStory.rejected]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
   },
 });
 

@@ -1,4 +1,4 @@
-//에디터
+//Toast UI 에디터
 import Swal from "sweetalert2";
 import S3 from "react-aws-s3";
 import { Editor } from "@toast-ui/react-editor";
@@ -20,7 +20,7 @@ import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
 const AddPost = () => {
-  //Buffer: 브라우저에서 바이너리 데이터 조작하기 위한 라이브러리
+  //Buffer: 브라우저에서 바이너리 데이터 조작하기 위함
   window.Buffer = window.Buffer || require("buffer").Buffer;
 
   //제목, 내용, 지도, 버튼활성화 state
@@ -93,7 +93,7 @@ const AddPost = () => {
     cost: "비용 선택",
   });
 
-  //Object를 List의 형태로 변환
+  //Object를 List 형태로 변환
   const tags = Object.values(checkedItems);
 
   const [isChecked, setIsChecked] = useState(false);
