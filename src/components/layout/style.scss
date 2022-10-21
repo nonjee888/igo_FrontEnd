@@ -80,8 +80,8 @@
   width: 100%;
 }
 .noticeButton {
-  width: 7%;
-  margin-top: 1.5%;
+  display: flex;
+  width: 8%;
   img {
     width: 80%;
   }
@@ -125,10 +125,11 @@
 }
 
 .notification {
-  width: 1.3vh;
-  height: 0.8vh;
+  margin: 0% 0 4% 0;
+  width: 2vh;
+  height: 1vh;
   background-color: red;
-  border-radius: 50%;
+  border-radius: 70%;
 }
 
 //리서치버튼
@@ -207,6 +208,7 @@
 .modal2 {
   display: none;
   position: fixed;
+  justify-content: right;
   top: 0;
   right: 0;
   bottom: 0;
@@ -220,16 +222,15 @@
   border: 0;
 }
 .modal2 > section {
-  width: 95%;
-  height: 210px;
-  max-width: 428px;
   margin: 0 auto;
   border-radius: 0.3rem;
+  width: 90%;
+  height: 60vh;
+  max-width: 428px;
   background-color: #fff;
   animation: modal-show 0.3s;
-  overflow: hidden;
+  overflow: auto;
 }
-
 .modal2.openModal {
   display: flex;
   align-items: center;
@@ -240,7 +241,7 @@
 }
 .modal2 > section > header button {
   position: absolute;
-  top: 15px;
+  top: 10px;
   right: 15px;
   width: 30px;
   font-size: 30px;
@@ -250,15 +251,24 @@
   background-color: transparent;
 }
 
-//MyNotification.jsx
-.profile-wrap {
-  gap: 10%;
-  margin-bottom: 20%;
-  text-align: center;
+//알림
+.NoNotice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50%;
+  font-size: larger;
   font-weight: bold;
-  .noti-nick {
-    margin-top: 2%;
+  color: #555555;
+  img {
+    width: 25px;
   }
+}
+
+.NoticeRead {
+  display: flex;
+  justify-content: center;
+  margin: 15% 0;
 }
 
 .noti-div {
@@ -266,15 +276,14 @@
   height: auto;
   font-weight: bold;
   background-color: #ececec;
-  width: 90%;
+  width: 79%;
   border-radius: 10px;
   font-size: 1rem;
   display: grid;
   align-items: center;
-  grid-template-columns: 80% 7% 7%;
-  align-items: baseline;
+  grid-template-columns: 85% 10%;
   .noti-title {
-    padding: 7.5%;
+    padding-left: 5%;
     vertical-align: center;
     .noti-btn {
       color: #555555;
@@ -288,25 +297,21 @@
     width: 45px;
 
     .noti-delete {
-      width: 50%;
-      height: 50%;
+      width: 2.7vh;
+      height: 3vh;
       cursor: pointer;
-      object-fit: cover;
     }
   }
   .confirm-button {
-    float: right;
     border: none;
     background: none;
     height: 45px;
     width: 45px;
 
     .noti-confirm {
-      padding-top: 30%;
-      width: 2.6vh;
-      height: 2.6vh;
+      width: 3vh;
+      height: 3vh;
       cursor: pointer;
-      object-fit: cover;
     }
   }
 }
