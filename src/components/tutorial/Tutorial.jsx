@@ -9,13 +9,24 @@ import tutorial6 from "../../asset/assetTutorial/tutorial6.png";
 import tutorial7 from "../../asset/assetTutorial/tutorial7.png";
 import tutorial8 from "../../asset/assetTutorial/tutorial8.png";
 import tutorial9 from "../../asset/assetTutorial/tutorial9.png";
+import goback from "../../asset/goback.png";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export default function Tutorial() {
   const NICKNAME = localStorage.getItem("nickname");
+  const navigate = useNavigate();
 
   return (
     <div className="tutorialbody">
+            <img
+              src={goback}
+              alt="뒤로"
+              onClick={() => {
+                navigate(-1);
+              }}
+              style={{ width: "8%", height: "5%",margin:"5%" }}
+            />
       {NICKNAME ? (
         <div className="tutorialimg-wrapper">
           <img className="tutorialboxs" src={tutorial0} />
@@ -35,7 +46,6 @@ export default function Tutorial() {
           <img className="tutorialboxs" src={tutorial5} />
           <img className="tutorialboxs" src={tutorial6} />
           <img className="tutorialboxs" src={tutorial7} />
-
           <img className="tutorialboxs" src={tutorial9} />
         </div>
       ) : (
