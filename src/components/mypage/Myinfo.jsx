@@ -193,19 +193,6 @@ const Myinfo = () => {
         >
           나의 일정 관리하기
         </p>
-
-        <div
-          className="my-alarm-div"
-          onClick={() => {
-            navigate("/notification");
-          }}
-        >
-          <img src={notice} alt="알림" />
-          알림
-          <div className="my-notification">
-            <div style={{ margin: "auto", fontSize: "small" }}>{unRead}</div>
-          </div>
-        </div>
         <p
           onClick={() => {
             navigate("/withdrawal");

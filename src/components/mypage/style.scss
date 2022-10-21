@@ -372,6 +372,13 @@
   padding: 1.5% 0 0 5%;
 }
 
+.MyplanPostImg1 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
 .MyplanPostImg {
   padding: 3%;
   border-radius: 10px;
@@ -473,89 +480,5 @@
   }
   to {
     opacity: 1;
-  }
-}
-
-//MyNotification.jsx
-.profile-wrap {
-  gap: 10%;
-  margin-bottom: 20%;
-  text-align: center;
-  font-weight: bold;
-  .noti-nick {
-    margin-top: 2%;
-  }
-}
-
-.noti-div {
-  margin: 5% auto;
-  height: auto;
-  font-weight: bold;
-  background-color: #ececec;
-  width: 90%;
-  border-radius: 10px;
-  font-size: 1rem;
-  display: grid;
-  align-items: center;
-  grid-template-columns: 80% 7% 7%;
-  align-items: baseline;
-  .noti-title {
-    padding: 7.5%;
-    vertical-align: center;
-    .noti-btn {
-      color: #555555;
-    }
-  }
-  .x-button {
-    float: right;
-    border: none;
-    background: none;
-    height: 45px;
-    width: 45px;
-
-    .noti-delete {
-      width: 50%;
-      height: 50%;
-      cursor: pointer;
-      object-fit: cover;
-    }
-  }
-  .confirm-button {
-    float: right;
-    border: none;
-    background: none;
-    height: 45px;
-    width: 45px;
-
-    .noti-confirm {
-      padding-top: 30%;
-      width: 2.6vh;
-      height: 2.6vh;
-      cursor: pointer;
-      object-fit: cover;
-    }
-  }
-}
-.my-alarm-div {
-  display: grid;
-  grid-template-columns: 27px 45px 25px;
-  background-color: #ececec;
-  width: 90%;
-  padding: 2%;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  align-items: center;
-  img {
-    width: 23px;
-  }
-  .my-notification {
-    width: 100%;
-    height: 23px;
-    background-color: #47afdb;
-    border-radius: 70%;
-    color: white;
-    display: flex;
-    align-items: center;
-    margin-left: -1%;
   }
 }
