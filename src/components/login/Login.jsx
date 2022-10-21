@@ -56,7 +56,7 @@ const Login = () => {
               height: "90px",
               marginLeft: "2%",
               paddingBottom: "40px",
-              marginTop: "45vh",
+              marginTop: "27vh",
             }}
           />
 

@@ -1,4 +1,3 @@
-//은지 담당//
 .SearchBar {
   font-size: 18px;
   width: calc(100% - 40px);
@@ -36,8 +35,15 @@
   border: none;
 }
 
-//포스트페이지 로그인,회원가입,로고포함 헤더
+//스토리용 푸터
+.footers {
+  height: 10vh;
+  background-color: black;
+}
+
+//헤더
 .Header-wrapper {
+  z-index: 99;
   height: 6vh;
   max-width: 428px;
   font-family: "NotoSansKR";
@@ -46,48 +52,17 @@
   align-items: center;
 }
 
-.HeaderForm {
-  width: 50%;
-}
-
 //내돈내여 로고
 .Logo {
-  width: 80%;
-  height: 80%;
-  margin: 7% 1.5% 0 12%;
+  width: 25%;
+  margin: 2% 0 0 5%;
   object-fit: cover;
 }
 
-//로그인,회원가입 담긴 헤더
-.Sign-box {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-//로그인,회원가입 버튼
-.Signbtn {
-  width: 70%;
-  object-fit: cover;
-  border: none;
-  background-color: transparent;
-  .loginButton {
-    width: 60%;
-    height: 60%;
-    object-fit: cover;
-    margin: 7% 0 0 70%;
-  }
-  .logoutButton {
-    width: 80%;
-    height: 80%;
-    object-fit: cover;
-  }
-}
 //헤더 nickname+btn div
 .hearders-nickWrap {
-  display: flex;
-  align-items: center;
-  margin-top: 5%;
+  width: 43%;
+  margin: 2% 4% 0 2%;
 }
 //헤더 nick+님 div
 .headers-님 {
@@ -104,39 +79,43 @@
   margin-bottom: 2%;
   width: 100%;
 }
+.noticeButton {
+  width: 7%;
+  margin-top: 1.5%;
+  img {
+    width: 80%;
+  }
+}
 
-//풋컨테이너
-.Footer-Container {
-  height: 7vh;
-  width: 100%;
-  border-top: 1px solid #d9d9d9;
-  border-top-left-radius: 22px;
-  border-top-right-radius: 22px;
-  max-width: 428px;
-  z-index: 1;
-  position: fixed;
+//메뉴
+.Menu {
+  border: none;
+  background: none;
+  width: 10%;
+  margin: 1% 0 0 1%;
+  img {
+    width: 100%;
+  }
 }
 
 //글쓰기,관심목록,마이페이지 담긴 아이콘박스
 .Icon-box {
-  height: 90%;
-  display: flex;
   justify-content: center;
-  background-color: white;
-  margin: auto;
-  gap: 2.5%;
+  margin-top: 40px;
+  gap: 3%;
   object-fit: cover;
-}
-
-//추천아이콘 사이즈 맞추기
-.recomendIcon {
-  height: 110%;
+  height: 100%;
+  background-color: white;
 }
 
 //푸터 아이콘들
 .FootersIcon {
-  width: 100%;
-  height: 100%;
+  margin: 10px 5%;
+  width: 80%;
+  max-width: 130px;
+  &:hover {
+    background-color: #ececec;
+  }
 }
 
 //아이콘각각 담아준박스
@@ -150,4 +129,207 @@
   height: 0.8vh;
   background-color: red;
   border-radius: 50%;
+}
+
+//리서치버튼
+.research {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #8aceff;
+  animation: research-widget 1s;
+  animation-iteration-count: infinite;
+  border: none;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  height: 7vh;
+  width: 100%;
+  font-size: 15px;
+}
+@keyframes research-widget {
+  from {
+    background: #b7abff;
+    bottom: 10%;
+  }
+
+  to {
+    bottom: 12%;
+  }
+}
+
+//메뉴 모달
+.modal1 {
+  display: none;
+  position: fixed;
+  justify-content: right;
+  top: 6vh;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal1 button {
+  outline: none;
+  cursor: pointer;
+  border: 0;
+}
+.modal1 > section {
+  width: 40%;
+  height: 94vh;
+  max-width: 428px;
+  background-color: #fff;
+  animation: modal-show 0.3s;
+  overflow: hidden;
+}
+
+.modal1.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
+}
+.modal1 > section > header {
+  position: relative;
+}
+.modal1 > section > header button {
+  position: absolute;
+  top: 0.5vh;
+  width: 30px;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: #999;
+  background-color: transparent;
+}
+
+//알림창 모달
+.modal2 {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal2 button {
+  outline: none;
+  cursor: pointer;
+  border: 0;
+}
+.modal2 > section {
+  width: 95%;
+  height: 210px;
+  max-width: 428px;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  animation: modal-show 0.3s;
+  overflow: hidden;
+}
+
+.modal2.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
+}
+.modal2 > section > header {
+  position: relative;
+}
+.modal2 > section > header button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: #999;
+  background-color: transparent;
+}
+
+//MyNotification.jsx
+.profile-wrap {
+  gap: 10%;
+  margin-bottom: 20%;
+  text-align: center;
+  font-weight: bold;
+  .noti-nick {
+    margin-top: 2%;
+  }
+}
+
+.noti-div {
+  margin: 5% auto;
+  height: auto;
+  font-weight: bold;
+  background-color: #ececec;
+  width: 90%;
+  border-radius: 10px;
+  font-size: 1rem;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 80% 7% 7%;
+  align-items: baseline;
+  .noti-title {
+    padding: 7.5%;
+    vertical-align: center;
+    .noti-btn {
+      color: #555555;
+    }
+  }
+  .x-button {
+    float: right;
+    border: none;
+    background: none;
+    height: 45px;
+    width: 45px;
+
+    .noti-delete {
+      width: 50%;
+      height: 50%;
+      cursor: pointer;
+      object-fit: cover;
+    }
+  }
+  .confirm-button {
+    float: right;
+    border: none;
+    background: none;
+    height: 45px;
+    width: 45px;
+
+    .noti-confirm {
+      padding-top: 30%;
+      width: 2.6vh;
+      height: 2.6vh;
+      cursor: pointer;
+      object-fit: cover;
+    }
+  }
+}
+.my-alarm-div {
+  display: grid;
+  grid-template-columns: 27px 45px 25px;
+  background-color: #ececec;
+  width: 90%;
+  padding: 2%;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  align-items: center;
+  img {
+    width: 23px;
+  }
+  .my-notification {
+    width: 100%;
+    height: 23px;
+    background-color: #47afdb;
+    border-radius: 70%;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-left: -1%;
+  }
 }

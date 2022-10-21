@@ -158,15 +158,6 @@ export default function AllPostList() {
                 );
               })}
         </div>
-
-        <button
-          className="research"
-          onClick={() => {
-            navigate("/tutorial");
-          }}
-        >
-          튜토리얼보고☕받기
-        </button>
       </div>
     </div>
   );
