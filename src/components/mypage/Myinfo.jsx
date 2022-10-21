@@ -9,7 +9,6 @@ import Modal from "./MyProfileModal";
 import profileImg1 from "../../asset/assetMypage/profileImg1.png";
 import profileImg from "../../asset/assetMypage/profileImg.png";
 import edit from "../../asset/edit.png";
-import notice from "../../asset/assetMypage/notice.png";
 import love from "../../asset/assetMypage/love1.png";
 
 const Myinfo = () => {
