@@ -15,6 +15,7 @@ const Headers = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const myinfo = useSelector((state) => state?.myinfo?.myinfo);
+  const notice1 = useSelector((state) => state?.notice.notice);
 
   //메뉴모달
   const [modalOpen, setModalOpen] = useState(false);
@@ -85,6 +86,7 @@ const Headers = () => {
       </div>
       <div className="noticeButton" onClick={openModal2}>
         <img src={notice} alt="알림" />
+        {notice1.length !== 0 ? <div className="notification" /> : null}
       </div>
       <Modal2 open={modalOpen2} close={closeModal2} />
       <button className="Menu" onClick={openModal}>
