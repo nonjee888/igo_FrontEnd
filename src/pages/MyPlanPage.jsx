@@ -1,7 +1,6 @@
 import React from "react";
 import Myplan from "../components/mypage/Myplan";
 import Headers from "../components/layout/Headers";
-import Footers from "../components/layout/Footers";
 import PageContainer from "../components/wrapper/PageContainer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +24,6 @@ const MyplanPage = () => {
     <PageContainer>
       <Headers />
       <Myplan />
-      <Footers />
     </PageContainer>
   );
 };

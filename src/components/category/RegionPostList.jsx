@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { instance } from "../../shared/api";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 import Tags from "./Tags";
 import Post from "../post/Post";
 
@@ -142,9 +143,19 @@ export default function RegionPostList() {
   //-----------------지역별분류-------------------//
 
   const getRegionList = async () => {
-    const response = await instance.get(`/api/posts/region?type=${region}`);
-    setPostList(response.data.data);
-    return response.data.data;
+    try {
+      const response = await instance.get(`/api/posts/region?type=${region}`);
+      setPostList(response.data.data);
+      return response.data.data;
+    } catch (error) {
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>;
+    }
   };
 
   useEffect(() => {

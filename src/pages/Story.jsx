@@ -7,11 +7,11 @@ import VideoStory from "../components/story/VideoStory";
 const Story = () => {
   return (
     <PageContainer>
-      <Headers/>
-      <VideoStory/>
-      <Footers/>
+      <Headers />
+      <VideoStory />
+      <Footers />
     </PageContainer>
-    );
+  );
 };
 
 export default Story;
