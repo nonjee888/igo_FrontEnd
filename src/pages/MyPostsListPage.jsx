@@ -1,7 +1,6 @@
 import React from "react";
 import MyPostsList from "../components/mypage/MyPostsList";
 import Headers from "../components/layout/Headers";
-import Footers from "../components/layout/Footers";
 import PageContainer from "../components/wrapper/PageContainer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +24,6 @@ const MyPostsListPage = () => {
     <PageContainer>
       <Headers />
       <MyPostsList />
-      <Footers />
     </PageContainer>
   );
 };

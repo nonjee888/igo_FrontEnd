@@ -1,7 +1,6 @@
 import React from "react";
 import Mylikes from "../components/mypage/Mylikes";
 import Headers from "../components/layout/Headers";
-import Footers from "../components/layout/Footers";
 import PageContainer from "../components/wrapper/PageContainer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +23,6 @@ const MyLikesPage = () => {
     <PageContainer>
       <Headers />
       <Mylikes />
-      <Footers />
     </PageContainer>
   );
 };

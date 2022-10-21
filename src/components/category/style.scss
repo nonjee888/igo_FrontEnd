@@ -5,7 +5,7 @@
   display: flex;
   position: relative;
   align-items: center;
-  background-color: #ffff;
+  background-color: white;
 }
 //카테고리텍스트
 .catagory-head {
@@ -61,7 +61,7 @@
 
 //포스트리스트
 .postListAll {
-  height: 81vh;
+  height: 77.5vh;
   overflow: auto;
   width: 100%;
   font-family: "NotoSansKR";
@@ -72,50 +72,4 @@
   margin: 2.5% 0 0 2.5%;
   display: flex;
   flex-wrap: wrap;
-}
-
-.research {
-  position: fixed;
-  bottom: 30px;
-  right: 2.5vw;
-  width: 100px;
-  height: 50px;
-  z-index: 2;
-  border-radius: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #8aceff;
-  animation: research-widget 0.6s;
-  animation-direction: alternate-reverse;
-  animation-iteration-count: infinite;
-  border: none;
-  margin-right: 3px;
-  text-align: center;
-  font-weight: 600;
-  font-size: small;
-  color: #fff;
-}
-@keyframes research-widget {
-  from {
-    background: #b7abff;
-    bottom: 10%;
-  }
-
-  to {
-    bottom: 12%;
-  }
-}
-.more-box {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: block;
-  margin-top: 10px;
-  text-align: center;
-  line-height: 28px;
-  border-top: solid 1px #000;
-  border-bottom: solid 1px #000;
-  background-color: #ff9;
 }

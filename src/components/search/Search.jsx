@@ -23,11 +23,6 @@ const Search = () => {
       const value = e.target.value;
       dispatch(searchPosts(searchTerm));
       navigate("/search/" + value);
-    } else {
-      new Swal({
-        title: "키워드를 입력해주세요!",
-        icon: "warning",
-      });
     }
   };
 
@@ -57,15 +52,22 @@ const Search = () => {
         <img
           src={igoLogo}
           style={{ width: "50%", margin: "80% 25% 0 25%", display: "block" }}
-          alt="스피너"
+          alt="내돈내여"
         />
       </div>
     );
   }
   if (error) {
-    return <div>{error.message}</div>;
+    return (
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>
+    );
   }
-
   return (
     <>
       <div className="All">

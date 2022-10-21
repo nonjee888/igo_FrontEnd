@@ -1,5 +1,4 @@
 import React from "react";
-import Footers from "../components/layout/Footers";
 import Recommend from "../components/main/Recommend";
 import Headers from "../components/layout/Headers";
 import PageContainer from "../components/wrapper/PageContainer";
@@ -26,7 +25,6 @@ const MainRecommend = () => {
       <PageContainer>
         <Headers />
         <Recommend />
-        <Footers />
       </PageContainer>
     </>
   );

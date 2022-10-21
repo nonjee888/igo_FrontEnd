@@ -5,12 +5,13 @@ import { createComment, getComments } from "../../redux/modules/comments";
 import PostCommentList from "./PostCommentList";
 import commentIcon from "../../asset/commentIcon.png";
 import profileImg from "../../asset/assetMypage/profileImg.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 
 const PostComment = () => {
   let dispatch = useDispatch();
 
   const { myinfo } = useSelector((state) => state.myinfo);
-  const { comments } = useSelector((state) => state.comments);
+  const { comments, error } = useSelector((state) => state.comments);
   const user = myinfo && myinfo[0]?.nickname;
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -37,6 +38,18 @@ const PostComment = () => {
       }
     });
   }, [dispatch, id]);
+
+  if (error) {
+    return (
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>
+    );
+  }
 
   return (
     <div
