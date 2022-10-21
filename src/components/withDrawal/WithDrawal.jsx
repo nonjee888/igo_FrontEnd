@@ -8,15 +8,28 @@ import { instance } from "../../shared/api";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import drawalimg from "../../asset/drawalimg.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 
 export default function WithDrawal() {
   const dispatch = useDispatch();
   const [isClick, setIsClick] = useState(false);
-  const { myinfo } = useSelector((state) => state?.myinfo);
+  const { myinfo, error } = useSelector((state) => state?.myinfo);
   console.log(myinfo);
   useEffect(() => {
     dispatch(getMyinfo());
   }, []);
+
+  if (error) {
+    return (
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>
+    );
+  }
 
   const submitHandler = async (e) => {
     let id = myinfo && myinfo[0]?.id;

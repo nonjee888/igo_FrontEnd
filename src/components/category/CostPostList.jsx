@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { instance } from "../../shared/api";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 import Tags from "./Tags";
 import Post from "../post/Post";
 
@@ -56,9 +57,19 @@ export default function CostPostList() {
   //----------------가격별분류-----------------//
 
   const getCostList = async () => {
-    const response = await instance.get(`/api/posts/cost?type=${cost}`);
-    setPostList(response.data.data);
-    return response.data.data;
+    try {
+      const response = await instance.get(`/api/posts/cost?type=${cost}`);
+      setPostList(response.data.data);
+      return response.data.data;
+    } catch (error) {
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>;
+    }
   };
 
   useEffect(() => {

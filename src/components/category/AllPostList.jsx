@@ -4,6 +4,7 @@ import Tags from "./Tags";
 import PostCard from "./PostCard";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 
 // ~순 카테고리목록
 export default function AllPostList() {
@@ -35,34 +36,70 @@ export default function AllPostList() {
   ];
 
   const getCreate = useCallback(async () => {
-    setLoading(true);
-    await instance
-      .get(`/api/posts/group?type=create&page=${page}`)
-      .then((res) => {
-        setCreate((prevState) => [...prevState, ...res.data.data]);
-      });
+    try {
+      setLoading(true);
+      await instance
+        .get(`/api/posts/group?type=create&page=${page}`)
+        .then((res) => {
+          setCreate((prevState) => [...prevState, ...res.data.data]);
+        });
+    } catch (error) {
+      return (
+        <div>
+          <img
+            style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+            src={pleaseLogin}
+          />
+          죄송합니다 다시 시도해주세요.
+        </div>
+      );
+    }
 
     setLoading(false);
   }, [page]);
 
   const getheart = useCallback(async () => {
-    setLoading(true);
-    await instance
-      .get(`/api/posts/group?type=heart&page=${page}`)
-      .then((res) => {
-        setHeart((prevState) => [...prevState, ...res.data.data]);
-      });
-    setLoading(false);
+    try {
+      setLoading(true);
+      await instance
+        .get(`/api/posts/group?type=heart&page=${page}`)
+        .then((res) => {
+          setHeart((prevState) => [...prevState, ...res.data.data]);
+        });
+      setLoading(false);
+    } catch (error) {
+      return (
+        <div>
+          <img
+            style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+            src={pleaseLogin}
+          />
+          죄송합니다 다시 시도해주세요.
+        </div>
+      );
+    }
   }, [page]);
 
   const getView = useCallback(async () => {
-    setLoading(true);
-    await instance
-      .get(`/api/posts/group?type=view&page=${page}`)
-      .then((res) => {
-        setView((prevState) => [...prevState, ...res.data.data]);
-      });
-    setLoading(false);
+    try {
+      setLoading(true);
+      await instance
+        .get(`/api/posts/group?type=view&page=${page}`)
+        .then((res) => {
+          setView((prevState) => [...prevState, ...res.data.data]);
+        });
+      setLoading(false);
+    } catch (error) {
+      return (
+        <div>
+          <img
+            style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+            src={pleaseLogin}
+          />
+          죄송합니다 다시 시도해주세요.
+        </div>
+      );
+    }
   }, [page]);
 
   // `getItems` 가 바뀔 때 마다 함수 실행

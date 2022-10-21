@@ -22,7 +22,7 @@ const { kakao } = window;
 
 const PostDetail = () => {
   const { id } = useParams();
-  const { isLoading, error, detail } = useSelector((state) => state?.posts);
+  const { error, detail } = useSelector((state) => state?.posts);
   const { myinfo } = useSelector((state) => state.myinfo);
 
   const [center, setCenter] = useState();
@@ -40,10 +40,20 @@ const PostDetail = () => {
   const userConfirm = user === writerId;
 
   const fetch = async () => {
-    const { data } = await instance.get(`/api/detail/${id}`);
+    try {
+      const { data } = await instance.get(`/api/detail/${id}`);
 
-    setCenter(data?.data?.mapData?.marker);
-    setPoly(data?.data?.mapData?.polyline);
+      setCenter(data?.data?.mapData?.marker);
+      setPoly(data?.data?.mapData?.polyline);
+    } catch (error) {
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>;
+    }
   };
 
   useEffect(() => {
@@ -81,11 +91,16 @@ const PostDetail = () => {
     }
   }, [dispatch, id]);
 
-  if (isLoading) {
-    return <div>...로딩중</div>;
-  }
   if (error) {
-    return <div>{error.message}</div>;
+    return (
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>
+    );
   }
 
   const onLike = async (event) => {
