@@ -51,45 +51,40 @@ const NoticeModal = (props) => {
             </button>
           </header>
           <main>
-            {" "}
             <>
-              <div className="noti-div">
-                <div className="noti-title">
-                  {notice?.data?.notificationResponses &&
-                  notice?.data?.notificationResponses?.length === 0
-                    ? `새로운 알림이 없습니다.`
-                    : `${unRead && unRead}개의 알림이 있습니다.`}
-                </div>
-              </div>
               {notice &&
                 notice.map((notice) => {
-                  return (
-                    <div className="noti-div" key={notice.id}>
-                      <div className="noti-title">
-                        <a href={notice.url} className="noti-btn">
-                          {notice.content}
-                        </a>
+                  if (notice && notice.read === false) {
+                    return (
+                      <div className="noti-div" key={notice.id}>
+                        <div className="noti-title">
+                          <a href={notice.url} className="noti-btn">
+                            {notice.content}
+                          </a>
+                        </div>
+                        <button
+                          className="confirm-button"
+                          onClick={() => {
+                            dispatch(confirmNotice(notice.id));
+                          }}
+                        >
+                          <img className="noti-confirm" src={confirm} />
+                        </button>
                       </div>
-                      {notice.read === null ? (
-                        <button
-                          className="confirm-button"
-                          onClick={() => {
-                            dispatch(confirmNotice(notice.id));
-                          }}
-                        >
-                          <img className="noti-confirm" src={confirm} />
-                        </button>
-                      ) : notice.read === false ? (
-                        <button
-                          className="confirm-button"
-                          onClick={() => {
-                            dispatch(confirmNotice(notice.id));
-                            window.location.reload();
-                          }}
-                        >
-                          <img className="noti-confirm" src={confirm} />
-                        </button>
-                      ) : (
+                    );
+                  }
+                })}
+              <h4 style={{ marginLeft: "10%" }}>확인한 알림</h4>
+              {notice &&
+                notice.map((notice) => {
+                  if (notice.read === true) {
+                    return (
+                      <div className="noti-div" key={notice.id}>
+                        <div className="noti-title">
+                          <a href={notice.url} className="noti-btn">
+                            {notice.content}
+                          </a>
+                        </div>
                         <button
                           className="x-button"
                           onClick={() => {
@@ -98,9 +93,9 @@ const NoticeModal = (props) => {
                         >
                           <img className="noti-delete" src={deleteimg} />
                         </button>
-                      )}
-                    </div>
-                  );
+                      </div>
+                    );
+                  }
                 })}
             </>
           </main>

@@ -8,19 +8,34 @@ import { instance } from "../../shared/api";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import drawalimg from "../../asset/drawalimg.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 
 export default function WithDrawal() {
   const dispatch = useDispatch();
   const [isClick, setIsClick] = useState(false);
-  const { myinfo } = useSelector((state) => state?.myinfo);
-
+  const { myinfo, error } = useSelector((state) => state?.myinfo);
+  console.log(myinfo);
   useEffect(() => {
     dispatch(getMyinfo());
   }, []);
 
+  if (error) {
+    return (
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>
+    );
+  }
+
   const submitHandler = async (e) => {
     let id = myinfo && myinfo[0]?.id;
+    console.log(id);
     const response = await instance.delete(`/api/member/withdrawal/${id}`);
+    console.log(response);
     Swal.fire({
       icon: "warning",
       text: "정말 탈퇴하시겠습니까?",
@@ -32,6 +47,13 @@ export default function WithDrawal() {
     }).then((result) => {
       if (response.data.success) {
         window.location.replace("/");
+      } else {
+        Swal.fire({
+          icon: "error",
+          text: "관리자에게 문의 해주세요!",
+          consfirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        });
       }
     });
   };
