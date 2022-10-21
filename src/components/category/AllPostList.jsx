@@ -131,7 +131,6 @@ export default function AllPostList() {
             selected={sort === item.name}
             handler={() => setSort(item.name)}
             name={item.value}
-            onClick={() => {}}
           />
         ))}
       </div>
