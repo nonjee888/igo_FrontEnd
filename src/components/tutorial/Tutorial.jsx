@@ -19,10 +19,10 @@ export default function Tutorial () {
 
     return (
 
-        <div>
+        <div className="tutorialbody">
           {NICKNAME ? (
            <div className="tutorialimg-wrapper">
-           <img className="tutorialbox" src={tutorial0}/>
+           <img className="tutorialboxs" src={tutorial0}/>
            <img className="tutorialboxs" src={tutorial2}/>
            <img className="tutorialboxs" src={tutorial8}
            onClick={() =>
