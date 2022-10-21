@@ -11,35 +11,35 @@ import tutorial8 from "../../asset/assetTutorial/tutorial8.png";
 import tutorial9 from "../../asset/assetTutorial/tutorial9.png";
 import Swal from "sweetalert2";
 
-
-export default function Tutorial () {
+export default function Tutorial() {
   const NICKNAME = localStorage.getItem("nickname");
 
+  return (
+    <div className="tutorialbody">
+      {NICKNAME ? (
+        <div className="tutorialimg-wrapper">
+          <img className="tutorialboxs" src={tutorial0} />
+          <img className="tutorialboxs" src={tutorial2} />
+          <img
+            className="tutorialboxs"
+            src={tutorial8}
+            onClick={() =>
+              window.open(
+                "https://docs.google.com/forms/d/e/1FAIpQLSdCcFuEap6TCvgPGDc1Kz9uOsl68-026qGyjHAZVD90UGY2Rw/viewform?usp=sf_link",
+                "_blank"
+              )
+            }
+          />
+          <img className="tutorialboxs" src={tutorial3} />
+          <img className="tutorialboxs" src={tutorial4} />
+          <img className="tutorialboxs" src={tutorial5} />
+          <img className="tutorialboxs" src={tutorial6} />
+          <img className="tutorialboxs" src={tutorial7} />
 
-
-    return (
-
-        <div>
-          {NICKNAME ? (
-           <div className="tutorialimg-wrapper">
-           <img className="tutorialbox" src={tutorial0}/>
-           <img className="tutorialboxs" src={tutorial2}/>
-           <img className="tutorialboxs" src={tutorial8}
-           onClick={() =>
-            window.open(
-              "https://docs.google.com/forms/d/e/1FAIpQLSdCcFuEap6TCvgPGDc1Kz9uOsl68-026qGyjHAZVD90UGY2Rw/viewform?usp=sf_link",
-              "_blank"
-            )
-          }/>
-           <img className="tutorialboxs" src={tutorial3}/>
-           <img className="tutorialboxs" src={tutorial4}/>
-           <img className="tutorialboxs" src={tutorial5}/>
-           <img className="tutorialboxs" src={tutorial6}/>
-           <img className="tutorialboxs" src={tutorial7}/>
-         
-           <img className="tutorialboxs" src={tutorial9}/>
-          
-        </div>):( Swal.fire({
+          <img className="tutorialboxs" src={tutorial9} />
+        </div>
+      ) : (
+        Swal.fire({
           icon: "error",
           text: "로그인을 하셔야 이용 가능합니다.",
           showCancelButton: true,
@@ -53,5 +53,6 @@ export default function Tutorial () {
           }
         })
       )}
-   </div> ) 
+    </div>
+  );
 }

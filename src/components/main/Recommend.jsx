@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecommendPosts } from "../../redux/modules/posts";
 import RecommendPost from "./RecommendPost";
+import pleaseLogin from "../../asset/pleaseLogin.png";
 
 //메인페이지 추천게시물
 
@@ -28,7 +29,15 @@ const Recommend = () => {
     );
   }
   if (error) {
-    return <div>{error.message}</div>;
+    return (
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>
+    );
   }
 
   return (

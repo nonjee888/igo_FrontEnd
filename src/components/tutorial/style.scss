@@ -1,36 +1,27 @@
-
+.tutorialbody {
+    max-width: 428px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: #fff;
+    position: absolute;
+}
 
 .tutorialimg-wrapper{
-    width: 100%;
-    height: 100%;
+    max-width: 428px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: #fff;
 }
-.tutorialbox {
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    height: auto;
-    margin: 20% 10% 0 10%;
-}
+
 
 .tutorialboxs {
     display: inline-block;
     position : relative;
     align-items: center;
     justify-content: center;
-    width: 90%;
-    margin: 5% 10% 10% 10%;
-}
-.eventbtnbox{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.eventbtn {
-    position: absolute;
-    display: inline-block;
-    top: 100%;
-    left: 16.5rem;
+    width: 100%;
+    margin: 0 auto 0 auto;
+    background-color: #fff;
 }

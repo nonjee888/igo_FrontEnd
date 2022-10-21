@@ -15,7 +15,6 @@ import MyLikesPage from "../pages/MyLikesPage";
 import MyPlanPage from "../pages/MyPlanPage";
 import MyPlanPostPage from "../pages/MyPlanPostPage";
 import MyPostsListPage from "../pages/MyPostsListPage";
-import Notice from "../pages/Notice";
 import StoryAdd from "../pages/StoryAdd";
 import AllCategoryList from "../components/category/AllCategoryList";
 import Tutorial from "../components/tutorial/Tutorial";
@@ -80,10 +79,12 @@ const Router = () => {
   };
 
   useEffect(() => {
-    isSSE();
+    if (localStorage.getItem("nickname")) {
+      isSSE();
+    }
 
     setInterval(() => {
-      if (!getCookie("Authorization")) {
+      if (localStorage.getItem("nickname") && !getCookie("Authorization")) {
         reToken();
         // 쿠키가 삭제되었을 때 토큰 재발급 요청
       }
@@ -127,7 +128,6 @@ const Router = () => {
         <Route path="/myplan" element={<MyPlanPage />} exact />
         <Route path="/myplanpost" element={<MyPlanPostPage />} exact />
         <Route path="/mypostlist" element={<MyPostsListPage />} exact />
-        <Route path="/notification" element={<Notice />} exact />
         <Route path="*" element={<div>없는 페이지입니다.</div>} />
         <Route path="/addpost" element={<AddPostPage />} exact />
         <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
