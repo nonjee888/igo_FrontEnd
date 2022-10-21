@@ -19,6 +19,9 @@ import InterestModal from "../postmodal/InterestModal";
 import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
+import igoLogo from "../../asset/igoLogo.png";
+import pleaseLogin from "../../asset/pleaseLogin.png";
+
 const AddPost = () => {
   //Buffer: 브라우저에서 바이너리 데이터 조작하기 위함
   window.Buffer = window.Buffer || require("buffer").Buffer;
@@ -36,7 +39,7 @@ const AddPost = () => {
   const editorRef = useRef();
   const dispatch = useDispatch();
   const inputFocus = useRef(null);
-  const { detail } = useSelector((state) => state?.posts);
+  const { detail, isLoading, error } = useSelector((state) => state?.posts);
   const { id } = useParams();
 
   //isEdit 게시물의 id가 param에 존재할 때
@@ -93,7 +96,7 @@ const AddPost = () => {
     cost: "비용 선택",
   });
 
-  //Object를 List 형태로 변환
+  //Object를 List의 형태로 변환
   const tags = Object.values(checkedItems);
 
   const [isChecked, setIsChecked] = useState(false);
@@ -111,6 +114,17 @@ const AddPost = () => {
     inputFocus.current.focus();
   }, []);
 
+  if (error) {
+    return (
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>
+    );
+  }
   return (
     <>
       {NICKNAME ? (
@@ -209,7 +223,7 @@ const AddPost = () => {
               placeholder="... 을 누르면 사진을 공유 할 수 있어요 !   제목은 두글자, 내용은 세글자 입력해야 게시물 등록이 가능합니다."
               initialValue=""
               previewStyle="vertical"
-              height="calc(95vh - 390px)"
+              height="calc(90vh - 370px)"
               initialEditType="wysiwyg"
               useCommandShortcut={false}
               onChange={handleEditor}

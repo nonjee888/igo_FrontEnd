@@ -23,6 +23,8 @@
     width: 95%;
     height: 17.6vh;
     margin-bottom: 5%;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
     & img {
       object-fit: cover;
     }

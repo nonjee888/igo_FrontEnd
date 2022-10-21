@@ -80,10 +80,12 @@ const Router = () => {
   };
 
   useEffect(() => {
-    isSSE();
+    if (localStorage.getItem("nickname")) {
+      isSSE();
+    }
 
     setInterval(() => {
-      if (!getCookie("Authorization")) {
+      if (localStorage.getItem("nickname") && !getCookie("Authorization")) {
         reToken();
         // 쿠키가 삭제되었을 때 토큰 재발급 요청
       }

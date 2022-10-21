@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { instance } from "../../shared/api";
+
+import pleaseLogin from "../../asset/pleaseLogin.png";
+
 import Post from "../post/Post";
 import Tags from "./Tags";
 
@@ -86,9 +89,21 @@ export default function InterestedPostList() {
   //----------------관심사별분류-----------------//
 
   const getInterestList = async () => {
-    const response = await instance.get(`/api/posts/interest?type=${interest}`);
-    setPostList(response.data.data);
-    return response.data.data;
+    try {
+      const response = await instance.get(
+        `/api/posts/interest?type=${interest}`
+      );
+      setPostList(response.data.data);
+      return response.data.data;
+    } catch (error) {
+      <div>
+        <img
+          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+          src={pleaseLogin}
+        />
+        죄송합니다 다시 시도해주세요.
+      </div>;
+    }
   };
 
   useEffect(() => {
