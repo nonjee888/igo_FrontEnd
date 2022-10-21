@@ -36,10 +36,31 @@ export default function Tutorial() {
           <img className="tutorialboxs" src={tutorial6} />
           <img className="tutorialboxs" src={tutorial7} />
 
-          <img className="tutorialboxs" src={tutorial9} />
-        </div>
-      ) : (
-        Swal.fire({
+
+    return (
+
+        <div className="tutorialbody">
+          {NICKNAME ? (
+           <div className="tutorialimg-wrapper">
+           <img className="tutorialboxs" src={tutorial0}/>
+           <img className="tutorialboxs" src={tutorial2}/>
+           <img className="tutorialboxs" src={tutorial8}
+           onClick={() =>
+            window.open(
+              "https://docs.google.com/forms/d/e/1FAIpQLSdCcFuEap6TCvgPGDc1Kz9uOsl68-026qGyjHAZVD90UGY2Rw/viewform?usp=sf_link",
+              "_blank"
+            )
+          }/>
+           <img className="tutorialboxs" src={tutorial3}/>
+           <img className="tutorialboxs" src={tutorial4}/>
+           <img className="tutorialboxs" src={tutorial5}/>
+           <img className="tutorialboxs" src={tutorial6}/>
+           <img className="tutorialboxs" src={tutorial7}/>
+         
+           <img className="tutorialboxs" src={tutorial9}/>
+          
+        </div>):( Swal.fire({
+
           icon: "error",
           text: "로그인을 하셔야 이용 가능합니다.",
           showCancelButton: true,
