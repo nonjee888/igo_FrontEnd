@@ -126,7 +126,7 @@ const PostDetail = () => {
   const onDeletePost = async (id) => {
     const { data } = await instance.delete(`/api/post/${id}`);
     if (data.success) {
-      navigate("/post/all");
+      navigate(-1);
     }
   };
 

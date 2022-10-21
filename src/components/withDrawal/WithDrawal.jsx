@@ -13,14 +13,16 @@ export default function WithDrawal() {
   const dispatch = useDispatch();
   const [isClick, setIsClick] = useState(false);
   const { myinfo } = useSelector((state) => state?.myinfo);
-
+  console.log(myinfo);
   useEffect(() => {
     dispatch(getMyinfo());
   }, []);
 
   const submitHandler = async (e) => {
     let id = myinfo && myinfo[0]?.id;
+    console.log(id);
     const response = await instance.delete(`/api/member/withdrawal/${id}`);
+    console.log(response);
     Swal.fire({
       icon: "warning",
       text: "정말 탈퇴하시겠습니까?",
@@ -32,6 +34,13 @@ export default function WithDrawal() {
     }).then((result) => {
       if (response.data.success) {
         window.location.replace("/");
+      } else {
+        Swal.fire({
+          icon: "error",
+          text: "관리자에게 문의 해주세요!",
+          consfirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        });
       }
     });
   };

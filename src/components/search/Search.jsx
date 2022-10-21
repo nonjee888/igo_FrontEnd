@@ -23,11 +23,6 @@ const Search = () => {
       const value = e.target.value;
       dispatch(searchPosts(searchTerm));
       navigate("/search/" + value);
-    } else {
-      new Swal({
-        title: "키워드를 입력해주세요!",
-        icon: "warning",
-      });
     }
   };
 

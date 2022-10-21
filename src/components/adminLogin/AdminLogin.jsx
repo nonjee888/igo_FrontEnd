@@ -48,7 +48,7 @@ const Admin = () => {
         confirmButtonText: "확인",
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.replace("/choice");
+          window.location.replace("/recommend");
         }
       });
     }

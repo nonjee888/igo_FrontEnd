@@ -139,7 +139,7 @@ const PostKakaoMap = (props) => {
         }}
         style={{
           width: "100%",
-          height: "260px",
+          height: "220px",
         }}
         level={3}
         onCreate={setMap}

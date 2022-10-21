@@ -36,10 +36,9 @@ export const removeNotice = createAsyncThunk(
 export const confirmNotice = createAsyncThunk(
   "notice/confirmNotice",
   async (payload, thunkAPI) => {
-    console.log(payload);
     try {
       const data = await instance.patch(`/api/member/notifications/${payload}`);
-      console.log(data);
+
       if (data.status === 204) {
         Swal.fire({
           text: "알림을 확인했습니다",
@@ -64,7 +63,11 @@ export const notice = createSlice({
     isLogin: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    toggleConfirm(state, action) {
+      console.log(action);
+    },
+  },
 
   extraReducers: {
     //노티스 전체 조회
@@ -91,6 +94,28 @@ export const notice = createSlice({
       state.notice.splice(index, 1);
     },
     [removeNotice.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    [confirmNotice.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [confirmNotice.fulfilled]: (state, action) => {
+      state.isLoading = false;
+
+      let confirm = state?.notice?.map((confirm) => {
+        if (confirm.id === action.meta.arg) {
+          return {
+            ...confirm,
+            read: !confirm.read,
+          };
+        } else {
+          return { ...confirm };
+        }
+      });
+      state.notice = confirm;
+    },
+    [confirmNotice.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },
