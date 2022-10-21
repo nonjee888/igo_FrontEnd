@@ -240,8 +240,9 @@
   position: relative;
 }
 .modal2 > section > header button {
-  position: fixed;
-  right: 20px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
   width: 30px;
   font-size: 30px;
   font-weight: 700;
