@@ -61,7 +61,7 @@ const NoticeModal = (props) => {
                 </div>
               ) : (
                 <>
-                  <h4 style={{ marginLeft: "10%" }}>새로운 알림</h4>
+                  <h4 style={{ marginLeft: "5%" }}>새로운 알림</h4>
                   {NotRead.length === 0 ? (
                     <div className="NoticeRead">새로운 알림이 없습니다.</div>
                   ) : (
@@ -91,7 +91,7 @@ const NoticeModal = (props) => {
                     </>
                   )}
 
-                  <h4 style={{ marginLeft: "10%" }}>확인한 알림</h4>
+                  <h4 style={{ marginLeft: "5%" }}>확인한 알림</h4>
                   {Read.length === 0 ? (
                     <div className="NoticeRead">확인한 알림이 없습니다.</div>
                   ) : (
