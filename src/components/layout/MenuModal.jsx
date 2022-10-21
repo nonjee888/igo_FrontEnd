@@ -8,7 +8,7 @@ import listIcon from "../../asset/assetFooter/listIcon.png";
 import recomendIcon from "../../asset/assetFooter/recomendIcon.png";
 import mypageIcon from "../../asset/assetFooter/mypageIcon.png";
 import addIcon from "../../asset/assetFooter/addIcon.png";
-import igomodalimg from "../../asset/igomodalimg.png";
+import igomodalimg from "../../asset/addmadal.png";
 import storyIcon from "../../asset/assetFooter/storyIcon.png";
 import logout from "../../asset/assetFooter/logout.png";
 import login from "../../asset/assetFooter/login.png";
@@ -71,8 +71,8 @@ const MenuModal = (props) => {
       showDenyButton: true,
       showCancelButton: true,
       imageUrl: igomodalimg,
-      imageWidth: 200,
-      imageHeight: 200,
+      imageWidth: 250,
+      imageHeight: 230,
       confirmButtonColor: "#47AFDB",
       denyButtonColor: "#47AFDB",
       confirmButtonText: "여행남기기",
