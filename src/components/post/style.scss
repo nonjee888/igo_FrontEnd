@@ -418,3 +418,61 @@
     border-radius: 5px;
   }
 }
+
+//PostReportModal.jsx
+.report-modal {
+  animation: modal-bg-show 0.3s;
+  position: fixed;
+  justify-content: right;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.4);
+  .report-box {
+    margin: 25% auto;
+    max-width: 428px;
+    width: 80%;
+    height: 50%;
+    background-color: white;
+    .close-report {
+      margin: 5% 0 0 85%;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      background: none;
+      border: 0;
+      .x-button {
+        float: right;
+        border: none;
+        background: none;
+        height: 80%;
+        width: 160%;
+      }
+    }
+    .report-label {
+      margin: 7% 0 0 25%;
+      display: flex;
+      .report-input {
+        display: inline-block;
+        .report-list {
+          width: 70%;
+          height: 2.5rem;
+          font-size: 1.2rem;
+        }
+      }
+    }
+    .report-title {
+      margin-top: 3%;
+    }
+    .report-button {
+      width: 20%;
+      height: 8%;
+      border: none;
+      color: white;
+      margin-top: 5%;
+      background-color: #555555;
+    }
+  }
+}
