@@ -420,6 +420,7 @@
   display: flex;
   margin: 5% auto;
   justify-content: center;
+  align-items: center;
   width: 70%;
   .MyplanPostAdd {
     cursor: pointer;
@@ -433,7 +434,7 @@
   .MyplanPostGoback {
     width: 14.5%;
     height: 14.5%;
-    margin-right: 3%;
+    margin: 0 3% 0.5% 0;
     cursor: pointer;
   }
 }

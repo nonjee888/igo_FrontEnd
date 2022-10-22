@@ -397,6 +397,10 @@
         height: 22px;
         cursor: pointer;
       }
+      .delete-icon1 {
+        width: 20px;
+        height: 22px;
+      }
     }
   }
 }
@@ -414,6 +418,7 @@
   border-top: #e2e2e2 2px dashed;
 }
 .comment-tap {
+  background-color: white;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -423,6 +428,7 @@
     width: 7.5%;
     margin-bottom: 5%;
     margin-left: 2.5%;
+    background-color: white;
   }
 }
 .toggle-comment-wrapper {
@@ -431,9 +437,11 @@
   justify-content: space-between;
   height: 20%;
   padding: 0 20px;
+  background-color: white;
   border-top: 1px solid #eee;
 
   .nickname {
+    background-color: white;
     text-align: center;
     width: 25%;
     margin-bottom: 5%;
@@ -451,6 +459,7 @@
     }
   }
   .comment-input {
+    background-color: white;
     width: 50%;
     height: 30px;
     border: none;

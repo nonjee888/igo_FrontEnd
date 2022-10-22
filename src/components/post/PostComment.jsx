@@ -116,7 +116,7 @@ const PostComment = () => {
                   setComments("");
                 }}
               >
-                댓글
+                작성
               </button>
             </div>
           )}

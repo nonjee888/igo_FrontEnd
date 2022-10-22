@@ -8,8 +8,8 @@ import Modal from "./MenuModal";
 import Modal2 from "./NoticeModal";
 //이미지
 import igoLogo from "../../asset/igoLogo.png";
-import menu from "../../asset/menu.png";
-import notice from "../../asset/notice.png";
+import menu from "../../asset/assetFooter/menu.png";
+import notice from "../../asset/assetFooter/notice.png";
 
 const Headers = () => {
   const dispatch = useDispatch();

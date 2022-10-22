@@ -1,6 +1,5 @@
-import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../../shared/api";
-import Swal from "sweetalert2";
 
 export const getComments = createAsyncThunk(
   "comments/getComments",
@@ -37,12 +36,6 @@ export const removeComment = createAsyncThunk(
       });
 
       if (data.data.success === true) {
-        Swal.fire({
-          icon: "info",
-          text: "댓글이 삭제되었습니다",
-          confirmButtonColor: "#47AFDB",
-          confirmButtonText: "확인",
-        });
       }
       return payload;
     } catch (error) {
