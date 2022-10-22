@@ -11,9 +11,6 @@ export default function RegionPostList() {
 
   const regionList = [
     {
-      name: "전체",
-    },
-    {
       name: "서울/경기권",
     },
     {
@@ -55,12 +52,6 @@ export default function RegionPostList() {
   ];
 
   //-----------------지역별분류-------------------//
-
-  let allRegion =
-    postList &&
-    postList?.filter((post) => {
-      return region === "전체";
-    });
 
   let seoul =
     postList &&
@@ -177,14 +168,7 @@ export default function RegionPostList() {
       </div>
       <div className="post-list-wrapper">
         <div className="content-wrapper">
-          {region === "전체"
-            ? allRegion &&
-              allRegion?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
-              })
-            : region === "서울/경기권"
+          {region === "서울/경기권"
             ? seoul &&
               seoul?.map((post) => {
                 return (
