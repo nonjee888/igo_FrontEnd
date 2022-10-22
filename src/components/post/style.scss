@@ -17,7 +17,7 @@
     justify-content: space-around;
     .tagmodalbtn {
       height: 3.5vh;
-      width: 30%;
+      width: 25%;
       margin: 1.5%;
       display: inline-block;
       align-items: center;
@@ -25,12 +25,12 @@
       border: none;
       color: white;
       font-weight: bold;
-      font-size: medium;
-      background: linear-gradient(to left, #bababa 30%, #838383 70%);
+      font-size: small;
+      background: linear-gradient(to left, #838383, #bababa);
     }
     .selectedtagmodalbtn {
       height: 3.5vh;
-      width: 30%;
+      width: 25%;
       margin: 1.5%;
       display: inline-block;
       justify-content: center;
@@ -39,8 +39,22 @@
       border: none;
       color: white;
       font-weight: bold;
-      font-size: medium;
-      background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
+      font-size: small;
+      background: linear-gradient(to left, #80bbd0, #f5c9e0);
+    }
+
+    .closebtn {
+      border: none;
+      display: inline-block;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      font-weight: bold;
+      height: 3.5vh;
+      margin: 1.5%;
+      color: white;
+      font-size: small;
+      background: linear-gradient(to left, #80bbd0, #f5c9e0);
     }
   }
   .editor-wrapper {
@@ -84,6 +98,15 @@
   border-radius: 5px;
   color: white;
   font-weight: 900;
+}
+.map-modal-btn {
+  background: none;
+  border: none;
+  width: 4%;
+  height: 4%;
+  .map-info {
+    width: 500%;
+  }
 }
 .footer {
   margin-top: 2%;
@@ -136,7 +159,7 @@
     color: white;
     font-weight: bold;
     font-size: medium;
-    background: linear-gradient(to left, #bababa 30%, #838383 70%);
+    background: linear-gradient(to left, #838383, #bababa);
   }
 }
 

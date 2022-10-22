@@ -41,6 +41,7 @@ const PostDetail = () => {
       cancelButtonColor: "#D9D9D9",
       confirmButtonColor: "#47AFDB",
       confirmButtonText: "확인",
+      cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
         setModalOpen(true);
@@ -66,7 +67,7 @@ const PostDetail = () => {
       setCenter(data?.data?.mapData?.marker);
       setPoly(data?.data?.mapData?.polyline);
     } catch (error) {
-      <div>
+      <div className="All" style={{ marginLeft: "10%" }}>
         <img
           style={{ width: "100%", height: "100%", marginBottom: "10%" }}
           src={pleaseLogin}
@@ -113,7 +114,7 @@ const PostDetail = () => {
 
   if (error) {
     return (
-      <div>
+      <div className="All" style={{ marginLeft: "10%" }}>
         <img
           style={{ width: "100%", height: "100%", marginBottom: "10%" }}
           src={pleaseLogin}
