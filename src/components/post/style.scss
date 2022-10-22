@@ -26,6 +26,7 @@
       color: white;
       font-weight: bold;
       font-size: small;
+      cursor: pointer;
       background: linear-gradient(to left, #838383, #bababa);
     }
     .selectedtagmodalbtn {
@@ -40,6 +41,7 @@
       color: white;
       font-weight: bold;
       font-size: small;
+      cursor: pointer;
       background: linear-gradient(to left, #80bbd0, #f5c9e0);
     }
 
@@ -54,6 +56,7 @@
       margin: 1.5%;
       color: white;
       font-size: small;
+      cursor: pointer;
       background: linear-gradient(to left, #80bbd0, #f5c9e0);
     }
   }
@@ -86,12 +89,14 @@
     border-radius: 5px;
     color: white;
     font-weight: 900;
+    cursor: pointer;
     background: linear-gradient(to left, #80bbd0, #f5c9e0);
   }
 }
 
 //PostKakaoMap.jsx
 .지도버튼 {
+  cursor: pointer;
   background: linear-gradient(to left, #80bbd0, #f5c9e0);
   height: 3vh;
   border: none;
@@ -104,6 +109,7 @@
   border: none;
   width: 4%;
   height: 4%;
+  cursor: pointer;
   .map-info {
     width: 500%;
   }
@@ -117,6 +123,7 @@
     background: none;
     border: none;
     width: 10%;
+    cursor: pointer;
     .goback-icon {
       width: 3vh;
       height: 3vh;
@@ -127,6 +134,7 @@
     width: 45%;
     background: none;
     border: none;
+    cursor: pointer;
     .edit-icon {
       width: 80%;
       height: 90%;
@@ -145,6 +153,7 @@
     color: white;
     font-weight: bold;
     font-size: medium;
+    cursor: pointer;
     background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
   }
   .noSubmit-post {
@@ -158,6 +167,7 @@
     border: none;
     color: white;
     font-weight: bold;
+    cursor: pointer;
     font-size: medium;
     background: linear-gradient(to left, #838383, #bababa);
   }
@@ -294,6 +304,7 @@
         padding-left: 85%;
         background: none;
         border: none;
+        cursor: pointer;
         .edit-detail-icon {
           width: 30px;
           height: 25px;
@@ -335,6 +346,7 @@
       font-weight: 900;
       float: right;
       width: 40%;
+      cursor: pointer;
       margin-bottom: 1%;
     }
   }
@@ -398,6 +410,7 @@
   display: flex;
   justify-content: center;
   margin-top: 3%;
+  cursor: pointer;
   .icon-comment {
     width: 7.5%;
     margin-bottom: 5%;
@@ -411,6 +424,7 @@
   height: 20%;
   padding: 0 20px;
   border-top: 1px solid #eee;
+
   .nickname {
     text-align: center;
     width: 25%;
@@ -439,6 +453,7 @@
     height: 25px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
 }
 
@@ -495,6 +510,7 @@
       border: none;
       color: white;
       margin-top: 5%;
+      cursor: pointer;
       background-color: #555555;
     }
   }
