@@ -7,6 +7,7 @@
 
 .interestcheck {
   display: none;
+ 
 }
 
 .tagcheck {
@@ -19,6 +20,7 @@
   width: 70%;
   height: 2.5rem;
   font-size: 1.2rem;
+ 
 }
 
 .untagcheck {
@@ -31,6 +33,7 @@
   width: 90%;
   height: 5vh;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .btnBox {
@@ -55,6 +58,7 @@
   border: 1px solid transparent;
   margin: 2.5% 0% 0% 2.5%;
   font-weight: bold;
+  cursor: pointer;
   &:hover {
     font-weight: bold;
     color: black;
