@@ -9,20 +9,19 @@ export default function RegionModal({
   setCheckedItems,
 }) {
   const regionList = [
-    { id: 0, tag: "전체" },
-    { id: 1, tag: "서울/경기" },
-    { id: 2, tag: "대전" },
-    { id: 3, tag: "세종" },
-    { id: 4, tag: "인천" },
-    { id: 5, tag: "대구" },
-    { id: 6, tag: "강원도" },
-    { id: 7, tag: "울산" },
-    { id: 8, tag: "충청도" },
-    { id: 9, tag: "광주" },
-    { id: 10, tag: "전라도" },
-    { id: 11, tag: "부산" },
-    { id: 12, tag: "경상도" },
-    { id: 13, tag: "제주도" },
+    { id: 0, tag: "서울/경기" },
+    { id: 1, tag: "대전" },
+    { id: 2, tag: "세종" },
+    { id: 3, tag: "인천" },
+    { id: 4, tag: "대구" },
+    { id: 5, tag: "강원도" },
+    { id: 6, tag: "울산" },
+    { id: 7, tag: "충청도" },
+    { id: 8, tag: "광주" },
+    { id: 9, tag: "전라도" },
+    { id: 10, tag: "부산" },
+    { id: 11, tag: "경상도" },
+    { id: 12, tag: "제주도" },
   ];
 
   const [RegionList] = useState(regionList);
