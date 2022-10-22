@@ -143,7 +143,7 @@ const AddPost = () => {
           <div className="tagsbox">
             <button
               className={
-                checkedItems.interest === "관심사 선택" //initialState 일 때 === 아무것도 선택되지 않았을 때, 태그 색깔 달라짐
+                checkedItems.interest === "관심사선택" //initialState 일 때 === 아무것도 선택되지 않았을 때, 태그 색깔 달라짐
                   ? "tagmodalbtn"
                   : "selectedtagmodalbtn"
               }
@@ -222,7 +222,7 @@ const AddPost = () => {
                 setCheckedItems({
                   region: "지역 선택",
                   cost: "비용 선택",
-                  interest: "관심사 선택",
+                  interest: "관심사선택",
                 });
               }}
             >
