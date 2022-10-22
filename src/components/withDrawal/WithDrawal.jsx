@@ -7,6 +7,7 @@ import { getMyinfo } from "../../redux/modules/myinfo";
 import { instance } from "../../shared/api";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { deleteCookie } from "../../shared/cookie";
 import drawalimg from "../../asset/drawalimg.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
 
@@ -46,6 +47,11 @@ export default function WithDrawal() {
       cancelButtonText: "취소",
     }).then((result) => {
       if (response.data.success) {
+        deleteCookie("Authorization");
+        localStorage.removeItem("isLogin");
+        localStorage.removeItem("nickname");
+        localStorage.removeItem("REFRESH_TOKEN");
+        localStorage.removeItem("ACCESS_TOKEN");
         window.location.replace("/");
       } else {
         Swal.fire({
