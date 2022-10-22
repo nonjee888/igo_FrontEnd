@@ -63,11 +63,7 @@ export const notice = createSlice({
     isLogin: false,
     error: null,
   },
-  reducers: {
-    toggleConfirm(state, action) {
-      console.log(action);
-    },
-  },
+  reducers: {},
 
   extraReducers: {
     //노티스 전체 조회
