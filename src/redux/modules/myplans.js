@@ -151,13 +151,14 @@ export const myplans = createSlice({
         if (MyplanDone.id === action.payload.data.id) {
           return {
             ...MyplanDone,
-            done: !MyplanDone.done,
+            done: +1,
           };
         } else {
           return { ...MyplanDone };
         }
       });
       state.myplans = MyplanDone;
+      // console.log(MyplanDone);
     },
     [postMyplanDone.rejected]: (state, action) => {
       state.isLoading = false;
@@ -173,13 +174,14 @@ export const myplans = createSlice({
         if (MyplanCancel.id === action.payload.data.id) {
           return {
             ...MyplanCancel,
-            done: !MyplanCancel.done,
+            done: 0,
           };
         } else {
           return { ...MyplanCancel };
         }
       });
       state.myplans = MyplanCancel;
+      // console.log(MyplanCancel);
     },
     [postMyplanCancel.rejected]: (state, action) => {
       state.isLoading = false;
