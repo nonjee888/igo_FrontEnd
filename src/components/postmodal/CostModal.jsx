@@ -73,21 +73,6 @@ export default function CostModal({
             </label>
           ))}
         </div>
-        <div className="buttonbox">
-          <button
-            className="closebtn"
-            onClick={() => {
-              setCheckedItems({
-                region: "지역 선택",
-                cost: "비용 선택",
-                interest: "관심사 선택",
-              });
-              closeModal(false);
-            }}
-          >
-            모든선택 초기화
-          </button>
-        </div>
       </div>
     </div>
   );

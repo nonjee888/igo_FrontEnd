@@ -17,7 +17,7 @@
     justify-content: space-around;
     .tagmodalbtn {
       height: 3.5vh;
-      width: 30%;
+      width: 25%;
       margin: 1.5%;
       display: inline-block;
       align-items: center;
@@ -25,12 +25,13 @@
       border: none;
       color: white;
       font-weight: bold;
-      font-size: medium;
-      background: linear-gradient(to left, #bababa 30%, #838383 70%);
+      font-size: small;
+      cursor: pointer;
+      background: linear-gradient(to left, #838383, #bababa);
     }
     .selectedtagmodalbtn {
       height: 3.5vh;
-      width: 30%;
+      width: 25%;
       margin: 1.5%;
       display: inline-block;
       justify-content: center;
@@ -39,8 +40,24 @@
       border: none;
       color: white;
       font-weight: bold;
-      font-size: medium;
-      background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
+      font-size: small;
+      cursor: pointer;
+      background: linear-gradient(to left, #80bbd0, #f5c9e0);
+    }
+
+    .closebtn {
+      border: none;
+      display: inline-block;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      font-weight: bold;
+      height: 3.5vh;
+      margin: 1.5%;
+      color: white;
+      font-size: small;
+      cursor: pointer;
+      background: linear-gradient(to left, #80bbd0, #f5c9e0);
     }
   }
   .editor-wrapper {
@@ -72,18 +89,30 @@
     border-radius: 5px;
     color: white;
     font-weight: 900;
+    cursor: pointer;
     background: linear-gradient(to left, #80bbd0, #f5c9e0);
   }
 }
 
 //PostKakaoMap.jsx
 .지도버튼 {
+  cursor: pointer;
   background: linear-gradient(to left, #80bbd0, #f5c9e0);
   height: 3vh;
   border: none;
   border-radius: 5px;
   color: white;
   font-weight: 900;
+}
+.map-modal-btn {
+  background: none;
+  border: none;
+  width: 4%;
+  height: 4%;
+  cursor: pointer;
+  .map-info {
+    width: 500%;
+  }
 }
 .footer {
   margin-top: 2%;
@@ -94,6 +123,7 @@
     background: none;
     border: none;
     width: 10%;
+    cursor: pointer;
     .goback-icon {
       width: 3vh;
       height: 3vh;
@@ -104,6 +134,7 @@
     width: 45%;
     background: none;
     border: none;
+    cursor: pointer;
     .edit-icon {
       width: 80%;
       height: 90%;
@@ -122,6 +153,7 @@
     color: white;
     font-weight: bold;
     font-size: medium;
+    cursor: pointer;
     background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
   }
   .noSubmit-post {
@@ -135,8 +167,9 @@
     border: none;
     color: white;
     font-weight: bold;
+    cursor: pointer;
     font-size: medium;
-    background: linear-gradient(to left, #bababa 30%, #838383 70%);
+    background: linear-gradient(to left, #838383, #bababa);
   }
 }
 
@@ -271,6 +304,7 @@
         padding-left: 85%;
         background: none;
         border: none;
+        cursor: pointer;
         .edit-detail-icon {
           width: 30px;
           height: 25px;
@@ -312,6 +346,7 @@
       font-weight: 900;
       float: right;
       width: 40%;
+      cursor: pointer;
       margin-bottom: 1%;
     }
   }
@@ -375,6 +410,7 @@
   display: flex;
   justify-content: center;
   margin-top: 3%;
+  cursor: pointer;
   .icon-comment {
     width: 7.5%;
     margin-bottom: 5%;
@@ -388,6 +424,7 @@
   height: 20%;
   padding: 0 20px;
   border-top: 1px solid #eee;
+
   .nickname {
     text-align: center;
     width: 25%;
@@ -416,6 +453,7 @@
     height: 25px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
 }
 
@@ -472,6 +510,7 @@
       border: none;
       color: white;
       margin-top: 5%;
+      cursor: pointer;
       background-color: #555555;
     }
   }
