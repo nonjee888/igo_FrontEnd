@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 
 import goback from "../../asset/goback.png";
 import editpost from "../../asset/editpost.png";
-import pleaseLogin from "../../asset/pleaseLogin.png";
 
 const { kakao } = window;
 
@@ -70,21 +69,12 @@ const PostKakaoMap = (props) => {
       searchPlace: searchPlace,
       tags: tags,
     };
-    try {
-      const data = await instance.patch(`/api/post/${id}`, req, {
-        headers: { "content-type": "application/json" },
-      });
-      if (data.data.success) {
-        navigate("/post/all");
-      }
-    } catch (error) {
-      <div>
-        <img
-          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
-          src={pleaseLogin}
-        />
-        죄송합니다 다시 시도해주세요.
-      </div>;
+
+    const data = await instance.patch(`/api/post/${id}`, req, {
+      headers: { "content-type": "application/json" },
+    });
+    if (data.data.success) {
+      navigate("/post/all");
     }
   };
 
@@ -149,7 +139,7 @@ const PostKakaoMap = (props) => {
         }}
         style={{
           width: "100%",
-          height: "220px",
+          height: "260px",
         }}
         level={3}
         onCreate={setMap}

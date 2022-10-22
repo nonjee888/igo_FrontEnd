@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDetailPosts } from "../../redux/modules/posts";
 
 import { Map, Polyline, MapMarker } from "react-kakao-maps-sdk";
+import PostReportModal from "./PostReportModal";
 import Swal from "sweetalert2";
 import dompurify from "dompurify";
 import PostComment from "./PostComment";
@@ -31,7 +32,26 @@ const PostDetail = () => {
     marker: [],
     polyline: [],
   });
-
+  //신고하기 모달
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+    Swal.fire({
+      text: "신고 하시겠습니까?",
+      showCancelButton: true,
+      cancelButtonColor: "#D9D9D9",
+      confirmButtonColor: "#47AFDB",
+      confirmButtonText: "확인",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setModalOpen(true);
+      } else if (result.isDenied) {
+        return;
+      }
+    });
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   const sanitizer = dompurify.sanitize;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -106,36 +126,6 @@ const PostDetail = () => {
   const onLike = async (event) => {
     event.preventDefault();
     dispatch(onLikePost(id));
-  };
-
-  const onReport = async (id) => {
-    const data = await instance.post(`/api/report/${id}`, {});
-
-    if (data.data.success === true) {
-      Swal.fire({
-        imageUrl: listIcon,
-        imageWidth: 50,
-        imageHeight: 50,
-        text: "신고완료!",
-        confirmButtonColor: "#47AFDB",
-        confirmButtonText: "확인",
-      });
-      return navigate(-1);
-    } else {
-      if (data.data.success === false) {
-        Swal.fire({
-          imageUrl: listIcon,
-          imageWidth: 50,
-          imageHeight: 50,
-          text: "이미 신고한 게시물입니다.",
-          confirmButtonColor: "#47AFDB",
-          confirmButtonText: "확인",
-        }).then((result) => {
-          navigate("/post/all");
-        });
-        return data.data;
-      }
-    }
   };
 
   const onDeletePost = async (id) => {
@@ -226,14 +216,16 @@ const PostDetail = () => {
                 <div className="number">{detail?.heartNum}</div>
               </div>
 
-              <button
-                onClick={() => {
-                  onReport(id);
-                }}
-                className="report-post-btn"
-              >
+              <button onClick={openModal} className="report-post-btn">
                 <img src={report} className="report-post-icon" />
               </button>
+              {modalOpen ? (
+                <PostReportModal
+                  postId={id}
+                  open={modalOpen}
+                  close={closeModal}
+                />
+              ) : null}
             </div>
           ) : (
             /* 게시글 작성자 : like, edit, delete 가능 */
