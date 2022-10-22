@@ -45,6 +45,7 @@
   width: 140px;
   border-radius: 70%;
   color: transparent;
+  cursor: pointer;
 }
 
 .profileImginput {
@@ -85,6 +86,7 @@
   img {
     width: 27px;
     height: 23px;
+    cursor: pointer;
   }
 }
 
@@ -106,6 +108,7 @@
   border-radius: 5px;
   margin-left: 5px;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .profileCategory {
@@ -137,6 +140,7 @@
     padding: 2%;
     border-radius: 10px;
     font-size: 1.1rem;
+    cursor: pointer;
   }
 }
 .noticeImg {
@@ -191,9 +195,12 @@
   width: 100%;
 }
 .MyPostsList {
+  cursor: pointer;
   display: flex;
   width: 49%;
   margin-bottom: 3%;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  border-radius: 5px;
   img {
     width: 98.5%;
     height: 17.6vh;
@@ -229,6 +236,7 @@
   width: 10%;
   height: 10%;
   margin: 2% 0 0 0;
+  cursor: pointer;
 }
 
 .Myplan {
@@ -308,12 +316,14 @@
   font-size: 0.9rem;
   font-weight: bold;
   border-radius: 0 0 10px 0;
+  cursor: pointer;
   &:hover {
     background: linear-gradient(to right, #f5c9e0 5%, #47afdb 70%);
   }
 }
 
 .buttonDelete {
+  cursor: pointer;
   background-color: #ececec;
   border: none;
   border-radius: 0 0 0 10px;
@@ -331,6 +341,7 @@
   width: 90%;
   margin-top: 18%;
   color: transparent;
+  cursor: pointer;
 }
 
 .planImginput {
@@ -342,19 +353,9 @@
   border: 0;
 }
 
-.DatePicker {
-  border: none;
-  border-radius: 10px;
-  width: 40%;
-  font-size: medium;
-  font-weight: bold;
-  margin: 1% 0 0 30%;
-  text-align: center;
-}
-
 .MyplanPost {
   display: grid;
-  grid-template-rows: 9% 11% 30% 48%;
+  grid-template-rows: 9% 9% 30% 48%;
   border-radius: 10px;
   width: 100%;
   height: 50vh;
@@ -364,12 +365,27 @@
 .MyplanPostDate {
   background-color: #ececec;
   border-radius: 10px 10px 0 0;
-  padding: 1.5% 0 0 35%;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input {
+    cursor: pointer;
+  }
 }
 
 .MyplanPostTitle {
   background-color: #ececec;
-  padding: 1.5% 0 0 5%;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  input {
+    height: 60%;
+  }
 }
 
 .MyplanPostImg1 {
@@ -402,18 +418,23 @@
 
 .MyplanPostAddbuttons {
   display: flex;
-  margin: 5% 0 0 27%;
-  img {
-    width: 15%;
+  margin: 5% auto;
+  justify-content: center;
+  width: 70%;
+  .MyplanPostAdd {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 40%;
+    img {
+      width: 100%;
+    }
   }
-}
-
-.MyplanPostAdd {
-  border: none;
-  background-color: transparent;
-  width: 40%;
-  img {
-    width: 100%;
+  .MyplanPostGoback {
+    width: 14.5%;
+    height: 14.5%;
+    margin-right: 3%;
+    cursor: pointer;
   }
 }
 
@@ -435,7 +456,7 @@
 }
 .modal > section {
   width: 95%;
-  height: 210px;
+  height: 215px;
   max-width: 428px;
   margin: 0 auto;
   border-radius: 0.3rem;

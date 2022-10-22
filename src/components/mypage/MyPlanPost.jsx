@@ -120,7 +120,7 @@ const MyPlanPost = () => {
               onClick={() => {
                 navigate(-1);
               }}
-              style={{ height: "50%" }}
+              className="MyplanPostGoback"
             />
             <button className="MyplanPostAdd" type="submit">
               <img src={calendar} alt="일정등록" />

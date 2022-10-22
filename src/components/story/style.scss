@@ -12,6 +12,11 @@
     margin: auto;
     padding: 7% 0 5% 0;
   }
+  .btn-container {
+    img {
+      cursor: pointer;
+    }
+  }
 }
 
 .videoAddInfo {
@@ -28,10 +33,12 @@
 
 .videoAddbuttons {
   display: flex;
-  margin-left: 22%;
-  padding: 6%;
+  justify-content: center;
+  width: 70%;
+  margin: 5% auto;
   img {
     width: 17%;
+    cursor: pointer;
   }
   .videoAdd {
     border: none;

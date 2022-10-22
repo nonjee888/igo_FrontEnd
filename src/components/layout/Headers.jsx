@@ -55,38 +55,46 @@ const Headers = () => {
         {NICKNAME === null ? (
           <></>
         ) : myinfo === undefined ? (
-          <div className="headers-님">
-            <div
-              className="headers-nick"
-              style={{
-                fontWeight: "bold",
-                fontSize: "1em",
-                color: "#555555",
-              }}
-            >
-              {NICKNAME}
+          <>
+            <div className="headers-님">
+              <div
+                className="headers-nick"
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "1em",
+                  color: "#555555",
+                }}
+              >
+                {NICKNAME}
+              </div>
+              님
             </div>
-            님
-          </div>
+            <div className="noticeButton" onClick={openModal2}>
+              <img src={notice} alt="알림" />
+              {notice1.length !== 0 ? <div className="notification" /> : null}
+            </div>
+          </>
         ) : (
-          <div className="headers-님">
-            <div
-              className="headers-nick"
-              style={{
-                fontWeight: "bold",
-                fontSize: "1em",
-                color: "#555555",
-              }}
-            >
-              {myinfo[0].nickname}
+          <>
+            <div className="headers-님">
+              <div
+                className="headers-nick"
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "1em",
+                  color: "#555555",
+                }}
+              >
+                {myinfo[0].nickname}
+              </div>
+              님
             </div>
-            님
-          </div>
+            <div className="noticeButton" onClick={openModal2}>
+              <img src={notice} alt="알림" />
+              {notice1.length !== 0 ? <div className="notification" /> : null}
+            </div>
+          </>
         )}
-      </div>
-      <div className="noticeButton" onClick={openModal2}>
-        <img src={notice} alt="알림" />
-        {notice1.length !== 0 ? <div className="notification" /> : null}
       </div>
       <Modal2 open={modalOpen2} close={closeModal2} />
       <button className="Menu" onClick={openModal}>

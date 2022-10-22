@@ -148,7 +148,7 @@ const Myinfo = () => {
           <h3 style={{ margin: "0 0 3% 5%" }}>관심 여행 키워드</h3>
           <img
             src={edit}
-            style={{ width: "30px", height: "25px" }}
+            style={{ width: "30px", height: "25px", cursor: "pointer" }}
             alt="태그수정버튼"
             onClick={() => navigate("/choice")}
           />
