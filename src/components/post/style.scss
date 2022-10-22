@@ -191,6 +191,14 @@
       white-space: nowrap;
     }
   }
+  .detail-tag-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #999fab;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
   //비회원 noUser-detail-btns
   .noUser-detail-btns {
     text-align: center;

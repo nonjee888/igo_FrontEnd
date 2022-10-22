@@ -289,7 +289,7 @@ const PostDetail = () => {
                 background: `linear-gradient(to right, #F5C9E0 30%,#47AFDB) 70%`,
               }}
             >
-              <span className="tag-text" style={{ color: "#fff" }}>
+              <span className="detail-tag-text" style={{ color: "#fff" }}>
                 {detail?.tags[0]}
               </span>
             </div>
@@ -299,7 +299,7 @@ const PostDetail = () => {
                 background: `linear-gradient(to right, #F5C9E0 30%,#47AFDB) 70%`,
               }}
             >
-              <span className="tag-text" style={{ color: "#fff" }}>
+              <span className="detail-tag-text" style={{ color: "#fff" }}>
                 {detail?.tags[1]}
               </span>
             </div>
@@ -309,7 +309,7 @@ const PostDetail = () => {
                 background: `linear-gradient(to right, #F5C9E0 30%,#47AFDB) 70%`,
               }}
             >
-              <span className="tag-text" style={{ color: "#fff" }}>
+              <span className="detail-tag-text" style={{ color: "#fff" }}>
                 {detail?.tags[2]}
               </span>
             </div>
