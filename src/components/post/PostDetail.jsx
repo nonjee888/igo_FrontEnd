@@ -36,6 +36,9 @@ const PostDetail = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     Swal.fire({
+      imageUrl: report,
+      imageWidth: 50,
+      imageHeight: 50,
       text: "신고 하시겠습니까?",
       showCancelButton: true,
       cancelButtonColor: "#D9D9D9",
