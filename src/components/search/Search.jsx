@@ -52,14 +52,14 @@ const Search = () => {
         <img
           src={igoLogo}
           style={{ width: "50%", margin: "80% 25% 0 25%", display: "block" }}
-          alt="내돈내여"
+          alt="스피너"
         />
       </div>
     );
   }
   if (error) {
     return (
-      <div>
+      <div className="All" style={{ marginLeft: "10%" }}>
         <img
           style={{ width: "100%", height: "100%", marginBottom: "10%" }}
           src={pleaseLogin}
@@ -68,6 +68,7 @@ const Search = () => {
       </div>
     );
   }
+
   return (
     <>
       <div className="All">

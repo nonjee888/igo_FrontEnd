@@ -148,7 +148,7 @@ export default function RegionPostList() {
       setPostList(response.data.data);
       return response.data.data;
     } catch (error) {
-      <div>
+      <div className="All" style={{ marginLeft: "10%" }}>
         <img
           style={{ width: "100%", height: "100%", marginBottom: "10%" }}
           src={pleaseLogin}

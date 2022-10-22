@@ -15,7 +15,7 @@ import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
-import listIcon from "../../asset/assetFooter/listIcon.png";
+import addmadal from "../../asset/addmadal.png";
 import deleteimg from "../../asset/deleteimg.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
 
@@ -41,6 +41,7 @@ const PostDetail = () => {
       cancelButtonColor: "#D9D9D9",
       confirmButtonColor: "#47AFDB",
       confirmButtonText: "확인",
+      cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
         setModalOpen(true);
@@ -66,7 +67,7 @@ const PostDetail = () => {
       setCenter(data?.data?.mapData?.marker);
       setPoly(data?.data?.mapData?.polyline);
     } catch (error) {
-      <div>
+      <div className="All" style={{ marginLeft: "10%" }}>
         <img
           style={{ width: "100%", height: "100%", marginBottom: "10%" }}
           src={pleaseLogin}
@@ -113,7 +114,7 @@ const PostDetail = () => {
 
   if (error) {
     return (
-      <div>
+      <div className="All" style={{ marginLeft: "10%" }}>
         <img
           style={{ width: "100%", height: "100%", marginBottom: "10%" }}
           src={pleaseLogin}
@@ -258,11 +259,12 @@ const PostDetail = () => {
                   onClick={() => {
                     Swal.fire({
                       showCancelButton: true,
-                      imageUrl: listIcon,
-                      imageWidth: 50,
-                      imageHeight: 50,
+                      imageUrl: addmadal,
+                      imageWidth: 150,
+                      imageHeight: 150,
                       text: "게시글을 삭제할까요?",
                       confirmButtonColor: "#47AFDB",
+                      cancelButtonColor: "#D9D9D9",
                       confirmButtonText: "삭제 확인",
                     }).then((result) => {
                       if (result.isConfirmed) {

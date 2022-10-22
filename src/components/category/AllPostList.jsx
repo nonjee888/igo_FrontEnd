@@ -45,7 +45,7 @@ export default function AllPostList() {
         });
     } catch (error) {
       return (
-        <div>
+        <div className="All" style={{ marginLeft: "10%" }}>
           <img
             style={{ width: "100%", height: "100%", marginBottom: "10%" }}
             src={pleaseLogin}
@@ -69,7 +69,7 @@ export default function AllPostList() {
       setLoading(false);
     } catch (error) {
       return (
-        <div>
+        <div className="All" style={{ marginLeft: "10%" }}>
           <img
             style={{ width: "100%", height: "100%", marginBottom: "10%" }}
             src={pleaseLogin}
@@ -91,7 +91,7 @@ export default function AllPostList() {
       setLoading(false);
     } catch (error) {
       return (
-        <div>
+        <div className="All" style={{ marginLeft: "10%" }}>
           <img
             style={{ width: "100%", height: "100%", marginBottom: "10%" }}
             src={pleaseLogin}
