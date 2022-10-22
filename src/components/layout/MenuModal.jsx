@@ -12,6 +12,7 @@ import igomodalimg from "../../asset/addmadal.png";
 import storyIcon from "../../asset/assetFooter/storyIcon.png";
 import logout from "../../asset/assetFooter/logout.png";
 import login from "../../asset/assetFooter/login.png";
+import research from "../../asset/assetFooter/research.png";
 
 const MenuModal = (props) => {
   const { open, close, header } = props;
@@ -102,16 +103,6 @@ const MenuModal = (props) => {
             {NICKNAME === null ? (
               <div className="Icon-box">
                 <div className="btnbox">
-                  <button
-                    className="Signbtn"
-                    onClick={() => {
-                      navigate("/");
-                    }}
-                  >
-                    <img src={login} alt="로그인" className="FootersIcon" />
-                  </button>
-                </div>
-                <div className="btnbox">
                   <img
                     className="FootersIcon"
                     onClick={Alert}
@@ -155,30 +146,26 @@ const MenuModal = (props) => {
                     alt="마이페이지"
                   />
                 </div>
-                <div className="Sign-box">
-                  <div
-                    className="Signbtn"
-                    onClick={() => {
-                      navigate("/");
-                    }}
-                  >
-                    <img
-                      src={login}
-                      alt="로그인회원가입"
-                      className="loginButton"
-                    />
-                  </div>
-                  <button
-                    className="research"
-                    onClick={() => {
-                      navigate("/tutorial");
-                    }}
-                  >
-                    튜토리얼보고
-                    <br />
-                    ☕받기
-                  </button>
+                <div
+                  className="btnbox"
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  <img
+                    src={login}
+                    alt="로그인회원가입"
+                    className="FootersIcon"
+                  />
                 </div>
+                <button
+                  className="research"
+                  onClick={() => {
+                    navigate("/tutorial");
+                  }}
+                >
+                  <img src={research} alt="리서치커피받으세요" />
+                </button>
               </div>
             ) : (
               <div className="Icon-box">
@@ -241,9 +228,7 @@ const MenuModal = (props) => {
                     navigate("/tutorial");
                   }}
                 >
-                  튜토리얼보고
-                  <br />
-                  ☕받기
+                  <img src={research} alt="리서치커피받으세요" />
                 </button>
               </div>
             )}
