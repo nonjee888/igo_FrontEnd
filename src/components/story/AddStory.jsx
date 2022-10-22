@@ -119,7 +119,9 @@ const AddStory = () => {
               <img src={videoInfo} alt="영상첨부정보" />
             </div>
             <div className="videoPreview">
-              {videoPreview != null && <video src={videoPreview} />}
+              {videoPreview != null && (
+                <video controls controlsList="nodownload" src={videoPreview} />
+              )}
             </div>
 
             <div className="error-message">{errorMsg}</div>
