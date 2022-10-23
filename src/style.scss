@@ -16,7 +16,16 @@
   background-color: #fff;
   color: #555555;
 }
-
+.sorry {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30% auto 5% auto;
+  width: 90%;
+  height: 32%;
+  max-width: 400px;
+  max-height: 270px;
+}
 //Post.jsx
 .post-wrapper {
   cursor: pointer;
