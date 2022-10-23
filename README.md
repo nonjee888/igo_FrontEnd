@@ -1,4 +1,4 @@
-# 내돈내여 
+#🚞 내돈내여 
 
 ![내돈내여 썸네일](https://user-images.githubusercontent.com/106578705/196959130-dbee6ce6-7e55-4f43-a62f-077244082991.jpeg)
 ### 프로젝트 기간
@@ -7,13 +7,13 @@
 ## FE : 노은지 심혜림 이다현 | BE : 김민식 김예원 이주현
  BE GitHub : https://github.com/kminsic/Igo
 
-# 개요:
+#🔖 서비스 개요
 
 #### 😁광고가 판치는 요즘 블로그,인스타그램 피드들..답답하지 않으셨나요?
 #### 광고없는! 알맹이로 가득찬 정보를 찾고 싶으시다면
 #### 유저들이 내 돈으로 여행하고 인증하는 내돈내여를 써보세요!
 
-# Service Architecture
+#📑 Service Architecture
 
 ![image](https://user-images.githubusercontent.com/106578705/194592914-e330bd9f-8f62-4bbc-b500-6f4e22e886a3.png)
 
