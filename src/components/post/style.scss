@@ -172,6 +172,29 @@
     background: linear-gradient(to left, #838383, #bababa);
   }
 }
+//PostMapModal.jsx
+.mapmodal {
+  animation: modal-bg-show 0.3s;
+  position: fixed;
+  justify-content: right;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.4);
+  .mapmodal-box {
+    display: block;
+    max-width: 428px;
+    .mapmodal-img {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      width: 400px;
+      margin: -320px 0 0 -200px;
+    }
+  }
+}
 
 //PostDetail.jsx
 .detail-wrapper {

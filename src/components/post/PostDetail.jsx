@@ -89,16 +89,23 @@ const PostDetail = () => {
     const bounds = new kakao.maps.LatLngBounds();
 
     if (center?.length === 0 && poly[0]?.points.length !== 0) {
-      poly[0]?.points?.forEach((point) => {
-        bounds.extend(new kakao.maps.LatLng(point.y, point.x));
-      });
+      poly &&
+        poly[0]?.points?.forEach((point) => {
+          bounds.extend(new kakao.maps.LatLng(point.y, point.x));
+        });
     } else {
-      center?.forEach((point) => {
-        bounds.extend(new kakao.maps.LatLng(point.y, point.x));
-      });
+      center &&
+        center?.forEach((point) => {
+          bounds.extend(new kakao.maps.LatLng(point.y, point.x));
+        });
     }
     return bounds;
   }, [center, poly]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (bounds && map) map.setBounds(bounds && bounds);
+  }, [fetch, id]);
 
   function pointsToPath(points) {
     return points.map((point) => ({
