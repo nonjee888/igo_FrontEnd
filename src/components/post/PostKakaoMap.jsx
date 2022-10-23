@@ -3,6 +3,7 @@ import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
 import { useEffect, useState, useRef } from "react";
+import PostMapModal from "./PostMapModal";
 import Swal from "sweetalert2";
 
 import learnMore from "../../asset/learnMore.png";
@@ -36,6 +37,9 @@ const PostKakaoMap = (props) => {
 
   const openModal = () => {
     setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   const handleRegisterButton = async () => {
@@ -255,6 +259,9 @@ const PostKakaoMap = (props) => {
         <button className="map-modal-btn" onClick={openModal}>
           <img className="map-info" src={learnMore} />
         </button>
+        {modalOpen ? (
+          <PostMapModal postId={id} open={modalOpen} close={closeModal} />
+        ) : null}
       </div>
 
       <div className="footer">
