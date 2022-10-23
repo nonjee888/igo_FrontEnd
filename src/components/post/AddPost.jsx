@@ -18,7 +18,7 @@ import PostSearchPlace from "./PostSearchPlace";
 import InterestModal from "../postmodal/InterestModal";
 import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
-
+import initialization from "../../asset/initialization.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
 
 const AddPost = () => {
@@ -226,7 +226,7 @@ const AddPost = () => {
                 });
               }}
             >
-              초기화
+              <img src={initialization} alt="초기화" />
             </button>
           </div>
           <div className="editor-wrapper">
