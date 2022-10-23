@@ -31,35 +31,21 @@ const Choice = () => {
   const [choiceTagID, setChoiceTagID] = useState(0);
   const [clickValue, setClickValue] = useState(false);
   const [btnActive, setBtnActive] = useState(false);
-  ///
+
   const [value, setValue] = useState([
     { id: 0, tag: "" },
     { id: 1, tag: "" },
     { id: 2, tag: "" },
   ]);
-  ///
+
   const nickname = localStorage.getItem("nickname");
   const myinfo = useSelector((state) => state.myinfo.myinfo);
-  ///
+
   const isEdit =
     localStorage.getItem("nickname") &&
     myinfo &&
     myinfo[0].interested.length === 3;
-  ///
-  useEffect(() => {
-    const nickname = localStorage.getItem("nickname");
-    if (nickname && myinfo && myinfo[0].interested.length === 3) {
-      dispatch(getMyinfo()).then((res) => {
-        if (res.payload[0].interested.length === 3) {
-          console.log(checkedItems);
-          setCheackedItems(new Set(res.payload[0].interested));
-        } else {
-          setCheackedItems(new Set());
-        }
-      });
-    }
-  }, [dispatch]);
-  console.log(checkedItems);
+
   const clickTagbtn = (id) => {
     setChoiceTagID(id);
     setClickValue(clickValue);
@@ -111,49 +97,26 @@ const Choice = () => {
 
   return (
     <div className="All">
-      {isEdit ? (
-        <div className="choiceBox">
-          {InterestedList.map((item) => (
-            <label tag={item} key={item.id}>
-              <input
-                className="interestcheck"
-                type="checkbox"
-                name="tag"
-                id={item.id}
-                value={item.tag}
-                onChange={(e) => checkHandler(e)}
-                onClick={() => clickTagbtn(item.id)}
-                disabled={checkedItems.size >= 3 ? true : false}
-              />
+      <div className="choiceBox">
+        {InterestedList.map((item) => (
+          <label tag={item} key={item.id}>
+            <input
+              className="interestcheck"
+              type="checkbox"
+              name="tag"
+              id={item.id}
+              value={item.tag}
+              onChange={(e) => checkHandler(e)}
+              onClick={() => clickTagbtn(item.id)}
+              disabled={checkedItems.size >= 3 ? true : false}
+            />
 
-              <div className={item.isChecked ? "tagcheck" : "untagcheck"}>
-                {item.tag}
-              </div>
-            </label>
-          ))}
-        </div>
-      ) : (
-        <div className="choiceBox">
-          {InterestedList.map((item) => (
-            <label tag={item} key={item.id}>
-              <input
-                className="interestcheck"
-                type="checkbox"
-                name="tag"
-                id={item.id}
-                value={item.tag}
-                onChange={(e) => checkHandler(e)}
-                onClick={() => clickTagbtn(item.id)}
-                // disabled={checkedItems.size >= 3 ? true : false}
-              />
-
-              <div className={item.isChecked ? "tagcheck" : "untagcheck"}>
-                {item.tag}
-              </div>
-            </label>
-          ))}
-        </div>
-      )}
+            <div className={item.isChecked ? "tagcheck" : "untagcheck"}>
+              {item.tag}
+            </div>
+          </label>
+        ))}
+      </div>
 
       <div className="btnBox">
         <button
