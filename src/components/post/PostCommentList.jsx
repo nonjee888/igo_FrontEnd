@@ -1,8 +1,11 @@
 import { useDispatch } from "react-redux";
 import { removeComment } from "../../redux/modules/comments";
+import Swal from "sweetalert2";
+//이미지
 import deleteimg from "../../asset/deleteimg.png";
 import deleteNemo from "../../asset/deleteNemo.png";
 import profileImg from "../../asset/assetMypage/profileImg.png";
+import commentIcon from "../../asset/commentIcon.png";
 
 const CommentList = (props) => {
   const dispatch = useDispatch();
@@ -37,14 +40,28 @@ const CommentList = (props) => {
             <button
               className="delete-btn"
               onClick={() => {
-                dispatch(removeComment(payload));
+                Swal.fire({
+                  showCancelButton: true,
+                  imageUrl: commentIcon,
+                  imageWidth: 50,
+                  imageHeight: 40,
+                  text: "댓글을 삭제할까요?",
+                  confirmButtonColor: "#47AFDB",
+                  cancelButtonColor: "#D9D9D9",
+                  confirmButtonText: "확인",
+                  cancelButtonText: "취소",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    dispatch(removeComment(payload));
+                  }
+                });
               }}
             >
               <img className="delete-icon" src={deleteimg} />
             </button>
           ) : (
             <button className="delete-btn">
-              <img className="delete-icon" src={deleteNemo} />
+              <img className="delete-icon1" src={deleteNemo} />
             </button>
           )}
         </div>

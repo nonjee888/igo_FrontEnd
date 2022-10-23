@@ -57,7 +57,9 @@ const PostReportModal = (props) => {
         <button className="close-report" onClick={close}>
           <img className="x-button" src={closeModal} />
         </button>
-        <div className="report-title">신고 사유</div>
+        <div className="report-title">
+          <h3>신고 사유</h3>
+        </div>
         {reportList.map((item) => (
           <label className="report-label" content={item} key={item.id}>
             <input

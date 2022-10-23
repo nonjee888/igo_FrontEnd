@@ -35,7 +35,7 @@
 //헤더 nickname+btn div
 .hearders-nickWrap {
   width: 55%;
-  margin: 2% 5% 0 2%;
+  margin: 2% 3% 0 2%;
   display: flex;
   // background-color: #8aceff;
 }
@@ -57,11 +57,26 @@
 .noticeButton {
   cursor: pointer;
   display: flex;
-  width: 15%;
-  margin-bottom: 2%;
-  padding: 1% 0;
+  width: 20%;
+  margin-bottom: 1%;
+
   img {
-    width: 100%;
+    width: 75%;
+  }
+  .notification {
+    margin-top: 7%;
+    width: 5px;
+    height: 5px;
+    background-color: #47afdb;
+    border-radius: 70%;
+    animation: notification-widget 1s;
+    animation-iteration-count: infinite;
+    @keyframes notification-widget {
+      from {
+        background: red;
+        bottom: 10%;
+      }
+    }
   }
 }
 
@@ -70,8 +85,8 @@
   cursor: pointer;
   border: none;
   background: none;
-  width: 10%;
-  margin: 2% 0 0 -1.5%;
+  width: 11%;
+  margin-top: 2%;
   img {
     width: 100%;
   }
@@ -102,13 +117,6 @@
 .btnbox {
   display: flex;
   margin: 3% 4%;
-}
-
-.notification {
-  width: 0.5vh;
-  height: 0.5vh;
-  background-color: red;
-  border-radius: 50%;
 }
 
 //리서치버튼

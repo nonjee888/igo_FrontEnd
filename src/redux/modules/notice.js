@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 import Swal from "sweetalert2";
 import { instance } from "../../shared/api";
 
@@ -63,11 +62,7 @@ export const notice = createSlice({
     isLogin: false,
     error: null,
   },
-  reducers: {
-    toggleConfirm(state, action) {
-      console.log(action);
-    },
-  },
+  reducers: {},
 
   extraReducers: {
     //노티스 전체 조회

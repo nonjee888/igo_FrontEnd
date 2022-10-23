@@ -172,6 +172,29 @@
     background: linear-gradient(to left, #838383, #bababa);
   }
 }
+//PostMapModal.jsx
+.mapmodal {
+  animation: modal-bg-show 0.3s;
+  position: fixed;
+  justify-content: right;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.4);
+  .mapmodal-box {
+    display: block;
+    max-width: 428px;
+    .mapmodal-img {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      width: 400px;
+      margin: -320px 0 0 -200px;
+    }
+  }
+}
 
 //PostDetail.jsx
 .detail-wrapper {
@@ -397,6 +420,10 @@
         height: 22px;
         cursor: pointer;
       }
+      .delete-icon1 {
+        width: 20px;
+        height: 22px;
+      }
     }
   }
 }
@@ -405,7 +432,7 @@
 .commentContainer {
   max-width: 428px;
   position: fixed;
-  bottom: 4%;
+  bottom: 0;
   width: 100%;
   z-index: 1;
   transition: all 1000ms;
@@ -414,6 +441,7 @@
   border-top: #e2e2e2 2px dashed;
 }
 .comment-tap {
+  background-color: white;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -423,6 +451,7 @@
     width: 7.5%;
     margin-bottom: 5%;
     margin-left: 2.5%;
+    background-color: white;
   }
 }
 .toggle-comment-wrapper {
@@ -431,9 +460,11 @@
   justify-content: space-between;
   height: 20%;
   padding: 0 20px;
+  background-color: white;
   border-top: 1px solid #eee;
 
   .nickname {
+    background-color: white;
     text-align: center;
     width: 25%;
     margin-bottom: 5%;
@@ -451,6 +482,7 @@
     }
   }
   .comment-input {
+    background-color: white;
     width: 50%;
     height: 30px;
     border: none;
@@ -469,19 +501,22 @@
 .report-modal {
   animation: modal-bg-show 0.3s;
   position: fixed;
-  justify-content: right;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.4);
+
   .report-box {
-    margin: 25% auto;
+    margin: 20vh auto;
+    border-radius: 0.3rem;
+    width: 90%;
+    height: 63vh;
     max-width: 428px;
-    width: 80%;
-    height: 50%;
-    background-color: white;
+    max-height: 450px;
+    background-color: #fff;
+    overflow: hidden;
     .close-report {
       margin: 5% 0 0 85%;
       width: 20px;
@@ -497,28 +532,30 @@
         width: 160%;
       }
     }
+    .report-title {
+      margin-top: -4%;
+    }
     .report-label {
-      margin: 7% 0 0 25%;
       display: flex;
-      .report-input {
-        display: inline-block;
-        .report-list {
-          width: 70%;
-          height: 2.5rem;
-          font-size: 1.2rem;
-        }
+      background-color: #ececec;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 300px;
+      input {
+        margin-left: 10%;
+      }
+      .report-list {
+        margin: 15px 5px;
       }
     }
-    .report-title {
-      margin-top: 3%;
-    }
     .report-button {
-      width: 20%;
-      height: 8%;
+      width: 25%;
+      height: 9%;
       border: none;
       color: white;
       margin-top: 5%;
       cursor: pointer;
+      border-radius: 0.3rem;
       background-color: #555555;
     }
   }

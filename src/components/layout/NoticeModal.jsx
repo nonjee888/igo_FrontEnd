@@ -8,7 +8,7 @@ import { removeNotice, confirmNotice } from "../../redux/modules/notice";
 //이미지
 import confirm from "../../asset/assetMypage/confirm.png";
 import deleteimg from "../../asset/deleteimg.png";
-import noticeImg from "../../asset/noticeImg.png";
+import noticeImg from "../../asset/assetFooter/noticeImg.png";
 
 const NoticeModal = (props) => {
   const { open, close, header } = props;

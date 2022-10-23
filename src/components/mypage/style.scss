@@ -40,11 +40,12 @@
 
 .profileImginputLabel {
   background-color: transparent;
+  color: transparent;
   position: absolute;
   height: 120px;
-  width: 140px;
+  width: 130px;
   border-radius: 70%;
-  color: transparent;
+
   cursor: pointer;
 }
 
@@ -420,6 +421,7 @@
   display: flex;
   margin: 5% auto;
   justify-content: center;
+  align-items: center;
   width: 70%;
   .MyplanPostAdd {
     cursor: pointer;
@@ -433,7 +435,7 @@
   .MyplanPostGoback {
     width: 14.5%;
     height: 14.5%;
-    margin-right: 3%;
+    margin: 0 3% 0.5% 0;
     cursor: pointer;
   }
 }
