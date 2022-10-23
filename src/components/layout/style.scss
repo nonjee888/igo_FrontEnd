@@ -59,6 +59,7 @@
   display: flex;
   width: 20%;
   margin-bottom: 1%;
+
   img {
     width: 75%;
   }
@@ -66,8 +67,16 @@
     margin-top: 7%;
     width: 5px;
     height: 5px;
-    background-color: red;
+    background-color: #47afdb;
     border-radius: 70%;
+    animation: notification-widget 1s;
+    animation-iteration-count: infinite;
+    @keyframes notification-widget {
+      from {
+        background: red;
+        bottom: 10%;
+      }
+    }
   }
 }
 
