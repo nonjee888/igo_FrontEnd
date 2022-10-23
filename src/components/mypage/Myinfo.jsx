@@ -23,6 +23,7 @@ const Myinfo = () => {
       dispatch(getMyinfo()).then((response) => {
         if (!response.payload[0].interested) return;
         setInterest(response.payload[0]);
+        setNickname(response.payload[0].nickname);
         if (response.payload[0].interested === null) {
           navigate("/choice");
         }
@@ -148,7 +149,7 @@ const Myinfo = () => {
           <h3 style={{ margin: "0 0 3% 5%" }}>관심 여행 키워드</h3>
           <img
             src={edit}
-            style={{ width: "30px", height: "25px" }}
+            style={{ width: "30px", height: "25px", cursor: "pointer" }}
             alt="태그수정버튼"
             onClick={() => navigate("/choice")}
           />

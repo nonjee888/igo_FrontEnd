@@ -23,9 +23,8 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
@@ -39,7 +38,7 @@ jobs:
       # 빌드
       - name: Build project
         run: npm run build
-      # 배포 
+      # 배포
       - name: Deploy build outputs
         uses: appleboy/scp-action@master
         with:

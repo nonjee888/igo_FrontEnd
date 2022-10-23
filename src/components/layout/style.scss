@@ -1,31 +1,3 @@
-.SearchBar {
-  font-size: 18px;
-  width: calc(100% - 40px);
-  border: none;
-  outline: none;
-  padding: 0;
-}
-//search 돋보기
-.Icon {
-  position: absolute;
-  right: 12px;
-  top: 5px;
-  width: 26px;
-}
-//search div박스
-.input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 80%;
-  height: 30px;
-  padding: 5% 10%;
-  box-sizing: border-box;
-  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
-  border-radius: 120px;
-  background: #fff;
-  margin: 1rem auto 1rem auto;
-}
 //최신순 추천순 조회순
 .changer-wrapper {
   justify-content: center; //가운데 정렬
@@ -55,20 +27,24 @@
 //내돈내여 로고
 .Logo {
   width: 25%;
-  margin: 2% 0 0 5%;
+  margin: 2% 0 0 3%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 //헤더 nickname+btn div
 .hearders-nickWrap {
-  width: 43%;
-  margin: 2% 4% 0 2%;
+  width: 55%;
+  margin: 2% 3% 0 2%;
+  display: flex;
+  // background-color: #8aceff;
 }
 //헤더 nick+님 div
 .headers-님 {
   display: flex;
   justify-content: right;
   width: 100%;
+  margin: 3.5% 8% 0 0;
 }
 //헤더 닉네임 p
 .headers-nick {
@@ -76,23 +52,41 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: right;
-  margin-bottom: 2%;
   width: 100%;
 }
 .noticeButton {
+  cursor: pointer;
   display: flex;
-  width: 8%;
+  width: 20%;
+  margin-bottom: 1%;
+
   img {
-    width: 80%;
+    width: 75%;
+  }
+  .notification {
+    margin-top: 7%;
+    width: 5px;
+    height: 5px;
+    background-color: #47afdb;
+    border-radius: 70%;
+    animation: notification-widget 1s;
+    animation-iteration-count: infinite;
+    @keyframes notification-widget {
+      from {
+        background: red;
+        bottom: 10%;
+      }
+    }
   }
 }
 
 //메뉴
 .Menu {
+  cursor: pointer;
   border: none;
   background: none;
-  width: 10%;
-  margin: 1% 0 0 1%;
+  width: 11%;
+  margin-top: 2%;
   img {
     width: 100%;
   }
@@ -108,11 +102,12 @@
   background-color: white;
 }
 
-//푸터 아이콘들
+//메뉴 아이콘들
 .FootersIcon {
-  margin: 10px 5%;
+  margin: 10px auto;
   width: 80%;
   max-width: 130px;
+  cursor: pointer;
   &:hover {
     background-color: #ececec;
   }
@@ -124,13 +119,6 @@
   margin: 3% 4%;
 }
 
-.notification {
-  width: 1vh;
-  height: 1vh;
-  background-color: red;
-  border-radius: 50%;
-}
-
 //리서치버튼
 .research {
   display: flex;
@@ -140,12 +128,12 @@
   animation: research-widget 1s;
   animation-iteration-count: infinite;
   border: none;
-  text-align: center;
-  font-weight: 600;
-  color: #fff;
   height: 7vh;
   width: 100%;
-  font-size: 15px;
+  img {
+    width: 85%;
+    max-width: 140px;
+  }
 }
 @keyframes research-widget {
   from {
@@ -163,7 +151,7 @@
   display: none;
   position: fixed;
   justify-content: right;
-  top: 6vh;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -177,7 +165,7 @@
 }
 .modal1 > section {
   width: 40%;
-  height: 94vh;
+  height: 100vh;
   max-width: 428px;
   background-color: #fff;
   animation: modal-show 0.3s;
@@ -314,26 +302,3 @@
     }
   }
 }
-// .my-alarm-div {
-//   display: grid;
-//   grid-template-columns: 27px 45px 25px;
-//   background-color: #ececec;
-//   width: 90%;
-//   padding: 2%;
-//   border-radius: 10px;
-//   font-size: 1.1rem;
-//   align-items: center;
-//   img {
-//     width: 23px;
-//   }
-//   .my-notification {
-//     width: 100%;
-//     height: 23px;
-//     background-color: #47afdb;
-//     border-radius: 70%;
-//     color: white;
-//     display: flex;
-//     align-items: center;
-//     margin-left: -1%;
-//   }
-// }

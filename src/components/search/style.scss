@@ -14,14 +14,16 @@
   margin: 1rem auto 1rem auto;
   .SearchBar {
     font-size: 18px;
-    width: calc(100% - 40px);
+    width: calc(100% - 0px);
     border: none;
     outline: none;
     padding: 0;
+    background-color: transparent;
   }
   .search-btn {
     background: none;
     border: none; //search 돋보기
+    cursor: pointer;
     .Icon {
       position: absolute;
       right: 12px;

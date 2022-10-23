@@ -15,7 +15,7 @@ import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
-import listIcon from "../../asset/assetFooter/listIcon.png";
+import list from "../../asset/list.png";
 import deleteimg from "../../asset/deleteimg.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
 
@@ -36,11 +36,15 @@ const PostDetail = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     Swal.fire({
+      imageUrl: report,
+      imageWidth: 50,
+      imageHeight: 50,
       text: "신고 하시겠습니까?",
       showCancelButton: true,
       cancelButtonColor: "#D9D9D9",
       confirmButtonColor: "#47AFDB",
       confirmButtonText: "확인",
+      cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
         setModalOpen(true);
@@ -66,7 +70,7 @@ const PostDetail = () => {
       setCenter(data?.data?.mapData?.marker);
       setPoly(data?.data?.mapData?.polyline);
     } catch (error) {
-      <div>
+      <div className="All" style={{ marginLeft: "10%" }}>
         <img
           style={{ width: "100%", height: "100%", marginBottom: "10%" }}
           src={pleaseLogin}
@@ -85,16 +89,23 @@ const PostDetail = () => {
     const bounds = new kakao.maps.LatLngBounds();
 
     if (center?.length === 0 && poly[0]?.points.length !== 0) {
-      poly[0]?.points?.forEach((point) => {
-        bounds.extend(new kakao.maps.LatLng(point.y, point.x));
-      });
+      poly &&
+        poly[0]?.points?.forEach((point) => {
+          bounds.extend(new kakao.maps.LatLng(point.y, point.x));
+        });
     } else {
-      center?.forEach((point) => {
-        bounds.extend(new kakao.maps.LatLng(point.y, point.x));
-      });
+      center &&
+        center?.forEach((point) => {
+          bounds.extend(new kakao.maps.LatLng(point.y, point.x));
+        });
     }
     return bounds;
   }, [center, poly]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (bounds && map) map.setBounds(bounds && bounds);
+  }, [fetch, id]);
 
   function pointsToPath(points) {
     return points.map((point) => ({
@@ -113,7 +124,7 @@ const PostDetail = () => {
 
   if (error) {
     return (
-      <div>
+      <div className="All" style={{ marginLeft: "10%" }}>
         <img
           style={{ width: "100%", height: "100%", marginBottom: "10%" }}
           src={pleaseLogin}
@@ -258,12 +269,14 @@ const PostDetail = () => {
                   onClick={() => {
                     Swal.fire({
                       showCancelButton: true,
-                      imageUrl: listIcon,
+                      imageUrl: list,
                       imageWidth: 50,
                       imageHeight: 50,
                       text: "게시글을 삭제할까요?",
                       confirmButtonColor: "#47AFDB",
-                      confirmButtonText: "삭제 확인",
+                      cancelButtonColor: "#D9D9D9",
+                      confirmButtonText: "확인",
+                      cancelButtonText: "취소",
                     }).then((result) => {
                       if (result.isConfirmed) {
                         onDeletePost(id);
@@ -287,7 +300,7 @@ const PostDetail = () => {
                 background: `linear-gradient(to right, #F5C9E0 30%,#47AFDB) 70%`,
               }}
             >
-              <span className="tag-text" style={{ color: "#fff" }}>
+              <span className="detail-tag-text" style={{ color: "#fff" }}>
                 {detail?.tags[0]}
               </span>
             </div>
@@ -297,7 +310,7 @@ const PostDetail = () => {
                 background: `linear-gradient(to right, #F5C9E0 30%,#47AFDB) 70%`,
               }}
             >
-              <span className="tag-text" style={{ color: "#fff" }}>
+              <span className="detail-tag-text" style={{ color: "#fff" }}>
                 {detail?.tags[1]}
               </span>
             </div>
@@ -307,7 +320,7 @@ const PostDetail = () => {
                 background: `linear-gradient(to right, #F5C9E0 30%,#47AFDB) 70%`,
               }}
             >
-              <span className="tag-text" style={{ color: "#fff" }}>
+              <span className="detail-tag-text" style={{ color: "#fff" }}>
                 {detail?.tags[2]}
               </span>
             </div>

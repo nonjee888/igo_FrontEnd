@@ -17,7 +17,7 @@
     justify-content: space-around;
     .tagmodalbtn {
       height: 3.5vh;
-      width: 30%;
+      width: 25%;
       margin: 1.5%;
       display: inline-block;
       align-items: center;
@@ -25,12 +25,13 @@
       border: none;
       color: white;
       font-weight: bold;
-      font-size: medium;
-      background: linear-gradient(to left, #bababa 30%, #838383 70%);
+      font-size: small;
+      cursor: pointer;
+      background: linear-gradient(to left, #838383, #bababa);
     }
     .selectedtagmodalbtn {
       height: 3.5vh;
-      width: 30%;
+      width: 25%;
       margin: 1.5%;
       display: inline-block;
       justify-content: center;
@@ -39,8 +40,24 @@
       border: none;
       color: white;
       font-weight: bold;
-      font-size: medium;
-      background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
+      font-size: small;
+      cursor: pointer;
+      background: linear-gradient(to left, #80bbd0, #f5c9e0);
+    }
+
+    .closebtn {
+      border: none;
+      display: inline-block;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      font-weight: bold;
+      height: 3.5vh;
+      margin: 1.5%;
+      color: white;
+      font-size: small;
+      cursor: pointer;
+      background: linear-gradient(to left, #80bbd0, #f5c9e0);
     }
   }
   .editor-wrapper {
@@ -72,18 +89,30 @@
     border-radius: 5px;
     color: white;
     font-weight: 900;
+    cursor: pointer;
     background: linear-gradient(to left, #80bbd0, #f5c9e0);
   }
 }
 
 //PostKakaoMap.jsx
 .지도버튼 {
+  cursor: pointer;
   background: linear-gradient(to left, #80bbd0, #f5c9e0);
   height: 3vh;
   border: none;
   border-radius: 5px;
   color: white;
   font-weight: 900;
+}
+.map-modal-btn {
+  background: none;
+  border: none;
+  width: 4%;
+  height: 4%;
+  cursor: pointer;
+  .map-info {
+    width: 500%;
+  }
 }
 .footer {
   margin-top: 2%;
@@ -94,6 +123,7 @@
     background: none;
     border: none;
     width: 10%;
+    cursor: pointer;
     .goback-icon {
       width: 3vh;
       height: 3vh;
@@ -104,6 +134,7 @@
     width: 45%;
     background: none;
     border: none;
+    cursor: pointer;
     .edit-icon {
       width: 80%;
       height: 90%;
@@ -122,6 +153,7 @@
     color: white;
     font-weight: bold;
     font-size: medium;
+    cursor: pointer;
     background: linear-gradient(to left, #f5c9e0 30%, #47afdb 70%);
   }
   .noSubmit-post {
@@ -135,8 +167,32 @@
     border: none;
     color: white;
     font-weight: bold;
+    cursor: pointer;
     font-size: medium;
-    background: linear-gradient(to left, #bababa 30%, #838383 70%);
+    background: linear-gradient(to left, #838383, #bababa);
+  }
+}
+//PostMapModal.jsx
+.mapmodal {
+  animation: modal-bg-show 0.3s;
+  position: fixed;
+  justify-content: right;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.4);
+  .mapmodal-box {
+    display: block;
+    max-width: 428px;
+    .mapmodal-img {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      width: 400px;
+      margin: -320px 0 0 -200px;
+    }
   }
 }
 
@@ -157,6 +213,14 @@
       overflow: hidden;
       white-space: nowrap;
     }
+  }
+  .detail-tag-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #999fab;
+    display: flex;
+    text-align: center;
+    justify-content: center;
   }
   //비회원 noUser-detail-btns
   .noUser-detail-btns {
@@ -271,6 +335,7 @@
         padding-left: 85%;
         background: none;
         border: none;
+        cursor: pointer;
         .edit-detail-icon {
           width: 30px;
           height: 25px;
@@ -312,6 +377,7 @@
       font-weight: 900;
       float: right;
       width: 40%;
+      cursor: pointer;
       margin-bottom: 1%;
     }
   }
@@ -354,6 +420,10 @@
         height: 22px;
         cursor: pointer;
       }
+      .delete-icon1 {
+        width: 20px;
+        height: 22px;
+      }
     }
   }
 }
@@ -362,7 +432,7 @@
 .commentContainer {
   max-width: 428px;
   position: fixed;
-  bottom: 4%;
+  bottom: 0;
   width: 100%;
   z-index: 1;
   transition: all 1000ms;
@@ -371,14 +441,17 @@
   border-top: #e2e2e2 2px dashed;
 }
 .comment-tap {
+  background-color: white;
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 3%;
+  cursor: pointer;
   .icon-comment {
     width: 7.5%;
     margin-bottom: 5%;
     margin-left: 2.5%;
+    background-color: white;
   }
 }
 .toggle-comment-wrapper {
@@ -387,8 +460,11 @@
   justify-content: space-between;
   height: 20%;
   padding: 0 20px;
+  background-color: white;
   border-top: 1px solid #eee;
+
   .nickname {
+    background-color: white;
     text-align: center;
     width: 25%;
     margin-bottom: 5%;
@@ -406,6 +482,7 @@
     }
   }
   .comment-input {
+    background-color: white;
     width: 50%;
     height: 30px;
     border: none;
@@ -416,6 +493,7 @@
     height: 25px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
 }
 
@@ -423,19 +501,22 @@
 .report-modal {
   animation: modal-bg-show 0.3s;
   position: fixed;
-  justify-content: right;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.4);
+
   .report-box {
-    margin: 25% auto;
+    margin: 20vh auto;
+    border-radius: 0.3rem;
+    width: 90%;
+    height: 63vh;
     max-width: 428px;
-    width: 80%;
-    height: 50%;
-    background-color: white;
+    max-height: 450px;
+    background-color: #fff;
+    overflow: hidden;
     .close-report {
       margin: 5% 0 0 85%;
       width: 20px;
@@ -451,27 +532,30 @@
         width: 160%;
       }
     }
+    .report-title {
+      margin-top: -4%;
+    }
     .report-label {
-      margin: 7% 0 0 25%;
       display: flex;
-      .report-input {
-        display: inline-block;
-        .report-list {
-          width: 70%;
-          height: 2.5rem;
-          font-size: 1.2rem;
-        }
+      background-color: #ececec;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 300px;
+      input {
+        margin-left: 10%;
+      }
+      .report-list {
+        margin: 15px 5px;
       }
     }
-    .report-title {
-      margin-top: 3%;
-    }
     .report-button {
-      width: 20%;
-      height: 8%;
+      width: 25%;
+      height: 9%;
       border: none;
       color: white;
       margin-top: 5%;
+      cursor: pointer;
+      border-radius: 0.3rem;
       background-color: #555555;
     }
   }

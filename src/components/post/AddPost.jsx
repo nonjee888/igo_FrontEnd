@@ -19,7 +19,6 @@ import InterestModal from "../postmodal/InterestModal";
 import CostModal from "../postmodal/CostModal";
 import RegionModal from "../postmodal/RegionModal";
 
-import igoLogo from "../../asset/igoLogo.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
 
 const AddPost = () => {
@@ -116,7 +115,7 @@ const AddPost = () => {
 
   if (error) {
     return (
-      <div>
+      <div className="All" style={{ marginLeft: "10%" }}>
         <img
           style={{ width: "100%", height: "100%", marginBottom: "10%" }}
           src={pleaseLogin}
@@ -216,6 +215,19 @@ const AddPost = () => {
                 setCheckedItems={setCheckedItems}
               />
             )}
+
+            <button
+              className="closebtn"
+              onClick={() => {
+                setCheckedItems({
+                  region: "지역 선택",
+                  cost: "비용 선택",
+                  interest: "관심사선택",
+                });
+              }}
+            >
+              초기화
+            </button>
           </div>
           <div className="editor-wrapper">
             <Editor
@@ -277,7 +289,7 @@ const AddPost = () => {
           confirmButtonColor: "#47AFDB",
           cancelButtonColor: "#D9D9D9",
           confirmButtonText: "로그인하러가기",
-          cancelButtonText: "취소",
+          cancelButtonText: "닫기",
         }).then((result) => {
           if (result.isConfirmed) {
             window.location.replace("/");

@@ -3,8 +3,10 @@ import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
 import { useEffect, useState, useRef } from "react";
+import PostMapModal from "./PostMapModal";
 import Swal from "sweetalert2";
 
+import learnMore from "../../asset/learnMore.png";
 import goback from "../../asset/goback.png";
 import editpost from "../../asset/editpost.png";
 
@@ -20,6 +22,7 @@ const PostKakaoMap = (props) => {
   const isActive = props.props.isActive;
   const checkedItems = props.props.checkedItems;
 
+  const [modalOpen, setModalOpen] = useState(false);
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
@@ -31,6 +34,13 @@ const PostKakaoMap = (props) => {
   const mapData = overlayData; //맵데이터
   const searchPlace = props.searchPlace; //키워드검색
   const tags = props.props.data.tags; //tag선택
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   const handleRegisterButton = async () => {
     if (
@@ -139,7 +149,7 @@ const PostKakaoMap = (props) => {
         }}
         style={{
           width: "100%",
-          height: "260px",
+          height: "230px",
         }}
         level={3}
         onCreate={setMap}
@@ -222,6 +232,11 @@ const PostKakaoMap = (props) => {
             onClick={() => {
               drawOverlayData();
               setIsDone(true);
+              Swal.fire({
+                text: "여행경로 수정이 완료되었습니다",
+                confirmButtonColor: "#47AFDB",
+                confirmButtonText: "확인",
+              });
             }}
           >
             {isDone ? "경로업데이트" : "여행경로수정"}
@@ -231,11 +246,22 @@ const PostKakaoMap = (props) => {
             className="지도버튼"
             onClick={() => {
               drawOverlayData();
+              Swal.fire({
+                text: "여행경로 등록이 완료되었습니다",
+                confirmButtonColor: "#47AFDB",
+                confirmButtonText: "확인",
+              });
             }}
           >
             여행코스저장
           </button>
         )}
+        <button className="map-modal-btn" onClick={openModal}>
+          <img className="map-info" src={learnMore} />
+        </button>
+        {modalOpen ? (
+          <PostMapModal postId={id} open={modalOpen} close={closeModal} />
+        ) : null}
       </div>
 
       <div className="footer">
