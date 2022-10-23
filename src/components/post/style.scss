@@ -51,13 +51,15 @@
       justify-content: center;
       align-items: center;
       border-radius: 15px;
-      font-weight: bold;
       height: 3.5vh;
       margin: 1.5%;
-      color: white;
-      font-size: small;
       cursor: pointer;
       background: linear-gradient(to left, #80bbd0, #f5c9e0);
+      img {
+        width: 50%;
+        object-fit: cover;
+        padding-top: 2.5%;
+      }
     }
   }
   .editor-wrapper {
@@ -107,11 +109,11 @@
 .map-modal-btn {
   background: none;
   border: none;
-  width: 4%;
-  height: 4%;
+  width: 8.7%;
+  height: 8.7%;
   cursor: pointer;
   .map-info {
-    width: 500%;
+    width: 100%;
   }
 }
 .footer {
@@ -512,13 +514,13 @@
     margin: 20vh auto;
     border-radius: 0.3rem;
     width: 90%;
-    height: 63vh;
+    height: 53vh;
     max-width: 428px;
-    max-height: 450px;
+    max-height: 400px;
     background-color: #fff;
     overflow: hidden;
     .close-report {
-      margin: 5% 0 0 85%;
+      margin: 2% 0 0 85%;
       width: 20px;
       height: 20px;
       cursor: pointer;
@@ -528,25 +530,22 @@
         float: right;
         border: none;
         background: none;
-        height: 80%;
-        width: 160%;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        display: flex;
       }
     }
     .report-title {
-      margin-top: -4%;
+      margin-top: -2%;
     }
     .report-label {
       display: flex;
+      align-items: center;
       background-color: #ececec;
-      margin: 0 auto;
+      margin: 5% auto;
       width: 80%;
       max-width: 300px;
-      input {
-        margin-left: 10%;
-      }
-      .report-list {
-        margin: 15px 5px;
-      }
     }
     .report-button {
       width: 25%;
