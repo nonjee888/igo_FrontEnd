@@ -70,12 +70,14 @@ const PostDetail = () => {
       setCenter(data?.data?.mapData?.marker);
       setPoly(data?.data?.mapData?.polyline);
     } catch (error) {
-      <div className="All" style={{ marginLeft: "10%" }}>
-        <img
-          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
-          src={pleaseLogin}
-        />
-        죄송합니다 다시 시도해주세요.
+      <div className="All">
+        <div className="sorry">
+          <img
+            style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+            src={pleaseLogin}
+          />
+        </div>
+        <div style={{ textAlign: "center" }}>죄송합니다 다시 시도해주세요.</div>
       </div>;
     }
   };
@@ -124,12 +126,14 @@ const PostDetail = () => {
 
   if (error) {
     return (
-      <div className="All" style={{ marginLeft: "10%" }}>
-        <img
-          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
-          src={pleaseLogin}
-        />
-        죄송합니다 다시 시도해주세요.
+      <div className="All">
+        <div className="sorry">
+          <img
+            style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+            src={pleaseLogin}
+          />
+        </div>
+        <div style={{ textAlign: "center" }}>죄송합니다 다시 시도해주세요.</div>
       </div>
     );
   }
