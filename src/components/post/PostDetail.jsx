@@ -15,7 +15,7 @@ import PostComment from "./PostComment";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
-import addmadal from "../../asset/addmadal.png";
+import list from "../../asset/list.png";
 import deleteimg from "../../asset/deleteimg.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
 
@@ -36,6 +36,9 @@ const PostDetail = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     Swal.fire({
+      imageUrl: report,
+      imageWidth: 50,
+      imageHeight: 50,
       text: "신고 하시겠습니까?",
       showCancelButton: true,
       cancelButtonColor: "#D9D9D9",
@@ -266,13 +269,14 @@ const PostDetail = () => {
                   onClick={() => {
                     Swal.fire({
                       showCancelButton: true,
-                      imageUrl: addmadal,
-                      imageWidth: 150,
-                      imageHeight: 150,
+                      imageUrl: list,
+                      imageWidth: 50,
+                      imageHeight: 50,
                       text: "게시글을 삭제할까요?",
                       confirmButtonColor: "#47AFDB",
                       cancelButtonColor: "#D9D9D9",
-                      confirmButtonText: "삭제 확인",
+                      confirmButtonText: "확인",
+                      cancelButtonText: "취소",
                     }).then((result) => {
                       if (result.isConfirmed) {
                         onDeletePost(id);

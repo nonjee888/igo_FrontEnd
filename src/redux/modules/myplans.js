@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { instance } from "../../shared/api";
 
 export const postMyplans = createAsyncThunk(
@@ -138,6 +138,54 @@ export const myplans = createSlice({
         (myplan) => myplan.id === action.payload.data
       );
       state.myplans.splice(index, 1);
+    },
+    //완료상태변경
+    [postMyplanDone.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [postMyplanDone.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      // console.log(action.payload.data.id);
+      // console.log(current(state.myplans));
+      let MyplanDone = state?.myplans?.map((MyplanDone) => {
+        if (MyplanDone.id === action.payload.data.id) {
+          return {
+            ...MyplanDone,
+            done: +1,
+          };
+        } else {
+          return { ...MyplanDone };
+        }
+      });
+      state.myplans = MyplanDone;
+      // console.log(MyplanDone);
+    },
+    [postMyplanDone.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    //취소상태변경
+    [postMyplanCancel.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [postMyplanCancel.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      let MyplanCancel = state?.myplans?.map((MyplanCancel) => {
+        if (MyplanCancel.id === action.payload.data.id) {
+          return {
+            ...MyplanCancel,
+            done: 0,
+          };
+        } else {
+          return { ...MyplanCancel };
+        }
+      });
+      state.myplans = MyplanCancel;
+      // console.log(MyplanCancel);
+    },
+    [postMyplanCancel.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });

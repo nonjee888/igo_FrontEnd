@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 import Swal from "sweetalert2";
 import { instance } from "../../shared/api";
 

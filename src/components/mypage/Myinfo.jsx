@@ -23,6 +23,7 @@ const Myinfo = () => {
       dispatch(getMyinfo()).then((response) => {
         if (!response.payload[0].interested) return;
         setInterest(response.payload[0]);
+        setNickname(response.payload[0].nickname);
         if (response.payload[0].interested === null) {
           navigate("/choice");
         }

@@ -99,7 +99,6 @@ const Myplan = () => {
                   className="buttonAll"
                   onClick={() => {
                     dispatch(postMyplanDone(myplans.id));
-                    window.location.reload();
                   }}
                 >
                   완료
@@ -162,7 +161,6 @@ const Myplan = () => {
                   className="buttonAll"
                   onClick={() => {
                     dispatch(postMyplanCancel(myplans.id));
-                    window.location.reload();
                   }}
                 >
                   취소
