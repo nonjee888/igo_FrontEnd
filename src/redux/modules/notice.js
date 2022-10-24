@@ -20,7 +20,6 @@ export const getNotice = createAsyncThunk(
 export const removeNotice = createAsyncThunk(
   "notice/removeNotice",
   async (payload, thunkAPI) => {
-    console.log(payload);
     try {
       const data = await instance.delete(
         `/api/member/notifications/${payload}`
@@ -85,7 +84,7 @@ export const notice = createSlice({
     [removeNotice.fulfilled]: (state, action) => {
       state.isLoading = false;
       let index = state.notice.findIndex(
-        (notice) => notice.id === action.payload
+        (notice) => notice.id === action.payload.data
       );
       state.notice.splice(index, 1);
     },

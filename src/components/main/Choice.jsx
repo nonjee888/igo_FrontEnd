@@ -67,11 +67,24 @@ const Choice = () => {
     let payload = {
       interested: [...checkedItems],
     };
-    const response = await instance.patch("/api/member/tag", payload);
 
-    if (response.data.success === true) {
-      //이 데이터가 체크되지 않았으면 추천페이지로 못감
-      return navigate("/recommend");
+    if (payload.interested.length === 3) {
+      const response = await instance.patch("/api/member/tag", payload);
+
+      if (response.data.success === true) {
+        //이 데이터가 체크되지 않았으면 추천페이지로 못감
+        return navigate("/recommend");
+      }
+    } else {
+      Swal.fire(
+        {
+          icon: "info",
+          text: "관심 태그 3개 선택 하셔야 합니다 🥰",
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        },
+        200
+      );
     }
   };
 
