@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { putMyinfo, getMyinfo } from "../../redux/modules/myinfo";
 import { getNotice } from "../../redux/modules/notice";
 import Modal from "./MyProfileModal";
+import Swal from "sweetalert2";
 //이미지
 import profileImg1 from "../../asset/assetMypage/profileImg1.png";
 import profileImg from "../../asset/assetMypage/profileImg.png";
@@ -99,7 +100,25 @@ const Myinfo = () => {
             <img src={myinfo[0].profileImage} alt="프로필이미지" />
             <div className="profileNickname1">
               {myinfo[0]?.nickname}
-              <img src={edit} alt="닉네임수정버튼" onClick={openModal} />
+              <img
+                src={edit}
+                alt="닉네임수정버튼"
+                onClick={() => {
+                  Swal.fire({
+                    title: "프로필변경",
+                    text: "사진과 닉네임을 모두 수정시 변경가능합니다.",
+                    showCancelButton: true,
+                    confirmButtonColor: "#47AFDB",
+                    cancelButtonColor: "#D9D9D9",
+                    confirmButtonText: "확인",
+                    cancelButtonText: "취소",
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      openModal();
+                    }
+                  });
+                }}
+              />
             </div>
           </>
         )}
