@@ -87,7 +87,11 @@ const Router = () => {
     }
 
     setInterval(() => {
-      if (localStorage.getItem("nickname") && !getCookie("Authorization")) {
+      if (
+        localStorage.getItem("nickname") &&
+        localStorage.getItem("ACCESS_TOKEN") &&
+        !getCookie("Authorization")
+      ) {
         reToken();
         // 쿠키가 삭제되었을 때 토큰 재발급 요청
       }
