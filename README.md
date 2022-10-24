@@ -7,17 +7,17 @@
 
 
 # 💻 Service domain
-## [내돈내여 바로가기](https://naedonnaeyo.com/) 
+## [내돈내여 바로가기](https://naedonnaeyo.com/) </br></br>
 
 
 # 🫱🏽‍🫲🏾팀원 
 ### FE : 노은지 심혜림 이다현 | BE : 김민식 김예원 이주현
-### BE GitHub : https://github.com/kminsic/Igo
+### BE GitHub : https://github.com/kminsic/Igo </br></br>
 
 # 🔖 서비스 개요
 #### 😁광고가 판치는 요즘 블로그,인스타그램 피드들..답답하지 않으셨나요?
 #### 광고없는! 알맹이로 가득찬 정보를 찾고 싶으시다면
-#### 유저들이 내 돈으로 여행하고 인증하는 내돈내여를 써보세요!
+#### 유저들이 내 돈으로 여행하고 인증하는 내돈내여를 써보세요! </br></br>
 
 # 📑 Service Architecture
 
