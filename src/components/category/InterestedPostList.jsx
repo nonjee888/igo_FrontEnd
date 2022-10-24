@@ -101,6 +101,7 @@ export default function InterestedPostList() {
           <img
             style={{ width: "100%", height: "100%", marginBottom: "10%" }}
             src={pleaseLogin}
+            alt="sorry"
           />
         </div>
         <div style={{ textAlign: "center" }}>죄송합니다 다시 시도해주세요.</div>
