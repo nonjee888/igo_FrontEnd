@@ -20,7 +20,6 @@ export const getNotice = createAsyncThunk(
 export const removeNotice = createAsyncThunk(
   "notice/removeNotice",
   async (payload, thunkAPI) => {
-    console.log(payload);
     try {
       const data = await instance.delete(
         `/api/member/notifications/${payload}`

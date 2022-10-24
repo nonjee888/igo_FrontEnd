@@ -30,7 +30,6 @@ export const removeComment = createAsyncThunk(
   "comments/RemoveComments",
   async (payload, thunkAPI) => {
     console.log(payload);
-    // console.log(payload.commentId);
     try {
       const data = await instance.delete(`/api/comment/${payload.commentId}`, {
         postId: payload.postId,
