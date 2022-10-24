@@ -1,11 +1,13 @@
-import { useDispatch } from "react-redux";
-import { removeComment } from "../../redux/modules/comments";
+import { useDispatch, useSelector } from "react-redux";
+import { getComments, removeComment } from "../../redux/modules/comments";
 import Swal from "sweetalert2";
 //이미지
 import deleteimg from "../../asset/deleteimg.png";
 import deleteNemo from "../../asset/deleteNemo.png";
 import profileImg from "../../asset/assetMypage/profileImg.png";
 import commentIcon from "../../asset/commentIcon.png";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const CommentList = (props) => {
   const dispatch = useDispatch();
@@ -17,6 +19,11 @@ const CommentList = (props) => {
   const content = props.comment.content;
   const postId = props.postId;
   const commentId = props.comment.id;
+  const { comments } = useSelector((state) => state.comments);
+  const { id } = useParams();
+  useEffect(() => {
+    dispatch(getComments(id)).then((res) => {});
+  }, [dispatch, id]);
 
   const payload = {
     postId,
@@ -33,7 +40,9 @@ const CommentList = (props) => {
             ) : (
               <img className="profileImg" src={commentProfile} alt="" />
             )}
-            <div className="userNick">{writerId}</div>
+            <div className="userNick" style={{ fontSize: "10px" }}>
+              {writerId}
+            </div>
           </div>
           <div className="comment">{content}</div>
           {userConfirm ? (

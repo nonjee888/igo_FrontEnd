@@ -14,7 +14,6 @@ import deleteimg from "../../asset/deleteimg.png";
 const AddStory = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const resetStates = () => {
     setVideos();
   };
@@ -35,7 +34,7 @@ const AddStory = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const validateSelectedFile = (e) => {
-    const MAX_FILE_SIZE = 209715200; // 200MB
+    const MAX_FILE_SIZE = 204800; // 200MB
     const fileSizeKiloBytes = videos.size / 1024;
 
     if (fileSizeKiloBytes > MAX_FILE_SIZE) {
@@ -62,7 +61,8 @@ const AddStory = () => {
   //첨부동영상 프리뷰
   const [videoPreview, setVideoPreview] = useState(null);
   const filePicekerRef = useRef(null);
-
+  const NICKNAME = localStorage.getItem("nickname");
+  const token = localStorage.getItem("ACCESS_TOKEN");
   const handleFileChange = (event) => {
     if (event.target.files.length > 0) {
       setVideos(event.target.files[0]);
@@ -87,65 +87,85 @@ const AddStory = () => {
   }
 
   return (
-    <div className="All">
-      <div className="MyPosts">
-        <div className="planTitle">
-          <h3>영상 남기기</h3>
-        </div>
-        <form onSubmit={onSubmitHandler}>
-          <div className="AddVideo">
-            <div className="btn-container">
-              <input
-                ref={filePicekerRef}
-                accept="video/*"
-                name="videos"
-                onChange={handleFileChange}
-                type="file"
-                hidden
-              />
-              <div
-                className="btn"
-                onClick={() => filePicekerRef.current.click()}
-              >
-                <img src={video} alt="영상을 업로드 해주세요." />
-              </div>
-              {videoPreview && (
-                <div className="videoXBtn" onClick={clearFiles}>
-                  <img src={deleteimg} alt="삭제버튼" />
+    <>
+      {NICKNAME && token ? (
+        <div className="All">
+          <div className="MyPosts">
+            <div className="planTitle">
+              <h3>영상 남기기</h3>
+            </div>
+            <form onSubmit={onSubmitHandler}>
+              <div className="AddVideo">
+                <div className="btn-container">
+                  <input
+                    ref={filePicekerRef}
+                    accept="video/*"
+                    name="videos"
+                    onChange={handleFileChange}
+                    type="file"
+                    hidden
+                  />
+                  <div
+                    className="btn"
+                    onClick={() => filePicekerRef.current.click()}
+                  >
+                    <img src={video} alt="영상을 업로드 해주세요." />
+                  </div>
+                  {videoPreview && (
+                    <div className="videoXBtn" onClick={clearFiles}>
+                      <img src={deleteimg} alt="삭제버튼" />
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <div className="videoAddInfo">
-              <img src={videoInfo} alt="영상첨부정보" />
-            </div>
-            <div className="videoPreview">
-              {videoPreview != null && (
-                <video controls controlsList="nodownload" src={videoPreview} />
-              )}
-            </div>
+                <div className="videoAddInfo">
+                  <img src={videoInfo} alt="영상첨부정보" />
+                </div>
+                <div className="videoPreview">
+                  {videoPreview != null && (
+                    <video
+                      controls
+                      controlsList="nodownload"
+                      src={videoPreview}
+                    />
+                  )}
+                </div>
 
-            <div className="error-message">{errorMsg}</div>
+                <div className="error-message">{errorMsg}</div>
+              </div>
+              <div className="videoAddbuttons">
+                <img
+                  src={goback}
+                  alt="뒤로"
+                  onClick={() => {
+                    navigate(-1);
+                  }}
+                  style={{ width: "15%", height: "30%" }}
+                />
+                <button
+                  className="videoAdd"
+                  type="submit"
+                  onClick={validateSelectedFile}
+                >
+                  <img src={addVideo} alt="영상등록" />
+                </button>
+              </div>
+            </form>
           </div>
-          <div className="videoAddbuttons">
-            <img
-              src={goback}
-              alt="뒤로"
-              onClick={() => {
-                navigate(-1);
-              }}
-              style={{ width: "15%", height: "30%" }}
-            />
-            <button
-              className="videoAdd"
-              type="submit"
-              onClick={validateSelectedFile}
-            >
-              <img src={addVideo} alt="영상등록" />
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+      ) : (
+        Swal.fire({
+          icon: "error",
+          text: "로그인을 하셔야 이용 가능합니다.",
+          confirmButtonColor: "#47AFDB",
+          cancelButtonColor: "#D9D9D9",
+          confirmButtonText: "로그인하러가기",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.replace("/");
+          }
+        })
+      )}
+    </>
   );
 };
 

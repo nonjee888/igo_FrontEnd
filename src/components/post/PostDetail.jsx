@@ -123,7 +123,7 @@ const PostDetail = () => {
         setOverlayData(response.payload.mapData);
       });
     }
-  }, [dispatch, id]);
+  }, [id]);
 
   if (error) {
     return (

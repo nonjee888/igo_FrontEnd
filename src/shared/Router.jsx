@@ -79,12 +79,19 @@ const Router = () => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("nickname")) {
+    if (
+      localStorage.getItem("nickname") &&
+      localStorage.getItem("ACCESS_TOKEN")
+    ) {
       isSSE();
     }
 
     setInterval(() => {
-      if (localStorage.getItem("nickname") && !getCookie("Authorization")) {
+      if (
+        localStorage.getItem("nickname") &&
+        localStorage.getItem("ACCESS_TOKEN") &&
+        !getCookie("Authorization")
+      ) {
         reToken();
         // 쿠키가 삭제되었을 때 토큰 재발급 요청
       }
@@ -116,7 +123,6 @@ const Router = () => {
         <Route path="/" element={<Loginpage />} exact />
         <Route path="/login" element={<LoginAdmin />} exact />
         <Route path="/choice" element={<ChoiceCategory />} exact />
-        <Route path="/choice/edit/:id" element={<ChoiceCategory />} exact />
         <Route path="/recommend" element={<MainRecommend />} exact />
         <Route path="/post/:category" element={<AllCategoryList />} exact />
         {/*post/:region에서 앞에 :값을 제거해주니 세부카테고리 확인됨 */}

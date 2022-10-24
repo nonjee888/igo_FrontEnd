@@ -84,7 +84,7 @@ export const notice = createSlice({
     [removeNotice.fulfilled]: (state, action) => {
       state.isLoading = false;
       let index = state.notice.findIndex(
-        (notice) => notice.id === action.payload
+        (notice) => notice.id === action.payload.data
       );
       state.notice.splice(index, 1);
     },

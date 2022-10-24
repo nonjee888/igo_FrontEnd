@@ -36,7 +36,11 @@ const Headers = () => {
   };
 
   useEffect(() => {
-    dispatch(getMyinfo());
+    if (
+      localStorage.getItem("ACCESS_TOKEN") &&
+      localStorage.getItem("nickname")
+    )
+      dispatch(getMyinfo());
   }, []);
 
   const NICKNAME = localStorage.getItem("nickname");

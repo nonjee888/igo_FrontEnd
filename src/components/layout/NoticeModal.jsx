@@ -27,8 +27,15 @@ const NoticeModal = (props) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (!localStorage.getItem("ACCESS_TOKEN")) return;
-    if (localStorage.getItem("ACCESS_TOKEN") !== null) {
+    if (
+      !localStorage.getItem("ACCESS_TOKEN") &&
+      !localStorage.getItem("nickname")
+    )
+      return;
+    if (
+      localStorage.getItem("ACCESS_TOKEN") &&
+      localStorage.getItem("nickname")
+    ) {
       dispatch(getMyinfo()).then((response) => {
         if (response?.payload[0]?.interested?.length === 1) {
           navigate("/choice");
