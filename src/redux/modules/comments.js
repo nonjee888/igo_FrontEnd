@@ -6,7 +6,7 @@ export const getComments = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await instance.get(`/api/comments/${payload}`);
-      console.log(data.data.data);
+
       if (data.data.success) return data.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -29,7 +29,6 @@ export const createComment = createAsyncThunk(
 export const removeComment = createAsyncThunk(
   "comments/RemoveComments",
   async (payload, thunkAPI) => {
-    console.log(payload);
     try {
       const data = await instance.delete(`/api/comment/${payload.commentId}`, {
         postId: payload.postId,
