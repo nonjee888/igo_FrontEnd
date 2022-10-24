@@ -21,7 +21,7 @@
 
 # 📑 Service Architecture
 
-![image](https://user-images.githubusercontent.com/106578705/194592914-e330bd9f-8f62-4bbc-b500-6f4e22e886a3.png)</br></br>
+![아키텍쳐](https://user-images.githubusercontent.com/106578705/197531791-61e52706-448c-459c-a4f0-c44a388a90b7.jpeg)</br></br>
 
 
 # 🗂컴포넌트 구조
