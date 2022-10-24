@@ -20,6 +20,7 @@ const MenuModal = (props) => {
 
   const navigate = useNavigate();
   const NICKNAME = localStorage.getItem("nickname");
+  const token = localStorage.getItem("ACCESS_TOKEN");
 
   //로그아웃
   const logoutHandler = () => {
@@ -39,10 +40,6 @@ const MenuModal = (props) => {
         localStorage.removeItem("nickname");
         localStorage.removeItem("REFRESH_TOKEN");
         localStorage.removeItem("isLogin");
-        localStorage.removeItem("TOAST UI editor for localhost: Statistics");
-        localStorage.removeItem(
-          "TOAST UI color-picker for localhost: Statistics"
-        );
         navigate("/");
         window.location.reload();
       }
@@ -101,7 +98,7 @@ const MenuModal = (props) => {
             </button>
           </header>
           <main>
-            {NICKNAME === null ? (
+            {NICKNAME === null || token === null ? (
               <div className="Icon-box">
                 <div className="btnbox">
                   <img
@@ -134,7 +131,9 @@ const MenuModal = (props) => {
                 <div className="btnbox">
                   <img
                     className="FootersIcon"
-                    onClick={Alert}
+                    onClick={() => {
+                      navigate("/story");
+                    }}
                     src={storyIcon}
                     alt="스토리"
                   />
@@ -166,12 +165,7 @@ const MenuModal = (props) => {
                     className="FootersIcon"
                   />
                 </div>
-                <button
-                  className="research"
-                  onClick={() => {
-                    navigate("/tutorial");
-                  }}
-                >
+                <button className="research" onClick={Alert}>
                   <img src={research} alt="리서치커피받으세요" />
                 </button>
               </div>

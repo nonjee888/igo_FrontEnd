@@ -57,6 +57,6 @@
   "devDependencies": {
     "sass": "^1.54.9"
   },
-  "proxy": "http://localhost:3000/",
+  "proxy": "http://localhost:3000",
   "start": "react-scripts --max-http-header-size=1024 start"
 }

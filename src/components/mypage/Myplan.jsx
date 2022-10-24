@@ -53,7 +53,17 @@ const Myplan = () => {
           }}
         >
           {Origin?.length === 0 ? (
-            <p className="myPageNoInfo1">➕을 눌러 일정을 작성해보세요.</p>
+            <p className="myPageNoInfo1">
+              <p
+                onClick={() => {
+                  navigate("/myplanpost");
+                }}
+                style={{ cursor: "pointer" }}
+              >
+                ➕
+              </p>
+              을 눌러 일정을 작성해보세요.
+            </p>
           ) : (
             <></>
           )}

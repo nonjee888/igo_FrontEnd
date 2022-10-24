@@ -15,9 +15,13 @@ export default function WithDrawal() {
   const dispatch = useDispatch();
   const [isClick, setIsClick] = useState(false);
   const { myinfo, error } = useSelector((state) => state?.myinfo);
-  console.log(myinfo);
+
   useEffect(() => {
-    dispatch(getMyinfo());
+    if (
+      localStorage.getItem("ACCESS_TOKEN") &&
+      localStorage.getItem("nickname")
+    )
+      dispatch(getMyinfo());
   }, []);
 
   if (error) {
