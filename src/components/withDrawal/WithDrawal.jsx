@@ -27,6 +27,7 @@ export default function WithDrawal() {
           <img
             style={{ width: "100%", height: "100%", marginBottom: "10%" }}
             src={pleaseLogin}
+            alt="sorry"
           />
         </div>
         <div style={{ textAlign: "center" }}>죄송합니다 다시 시도해주세요.</div>
@@ -69,7 +70,7 @@ export default function WithDrawal() {
   return (
     <div className="All">
       <div>
-        <img className="drawalimg" src={drawalimg} />
+        <img className="drawalimg" src={drawalimg} alt="" />
         <div className="ListBox">
           <li className="listText">
             계정 삭제시, 개인 정보는 일괄 <span>삭제 처리</span>됩니다.

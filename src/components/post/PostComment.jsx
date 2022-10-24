@@ -28,9 +28,7 @@ const PostComment = () => {
   const openModal = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
-  const payload = {
-    review,
-  };
+
   useEffect(() => {
     dispatch(getComments(id)).then((res) => {
       if (!res) {
@@ -46,6 +44,7 @@ const PostComment = () => {
           <img
             style={{ width: "100%", height: "100%", marginBottom: "10%" }}
             src={pleaseLogin}
+            alt="sorry"
           />
         </div>
         <div style={{ textAlign: "center" }}>죄송합니다 다시 시도해주세요.</div>
@@ -59,7 +58,7 @@ const PostComment = () => {
       className="commentContainer"
     >
       <div className="comment-tap" onClick={openModal}>
-        <img className="icon-comment" src={commentIcon} />
+        <img className="icon-comment" src={commentIcon} alt="댓글아이콘" />
       </div>
       {!loading && modalOpen && (
         <>

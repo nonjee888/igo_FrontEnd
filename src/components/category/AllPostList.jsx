@@ -50,6 +50,7 @@ export default function AllPostList() {
             <img
               style={{ width: "100%", height: "100%", marginBottom: "10%" }}
               src={pleaseLogin}
+              alt="sorry"
             />
           </div>
           <div style={{ textAlign: "center" }}>
@@ -78,6 +79,7 @@ export default function AllPostList() {
             <img
               style={{ width: "100%", height: "100%", marginBottom: "10%" }}
               src={pleaseLogin}
+              alt="sorry"
             />
           </div>
           <div style={{ textAlign: "center" }}>
@@ -104,6 +106,7 @@ export default function AllPostList() {
             <img
               style={{ width: "100%", height: "100%", marginBottom: "10%" }}
               src={pleaseLogin}
+              alt="sorry"
             />
           </div>
           <div style={{ textAlign: "center" }}>
