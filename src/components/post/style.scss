@@ -13,11 +13,11 @@
     border-bottom: 1px solid rgba(215, 215, 215, 0.933);
   }
   .tagsbox {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 29% 29% 29% 13%;
     .tagmodalbtn {
       height: 3.5vh;
-      width: 25%;
+      width: 95%;
       margin: 1.5%;
       display: inline-block;
       align-items: center;
@@ -56,9 +56,10 @@
       cursor: pointer;
       background: linear-gradient(to left, #80bbd0, #f5c9e0);
       img {
-        width: 50%;
+        width: 95%;
+        max-width: 37px;
         object-fit: cover;
-        padding-top: 2.5%;
+        padding-top: 4%;
       }
     }
   }
@@ -109,8 +110,10 @@
 .map-modal-btn {
   background: none;
   border: none;
-  width: 8.7%;
-  height: 8.7%;
+  width: 9.5%;
+  height: 9.5%;
+  max-width: 42px;
+  max-height: 42px;
   cursor: pointer;
   .map-info {
     width: 100%;
