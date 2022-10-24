@@ -34,7 +34,7 @@ const AddStory = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const validateSelectedFile = (e) => {
-    const MAX_FILE_SIZE = 209715200; // 200MB
+    const MAX_FILE_SIZE = 204800; // 200MB
     const fileSizeKiloBytes = videos.size / 1024;
 
     if (fileSizeKiloBytes > MAX_FILE_SIZE) {
