@@ -102,6 +102,6 @@ src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149
 
 # 🎯Trouble Shooting 
 
-[트러블슈팅!]([https://coconut-plate-991.notion.site/Trouble-Shooting-66a7e2ef3348434dbaf2cfb3e6cdf8dd](https://pacific-force-cab.notion.site/Trouble-shooting-0e43f4f5f5524c6e83fc418494ce6b2a))
+[트러블슈팅!]([https://coconut-plate-991.notion.site/Trouble-Shooting-66a7e2ef3348434dbaf2cfb3e6cdf8dd](https://pacific-force-cab.notion.site/Trouble-shooting-0e43f4f5f5524c6e83fc418494ce6b2a)
 
 
