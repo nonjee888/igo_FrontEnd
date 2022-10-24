@@ -35,7 +35,7 @@ const MyPlanPost = () => {
     if (title === "" || content === "" || time === "") {
       Swal.fire({
         icon: "info",
-        text: "날짜와 제목, 사진과 내용을 입력헤주세요🥰",
+        text: "날짜와 제목, 사진과 내용을 입력해주세요🥰",
         confirmButtonColor: "#47AFDB",
         confirmButtonText: "확인",
       }).then((result) => {
