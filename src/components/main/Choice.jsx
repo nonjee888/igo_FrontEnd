@@ -7,11 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
 import { getMyinfo } from "../../redux/modules/myinfo";
 
-import { useDispatch, useSelector } from "react-redux";
-
 const Choice = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const interestedList = [
     { id: 0, tag: "" },
@@ -50,20 +47,8 @@ const Choice = () => {
   const [clickValue, setClickValue] = useState(false);
   const [btnActive, setBtnActive] = useState(false);
 
-  const [value, setValue] = useState([
-    { id: 0, tag: "" },
-    { id: 1, tag: "" },
-    { id: 2, tag: "" },
-  ]);
-
   const NICKNAME = localStorage.getItem("nickname");
   const token = localStorage.getItem("ACCESS_TOKEN");
-  const myinfo = useSelector((state) => state.myinfo.myinfo);
-
-  const isEdit =
-    localStorage.getItem("nickname") &&
-    myinfo &&
-    myinfo[0].interested.length === 3;
 
   const clickTagbtn = (id) => {
     setChoiceTagID(id);

@@ -79,7 +79,10 @@ const Router = () => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("nickname") && getCookie("Authorization")) {
+    if (
+      localStorage.getItem("nickname") &&
+      localStorage.getItem("ACCESS_TOKEN")
+    ) {
       isSSE();
     }
 

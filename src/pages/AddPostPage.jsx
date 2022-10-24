@@ -10,7 +10,10 @@ const AddPostPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    if (localStorage.getItem("ACCESS_TOKEN") !== null) {
+    if (
+      localStorage.getItem("ACCESS_TOKEN") &&
+      localStorage.getItem("nickname")
+    ) {
       dispatch(getMyinfo()).then((response) => {
         // console.log(response.payload[0].interested);
         if (response.payload[0].interested === null) {
