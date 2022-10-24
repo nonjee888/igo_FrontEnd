@@ -58,6 +58,7 @@ const Myplan = () => {
                 onClick={() => {
                   navigate("/myplanpost");
                 }}
+                style={{ cursor: "pointer" }}
               >
                 ➕
               </p>
