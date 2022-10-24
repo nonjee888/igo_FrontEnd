@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { instance } from "../../shared/api";
+import Swal from "sweetalert2";
 
 export const postMyplans = createAsyncThunk(
   "myplans/post",
@@ -11,7 +12,9 @@ export const postMyplans = createAsyncThunk(
           REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
         },
       });
-      if (data.data.success === false) alert(data.data.error.message);
+      if (data.data.success === true) {
+        window.location.replace("/myplan");
+      } else if (data.data.success === false) alert(data.data.error.message);
       //일정등록 성공 메세지 죽여둠
       // else alert(data.data.data);
       return thunkAPI.fulfillWithValue(data.data);
