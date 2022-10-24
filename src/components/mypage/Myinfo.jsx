@@ -20,7 +20,10 @@ const Myinfo = () => {
   const [interest, setInterest] = useState();
   const [unRead, setUnread] = useState(0);
   useEffect(() => {
-    if (localStorage.getItem("ACCESS_TOKEN") !== null) {
+    if (
+      localStorage.getItem("ACCESS_TOKEN") &&
+      localStorage.getItem("nickname")
+    ) {
       dispatch(getMyinfo()).then((response) => {
         if (!response.payload[0].interested) return;
         setInterest(response.payload[0]);
