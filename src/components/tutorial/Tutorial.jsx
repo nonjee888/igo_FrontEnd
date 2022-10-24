@@ -25,7 +25,7 @@ export default function Tutorial() {
               onClick={() => {
                 navigate(-1);
               }}
-              style={{ width: "8%", height: "5%",margin:"5%" }}
+              style={{ width: "8%", height: "5%",margin:"5%",cursor:"pointer" }}
             />
       {NICKNAME ? (
         <div className="tutorialimg-wrapper">
@@ -33,6 +33,7 @@ export default function Tutorial() {
           <img className="tutorialboxs" src={tutorial2} />
           <img
             className="tutorialboxs"
+            style={{cursor:"pointer"}}
             src={tutorial8}
             onClick={() =>
               window.open(
