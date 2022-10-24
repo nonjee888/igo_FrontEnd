@@ -206,7 +206,9 @@ const PostKakaoMap = (props) => {
       <div
         style={{
           display: "flex",
+          justifyContent: "left",
           gap: "8px",
+          alignItems: "center",
         }}
       >
         <button

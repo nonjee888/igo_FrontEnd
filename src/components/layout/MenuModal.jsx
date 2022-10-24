@@ -13,6 +13,7 @@ import storyIcon from "../../asset/assetFooter/storyIcon.png";
 import logout from "../../asset/assetFooter/logout.png";
 import login from "../../asset/assetFooter/login.png";
 import research from "../../asset/assetFooter/research.png";
+import service from "../../asset/assetFooter/service.png";
 
 const MenuModal = (props) => {
   const { open, close, header } = props;
@@ -146,6 +147,13 @@ const MenuModal = (props) => {
                     alt="마이페이지"
                   />
                 </div>
+                <a
+                  className="btnbox"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdsfPmx_yGOkDb8NgbZSGBGjUx6uVnmke-j6Vm7ptsqSHDphg/viewform?vc=0&c=0&w=1&flr=0"
+                  target="_blank"
+                >
+                  <img src={service} alt="관리자문의" className="FootersIcon" />
+                </a>
                 <div
                   className="btnbox"
                   onClick={() => {
@@ -219,6 +227,13 @@ const MenuModal = (props) => {
                     alt="마이페이지"
                   />
                 </div>
+                <a
+                  className="btnbox"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdsfPmx_yGOkDb8NgbZSGBGjUx6uVnmke-j6Vm7ptsqSHDphg/viewform?vc=0&c=0&w=1&flr=0"
+                  target="_blank"
+                >
+                  <img src={service} alt="관리자문의" className="FootersIcon" />
+                </a>
                 <div className="btnbox" onClick={logoutHandler}>
                   <img src={logout} alt="로그아웃" className="FootersIcon" />
                 </div>
