@@ -124,6 +124,7 @@ const Choice = () => {
           onClick={() => {
             setClickValue(true);
             setCheackedItems(new Set());
+            window.location.reload();
           }}
         >
           선택초기화

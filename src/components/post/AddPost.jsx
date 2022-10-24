@@ -7,6 +7,7 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import "tui-color-picker/dist/tui-color-picker.css";
 import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
+import imageCompression from "browser-image-compression";
 
 import { useRef, useState } from "react";
 import { useEffect } from "react";
@@ -38,7 +39,7 @@ const AddPost = () => {
   const editorRef = useRef();
   const dispatch = useDispatch();
   const inputFocus = useRef(null);
-  const { detail, isLoading, error } = useSelector((state) => state?.posts);
+  const { detail, error } = useSelector((state) => state?.posts);
   const { id } = useParams();
 
   //isEdit 게시물의 id가 param에 존재할 때
@@ -115,12 +116,15 @@ const AddPost = () => {
 
   if (error) {
     return (
-      <div className="All" style={{ marginLeft: "10%" }}>
-        <img
-          style={{ width: "100%", height: "100%", marginBottom: "10%" }}
-          src={pleaseLogin}
-        />
-        죄송합니다 다시 시도해주세요.
+      <div className="All">
+        <div className="sorry">
+          <img
+            style={{ width: "100%", height: "100%", marginBottom: "10%" }}
+            src={pleaseLogin}
+            alt="sorry"
+          />
+        </div>
+        <div style={{ textAlign: "center" }}>죄송합니다 다시 시도해주세요.</div>
       </div>
     );
   }
@@ -261,9 +265,26 @@ const AddPost = () => {
                   );
                   const newFileName = "img" + replaced;
                   const ReactS3Client = new S3(config);
-                  ReactS3Client.uploadFile(blob, newFileName)
-                    .then((data) => callback(data.location, "image"))
-                    .catch((err) => console.error(err));
+                  const options = {
+                    maxSizeMB: 1,
+                    maxWidthOrHeight: 1200,
+                    useWebWorker: true,
+                  };
+                  try {
+                    const compressed = await imageCompression(blob, options);
+
+                    ReactS3Client.uploadFile(compressed, newFileName)
+
+                      .then((data) => callback(data.location, "image"))
+                      .catch((err) => console.error(err));
+                  } catch (error) {
+                    Swal.fire({
+                      icon: "error",
+                      text: "이미지 업로드에 오류가 있어요! 관리자에게 문의해주세요😿",
+                      confirmButtonColor: "#47AFDB",
+                      confirmButtonText: "확인",
+                    });
+                  }
                 },
               }}
             />

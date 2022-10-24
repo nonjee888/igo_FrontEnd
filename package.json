@@ -10,6 +10,7 @@
     "@toast-ui/editor-plugin-color-syntax": "^3.1.0",
     "@toast-ui/react-editor": "^3.2.0",
     "axios": "^0.27.2",
+    "browser-image-compression": "^2.0.0",
     "buffer": "^6.0.3",
     "dompurify": "^2.4.0",
     "event-source-polyfill": "^1.0.31",
