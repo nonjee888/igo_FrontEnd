@@ -11,9 +11,9 @@ export const postStory = createAsyncThunk(
           REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
         },
       });
-      if (data.data.success === false) alert(data.data.error.message);
-      // 일정등록 성공 메세지 죽여둠
-      // else alert(data.data.data);
+      if (data.data.success === true) {
+        window.location.replace("/story");
+      } else if (data.data.success === false) alert(data.data.error.message);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -88,6 +88,17 @@ export const story = createSlice({
     [postStory.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
+    },
+    //스토리 삭제
+    [deleteStory.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [deleteStory.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      let index = state.story.findIndex(
+        (story) => story.id === action.payload.data
+      );
+      state.story.splice(index, 1);
     },
   },
 });

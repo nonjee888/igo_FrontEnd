@@ -18,21 +18,32 @@ const AddStory = () => {
     setVideos();
   };
 
+  const [videos, setVideos] = useState([]);
+
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append("videos", videos);
-
-    dispatch(postStory(formData));
-    resetStates();
-    navigate("/story");
+    if (videos.length === 0) {
+      Swal.fire({
+        icon: "info",
+        text: "동영상을 첨부해주세요🥰",
+        confirmButtonColor: "#47AFDB",
+        confirmButtonText: "확인",
+      }).then((result) => {
+        if (result.isConfirmed) {
+        }
+      });
+    } else {
+      event.preventDefault();
+      const formData = new FormData();
+      formData.append("videos", videos);
+      dispatch(postStory(formData));
+      resetStates();
+    }
   };
 
   // 동영상 200MB 크기 제한
-  const [videos, setVideos] = useState([]);
   const [errorMsg, setErrorMsg] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-
   const validateSelectedFile = (e) => {
     const MAX_FILE_SIZE = 204800; // 200MB
     const fileSizeKiloBytes = videos.size / 1024;

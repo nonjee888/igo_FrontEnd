@@ -67,7 +67,7 @@ const VideoStory = () => {
                       }).then((result) => {
                         if (result.isConfirmed) {
                           dispatch(deleteStory(story.id));
-                          window.location.reload();
+                          // window.location.reload();
                         }
                       });
                     }}
@@ -95,7 +95,7 @@ const VideoStory = () => {
                       }).then((result) => {
                         if (result.isConfirmed) {
                           dispatch(deleteStory(story.id));
-                          window.location.reload();
+                          // window.location.reload();
                         }
                       });
                     }}
