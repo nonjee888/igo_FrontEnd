@@ -26,6 +26,24 @@ const Choice = () => {
     { id: 9, tag: "인스타감성" },
   ];
 
+  useEffect(() => {
+    if (checkedItems) {
+      setTimeout(() => {
+        Swal.fire(
+          {
+            icon: "info",
+            text: "관심 태그 3개를 선택 해 주세요 🥰",
+            confirmButtonColor: "#47AFDB",
+            confirmButtonText: "확인",
+          },
+          200
+        );
+      });
+    } else {
+      navigate("/");
+    }
+  }, []);
+
   const [checkedItems, setCheackedItems] = useState(new Set()); //체크된요소들
   const [InterestedList, setInterestedList] = useState(interestedList);
   const [choiceTagID, setChoiceTagID] = useState(0);
@@ -38,7 +56,8 @@ const Choice = () => {
     { id: 2, tag: "" },
   ]);
 
-  const nickname = localStorage.getItem("nickname");
+  const NICKNAME = localStorage.getItem("nickname");
+  const token = localStorage.getItem("ACCESS_TOKEN");
   const myinfo = useSelector((state) => state.myinfo.myinfo);
 
   const isEdit =
@@ -96,49 +115,65 @@ const Choice = () => {
   };
 
   return (
-    <div className="All">
-      <div className="choiceBox">
-        {InterestedList.map((item) => (
-          <label tag={item} key={item.id}>
-            <input
-              className="interestcheck"
-              type="checkbox"
-              name="tag"
-              id={item.id}
-              value={item.tag}
-              onChange={(e) => checkHandler(e)}
-              onClick={() => clickTagbtn(item.id)}
-              disabled={checkedItems.size >= 3 ? true : false}
-            />
+    <>
+      {NICKNAME && token ? (
+        <div className="All">
+          <div className="choiceBox">
+            {InterestedList.map((item) => (
+              <label tag={item} key={item.id}>
+                <input
+                  className="interestcheck"
+                  type="checkbox"
+                  name="tag"
+                  id={item.id}
+                  value={item.tag}
+                  onChange={(e) => checkHandler(e)}
+                  onClick={() => clickTagbtn(item.id)}
+                  disabled={checkedItems.size >= 3 ? true : false}
+                />
 
-            <div className={item.isChecked ? "tagcheck" : "untagcheck"}>
-              {item.tag}
-            </div>
-          </label>
-        ))}
-      </div>
+                <div className={item.isChecked ? "tagcheck" : "untagcheck"}>
+                  {item.tag}
+                </div>
+              </label>
+            ))}
+          </div>
 
-      <div className="btnBox">
-        <button
-          className="joinbtn"
-          onClick={() => {
-            setClickValue(true);
-            setCheackedItems(new Set());
-            window.location.reload();
-          }}
-        >
-          선택초기화
-        </button>
-        <button
-          className="joinbtn"
-          onClick={() => {
-            submitHandler();
-          }}
-        >
-          선택완료
-        </button>
-      </div>
-    </div>
+          <div className="btnBox">
+            <button
+              className="joinbtn"
+              onClick={() => {
+                setClickValue(true);
+                setCheackedItems(new Set());
+                window.location.reload();
+              }}
+            >
+              선택초기화
+            </button>
+            <button
+              className="joinbtn"
+              onClick={() => {
+                submitHandler();
+              }}
+            >
+              선택완료
+            </button>
+          </div>
+        </div>
+      ) : (
+        Swal.fire({
+          icon: "error",
+          text: "로그인을 하셔야 이용 가능합니다.",
+          confirmButtonColor: "#47AFDB",
+          cancelButtonColor: "#D9D9D9",
+          confirmButtonText: "로그인하러가기",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.replace("/");
+          }
+        })
+      )}
+    </>
   );
 };
 

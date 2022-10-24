@@ -46,6 +46,7 @@ const AddPost = () => {
   const isEdit = id !== undefined;
   const writerId = detail.nickname;
   const NICKNAME = localStorage.getItem("nickname");
+  const token = localStorage.getItem("ACCESS_TOKEN");
 
   //게시글Add changehandler
   const handleTitle = (e) => {
@@ -112,6 +113,14 @@ const AddPost = () => {
 
   useEffect(() => {
     inputFocus.current.focus();
+    setTimeout(() => {
+      Swal.fire({
+        icon: "info",
+        text: "제목 2글자, 내용 3글자 이상, 태그를 선택 해 주세요 🥰",
+        confirmButtonColor: "#47AFDB",
+        confirmButtonText: "확인",
+      });
+    }, 200);
   }, []);
 
   if (error) {
@@ -130,7 +139,7 @@ const AddPost = () => {
   }
   return (
     <>
-      {NICKNAME ? (
+      {NICKNAME && token ? (
         <div className="allPost">
           <div className="addpost-title">
             <input
@@ -236,7 +245,7 @@ const AddPost = () => {
           <div className="editor-wrapper">
             <Editor
               ref={editorRef}
-              placeholder="... 을 누르면 사진을 공유 할 수 있어요 !   제목은 두글자, 내용은 세글자 이상 입력하셔야 게시물 등록이 가능합니다."
+              placeholder="... 을 누르면 사진을 공유 할 수 있어요 ! 여행코스저장 옆 ? 를 누르면 지도 이용 방법이 나옵니다!"
               initialValue=""
               previewStyle="vertical"
               height="calc(90vh - 370px)"
@@ -306,11 +315,9 @@ const AddPost = () => {
         Swal.fire({
           icon: "error",
           text: "로그인을 하셔야 이용 가능합니다.",
-          showCancelButton: true,
           confirmButtonColor: "#47AFDB",
           cancelButtonColor: "#D9D9D9",
           confirmButtonText: "로그인하러가기",
-          cancelButtonText: "닫기",
         }).then((result) => {
           if (result.isConfirmed) {
             window.location.replace("/");

@@ -6,13 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRecommendPosts } from "../../redux/modules/posts";
 import RecommendPost from "./RecommendPost";
 import pleaseLogin from "../../asset/pleaseLogin.png";
+import Swal from "sweetalert2";
 
 //메인페이지 추천게시물
 
 const Recommend = () => {
   const { isLoading, error, recommend } = useSelector((state) => state.posts);
-
   const dispatch = useDispatch();
+  const NICKNAME = localStorage.getItem("nickname");
+  const token = localStorage.getItem("ACCESS_TOKEN");
 
   useEffect(() => {
     dispatch(getRecommendPosts());
@@ -44,16 +46,32 @@ const Recommend = () => {
   }
 
   return (
-    <div className="All">
-      <div className="Recommend-Container">
-        <img className="Recommend-logo" src={recom} alt="추천" />
-        <div className="Recommend-List">
-          {recommend?.map((item) => {
-            return <RecommendPost item={item} key={item.id} />;
-          })}
+    <>
+      {NICKNAME && token ? (
+        <div className="All">
+          <div className="Recommend-Container">
+            <img className="Recommend-logo" src={recom} alt="추천" />
+            <div className="Recommend-List">
+              {recommend?.map((item) => {
+                return <RecommendPost item={item} key={item.id} />;
+              })}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        Swal.fire({
+          icon: "error",
+          text: "로그인을 하셔야 이용 가능합니다.",
+          confirmButtonColor: "#47AFDB",
+          cancelButtonColor: "#D9D9D9",
+          confirmButtonText: "로그인하러가기",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.replace("/");
+          }
+        })
+      )}
+    </>
   );
 };
 

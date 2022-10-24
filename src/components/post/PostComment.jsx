@@ -12,6 +12,7 @@ const PostComment = () => {
 
   const { myinfo } = useSelector((state) => state.myinfo);
   const { comments, error } = useSelector((state) => state.comments);
+
   const user = myinfo && myinfo[0]?.nickname;
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -64,7 +65,7 @@ const PostComment = () => {
         <>
           {!user ? (
             <div className="toggle-comment-wrapper">
-              <div className="nickname">
+              <div className="nickname" style={{ fontSize: "10px" }}>
                 {myinfo === undefined ? (
                   <img className="profileImg" src={profileImg} alt="" />
                 ) : (
