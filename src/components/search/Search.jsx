@@ -92,7 +92,11 @@ const Search = () => {
         </div>
         {posts.length === 0 ? (
           <div className="no-result">
-            <img className="noResult-img" src={pleaseLogin} />
+            <img
+              className="noResult-img"
+              src={pleaseLogin}
+              alt="noResult-img"
+            />
             일치하는 검색결과가 없습니다.
           </div>
         ) : (

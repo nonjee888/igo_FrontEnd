@@ -39,7 +39,7 @@ const AddPost = () => {
   const editorRef = useRef();
   const dispatch = useDispatch();
   const inputFocus = useRef(null);
-  const { detail, isLoading, error } = useSelector((state) => state?.posts);
+  const { detail, error } = useSelector((state) => state?.posts);
   const { id } = useParams();
 
   //isEdit 게시물의 id가 param에 존재할 때

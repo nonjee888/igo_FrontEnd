@@ -28,9 +28,7 @@ const PostComment = () => {
   const openModal = () => {
     modalOpen ? setModalOpen(false) : setModalOpen(true);
   };
-  const payload = {
-    review,
-  };
+
   useEffect(() => {
     dispatch(getComments(id)).then((res) => {
       if (!res) {
@@ -60,7 +58,7 @@ const PostComment = () => {
       className="commentContainer"
     >
       <div className="comment-tap" onClick={openModal}>
-        <img className="icon-comment" src={commentIcon} />
+        <img className="icon-comment" src={commentIcon} alt="댓글아이콘" />
       </div>
       {!loading && modalOpen && (
         <>
