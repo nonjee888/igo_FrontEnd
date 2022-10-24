@@ -1,9 +1,16 @@
-# 🚞 내돈내여 
-
 ![내돈내여 썸네일](https://user-images.githubusercontent.com/106578705/196959130-dbee6ce6-7e55-4f43-a62f-077244082991.jpeg)
-## 프로젝트 기간
-### 2022.09.16 ~ 2022.10.28
-## 팀원 
+# 🖥 프로젝트 기간
+### 2022.09.16 ~ 2022.10.28 </br></br>
+
+# 💡 Notion  
+## [내돈내여: 내 돈 내고 내가 다녀온 리얼 여행 후기만 모아 보자!](https://goofy-skiff-c81.notion.site/d61b741102074034a0f2bf821369fb51) </br></br>
+
+
+# 💻 Service domain
+## [내돈내여 바로가기](https://naedonnaeyo.com/) 
+
+
+# 🫱🏽‍🫲🏾팀원 
 ### FE : 노은지 심혜림 이다현 | BE : 김민식 김예원 이주현
 ### BE GitHub : https://github.com/kminsic/Igo
 
@@ -14,20 +21,20 @@
 
 # 📑 Service Architecture
 
-![image](https://user-images.githubusercontent.com/106578705/194592914-e330bd9f-8f62-4bbc-b500-6f4e22e886a3.png)
+![image](https://user-images.githubusercontent.com/106578705/194592914-e330bd9f-8f62-4bbc-b500-6f4e22e886a3.png)</br></br>
 
 
 # 🗂컴포넌트 구조
 
-![내돈내여 컴포넌트 구조](https://user-images.githubusercontent.com/106578705/196848710-8f1d68b9-3733-4a0d-8d46-1edc26099299.png)
+![내돈내여 컴포넌트 구조](https://user-images.githubusercontent.com/106578705/196848710-8f1d68b9-3733-4a0d-8d46-1edc26099299.png)</br></br>
 
 
 # 🖇와이어프레임 
 
-![KakaoTalk_Image_2022-10-08-00-50-10](https://user-images.githubusercontent.com/106578705/194595627-3f7b36d5-b543-42ad-8da5-b960fde4ccd0.png)
+![KakaoTalk_Image_2022-10-08-00-50-10](https://user-images.githubusercontent.com/106578705/194595627-3f7b36d5-b543-42ad-8da5-b960fde4ccd0.png)</br></br>
 
 
-# 🚀 주요 기능
+# 🚀 주요 기능</br></br>
 
 
 ## 👍🏻 관심사 선택 & 추천 페이지
@@ -43,9 +50,10 @@
 ## 🎉 알림 기능
 
 ## 👮신고 기능
+</br></br>
 
+# 📚 기술 스택</br></br>
 
-# 📚 기술 스택
 <div align=left>
 <img src="https://camo.githubusercontent.com/d147c6135f0f61373ceeae9035902f4c70578cb7bebacbf9a629bbfa0c035b0c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6a6176617363726970742d4637444631453f7374796c653d666f722d7468652d6261646765266c6f676f3d6a617661736372697074266c6f676f436f6c6f723d626c61636b">
 <img src="https://camo.githubusercontent.com/5a7100155d1a7b75357a90e8810530b21c8723c59f2976d0dafc7950205336d7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f68746d6c352d4533344632363f7374796c653d666f722d7468652d6261646765266c6f676f3d68746d6c35266c6f676f436f6c6f723d7768697465">
@@ -72,12 +80,12 @@ src="https://camo.githubusercontent.com/bb6e8eeccc8867c523d9adf0bb17ebfc84a1f9d3
 <img src="https://camo.githubusercontent.com/3a8be4d33166b6bd1610e3af88b5236ee322a3773aaaad8ae74d0455dd570466/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f536f75726365747265652d3030353243433f7374796c653d666f722d7468652d6261646765266c6f676f3d536f7572636574726565266c6f676f436f6c6f723d7768697465">
 <img src="https://camo.githubusercontent.com/a632a6c6cffce290d622213102d564bb475168d75c103323fce98f5a14e61163/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f56697375616c2053747564696f20436f64652d3030374143433f7374796c653d666f722d7468652d6261646765266c6f676f3d56697375616c2053747564696f20436f6465266c6f676f436f6c6f723d7768697465">
 <img src="https://camo.githubusercontent.com/ad176bb5a61237550550e47d7e77dd5d1a846518df44c522d2ba9c0a7da6379c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6769746875622d3138313731373f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465">
-</div>
+</div></br></br>
 
 # 🎨 Design 
 <div align=left>
 <img
-src="https://camo.githubusercontent.com/9b24e246341ffbd9ec678a707aeb9b568bacd13dc3894c64ec4b17937af1f0f6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4669676d612d4632344531453f7374796c653d666f722d7468652d6261646765266c6f676f3d4669676d61266c6f676f436f6c6f723d7768697465"></div>
+src="https://camo.githubusercontent.com/9b24e246341ffbd9ec678a707aeb9b568bacd13dc3894c64ec4b17937af1f0f6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4669676d612d4632344531453f7374796c653d666f722d7468652d6261646765266c6f676f3d4669676d61266c6f676f436f6c6f723d7768697465"></div></br></br>
 
 # 🔧 Dev Tools
 <div align=left>
@@ -90,7 +98,7 @@ src="https://camo.githubusercontent.com/2347c9fba6c510c78036fe89705b42eb3f577767
 <img
 src="https://camo.githubusercontent.com/e68c6b9ddf0d0aa553f47fa6a1beb2b60176552e8a7862fe2932c03078a45376/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f74696f6e2d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d4e6f74696f6e266c6f676f436f6c6f723d7768697465">
 <img
-src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149e14c24a2203d7f7217bb4643/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f536c61636b2d3441313534423f7374796c653d666f722d7468652d6261646765266c6f676f3d536c61636b266c6f676f436f6c6f723d7768697465">
+src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149e14c24a2203d7f7217bb4643/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f536c61636b2d3441313534423f7374796c653d666f722d7468652d6261646765266c6f676f3d536c61636b266c6f676f436f6c6f723d7768697465"></br></br>
 
 # 🎯Trouble Shooting 
 
