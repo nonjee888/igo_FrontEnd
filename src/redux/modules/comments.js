@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { instance } from "../../shared/api";
 
 export const getComments = createAsyncThunk(
@@ -6,7 +6,7 @@ export const getComments = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await instance.get(`/api/comments/${payload}`);
-
+      console.log(data.data.data);
       if (data.data.success) return data.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -18,7 +18,7 @@ export const createComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const data = await instance.post("/api/comment", payload);
-      console.log(data);
+
       if (data.data.success) return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -30,7 +30,6 @@ export const removeComment = createAsyncThunk(
   "comments/RemoveComments",
   async (payload, thunkAPI) => {
     console.log(payload);
-    // console.log(payload.commentId);
     try {
       const data = await instance.delete(`/api/comment/${payload.commentId}`, {
         postId: payload.postId,
@@ -70,7 +69,7 @@ export const comments = createSlice({
     },
     [createComment.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.comments.push(action.payload.data);
+      state.comments.unshift(action.payload.data);
     },
     [createComment.rejected]: (state, action) => {
       state.isLoading = false;
@@ -82,7 +81,7 @@ export const comments = createSlice({
     [removeComment.fulfilled]: (state, action) => {
       state.isLoading = false;
       let index = state.comments.findIndex(
-        (comment) => comment.id === action.payload.data
+        (comment) => comment.id === action.payload.commentId
       );
       state.comments.splice(index, 1);
     },
