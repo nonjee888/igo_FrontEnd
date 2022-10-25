@@ -287,7 +287,7 @@ const PostKakaoMap = (props) => {
         ) : isActive ? (
           <button
             type="submit"
-            disabled={content.length > 9 && title.length >= 2 ? false : true}
+            disabled={content.length > 8 && title.length >= 2 ? false : true}
             className="submit-post"
             onClick={() => {
               handleRegisterButton();
@@ -298,7 +298,7 @@ const PostKakaoMap = (props) => {
         ) : (
           <button
             type="submit"
-            disabled={content.length > 9 && title.length >= 2 ? false : true}
+            disabled={content.length > 8 && title.length >= 2 ? false : true}
             className="noSubmit-post"
             onClick={() => {
               handleRegisterButton();
