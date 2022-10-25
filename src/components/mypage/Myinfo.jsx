@@ -61,7 +61,7 @@ const Myinfo = () => {
     if (nickname === "" || preview === "") {
       Swal.fire({
         icon: "info",
-        text: "사진첨부와 닉네임을 입력해주세요🥰",
+        text: "사진을 첨부해주세요🥰",
         confirmButtonColor: "#47AFDB",
         confirmButtonText: "확인",
       }).then((result) => {
