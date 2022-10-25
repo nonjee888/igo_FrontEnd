@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createComment, getComments } from "../../redux/modules/comments";
@@ -53,6 +53,13 @@ const PostComment = () => {
     );
   }
 
+  const CommentSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createComment(review));
+    setReview(initialState);
+    setComments("");
+  };
+
   return (
     <div
       style={{ height: modalOpen ? "50%" : "8%" }}
@@ -82,45 +89,45 @@ const PostComment = () => {
               로그인 후 댓글을 남겨 보세요!
             </div>
           ) : (
-            <div className="toggle-comment-wrapper">
-              <div className="nickname">
-                {(myinfo && myinfo[0]?.profileImage === null) || undefined ? (
-                  <img className="profileImg" src={profileImg} alt="" />
-                ) : (
-                  <img
-                    className="profileImg"
-                    src={myinfo && myinfo[0]?.profileImage}
-                    alt=""
-                  />
-                )}
-                <div className="userNick">{myinfo && myinfo[0].nickname}</div>
+            <form onSubmit={CommentSubmit}>
+              <div className="toggle-comment-wrapper">
+                <div className="nickname">
+                  {(myinfo && myinfo[0]?.profileImage === null) || undefined ? (
+                    <img className="profileImg" src={profileImg} alt="" />
+                  ) : (
+                    <img
+                      className="profileImg"
+                      src={myinfo && myinfo[0]?.profileImage}
+                      alt=""
+                    />
+                  )}
+                  <div className="userNick">{myinfo && myinfo[0].nickname}</div>
+                </div>
+                <input
+                  type="text"
+                  name="comments"
+                  value={comment}
+                  autoFocus
+                  className="comment-input"
+                  placeholder="댓글입력..."
+                  onChange={(e) => {
+                    setComments(e.target.value);
+                    setReview({
+                      ...review,
+                      postId: id,
+                      content: e.target.value,
+                    });
+                  }}
+                />
+                <button
+                  className="add-btn"
+                  type="submit"
+                  disabled={!comment ? true : false}
+                >
+                  작성
+                </button>
               </div>
-              <input
-                type="text"
-                name="comments"
-                value={comment}
-                className="comment-input"
-                placeholder="댓글입력..."
-                onChange={(e) => {
-                  setComments(e.target.value);
-                  setReview({
-                    ...review,
-                    postId: id,
-                    content: e.target.value,
-                  });
-                }}
-              />
-              <button
-                className="add-btn"
-                onClick={() => {
-                  dispatch(createComment(review));
-                  setReview(initialState);
-                  setComments("");
-                }}
-              >
-                작성
-              </button>
-            </div>
+            </form>
           )}
           <div className="commentList">
             {comments &&
