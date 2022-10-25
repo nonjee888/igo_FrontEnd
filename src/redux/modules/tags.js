@@ -22,7 +22,6 @@ export const tags = createSlice({
     [getTags.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.tags = action.payload;
-      console.log(action);
     },
     [getTags.rejected]: (state, action) => {
       state.isLoading = false;
