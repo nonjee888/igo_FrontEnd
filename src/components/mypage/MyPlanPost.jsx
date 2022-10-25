@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postMyplans } from "../../redux/modules/myplans";
+import Swal from "sweetalert2";
 //이미지
 import photo1 from "../../asset/assetMypage/photo1.png";
 import calendar from "../../asset/assetMypage/calendar.png";
@@ -31,12 +32,25 @@ const MyPlanPost = () => {
   };
 
   const onSubmitHandler = async (event) => {
+    if (title === "" || content === "" || time === "") {
+      Swal.fire({
+        icon: "info",
+        text: "날짜와 제목, 사진과 내용을 입력해주세요🥰",
+        confirmButtonColor: "#47AFDB",
+        confirmButtonText: "확인",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          return;
+        }
+      });
+    }
     event.preventDefault();
     let req = {
       time: time,
       title: title,
       content: content,
     };
+
     const formData = new FormData();
     formData.append("images", images);
 
@@ -53,8 +67,6 @@ const MyPlanPost = () => {
 
     dispatch(postMyplans(formData));
     resetStates();
-    navigate("/myplan");
-    // window.location.reload();
   };
 
   return (

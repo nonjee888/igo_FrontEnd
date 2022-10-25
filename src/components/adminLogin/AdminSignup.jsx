@@ -69,7 +69,7 @@ const AdminSignup = ({ setModal }) => {
     //유효성 검사가 성공적이면 회원가입 post 요청
     if (validation() === true) {
       const { data } = await instance.post("/api/member/signup", user);
-      console.log(data);
+
       if (data.success) {
         Swal.fire({
           icon: "info",
