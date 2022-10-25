@@ -11,7 +11,7 @@ export default function RegionPostList() {
 
   const regionList = [
     {
-      name: "서울/경기권",
+      name: "서울/경기",
     },
     {
       name: "대전",
@@ -56,7 +56,7 @@ export default function RegionPostList() {
   let seoul =
     postList &&
     postList?.filter((post) => {
-      return region === "서울/경기권";
+      return region === "서울/경기";
     });
 
   let daejeon =
@@ -171,7 +171,7 @@ export default function RegionPostList() {
       </div>
       <div className="post-list-wrapper">
         <div className="content-wrapper">
-          {region === "서울/경기권"
+          {region === "서울/경기"
             ? seoul &&
               seoul?.map((post) => {
                 return (
