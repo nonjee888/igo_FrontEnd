@@ -5,6 +5,7 @@ import PostCard from "./PostCard";
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import pleaseLogin from "../../asset/pleaseLogin.png";
+import research from "../../asset/assetFooter/research.png";
 
 // ~순 카테고리목록
 export default function AllPostList() {
@@ -210,6 +211,14 @@ export default function AllPostList() {
               })}
         </div>
       </div>
+      <button
+        className="research1"
+        onClick={() => {
+          navigate("/tutorial");
+        }}
+      >
+        <img src={research} alt="리서치커피받으세요" />
+      </button>
     </div>
   );
 }

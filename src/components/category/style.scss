@@ -76,3 +76,36 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+//리서치버튼
+.research1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 30px;
+  background: #8aceff;
+  animation: research-widget 0.8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  border-radius: 3em;
+  border: none;
+  height: 40px;
+  width: 150px;
+  z-index: 2;
+  position: fixed;
+  img {
+    max-width: 130px;
+    max-height: 40px;
+    object-fit: cover;
+  }
+}
+@keyframes research-widget {
+  from {
+    background: #b7abff;
+    bottom: 10%;
+  }
+
+  to {
+    bottom: 12%;
+  }
+}
