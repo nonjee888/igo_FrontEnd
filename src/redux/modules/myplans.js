@@ -14,10 +14,15 @@ export const postMyplans = createAsyncThunk(
       });
       if (data.data.success === true) {
         window.location.replace("/myplan");
-      } else if (data.data.success === false) alert(data.data.error.message);
-      //일정등록 성공 메세지 죽여둠
-      // else alert(data.data.data);
-      return thunkAPI.fulfillWithValue(data.data);
+      } else if (data.data.success === false) {
+        Swal.fire({
+          icon: "info",
+          text: "오류가 있어요! 관리자에게 문의해주세요😿",
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        });
+        return thunkAPI.fulfillWithValue(data.data);
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

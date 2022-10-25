@@ -58,20 +58,33 @@ const Myinfo = () => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    let req = {
-      nickname: nickname,
-    };
-    const formData = new FormData();
-    formData.append("profileImage", profileImage);
+    if (nickname === "" || preview === "") {
+      Swal.fire({
+        icon: "info",
+        text: "사진을 첨부해주세요🥰",
+        confirmButtonColor: "#47AFDB",
+        confirmButtonText: "확인",
+      }).then((result) => {
+        if (result.isConfirmed) {
+        }
+      });
+    } else {
+      event.preventDefault();
+      let req = {
+        nickname: nickname,
+      };
 
-    let json = JSON.stringify(req);
+      const formData = new FormData();
+      formData.append("profileImage", profileImage);
 
-    const nicknameblob = new Blob([json], { type: "application/json" });
-    formData.append("nickname", nicknameblob);
+      let json = JSON.stringify(req);
 
-    dispatch(putMyinfo(formData));
-    resetStates();
-    navigate("/myinfo");
+      const nicknameblob = new Blob([json], { type: "application/json" });
+      formData.append("nickname", nicknameblob);
+
+      dispatch(putMyinfo(formData));
+      resetStates();
+    }
   };
 
   //수정창 모달
