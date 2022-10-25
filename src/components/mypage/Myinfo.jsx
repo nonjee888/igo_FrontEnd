@@ -165,6 +165,7 @@ const Myinfo = () => {
             <input
               type="text"
               value={nickname}
+              maxlength="6"
               placeholder="6글자이내"
               className="profileNickameinput"
               onChange={(e) => {
