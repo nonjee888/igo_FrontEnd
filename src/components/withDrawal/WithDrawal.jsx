@@ -63,7 +63,7 @@ export default function WithDrawal() {
       } else {
         Swal.fire({
           icon: "error",
-          text: "관리자에게 문의 해주세요!",
+          text: "오류가 있어요! 관리자에게 문의해주세요😿",
           consfirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         });
