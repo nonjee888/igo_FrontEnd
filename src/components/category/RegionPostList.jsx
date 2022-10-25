@@ -16,9 +16,7 @@ export default function RegionPostList() {
     {
       name: "대전",
     },
-    {
-      name: "세종",
-    },
+
     {
       name: "인천",
     },
@@ -63,12 +61,6 @@ export default function RegionPostList() {
     postList &&
     postList?.filter((post) => {
       return region === "대전";
-    });
-
-  let sejeong =
-    postList &&
-    postList?.filter((post) => {
-      return region === "세종";
     });
 
   let incheon =
@@ -181,13 +173,6 @@ export default function RegionPostList() {
             : region === "대전"
             ? daejeon &&
               daejeon?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
-              })
-            : region === "세종"
-            ? sejeong &&
-              sejeong?.map((post) => {
                 return (
                   <Post post={post} key={post.id} createdAt={post.createdAt} />
                 );
