@@ -90,7 +90,7 @@ const AdminSignup = ({ setModal }) => {
       } else {
         Swal.fire({
           icon: "info",
-          text: "회원가입에 실패했습니다. 다시 시도해주세요.",
+          text: "오류가 있어요! 관리자에게 문의해주세요😿",
           confirmButtonColor: "#47AFDB",
           confirmButtonText: "확인",
         });
