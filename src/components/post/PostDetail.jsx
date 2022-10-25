@@ -12,6 +12,7 @@ import PostReportModal from "./PostReportModal";
 import Swal from "sweetalert2";
 import dompurify from "dompurify";
 import PostComment from "./PostComment";
+import goingback from "../../asset/goingback.png";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
@@ -157,7 +158,23 @@ const PostDetail = () => {
       <div className="allPost">
         <div className="detail-wrapper">
           <div className="detail-title">
-            <div className="title">{detail?.title}</div>
+            <div className="title">
+              <div className="goBackwrap">
+                <img
+                  style={{
+                    width: "40%",
+                    height: "40%",
+                    float: "left",
+                    marginLeft: "10px",
+                  }}
+                  src={goingback}
+                  onClick={() => {
+                    navigate(-1);
+                  }}
+                />
+              </div>
+              {detail?.title}
+            </div>
           </div>
           {/* 비회원: 작성자, 조회수 보임 like, report 누르면 로그인하기 alert*/}
           {!user ? (
