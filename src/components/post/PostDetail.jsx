@@ -339,9 +339,9 @@ const PostDetail = () => {
           ></div>
           <div className="map-wrapper">
             {center === undefined && poly === undefined ? (
-              <> {detail.nickname}님은 경로를 공유하지 않았습니다. </>
+              <> </>
             ) : center?.length === 0 && poly?.length === 0 ? (
-              <> {detail.nickname}님은 경로를 공유하지 않았습니다. </>
+              <> </>
             ) : (
               <>
                 <button
