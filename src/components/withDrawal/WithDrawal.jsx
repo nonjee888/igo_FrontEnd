@@ -41,9 +41,9 @@ export default function WithDrawal() {
 
   const submitHandler = async (e) => {
     let id = myinfo && myinfo[0]?.id;
-    console.log(id);
+
     const response = await instance.delete(`/api/member/withdrawal/${id}`);
-    console.log(response);
+
     Swal.fire({
       icon: "warning",
       text: "정말 탈퇴하시겠습니까?",
