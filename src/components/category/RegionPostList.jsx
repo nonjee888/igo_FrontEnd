@@ -6,7 +6,7 @@ import Post from "../post/Post";
 
 // 지역 카테고리목록
 export default function RegionPostList() {
-  const [region, setRegion] = useState("전체");
+  const [region, setRegion] = useState("강원도");
   const [postList, setPostList] = useState();
 
   const regionList = [
