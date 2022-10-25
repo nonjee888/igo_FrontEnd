@@ -46,7 +46,7 @@ const KaKaoLoading = () => {
       } else {
         setTimeout(() => {
           Swal.fire({
-            imageUrl:loginmodalCat,
+            imageUrl: loginmodalCat,
             imageWidth: 400,
             imageHeight: 170,
             title: nickname + "님",
@@ -64,7 +64,7 @@ const KaKaoLoading = () => {
     } catch (error) {
       Swal.fire({
         icon: "success",
-        text: error.message,
+        text: "로그인에 오류가 있어요! 관리자에게 문의해주세요😿",
         confirmButtonColor: "#47AFDB",
         confirmButtonText: "확인",
       }).then((result) => {

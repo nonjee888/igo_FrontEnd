@@ -55,7 +55,7 @@ const Admin = () => {
     if (data.data.success === false) {
       Swal.fire({
         icon: "error",
-        text: `${data.data.error.message}`,
+        text: "오류가 있어요! 관리자에게 문의해주세요😿",
         confirmButtonColor: "#47AFDB",
         confirmButtonText: "확인",
       });
