@@ -46,6 +46,7 @@ export const deleteStory = createAsyncThunk(
           REFRESH_TOKEN: localStorage.getItem("REFRESH_TOKEN"),
         },
       });
+      // console.log(data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -95,7 +96,7 @@ export const story = createSlice({
     },
     [deleteStory.fulfilled]: (state, action) => {
       state.isLoading = false;
-      let index = state.story.findIndex(
+      let index = state.story?.story?.findIndex(
         (story) => story.id === action.payload.data
       );
       state.story.splice(index, 1);
