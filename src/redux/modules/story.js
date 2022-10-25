@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../../shared/api";
+import Swal from "sweetalert2";
 
 export const postStory = createAsyncThunk(
   "story/post",
@@ -13,8 +14,15 @@ export const postStory = createAsyncThunk(
       });
       if (data.data.success === true) {
         window.location.replace("/story");
-      } else if (data.data.success === false) alert(data.data.error.message);
-      return thunkAPI.fulfillWithValue(data.data);
+      } else if (data.data.success === false) {
+        Swal.fire({
+          icon: "info",
+          text: "오류가 있어요! 관리자에게 문의해주세요😿",
+          confirmButtonColor: "#47AFDB",
+          confirmButtonText: "확인",
+        });
+        return thunkAPI.fulfillWithValue(data.data);
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
