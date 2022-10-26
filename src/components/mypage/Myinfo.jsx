@@ -101,19 +101,28 @@ const Myinfo = () => {
       <div className="profileImage">
         {myinfo === undefined ? (
           <>
-            <img src={profileImg} alt="프로필이미지" />
+            <img src={profileImg} loading="lazy" alt="프로필이미지" />
           </>
         ) : myinfo[0].profileImage === null ? (
           <>
-            <img src={profileImg} alt="프로필이미지" />
+            <img src={profileImg} loading="lazy" alt="프로필이미지" />
             <div className="profileNickname1">
               {myinfo[0]?.nickname}
-              <img src={edit} alt="닉네임수정버튼" onClick={openModal} />
+              <img
+                src={edit}
+                alt="닉네임수정버튼"
+                loading="lazy"
+                onClick={openModal}
+              />
             </div>
           </>
         ) : (
           <>
-            <img src={myinfo[0].profileImage} alt="프로필이미지" />
+            <img
+              src={myinfo[0].profileImage}
+              loading="lazy"
+              alt="프로필이미지"
+            />
             <div className="profileNickname1">
               {myinfo[0]?.nickname}
               <img
@@ -219,7 +228,7 @@ const Myinfo = () => {
             navigate("/mylike");
           }}
         >
-          <img src={love} alt="좋아요" />
+          <img src={love} alt="좋아요" loading="lazy" />
           게시글 모아보기
         </p>
         <p

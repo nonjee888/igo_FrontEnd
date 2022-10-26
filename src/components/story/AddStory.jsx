@@ -120,16 +120,20 @@ const AddStory = () => {
                     className="btn"
                     onClick={() => filePicekerRef.current.click()}
                   >
-                    <img src={video} alt="영상을 업로드 해주세요." />
+                    <img
+                      src={video}
+                      alt="영상을 업로드 해주세요."
+                      loading="lazy"
+                    />
                   </div>
                   {videoPreview && (
                     <div className="videoXBtn" onClick={clearFiles}>
-                      <img src={deleteimg} alt="삭제버튼" />
+                      <img src={deleteimg} alt="삭제버튼" loading="lazy" />
                     </div>
                   )}
                 </div>
                 <div className="videoAddInfo">
-                  <img src={videoInfo} alt="영상첨부정보" />
+                  <img src={videoInfo} alt="영상첨부정보" loading="lazy" />
                 </div>
                 <div className="videoPreview">
                   {videoPreview != null && (
@@ -157,7 +161,7 @@ const AddStory = () => {
                   type="submit"
                   onClick={validateSelectedFile}
                 >
-                  <img src={addVideo} alt="영상등록" />
+                  <img src={addVideo} alt="영상등록" loading="lazy" />
                 </button>
               </div>
             </form>
