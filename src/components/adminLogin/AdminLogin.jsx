@@ -65,7 +65,7 @@ const Admin = () => {
   return (
     <>
       {modal ? <AdminSignup close={close} setModal={setModal} /> : null}
-      <img className="Admin-logo" src={tutorial9} />
+      <img className="Admin-logo" src={tutorial9} loading="lazy" />
       <div className="Login-wrap">
         <div className="Login-id">
           <input

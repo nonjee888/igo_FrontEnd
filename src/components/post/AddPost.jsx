@@ -231,7 +231,7 @@ const AddPost = () => {
                 });
               }}
             >
-              <img src={initialization} alt="초기화" />
+              <img src={initialization} alt="초기화" loading="lazy" />
             </button>
           </div>
           <div className="editor-wrapper">

@@ -61,11 +61,11 @@ const Login = () => {
           />
 
           <a href={NAVER_AUTH_URL}>
-            <img src={naver} alt="네이버로시작하기" />
+            <img src={naver} loading="lazy" alt="네이버로시작하기" />
           </a>
 
           <a href={KAKAO_AUTH_URL}>
-            <img src={kakao} alt="카카오로시작하기" />
+            <img src={kakao} loading="lazy" alt="카카오로시작하기" />
           </a>
 
           <button
