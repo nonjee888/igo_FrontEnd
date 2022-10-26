@@ -1,21 +1,18 @@
 import "./App.css";
 import "./style.scss";
 import Router from "./shared/Router";
-
+import { BrowserRouter } from "react-router-dom";
 import background from "./asset/background.png";
 
 function App() {
   return (
     <>
-      <img
-        className="webImg"
-        src={background}
-        loading="lazy"
-        alt="background"
-      />
-      <div className="mobile-wrapper">
-        <Router />
-      </div>
+      <BrowserRouter>
+        <img className="webImg" src={background} loading="lazy" />
+        <div className="mobile-wrapper">
+          <Router />
+        </div>
+      </BrowserRouter>
     </>
   );
 }
