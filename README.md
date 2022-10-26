@@ -108,7 +108,7 @@ src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149
 
 |튜토리얼|로그인|
 |:---:|:---:|
-|<img src="https://blog.kakaocdn.net/dn/c8JuRc/btrPDGkKyrx/sV4zxIIrxaCSXe6OGIxNkk/img.gif" />|<img src="https://blog.kakaocdn.net/dn/dUkxQC/btrPGdIlmNz/43nzmFV4FRu8umdAzvsLl0/img.gif" />|
+|<img src="https://blog.kakaocdn.net/dn/c8JuRc/btrPDGkKyrx/sV4zxIIrxaCSXe6OGIxNkk/img.gif" />|![로그인](https://user-images.githubusercontent.com/108657283/198040520-e783224c-e601-4a76-afea-78d7b50f28f8.gif)|
 |태그선택, 선택기반추천페이지|메인페이지, 카테고리조회, 검색, 최신순, 좋아요순, 조회순, 무한스크롤|
 |<img src="https://blog.kakaocdn.net/dn/zDZPD/btrPEkIpLMY/bCsd7U3a81uaqGSHNKvKTk/img.gif" />|<img src="https://blog.kakaocdn.net/dn/bZ0h6f/btrPDlVq5vt/JfTWHkj40me2SZX1jXiK30/img.gif" />|
 |블로그형식게시물작성|디테일페이지, 댓글작성, 댓글삭제|
