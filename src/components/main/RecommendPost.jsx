@@ -18,9 +18,9 @@ const RecommendPost = ({ item }) => {
         }}
       >
         {url === null ? (
-          <img className="img-container" src={photo} loading="lazy" />
+          <img className="img-container" src={photo} />
         ) : (
-          <img className="img-container" src={url[1]} loading="lazy" />
+          <img className="img-container" src={url[1]} />
         )}
         <div className="pic-wrapper">
           <div className="rec-post-content">

@@ -21,7 +21,7 @@ const Mylikes = () => {
     <div className="All">
       <div className="MyPosts">
         <h3>
-          나의 <img src={love} alt="좋아요" loading="lazy" /> 게시글
+          나의 <img src={love} alt="좋아요" /> 게시글
         </h3>
         <div className="MyListsAll">
           {mylikes?.length === 0 ? (

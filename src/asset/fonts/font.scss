@@ -1,7 +1,7 @@
 @font-face {
   /* 사용할 폰트의 이름 */
   font-family: "NotoSansKR";
-  font-display: swap;
+  font-display: fallback;
 
   /* 
     src: 사용할 폰트의 위치 및 형식 

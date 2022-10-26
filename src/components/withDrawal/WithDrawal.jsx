@@ -74,7 +74,7 @@ export default function WithDrawal() {
   return (
     <div className="All">
       <div>
-        <img className="drawalimg" src={drawalimg} alt="" loading="lazy" />
+        <img className="drawalimg" src={drawalimg} alt="" />
         <div className="ListBox">
           <li className="listText">
             계정 삭제시, 개인 정보는 일괄 <span>삭제 처리</span>됩니다.

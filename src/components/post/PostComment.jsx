@@ -66,12 +66,7 @@ const PostComment = () => {
       className="commentContainer"
     >
       <div className="comment-tap" onClick={openModal}>
-        <img
-          className="icon-comment"
-          src={commentIcon}
-          alt="댓글아이콘"
-          loading="lazy"
-        />
+        <img className="icon-comment" src={commentIcon} alt="댓글아이콘" />
       </div>
       {!loading && modalOpen && (
         <>
@@ -79,12 +74,7 @@ const PostComment = () => {
             <div className="toggle-comment-wrapper">
               <div className="nickname" style={{ fontSize: "10px" }}>
                 {myinfo === undefined ? (
-                  <img
-                    className="profileImg"
-                    src={profileImg}
-                    alt=""
-                    loading="lazy"
-                  />
+                  <img className="profileImg" src={profileImg} alt="" />
                 ) : (
                   <img
                     className="profileImg"
@@ -103,12 +93,7 @@ const PostComment = () => {
               <div className="toggle-comment-wrapper">
                 <div className="nickname">
                   {(myinfo && myinfo[0]?.profileImage === null) || undefined ? (
-                    <img
-                      className="profileImg"
-                      src={profileImg}
-                      alt=""
-                      loading="lazy"
-                    />
+                    <img className="profileImg" src={profileImg} alt="" />
                   ) : (
                     <img
                       className="profileImg"
