@@ -10,14 +10,12 @@
 ## [내돈내여 바로가기](https://naedonnaeyo.com/) </br></br>
 
 
-# 🫱🏽‍🫲🏾팀원 
+# 👩‍👩‍👧 팀원 
 ### FE : 노은지 심혜림 이다현 | BE : 김민식 김예원 이주현
 ### BE GitHub : https://github.com/kminsic/Igo </br></br>
 
 # 🔖 서비스 개요
-#### 😁광고가 판치는 요즘 블로그,인스타그램 피드들..답답하지 않으셨나요?
-#### 광고없는! 알맹이로 가득찬 정보를 찾고 싶으시다면
-#### 유저들이 내 돈으로 여행하고 인증하는 내돈내여를 써보세요! </br></br>
+#### 😁내 돈 내고 내가 여행하는, 진정성있는 국내 여행 정보 공유 플랫폼 서비스
 
 # 📑 Service Architecture
 
@@ -105,3 +103,16 @@ src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149
 [트러블슈팅!](https://pacific-force-cab.notion.site/Trouble-shooting-0e43f4f5f5524c6e83fc418494ce6b2a)
 
 
+# 🎥사이트 데모
+
+|튜토리얼|로그인|태그선택, 선택기반추천페이지|
+|:---:|:---:|:---:|
+|<img src="https://blog.kakaocdn.net/dn/c8JuRc/btrPDGkKyrx/sV4zxIIrxaCSXe6OGIxNkk/img.gif" />|<img src="https://blog.kakaocdn.net/dn/cTjPwV/btrPDka9e5P/saznTGn5SeIzI4x81XkWC0/img.gif" />|<img src="https://blog.kakaocdn.net/dn/zDZPD/btrPEkIpLMY/bCsd7U3a81uaqGSHNKvKTk/img.gif" />|
+|메인페이지, 카테고리조회, 검색, 최신순, 좋아요순, 조회순, 무한스크롤|블로그형식게시물작성|디테일페이지, 댓글작성, 댓글삭제|
+|<img src="" />|<img src="" />|<img src="https://blog.kakaocdn.net/dn/bF2KNW/btrPFx1oHoO/PDXYAi1aAmg4lvTDU5KB20/img.gif" />|<img src="https://blog.kakaocdn.net/dn/djW7Xg/btrPDfgT8gu/BojK5k4WkkORXpealHKT40/img.gif" />|
+|좋아요, 좋아요취소, 신고하기|알림, 알림체크, 삭제|영상남기기,200메가제한,프리뷰,프리뷰삭제,영상공유,영상삭제|
+|<img src="https://blog.kakaocdn.net/dn/nhrhy/btrPDAdFedS/axVt7oFRtyblxUhts9pdck/img.gif" />|<img src="https://blog.kakaocdn.net/dn/3xEn2/btrPFyze56r/OA6BgOnMrIK21qKi6PLkDK/img.gif" />|<img src="https://blog.kakaocdn.net/dn/bkUAyu/btrPDsmKqHM/XyIOBzhL9Cyvn9sZJSniUK/img.gif" />|
+|마이페이지/프로필변경, 태그변경|작성게시글,하트모아모기|
+|<img src="https://blog.kakaocdn.net/dn/bj0HzH/btrPEnyq0xt/U0sah3Tv8uymY7989XKXFk/img.gif" />|<img src="https://blog.kakaocdn.net/dn/blfneH/btrPB2viaPK/bkUdjow8uNImQ5JpwfPeLK/img.gif" />|
+|마이페이지/일정등록,완료,취소,삭제|회원탈퇴|
+<img src="https://blog.kakaocdn.net/dn/dfpOcH/btrPDebeBrh/AqThO7WGXKM4IRycAl0HK0/img.gif" />|<img src="https://blog.kakaocdn.net/dn/cjZqdN/btrPDHcT5eP/nE0457wbXacDoxOJLB02X0/img.gif" />|
