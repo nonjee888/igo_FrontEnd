@@ -18,7 +18,6 @@
 ### 😁내 돈 내고 내가 여행하는, 진정성있는 국내 여행 정보 공유 플랫폼 서비스
 
 
-
 # 📑 Service Architecture
 
 ![아키텍쳐](https://user-images.githubusercontent.com/106578705/197531791-61e52706-448c-459c-a4f0-c44a388a90b7.jpeg)</br></br>
@@ -102,7 +101,7 @@ src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149
 
 # 🎯Trouble Shooting 
 
-[트러블슈팅!](https://pacific-force-cab.notion.site/Trouble-shooting-0e43f4f5f5524c6e83fc418494ce6b2a)
+## [트러블슈팅!](https://pacific-force-cab.notion.site/Trouble-shooting-0e43f4f5f5524c6e83fc418494ce6b2a)
 
 
 # 🎥사이트 데모
@@ -111,9 +110,9 @@ src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149
 |:---:|:---:|:---:|
 |<img src="https://blog.kakaocdn.net/dn/c8JuRc/btrPDGkKyrx/sV4zxIIrxaCSXe6OGIxNkk/img.gif" />|<img src="https://blog.kakaocdn.net/dn/cTjPwV/btrPDka9e5P/saznTGn5SeIzI4x81XkWC0/img.gif" />|<img src="https://blog.kakaocdn.net/dn/zDZPD/btrPEkIpLMY/bCsd7U3a81uaqGSHNKvKTk/img.gif" />|
 |메인페이지, 카테고리조회, 검색, 최신순, 좋아요순, 조회순, 무한스크롤|블로그형식게시물작성|디테일페이지, 댓글작성, 댓글삭제|
-|<img src="https://blog.kakaocdn.net/dn/l3Unk/btrPDePNVvW/7VB9CkmSRHsIsbvjScZTn0/img.gif" />|<img src="https://blog.kakaocdn.net/dn/bF2KNW/btrPFx1oHoO/PDXYAi1aAmg4lvTDU5KB20/img.gif" />|<img src="https://blog.kakaocdn.net/dn/bF2KNW/btrPFx1oHoO/PDXYAi1aAmg4lvTDU5KB20/img.gif" />|<img src="https://blog.kakaocdn.net/dn/djW7Xg/btrPDfgT8gu/BojK5k4WkkORXpealHKT40/img.gif" />|
+|<img src="https://blog.kakaocdn.net/dn/l3Unk/btrPDePNVvW/7VB9CkmSRHsIsbvjScZTn0/img.gif" />|<img src="https://blog.kakaocdn.net/dn/bF2KNW/btrPFx1oHoO/PDXYAi1aAmg4lvTDU5KB20/img.gif" />|<img src="https://blog.kakaocdn.net/dn/djW7Xg/btrPDfgT8gu/BojK5k4WkkORXpealHKT40/img.gif" />|
 |좋아요, 좋아요취소, 신고하기|알림, 알림체크, 삭제|영상남기기,200메가제한,프리뷰,프리뷰삭제,영상공유,영상삭제|
-|<img src="https://blog.kakaocdn.net/dn/nhrhy/btrPDAdFedS/axVt7oFRtyblxUhts9pdck/img.gif" />|<img src="https://blog.kakaocdn.net/dn/3xEn2/btrPFyze56r/OA6BgOnMrIK21qKi6PLkDK/img.gif" />|<img src="[https://blog.kakaocdn.net/dn/bkUAyu/btrPDsmKqHM/XyIOBzhL9Cyvn9sZJSniUK/img.gif](https://blog.kakaocdn.net/dn/bkUAyu/btrPDsmKqHM/XyIOBzhL9Cyvn9sZJSniUK/img.gif)" />|
+|<img src="https://blog.kakaocdn.net/dn/nhrhy/btrPDAdFedS/axVt7oFRtyblxUhts9pdck/img.gif" />|<img src="https://blog.kakaocdn.net/dn/3xEn2/btrPFyze56r/OA6BgOnMrIK21qKi6PLkDK/img.gif" />|<img src="https://blog.kakaocdn.net/dn/bkUAyu/btrPDsmKqHM/XyIOBzhL9Cyvn9sZJSniUK/img.gif" />|
 |마이페이지/프로필변경, 태그변경|작성게시글,하트모아모기|
 |<img src="https://blog.kakaocdn.net/dn/bj0HzH/btrPEnyq0xt/U0sah3Tv8uymY7989XKXFk/img.gif" />|<img src="https://blog.kakaocdn.net/dn/blfneH/btrPB2viaPK/bkUdjow8uNImQ5JpwfPeLK/img.gif" />|
 |마이페이지/일정등록,완료,취소,삭제|회원탈퇴|
