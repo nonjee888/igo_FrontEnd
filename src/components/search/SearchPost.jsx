@@ -25,9 +25,9 @@ const SearchPost = (props) => {
         }}
       >
         {url === null ? (
-          <img className="img-container" src={photo} loading="lazy" />
+          <img className="img-container" src={photo} loading="lazy" alt="" />
         ) : (
-          <img className="img-container" src={url[1]} loading="lazy" />
+          <img className="img-container" src={url[1]} loading="lazy" alt="" />
         )}
         <div className="pic-wrapper">
           <div className="post-content">

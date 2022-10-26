@@ -259,7 +259,7 @@ const PostKakaoMap = (props) => {
           </button>
         )}
         <button className="map-modal-btn" onClick={openModal}>
-          <img className="map-info" src={learnMore} />
+          <img className="map-info" src={learnMore} alt="" />
         </button>
         {modalOpen ? (
           <PostMapModal postId={id} open={modalOpen} close={closeModal} />

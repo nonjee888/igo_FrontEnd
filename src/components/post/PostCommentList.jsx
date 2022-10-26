@@ -76,11 +76,21 @@ const CommentList = (props) => {
                 });
               }}
             >
-              <img className="delete-icon" src={deleteimg} loading="lazy" />
+              <img
+                className="delete-icon"
+                src={deleteimg}
+                loading="lazy"
+                alt=""
+              />
             </button>
           ) : (
             <button className="delete-btn">
-              <img className="delete-icon1" src={deleteNemo} loading="lazy" />
+              <img
+                className="delete-icon1"
+                src={deleteNemo}
+                loading="lazy"
+                alt=""
+              />
             </button>
           )}
         </div>

@@ -83,7 +83,7 @@ const Admin = () => {
       <Suspense fallback={Loading}>
         {modal ? <AdminSignup close={close} setModal={setModal} /> : null}
       </Suspense>
-      <img className="Admin-logo" src={tutorial9} loading="lazy" />
+      <img className="Admin-logo" src={tutorial9} loading="lazy" alt="" />
       <div className="Login-wrap">
         <div className="Login-id">
           <input

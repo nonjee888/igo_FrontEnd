@@ -171,6 +171,7 @@ const PostDetail = () => {
                   onClick={() => {
                     navigate(-1);
                   }}
+                  alt=""
                 />
               </div>
               {detail?.title}
@@ -295,6 +296,7 @@ const PostDetail = () => {
                     onClick={() => {
                       navigate("/addpost/edit/" + id);
                     }}
+                    alt=""
                   />
                 </button>
                 <button
