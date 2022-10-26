@@ -120,22 +120,22 @@ const Router = () => {
 
   return (
     <div>
-      <Suspense
-        fallback={
-          <div className="All">
-            <img
-              src={igoLogo}
-              style={{
-                width: "50%",
-                margin: "60% 25% 0 25%",
-                display: "block",
-              }}
-              alt="로고"
-            />
-          </div>
-        }
-      >
-        <BrowserRouter>
+      <BrowserRouter>
+        <Suspense
+          fallback={
+            <div className="All">
+              <img
+                src={igoLogo}
+                style={{
+                  width: "50%",
+                  margin: "60% 25% 0 25%",
+                  display: "block",
+                }}
+                alt="로고"
+              />
+            </div>
+          }
+        >
           <Routes>
             <Route path="/kakaoloading" element={<KaKaoLoading />} exact />
             <Route path="/naverloading" element={<NaverLoading />} exact />
@@ -161,8 +161,8 @@ const Router = () => {
             <Route path="/tutorial" element={<Tutorial />} exact />
             <Route path="/withdrawal" element={<WithDrawal />} exact />
           </Routes>
-        </BrowserRouter>
-      </Suspense>
+        </Suspense>
+      </BrowserRouter>
     </div>
   );
 };
