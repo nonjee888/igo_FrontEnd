@@ -151,7 +151,12 @@ const MenuModal = (props) => {
                   href="https://docs.google.com/forms/d/e/1FAIpQLSdsfPmx_yGOkDb8NgbZSGBGjUx6uVnmke-j6Vm7ptsqSHDphg/viewform?vc=0&c=0&w=1&flr=0"
                   target="_blank"
                 >
-                  <img src={service} alt="관리자문의" className="FootersIcon" />
+                  <img
+                    src={service}
+                    alt="관리자문의"
+                    loading="lazy"
+                    className="FootersIcon"
+                  />
                 </a>
                 <div
                   className="btnbox"
@@ -229,7 +234,12 @@ const MenuModal = (props) => {
                   <img src={service} alt="관리자문의" className="FootersIcon" />
                 </a>
                 <div className="btnbox" onClick={logoutHandler}>
-                  <img src={logout} alt="로그아웃" className="FootersIcon" />
+                  <img
+                    src={logout}
+                    loading="lazy"
+                    alt="로그아웃"
+                    className="FootersIcon"
+                  />
                 </div>
                 <button
                   className="research"
@@ -237,7 +247,7 @@ const MenuModal = (props) => {
                     navigate("/tutorial");
                   }}
                 >
-                  <img src={research} alt="리서치커피받으세요" />
+                  <img src={research} loading="lazy" alt="리서치커피받으세요" />
                 </button>
               </div>
             )}

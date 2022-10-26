@@ -135,7 +135,7 @@ const MyPlanPost = () => {
               className="MyplanPostGoback"
             />
             <button className="MyplanPostAdd" type="submit">
-              <img src={calendar} alt="일정등록" />
+              <img src={calendar} alt="일정등록" loading="lazy" />
             </button>
           </div>
         </form>

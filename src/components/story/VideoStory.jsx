@@ -41,9 +41,13 @@ const VideoStory = () => {
             <SwiperSlide key={story?.id}>
               <div className="videoUser">
                 {story.profileImage === null ? (
-                  <img src={profileImg} alt="기본이미지" />
+                  <img src={profileImg} alt="기본이미지" loading="lazy" />
                 ) : (
-                  <img src={story?.profileImage} alt="프로필이미지" />
+                  <img
+                    src={story?.profileImage}
+                    alt="프로필이미지"
+                    loading="lazy"
+                  />
                 )}
                 <p>{story?.nickname}</p>
               </div>

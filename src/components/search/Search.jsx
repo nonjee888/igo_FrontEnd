@@ -103,7 +103,7 @@ const Search = () => {
             onKeyPress={(e) => searchEnter(e)}
           />
           <button className="search-btn" onClick={getSearchTerm}>
-            <img className="Icon" src={search} alt="search" />
+            <img className="Icon" src={search} alt="search" loading="lazy" />
           </button>
         </div>
         {posts.length === 0 ? (
