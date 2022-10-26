@@ -109,12 +109,11 @@ src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149
 |튜토리얼|로그인(랜덤이미지)|태그선택, 선택기반추천페이지|
 |:---:|:---:|:---:|
 |![튜토리얼](https://user-images.githubusercontent.com/108657283/198048342-db82b3f6-09a1-4275-9313-94df686d1eb2.gif)|![로그인](https://user-images.githubusercontent.com/108657283/198040520-e783224c-e601-4a76-afea-78d7b50f28f8.gif)|![태그](https://user-images.githubusercontent.com/108657283/198048762-ad187ab9-fdad-4405-9749-128699e71e09.gif)|
-|메인페이지/최신순, 좋아요순, 조회순, 무한스크롤|메인페이지/카테고리별모아보기, 검색||블로그형식게시물작성|
+|메인페이지/최신순, 좋아요순, 조회순, 무한스크롤|메인페이지/카테고리별모아보기, 검색|블로그형식게시물작성|
 |![최신순,좋아요순, 조회순, 무한스크롤](https://user-images.githubusercontent.com/108657283/198047191-c7b8e040-d547-4bfb-96b3-7894033704a6.gif)|![카테고리별모아보기, 검색](https://user-images.githubusercontent.com/108657283/198047247-1b9d4d6d-92fb-421d-9205-9303443faf46.gif)|![블로그형식 게시물등록](https://user-images.githubusercontent.com/108657283/198041596-c72badef-b5b1-494e-8f35-77424f2d567a.gif)|
 |디테일페이지/댓글작성, 댓글삭제|디테일페이지/좋아요, 좋아요취소, 신고하기|알림, 알림체크, 삭제|
-![디테일, 댓글작성 삭제](https://user-images.githubusercontent.com/108657283/198041713-e97fb705-9ff5-4194-b0d3-e42dc56de358.gif)|
-![좋아요, 취소, 신고하기](https://user-images.githubusercontent.com/108657283/198049035-c013474f-30ce-4047-9d02-fcb10f361e69.gif)|영상남기기,200메가제한,프리뷰,프리뷰삭제,영상공유,영상삭제|마이페이지/프로필변경, 태그변경|마이페이지/작성게시글,하트모아모기|
-|![영상](https://user-images.githubusercontent.com/108657283/198047624-c8449de3-5282-46bc-a8d7-0e8e1ab61012.gif)|
-![마이페이지 - 프로필변경, 태그변경](https://user-images.githubusercontent.com/108657283/198049152-1bb17f9d-81d8-4ca3-a54b-62fea892436d.gif)|![마이페이지 - 작성하트 모아모기](https://user-images.githubusercontent.com/108657283/198049247-27fc180c-87c3-41ae-8428-24077753d576.gif)|
+![디테일, 댓글작성 삭제](https://user-images.githubusercontent.com/108657283/198041713-e97fb705-9ff5-4194-b0d3-e42dc56de358.gif)|![좋아요, 취소, 신고하기](https://user-images.githubusercontent.com/108657283/198049035-c013474f-30ce-4047-9d02-fcb10f361e69.gif)|
+|영상남기기,200메가제한,프리뷰,프리뷰삭제,영상공유,영상삭제|마이페이지/프로필변경, 태그변경|마이페이지/작성게시글,하트모아모기|
+|![영상](https://user-images.githubusercontent.com/108657283/198047624-c8449de3-5282-46bc-a8d7-0e8e1ab61012.gif)|![마이페이지 - 프로필변경, 태그변경](https://user-images.githubusercontent.com/108657283/198049152-1bb17f9d-81d8-4ca3-a54b-62fea892436d.gif)|![마이페이지 - 작성하트 모아모기](https://user-images.githubusercontent.com/108657283/198049247-27fc180c-87c3-41ae-8428-24077753d576.gif)|
 |마이페이지/일정등록,완료,취소,삭제|마이페이지/회원탈퇴|
 |![마이페이지 - 일정등록완료취소삭제](https://user-images.githubusercontent.com/108657283/198049380-7e30bf63-86f2-4b8a-a4ff-a2d631c26cdf.gif)|![마이페이지 - 회원탈퇴](https://user-images.githubusercontent.com/108657283/198049441-8315f8b4-3b93-4928-8d83-44bfb5a6d151.gif)|
