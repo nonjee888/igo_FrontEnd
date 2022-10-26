@@ -262,7 +262,12 @@ const PostKakaoMap = (props) => {
           <img className="map-info" src={learnMore} />
         </button>
         {modalOpen ? (
-          <PostMapModal postId={id} open={modalOpen} close={closeModal} />
+          <PostMapModal
+            postId={id}
+            open={modalOpen}
+            close={closeModal}
+            loading="lazy"
+          />
         ) : null}
       </div>
 
@@ -273,7 +278,7 @@ const PostKakaoMap = (props) => {
             navigate("/post/all");
           }}
         >
-          <img className="goback-icon" src={goback} alt="뒤로" />
+          <img className="goback-icon" src={goback} alt="뒤로" loading="lazy" />
         </button>
         {isEdit ? (
           <button
@@ -282,7 +287,12 @@ const PostKakaoMap = (props) => {
               handleEditButton();
             }}
           >
-            <img className="edit-icon" src={editpost} alt="수정" />
+            <img
+              className="edit-icon"
+              src={editpost}
+              alt="수정"
+              loading="lazy"
+            />
           </button>
         ) : isActive ? (
           <button

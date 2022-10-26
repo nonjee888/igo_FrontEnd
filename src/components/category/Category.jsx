@@ -45,6 +45,8 @@ export default function Category() {
           onClick={() => {
             navigate("/search/");
           }}
+          alt="search"
+          loading="lazy"
         />
       </div>
     </div>

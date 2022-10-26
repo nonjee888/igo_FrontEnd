@@ -64,7 +64,8 @@ const NoticeModal = (props) => {
             <>
               {notice.length === 0 ? (
                 <div className="NoNotice">
-                  새로운 <img src={noticeImg} alt="알림종" />이 없습니다.
+                  새로운 <img src={noticeImg} alt="알림종" loading="lazy" />이
+                  없습니다.
                 </div>
               ) : (
                 <>
@@ -89,7 +90,11 @@ const NoticeModal = (props) => {
                                     dispatch(confirmNotice(notice.id));
                                   }}
                                 >
-                                  <img className="noti-confirm" src={confirm} />
+                                  <img
+                                    className="noti-confirm"
+                                    src={confirm}
+                                    loading="lazy"
+                                  />
                                 </button>
                               </div>
                             );

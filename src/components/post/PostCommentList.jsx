@@ -36,9 +36,19 @@ const CommentList = (props) => {
         <div className="ment-wrapper">
           <div className="nickname">
             {commentProfile === null ? (
-              <img className="profileImg" src={profileImg} alt="" />
+              <img
+                className="profileImg"
+                src={profileImg}
+                alt=""
+                loading="lazy"
+              />
             ) : (
-              <img className="profileImg" src={commentProfile} alt="" />
+              <img
+                className="profileImg"
+                src={commentProfile}
+                alt=""
+                loading="lazy"
+              />
             )}
             <div className="userNick" style={{ fontSize: "10px" }}>
               {writerId}
@@ -66,11 +76,11 @@ const CommentList = (props) => {
                 });
               }}
             >
-              <img className="delete-icon" src={deleteimg} />
+              <img className="delete-icon" src={deleteimg} loading="lazy" />
             </button>
           ) : (
             <button className="delete-btn">
-              <img className="delete-icon1" src={deleteNemo} />
+              <img className="delete-icon1" src={deleteNemo} loading="lazy" />
             </button>
           )}
         </div>

@@ -77,7 +77,12 @@ const Search = () => {
     <>
       <div className="All">
         {" "}
-        <div className="goBackwrap">
+        <div
+          onClick={() => {
+            navigate(-1);
+          }}
+          className="goBackwrap"
+        >
           <img
             style={{
               width: "4%",
@@ -89,6 +94,7 @@ const Search = () => {
             onClick={() => {
               navigate(-1);
             }}
+            alt="goback"
           />
         </div>
         <div className="input-wrapper">
@@ -103,7 +109,7 @@ const Search = () => {
             onKeyPress={(e) => searchEnter(e)}
           />
           <button className="search-btn" onClick={getSearchTerm}>
-            <img className="Icon" src={search} alt="search" />
+            <img className="Icon" src={search} alt="search" loading="lazy" />
           </button>
         </div>
         {posts.length === 0 ? (

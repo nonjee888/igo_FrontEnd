@@ -231,7 +231,7 @@ const AddPost = () => {
                 });
               }}
             >
-              <img src={initialization} alt="초기화" />
+              <img src={initialization} alt="초기화" loading="lazy" />
             </button>
           </div>
           <div className="editor-wrapper">
@@ -268,14 +268,12 @@ const AddPost = () => {
                   const ReactS3Client = new S3(config);
                   const options = {
                     maxSizeMB: 1,
-                    maxWidthOrHeight: 1200,
+                    maxWidthOrHeight: 700,
                     useWebWorker: true,
                   };
                   try {
                     const compressed = await imageCompression(blob, options);
-
                     ReactS3Client.uploadFile(compressed, newFileName)
-
                       .then((data) => callback(data.location, "image"))
                       .catch((err) => console.error(err));
                   } catch (error) {

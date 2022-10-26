@@ -8,7 +8,12 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <img className="webImg" src={background} />
+        <img
+          className="webImg"
+          src={background}
+          alt="background"
+          loading="lazy"
+        />
         <div className="mobile-wrapper">
           <Router />
         </div>

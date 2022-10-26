@@ -109,7 +109,7 @@ const PostDetail = () => {
   useEffect(() => {
     const map = mapRef.current;
     if (bounds && map) map.setBounds(bounds && bounds);
-  }, [fetch, id]);
+  }, [fetch]);
 
   function pointsToPath(points) {
     return points.map((point) => ({
@@ -159,7 +159,12 @@ const PostDetail = () => {
         <div className="detail-wrapper">
           <div className="detail-title">
             <div className="title">
-              <div className="goBackwrap">
+              <div
+                onClick={() => {
+                  navigate(-1);
+                }}
+                className="goBackwrap"
+              >
                 <img
                   style={{
                     width: "40%",
@@ -168,9 +173,7 @@ const PostDetail = () => {
                     marginLeft: "10px",
                   }}
                   src={goingback}
-                  onClick={() => {
-                    navigate(-1);
-                  }}
+                  alt="goback"
                 />
               </div>
               {detail?.title}
@@ -230,7 +233,12 @@ const PostDetail = () => {
                   });
                 }}
               >
-                <img src={report} className="report-post-icon" alt="신고버튼" />
+                <img
+                  src={report}
+                  className="report-post-icon"
+                  alt="신고버튼"
+                  loading="lazy"
+                />
               </button>
             </div>
           ) : !userConfirm ? (
@@ -251,7 +259,12 @@ const PostDetail = () => {
               </div>
 
               <button onClick={openModal} className="report-post-btn">
-                <img src={report} className="report-post-icon" alt="신고버튼" />
+                <img
+                  src={report}
+                  className="report-post-icon"
+                  alt="신고버튼"
+                  loading="lazy"
+                />
               </button>
               {modalOpen ? (
                 <PostReportModal
@@ -309,7 +322,12 @@ const PostDetail = () => {
                     });
                   }}
                 >
-                  <img src={deleteimg} className="delete-icon" alt="신고버튼" />
+                  <img
+                    src={deleteimg}
+                    className="delete-icon"
+                    alt="신고버튼"
+                    loading="lazy"
+                  />
                 </button>
               </div>
             </div>

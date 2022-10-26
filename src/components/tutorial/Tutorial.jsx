@@ -19,21 +19,21 @@ export default function Tutorial() {
 
   return (
     <div className="tutorialbody">
-            <img
-              src={goback}
-              alt="뒤로"
-              onClick={() => {
-                navigate(-1);
-              }}
-              style={{ width: "8%", height: "5%",margin:"5%",cursor:"pointer" }}
-            />
+      <img
+        src={goback}
+        alt="뒤로"
+        onClick={() => {
+          navigate(-1);
+        }}
+        style={{ width: "8%", height: "5%", margin: "5%", cursor: "pointer" }}
+      />
       {NICKNAME ? (
         <div className="tutorialimg-wrapper">
-          <img className="tutorialboxs" src={tutorial0} />
-          <img className="tutorialboxs" src={tutorial2} />
+          <img className="tutorialboxs" src={tutorial0} loading="lazy" />
+          <img className="tutorialboxs" src={tutorial2} loading="lazy" />
           <img
             className="tutorialboxs"
-            style={{cursor:"pointer"}}
+            style={{ cursor: "pointer" }}
             src={tutorial8}
             onClick={() =>
               window.open(
@@ -42,12 +42,12 @@ export default function Tutorial() {
               )
             }
           />
-          <img className="tutorialboxs" src={tutorial3} />
-          <img className="tutorialboxs" src={tutorial4} />
-          <img className="tutorialboxs" src={tutorial5} />
-          <img className="tutorialboxs" src={tutorial6} />
-          <img className="tutorialboxs" src={tutorial7} />
-          <img className="tutorialboxs" src={tutorial9} />
+          <img className="tutorialboxs" src={tutorial3} loading="lazy" />
+          <img className="tutorialboxs" src={tutorial4} loading="lazy" />
+          <img className="tutorialboxs" src={tutorial5} loading="lazy" />
+          <img className="tutorialboxs" src={tutorial6} loading="lazy" />
+          <img className="tutorialboxs" src={tutorial7} loading="lazy" />
+          <img className="tutorialboxs" src={tutorial9} loading="lazy" />
         </div>
       ) : (
         Swal.fire({
