@@ -7,7 +7,12 @@ import background from "./asset/background.png";
 function App() {
   return (
     <>
-      <img className="webImg" src={background} loading="lazy" />
+      <img
+        className="webImg"
+        src={background}
+        loading="lazy"
+        alt="background"
+      />
       <div className="mobile-wrapper">
         <Router />
       </div>
