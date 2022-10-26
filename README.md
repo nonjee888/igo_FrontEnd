@@ -106,17 +106,18 @@ src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149
 
 # 🎥사이트 데모
 
-|튜토리얼|로그인|
+|튜토리얼|로그인(랜덤이미지)|
 |:---:|:---:|
 |<img src="https://blog.kakaocdn.net/dn/c8JuRc/btrPDGkKyrx/sV4zxIIrxaCSXe6OGIxNkk/img.gif" />|![로그인](https://user-images.githubusercontent.com/108657283/198040520-e783224c-e601-4a76-afea-78d7b50f28f8.gif)|
 |태그선택, 선택기반추천페이지|메인페이지, 카테고리조회, 검색, 최신순, 좋아요순, 조회순, 무한스크롤|
-|<img src="https://blog.kakaocdn.net/dn/zDZPD/btrPEkIpLMY/bCsd7U3a81uaqGSHNKvKTk/img.gif" />|<img src="https://blog.kakaocdn.net/dn/bZ0h6f/btrPDlVq5vt/JfTWHkj40me2SZX1jXiK30/img.gif" />|
+|<img src="https://blog.kakaocdn.net/dn/zDZPD/btrPEkIpLMY/bCsd7U3a81uaqGSHNKvKTk/img.gif" />||
 |블로그형식게시물작성|디테일페이지, 댓글작성, 댓글삭제|
-|<img src="https://blog.kakaocdn.net/dn/dJt976/btrPDAdHhwT/Fkp99Nk5jIW8tQ81HXLx2k/img.gif" />|<img src="https://blog.kakaocdn.net/dn/QmUTz/btrPDafA2Fg/e3J6tYn582Ct5D8AyYjjS0/img.gif" />|
+|![블로그형식 게시물등록](https://user-images.githubusercontent.com/108657283/198041596-c72badef-b5b1-494e-8f35-77424f2d567a.gif)|
+![디테일, 댓글작성 삭제](https://user-images.githubusercontent.com/108657283/198041713-e97fb705-9ff5-4194-b0d3-e42dc56de358.gif)|
 |좋아요, 좋아요취소, 신고하기|알림, 알림체크, 삭제|
 |<img src="https://blog.kakaocdn.net/dn/nhrhy/btrPDAdFedS/axVt7oFRtyblxUhts9pdck/img.gif" />|<img src="https://blog.kakaocdn.net/dn/3xEn2/btrPFyze56r/OA6BgOnMrIK21qKi6PLkDK/img.gif" />|
 |영상남기기,200메가제한,프리뷰,프리뷰삭제,영상공유,영상삭제|
-|<img src="https://blog.kakaocdn.net/dn/dAnv2F/btrPB3gKEUs/9SVmuO4tyvB71svjb5zmUK/img.gif" />|
+||
 |마이페이지/프로필변경, 태그변경|마이페이지/작성게시글,하트모아모기|
 |<img src="https://blog.kakaocdn.net/dn/bj0HzH/btrPEnyq0xt/U0sah3Tv8uymY7989XKXFk/img.gif" />|<img src="https://blog.kakaocdn.net/dn/blfneH/btrPB2viaPK/bkUdjow8uNImQ5JpwfPeLK/img.gif" />|
 |마이페이지/일정등록,완료,취소,삭제|마이페이지/회원탈퇴|
