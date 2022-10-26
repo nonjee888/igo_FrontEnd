@@ -268,7 +268,7 @@ const AddPost = () => {
                   const ReactS3Client = new S3(config);
                   const options = {
                     maxSizeMB: 1,
-                    maxWidthOrHeight: 1200,
+                    maxWidthOrHeight: 700,
                     useWebWorker: true,
                   };
                   try {
