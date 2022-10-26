@@ -94,6 +94,7 @@ const NoticeModal = (props) => {
                                     className="noti-confirm"
                                     loading="lazy"
                                     src={confirm}
+                                    alt=""
                                   />
                                 </button>
                               </div>
@@ -127,6 +128,7 @@ const NoticeModal = (props) => {
                                   <img
                                     className="noti-delete"
                                     src={deleteimg}
+                                    alt=""
                                   />
                                 </button>
                               </div>

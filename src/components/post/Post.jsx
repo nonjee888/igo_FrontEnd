@@ -20,9 +20,14 @@ const Post = (props) => {
           }}
         >
           {thumnail === "false" ? (
-            <img className="img-container" src={photo} loading="lazy" />
+            <img className="img-container" src={photo} loading="lazy" alt="" />
           ) : (
-            <img className="img-container" src={thumnail} loading="lazy" />
+            <img
+              className="img-container"
+              src={thumnail}
+              loading="lazy"
+              alt=""
+            />
           )}
           <div className="pic-wrapper">
             <div className="post-content">

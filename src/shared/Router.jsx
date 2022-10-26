@@ -1,32 +1,29 @@
+import AddPostPage from "../pages/AddPostPage";
+import KaKaoLoading from "../pages/KaKaoLoading";
+import NaverLoading from "../pages/NaverLoading";
+import Loginpage from "../pages/Loginpage";
+import LoginAdmin from "../pages/LoginAdmin";
+import ChoiceCategory from "../pages/ChoiceCategory";
+import MainRecommend from "../pages/MainRecommend";
+//카테고리추가해서 페이지로 이동할거
+import PostDetailPage from "../pages/PostDetailPage";
+//카테고리추가해서 페이지로 이동할거
+import SearchPage from "../pages/SearchPage";
+import Story from "../pages/Story";
+import MyInfoPage from "../pages/MyInfoPage";
+import MyLikesPage from "../pages/MyLikesPage";
+import MyPlanPage from "../pages/MyPlanPage";
+import MyPlanPostPage from "../pages/MyPlanPostPage";
+import MyPostsListPage from "../pages/MyPostsListPage";
+import StoryAdd from "../pages/StoryAdd";
+import AllCategoryList from "../components/category/AllCategoryList";
+import Tutorial from "../components/tutorial/Tutorial";
+import WithDrawal from "../components/withDrawal/WithDrawal";
 import axios from "axios";
-import React, { Suspense, lazy, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { getCookie, setCookie } from "./cookie";
 import { EventSourcePolyfill } from "event-source-polyfill";
-import { BrowserRouter } from "react-router-dom";
-import igoLogo from "../asset/igoLogo.png";
-
-const AddPostPage = lazy(() => import("../pages/AddPostPage"));
-const KaKaoLoading = lazy(() => import("../pages/KaKaoLoading"));
-const NaverLoading = lazy(() => import("../pages/NaverLoading"));
-const Loginpage = lazy(() => import("../pages/Loginpage"));
-const LoginAdmin = lazy(() => import("../pages/LoginAdmin"));
-const ChoiceCategory = lazy(() => import("../pages/ChoiceCategory"));
-const MainRecommend = lazy(() => import("../pages/MainRecommend"));
-const PostDetailPage = lazy(() => import("../pages/PostDetailPage"));
-const SearchPage = lazy(() => import("../pages/SearchPage"));
-const Story = lazy(() => import("../pages/Story"));
-const MyInfoPage = lazy(() => import("../pages/MyInfoPage"));
-const MyLikesPage = lazy(() => import("../pages/MyLikesPage"));
-const MyPlanPage = lazy(() => import("../pages/MyPlanPage"));
-const MyPlanPostPage = lazy(() => import("../pages/MyPlanPostPage"));
-const MyPostsListPage = lazy(() => import("../pages/MyPostsListPage"));
-const StoryAdd = lazy(() => import("../pages/StoryAdd"));
-const AllCategoryList = lazy(() =>
-  import("../components/category/AllCategoryList")
-);
-const Tutorial = lazy(() => import("../components/tutorial/Tutorial"));
-const WithDrawal = lazy(() => import("../components/withDrawal/WithDrawal"));
+import { useEffect } from "react";
 
 const Router = () => {
   let eventSource = undefined;
@@ -120,49 +117,31 @@ const Router = () => {
 
   return (
     <div>
-      <BrowserRouter>
-        <Suspense
-          fallback={
-            <div className="All">
-              <img
-                src={igoLogo}
-                style={{
-                  width: "50%",
-                  margin: "60% 25% 0 25%",
-                  display: "block",
-                }}
-                alt="로고"
-              />
-            </div>
-          }
-        >
-          <Routes>
-            <Route path="/kakaoloading" element={<KaKaoLoading />} exact />
-            <Route path="/naverloading" element={<NaverLoading />} exact />
-            <Route path="/" element={<Loginpage />} exact />
-            <Route path="/login" element={<LoginAdmin />} exact />
-            <Route path="/choice" element={<ChoiceCategory />} exact />
-            <Route path="/recommend" element={<MainRecommend />} exact />
-            <Route path="/post/:category" element={<AllCategoryList />} exact />
-            {/*post/:region에서 앞에 :값을 제거해주니 세부카테고리 확인됨 */}
-            <Route path="/search/" element={<SearchPage />} exact />
-            <Route path="/search/:searchTerm" element={<SearchPage />} exact />
-            <Route path="/story" element={<Story />} exact />
-            <Route path="/addstory" element={<StoryAdd />} exact />
-            <Route path="/myinfo" element={<MyInfoPage />} exact />
-            <Route path="/mylike" element={<MyLikesPage />} exact />
-            <Route path="/myplan" element={<MyPlanPage />} exact />
-            <Route path="/myplanpost" element={<MyPlanPostPage />} exact />
-            <Route path="/mypostlist" element={<MyPostsListPage />} exact />
-            <Route path="*" element={<div>없는 페이지입니다.</div>} />
-            <Route path="/addpost" element={<AddPostPage />} exact />
-            <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
-            <Route path="/postdetail/:id" element={<PostDetailPage />} exact />
-            <Route path="/tutorial" element={<Tutorial />} exact />
-            <Route path="/withdrawal" element={<WithDrawal />} exact />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/kakaoloading" element={<KaKaoLoading />} exact />
+        <Route path="/naverloading" element={<NaverLoading />} exact />
+        <Route path="/" element={<Loginpage />} exact />
+        <Route path="/login" element={<LoginAdmin />} exact />
+        <Route path="/choice" element={<ChoiceCategory />} exact />
+        <Route path="/recommend" element={<MainRecommend />} exact />
+        <Route path="/post/:category" element={<AllCategoryList />} exact />
+        {/*post/:region에서 앞에 :값을 제거해주니 세부카테고리 확인됨 */}
+        <Route path="/search/" element={<SearchPage />} exact />
+        <Route path="/search/:searchTerm" element={<SearchPage />} exact />
+        <Route path="/story" element={<Story />} exact />
+        <Route path="/addstory" element={<StoryAdd />} exact />
+        <Route path="/myinfo" element={<MyInfoPage />} exact />
+        <Route path="/mylike" element={<MyLikesPage />} exact />
+        <Route path="/myplan" element={<MyPlanPage />} exact />
+        <Route path="/myplanpost" element={<MyPlanPostPage />} exact />
+        <Route path="/mypostlist" element={<MyPostsListPage />} exact />
+        <Route path="*" element={<div>없는 페이지입니다.</div>} />
+        <Route path="/addpost" element={<AddPostPage />} exact />
+        <Route path="/addpost/edit/:id" element={<AddPostPage />} exact />
+        <Route path="/postdetail/:id" element={<PostDetailPage />} exact />
+        <Route path="/tutorial" element={<Tutorial />} exact />
+        <Route path="/withdrawal" element={<WithDrawal />} exact />
+      </Routes>
     </div>
   );
 };

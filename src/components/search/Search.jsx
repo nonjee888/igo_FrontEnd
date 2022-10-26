@@ -89,6 +89,7 @@ const Search = () => {
             onClick={() => {
               navigate(-1);
             }}
+            alt=""
           />
         </div>
         <div className="input-wrapper">

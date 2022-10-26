@@ -13,7 +13,8 @@ export default function MapModal(props) {
           onClick={() => {
             close();
           }}
-        />{" "}
+          alt=""
+        />
       </div>
     </div>
   );

@@ -29,13 +29,14 @@ export default function Tutorial() {
       />
       {NICKNAME ? (
         <div className="tutorialimg-wrapper">
-          <img className="tutorialboxs" src={tutorial0} loading="lazy" />
-          <img className="tutorialboxs" src={tutorial2} loading="lazy" />
+          <img className="tutorialboxs" src={tutorial0} loading="lazy" alt="" />
+          <img className="tutorialboxs" src={tutorial2} loading="lazy" alt="" />
           <img
             className="tutorialboxs"
             style={{ cursor: "pointer" }}
             src={tutorial8}
             loading="lazy"
+            alt=""
             onClick={() =>
               window.open(
                 "https://docs.google.com/forms/d/e/1FAIpQLSdCcFuEap6TCvgPGDc1Kz9uOsl68-026qGyjHAZVD90UGY2Rw/viewform?usp=sf_link",
@@ -43,12 +44,12 @@ export default function Tutorial() {
               )
             }
           />
-          <img className="tutorialboxs" src={tutorial3} loading="lazy" />
-          <img className="tutorialboxs" src={tutorial4} loading="lazy" />
-          <img className="tutorialboxs" src={tutorial5} loading="lazy" />
-          <img className="tutorialboxs" src={tutorial6} loading="lazy" />
-          <img className="tutorialboxs" src={tutorial7} loading="lazy" />
-          <img className="tutorialboxs" src={tutorial9} loading="lazy" />
+          <img className="tutorialboxs" src={tutorial3} loading="lazy" alt="" />
+          <img className="tutorialboxs" src={tutorial4} loading="lazy" alt="" />
+          <img className="tutorialboxs" src={tutorial5} loading="lazy" alt="" />
+          <img className="tutorialboxs" src={tutorial6} loading="lazy" alt="" />
+          <img className="tutorialboxs" src={tutorial7} loading="lazy" alt="" />
+          <img className="tutorialboxs" src={tutorial9} loading="lazy" alt="" />
         </div>
       ) : (
         Swal.fire({
