@@ -1,4 +1,5 @@
 //Toast UI 에디터
+import "./style.scss";
 import Swal from "sweetalert2";
 import S3 from "react-aws-s3";
 import { Editor } from "@toast-ui/react-editor";
@@ -57,10 +58,10 @@ const AddPost = () => {
     setEditor(innerText);
   };
 
-  //게시글등록 버튼: 제목, 내용이 각각 2, 9자리 글자 이하면 버튼 비활성화
+  //게시글등록 버튼: 제목, 내용이 각각 2, 8자리 글자 이하면 버튼 비활성화
   const isSubmitPost = () => {
     if (content !== "<p><br></p>" && title !== "") {
-      if (content.length > 9 && title.length >= 2) {
+      if (content.length > 8 && title.length >= 2) {
         setIsActive(true);
       } else {
         setIsActive(false);
@@ -113,14 +114,6 @@ const AddPost = () => {
 
   useEffect(() => {
     inputFocus.current.focus();
-    setTimeout(() => {
-      Swal.fire({
-        icon: "info",
-        text: "제목 2글자, 내용 3글자 이상, 태그를 선택 해 주세요 🥰",
-        confirmButtonColor: "#47AFDB",
-        confirmButtonText: "확인",
-      });
-    }, 200);
   }, []);
 
   if (error) {
@@ -245,7 +238,7 @@ const AddPost = () => {
           <div className="editor-wrapper">
             <Editor
               ref={editorRef}
-              placeholder="... 을 누르면 사진을 공유 할 수 있어요 ! 여행코스저장 옆 ? 를 누르면 지도 이용 방법이 나옵니다!"
+              placeholder="...을 눌러 사진을 공유 하세요!"
               initialValue=""
               previewStyle="vertical"
               height="calc(90vh - 370px)"
@@ -276,7 +269,7 @@ const AddPost = () => {
                   const ReactS3Client = new S3(config);
                   const options = {
                     maxSizeMB: 1,
-                    maxWidthOrHeight: 1200,
+                    maxWidthOrHeight: 700,
                     useWebWorker: true,
                   };
                   try {

@@ -50,7 +50,12 @@ const Recommend = () => {
       {NICKNAME && token ? (
         <div className="All">
           <div className="Recommend-Container">
-            <img className="Recommend-logo" src={recom} alt="추천" />
+            <img
+              className="Recommend-logo"
+              loading="lazy"
+              src={recom}
+              alt="추천"
+            />
             <div className="Recommend-List">
               {recommend?.map((item) => {
                 return <RecommendPost item={item} key={item.id} />;

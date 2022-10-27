@@ -1,4 +1,5 @@
 //카카오 맵
+import "./style.scss";
 import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";
@@ -259,7 +260,7 @@ const PostKakaoMap = (props) => {
           </button>
         )}
         <button className="map-modal-btn" onClick={openModal}>
-          <img className="map-info" src={learnMore} />
+          <img className="map-info" src={learnMore} alt="" />
         </button>
         {modalOpen ? (
           <PostMapModal postId={id} open={modalOpen} close={closeModal} />
@@ -287,7 +288,7 @@ const PostKakaoMap = (props) => {
         ) : isActive ? (
           <button
             type="submit"
-            disabled={content.length > 9 && title.length >= 2 ? false : true}
+            disabled={content.length > 8 && title.length >= 2 ? false : true}
             className="submit-post"
             onClick={() => {
               handleRegisterButton();
@@ -298,7 +299,7 @@ const PostKakaoMap = (props) => {
         ) : (
           <button
             type="submit"
-            disabled={content.length > 9 && title.length >= 2 ? false : true}
+            disabled={content.length > 8 && title.length >= 2 ? false : true}
             className="noSubmit-post"
             onClick={() => {
               handleRegisterButton();

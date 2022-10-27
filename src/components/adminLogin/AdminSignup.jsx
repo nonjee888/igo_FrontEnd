@@ -102,7 +102,7 @@ const AdminSignup = ({ setModal }) => {
     <>
       <div className="AdminModal-Back">
         <div className="AdminModal-container">
-          <img className="Admin-logo" src={tutorial9} />
+          <img className="Admin-logo" src={tutorial9} loading="lazy" alt="" />
           <div className="Signup-form">
             <div className="Signup-inputs">
               <div className="input-id">

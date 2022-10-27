@@ -1,3 +1,4 @@
+import "./style.scss";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { instance } from "../../shared/api";
@@ -55,7 +56,7 @@ const PostReportModal = (props) => {
     <div className="report-modal">
       <div className="report-box">
         <button className="close-report" onClick={close}>
-          <img className="x-button" src={closeModal} />
+          <img className="x-button" src={closeModal} loading="lazy" alt="" />
         </button>
         <div className="report-title">
           <h3>신고 사유</h3>

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchPosts } from "../../redux/modules/posts";
 
+import goingback from "../../asset/goingback.png";
 import search from "../../asset/search.png";
 import igoLogo from "../../asset/igoLogo.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
@@ -75,6 +76,22 @@ const Search = () => {
   return (
     <>
       <div className="All">
+        {" "}
+        <div className="goBackwrap">
+          <img
+            style={{
+              width: "4%",
+              height: "4%",
+              float: "left",
+              margin: "22px 0 0 15px",
+            }}
+            src={goingback}
+            onClick={() => {
+              navigate(-1);
+            }}
+            alt=""
+          />
+        </div>
         <div className="input-wrapper">
           <input
             type="search"
@@ -87,7 +104,7 @@ const Search = () => {
             onKeyPress={(e) => searchEnter(e)}
           />
           <button className="search-btn" onClick={getSearchTerm}>
-            <img className="Icon" src={search} alt="search" />
+            <img className="Icon" src={search} alt="search" loading="lazy" />
           </button>
         </div>
         {posts.length === 0 ? (
