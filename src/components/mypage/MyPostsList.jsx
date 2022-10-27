@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyposts } from "../../redux/modules/myposts";
 import photo from "../../asset/assetMypage/photo.png";
+import goingback from "../../asset/goingback.png";
 
 const MyPostsList = () => {
   let navigate = useNavigate();
@@ -18,7 +19,18 @@ const MyPostsList = () => {
   return (
     <div className="All">
       <div className="MyPosts">
-        <h3>나의 작성 게시글</h3>
+        <div className="MyPostsTitle">
+          <div className="MyPageGoBack">
+            <img
+              src={goingback}
+              onClick={() => {
+                navigate(-1);
+              }}
+              alt=""
+            />
+          </div>
+          <h3>나의 작성 게시글</h3>
+        </div>
         <div className="MyListsAll">
           {myposts?.length === 0 ? (
             <div className="myPageNoInfo">아직 작성한 게시물이 없습니다.</div>
