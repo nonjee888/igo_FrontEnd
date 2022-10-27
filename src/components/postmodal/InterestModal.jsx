@@ -27,7 +27,7 @@ export default function InterestModal({
 
   const clickTagBtn = (id) => {
     setChoiceTagID(id);
-    // setClickValue(!clickValue);
+    setClickValue(!clickValue);
     InterestList[id].isChecked = !clickValue;
     setBtnActive((prev) => {
       return prev;
