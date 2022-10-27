@@ -1,3 +1,4 @@
+import "./style.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getComments, removeComment } from "../../redux/modules/comments";
 import Swal from "sweetalert2";

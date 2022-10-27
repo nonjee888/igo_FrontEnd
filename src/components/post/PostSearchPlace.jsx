@@ -1,5 +1,6 @@
 //카카오맵 서치바
-import React, { useState, useRef } from "react";
+import "./style.scss";
+import React, { useState } from "react";
 import PostKakaoMap from "./PostKakaoMap";
 
 const SearchPlace = (props) => {

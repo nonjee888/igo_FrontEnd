@@ -1,4 +1,5 @@
 //카카오 맵
+import "./style.scss";
 import { Map, MapMarker, DrawingManager, Polyline } from "react-kakao-maps-sdk";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../../shared/api";

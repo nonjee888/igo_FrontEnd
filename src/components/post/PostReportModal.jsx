@@ -1,3 +1,4 @@
+import "./style.scss";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { instance } from "../../shared/api";
