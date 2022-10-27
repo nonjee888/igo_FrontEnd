@@ -20,7 +20,7 @@
 
 # 📑 Service Architecture
 
-![아키텍쳐](https://blog.kakaocdn.net/dn/Eyx2u/btrPGeWTQt2/IjkOiHqUpXHvX03Sa0jLb0/img.png)</br></br>
+![아키텍쳐](https://blog.kakaocdn.net/dn/bFdLy0/btrPJGYyw3o/MJrKNlqfqsqTWKOJetSYQ1/img.jpg)</br></br>
 
 
 # 🗂컴포넌트 구조
