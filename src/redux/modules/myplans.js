@@ -141,6 +141,8 @@ export const myplans = createSlice({
       state.isLoading = true;
     },
     [deleteMyplans.fulfilled]: (state, action) => {
+      // console.log(action.payload);
+      // console.log(current(state.myplans));
       state.isLoading = false;
       let index = state.myplans.findIndex(
         (myplan) => myplan.id === action.payload.data
