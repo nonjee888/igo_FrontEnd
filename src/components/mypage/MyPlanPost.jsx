@@ -31,20 +31,7 @@ const MyPlanPost = () => {
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
 
-  const onSubmitHandler = async (event) => {
-    if (title === "" || content === "" || time === "") {
-      Swal.fire({
-        icon: "info",
-        text: "날짜와 제목, 사진과 내용을 입력해주세요🥰",
-        confirmButtonColor: "#47AFDB",
-        confirmButtonText: "확인",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          return;
-        }
-      });
-    }
-    event.preventDefault();
+  const onSubmitHandler = async () => {
     let req = {
       time: time,
       title: title,
@@ -75,70 +62,84 @@ const MyPlanPost = () => {
         <div className="planTitle">
           <h3>나의 일정 등록하기</h3>
         </div>
-        <form onSubmit={onSubmitHandler}>
-          <div className="MyplanPost">
-            <div className="MyplanPostDate">
-              <input
-                type="date"
-                onChange={(e) => {
-                  setTime(e.target.value);
-                }}
-                value={time}
-              />
-            </div>
-            <div className="MyplanPostTitle">
-              제목:　
-              <input
-                type="text"
-                style={{ width: "75%", border: "none" }}
-                placeholder="날짜를 선택하고, 제목을 작성해주세요."
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-                value={title}
-              />
-            </div>
-            <img
-              alt="이미지를 업로드 해주세요."
-              src={preview ? preview : photo1}
-              className="MyplanPostImg1"
-            />
-            <label htmlFor="file" className="planImginputLabel">
-              변경하기
-            </label>
+        {/* <form onSubmit={onSubmitHandler}> */}
+        <div className="MyplanPost">
+          <div className="MyplanPostDate">
             <input
-              type="file"
-              accept="image/*"
-              name="image"
-              id="file"
-              className="planImginput"
-              onChange={onChangeImage}
-            />
-            <div className="MyplanPostContents">
-              <textarea
-                name="content"
-                placeholder="*사진첨부필수*  일정을 작성해주세요. "
-                onChange={(e) => {
-                  setContent(e.target.value);
-                }}
-                value={content}
-              />
-            </div>
-          </div>
-          <div className="MyplanPostAddbuttons">
-            <img
-              src={goback}
-              alt="뒤로"
-              onClick={() => {
-                navigate(-1);
+              type="date"
+              onChange={(e) => {
+                setTime(e.target.value);
               }}
-              className="MyplanPostGoback"
+              value={time}
             />
-            <button className="MyplanPostAdd" type="submit">
-              <img src={calendar} alt="일정등록" loading="lazy" />
-            </button>
           </div>
-        </form>
+          <div className="MyplanPostTitle">
+            제목:　
+            <input
+              type="text"
+              style={{ width: "75%", border: "none" }}
+              placeholder="날짜를 선택하고, 제목을 작성해주세요."
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+              value={title}
+            />
+          </div>
+          <img
+            alt="이미지를 업로드 해주세요."
+            src={preview ? preview : photo1}
+            className="MyplanPostImg1"
+          />
+          <label htmlFor="file" className="planImginputLabel">
+            변경하기
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            name="image"
+            id="file"
+            className="planImginput"
+            onChange={onChangeImage}
+          />
+          <div className="MyplanPostContents">
+            <textarea
+              name="content"
+              placeholder="*사진첨부필수*  일정을 작성해주세요. "
+              onChange={(e) => {
+                setContent(e.target.value);
+              }}
+              value={content}
+            />
+          </div>
+        </div>
+        <div className="MyplanPostAddbuttons">
+          <img
+            src={goback}
+            alt="뒤로"
+            onClick={() => {
+              navigate(-1);
+            }}
+            className="MyplanPostGoback"
+          />
+          <button
+            className="MyplanPostAdd"
+            onClick={() => {
+              if (title === "" || content === "" || time === "") {
+                Swal.fire({
+                  icon: "info",
+                  text: "내용을 입력해 주세요😿",
+                  consfirmButtonColor: "#47AFDB",
+                  confirmButtonText: "확인",
+                });
+              } else {
+                onSubmitHandler();
+              }
+            }}
+          >
+            <img src={calendar} alt="일정등록" loading="lazy" />
+          </button>
+        </div>
+        {/* </form> */}
       </div>
     </div>
   );

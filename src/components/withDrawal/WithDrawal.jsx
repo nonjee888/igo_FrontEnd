@@ -10,9 +10,11 @@ import { useState } from "react";
 import { deleteCookie } from "../../shared/cookie";
 import drawalimg from "../../asset/drawalimg.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
+import { useNavigate } from "react-router-dom";
 
 export default function WithDrawal() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isClick, setIsClick] = useState(false);
   const { myinfo, error } = useSelector((state) => state?.myinfo);
 
@@ -41,34 +43,25 @@ export default function WithDrawal() {
 
   const submitHandler = async (e) => {
     let id = myinfo && myinfo[0]?.id;
-
     const response = await instance.delete(`/api/member/withdrawal/${id}`);
-
-    Swal.fire({
-      icon: "warning",
-      text: "정말 탈퇴하시겠습니까?",
-      showCancelButton: true,
-      confirmButtonColor: "#47AFDB",
-      cancelButtonColor: "#D9D9D9",
-      confirmButtonText: "탈퇴하기",
-      cancelButtonText: "취소",
-    }).then((result) => {
-      if (response.data.success) {
-        deleteCookie("Authorization");
-        localStorage.removeItem("isLogin");
-        localStorage.removeItem("nickname");
-        localStorage.removeItem("REFRESH_TOKEN");
-        localStorage.removeItem("ACCESS_TOKEN");
-        window.location.replace("/");
-      } else {
-        Swal.fire({
-          icon: "error",
-          text: "오류가 있어요! 관리자에게 문의해주세요😿",
-          consfirmButtonColor: "#47AFDB",
-          confirmButtonText: "확인",
-        });
-      }
-    });
+    deleteCookie("Authorization");
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("nickname");
+    localStorage.removeItem("REFRESH_TOKEN");
+    localStorage.removeItem("ACCESS_TOKEN");
+    window.location.replace("/");
+    if (!response.data.success) {
+      Swal.fire({
+        icon: "error",
+        text: "오류가 있어요! 관리자에게 문의해주세요😿",
+        consfirmButtonColor: "#47AFDB",
+        confirmButtonText: "확인",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate(-1);
+        }
+      });
+    }
   };
 
   return (
@@ -97,7 +90,23 @@ export default function WithDrawal() {
       </div>
       <button
         className={isClick ? "sumitbtn" : "unsumitbtn"}
-        onClick={submitHandler}
+        onClick={() => {
+          Swal.fire({
+            icon: "warning",
+            text: "정말 탈퇴하시겠습니까?",
+            showDenyButton: true,
+            confirmButtonColor: "#47AFDB",
+            denyButtonColor: "#D9D9D9",
+            confirmButtonText: "탈퇴하기",
+            denyButtonText: "취소",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              submitHandler();
+            } else if (result.isDenied) {
+              navigate(-1);
+            }
+          });
+        }}
       >
         계정삭제하기
       </button>

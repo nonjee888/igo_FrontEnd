@@ -1,14 +1,10 @@
-import React, { lazy, Suspense } from "react";
 import "./style.scss";
 import { useState } from "react";
 import { instance } from "../../shared/api";
 import { setCookie } from "../../shared/cookie";
-// import AdminSignup from "./AdminSignup";
+import AdminSignup from "./AdminSignup";
 import tutorial9 from "../../asset/assetTutorial/tutorial9.png";
-import igoLogo from "../../asset/igoLogo.png";
 import Swal from "sweetalert2";
-
-const AdminSignup = lazy(() => import("./AdminSignup"));
 
 const Admin = () => {
   const initialState = {
@@ -65,24 +61,11 @@ const Admin = () => {
       });
     }
   };
-  const Loading = () => (
-    <div className="All">
-      <img
-        src={igoLogo}
-        style={{
-          width: "50%",
-          margin: "60% 25% 0 25%",
-          display: "block",
-        }}
-        alt="로고"
-      />
-    </div>
-  );
+
   return (
     <>
-      <Suspense fallback={Loading}>
-        {modal ? <AdminSignup close={close} setModal={setModal} /> : null}
-      </Suspense>
+      {modal ? <AdminSignup close={close} setModal={setModal} /> : null}
+
       <img className="Admin-logo" src={tutorial9} loading="lazy" alt="" />
       <div className="Login-wrap">
         <div className="Login-id">
