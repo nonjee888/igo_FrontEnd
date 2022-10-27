@@ -1,5 +1,37 @@
 //혜림담당
 
+//뒤로가기
+.MyPostsTitle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5%;
+  .MyPageGoBack {
+    display: flex;
+    align-items: center;
+    width: 10%;
+    img {
+      width: 40%;
+      height: 40%;
+    }
+  }
+  h3 {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    width: 50%;
+  }
+  .MyPlanAdd {
+    display: flex;
+    align-items: center;
+    width: 10%;
+    margin: 0 0 1% 30%;
+    img {
+      width: 95%;
+      height: 95%;
+    }
+  }
+}
+
 //프로필사진 모달
 .myProfileAll {
   width: 100%;
@@ -231,11 +263,6 @@
 }
 
 //나의 일정관리하기
-.planTitle {
-  display: flex;
-  justify-content: space-between;
-}
-
 .planAdd {
   width: 10%;
   height: 10%;
