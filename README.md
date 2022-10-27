@@ -25,7 +25,7 @@
 
 # 🗂컴포넌트 구조
 
-![내돈내여 컴포넌트 구조](https://user-images.githubusercontent.com/106578705/196848710-8f1d68b9-3733-4a0d-8d46-1edc26099299.png)</br></br>
+![내돈내여 컴포넌트 구조](https://blog.kakaocdn.net/dn/bzv4F6/btrPK0oDa9Z/xVZdcfDACElapbQyQGq6q0/img.png)</br></br>
 
 
 # 🖇와이어프레임 
