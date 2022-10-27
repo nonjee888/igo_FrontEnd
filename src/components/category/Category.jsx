@@ -42,6 +42,7 @@ export default function Category() {
         <img
           className="search-icon"
           src={search}
+          alt=""
           onClick={() => {
             navigate("/search/");
           }}

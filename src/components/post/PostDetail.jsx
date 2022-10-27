@@ -12,6 +12,7 @@ import PostReportModal from "./PostReportModal";
 import Swal from "sweetalert2";
 import dompurify from "dompurify";
 import PostComment from "./PostComment";
+import goingback from "../../asset/goingback.png";
 import heart from "../../asset/heart.png";
 import edit from "../../asset/edit.png";
 import report from "../../asset/report.png";
@@ -157,7 +158,24 @@ const PostDetail = () => {
       <div className="allPost">
         <div className="detail-wrapper">
           <div className="detail-title">
-            <div className="title">{detail?.title}</div>
+            <div className="title">
+              <div className="goBackwrap">
+                <img
+                  style={{
+                    width: "40%",
+                    height: "40%",
+                    float: "left",
+                    marginLeft: "10px",
+                  }}
+                  src={goingback}
+                  onClick={() => {
+                    navigate(-1);
+                  }}
+                  alt=""
+                />
+              </div>
+              {detail?.title}
+            </div>
           </div>
           {/* 비회원: 작성자, 조회수 보임 like, report 누르면 로그인하기 alert*/}
           {!user ? (
@@ -213,7 +231,12 @@ const PostDetail = () => {
                   });
                 }}
               >
-                <img src={report} className="report-post-icon" alt="신고버튼" />
+                <img
+                  src={report}
+                  className="report-post-icon"
+                  alt="신고버튼"
+                  loading="lazy"
+                />
               </button>
             </div>
           ) : !userConfirm ? (
@@ -234,7 +257,12 @@ const PostDetail = () => {
               </div>
 
               <button onClick={openModal} className="report-post-btn">
-                <img src={report} className="report-post-icon" alt="신고버튼" />
+                <img
+                  src={report}
+                  className="report-post-icon"
+                  alt="신고버튼"
+                  loading="lazy"
+                />
               </button>
               {modalOpen ? (
                 <PostReportModal
@@ -268,6 +296,7 @@ const PostDetail = () => {
                     onClick={() => {
                       navigate("/addpost/edit/" + id);
                     }}
+                    alt=""
                   />
                 </button>
                 <button
@@ -292,7 +321,12 @@ const PostDetail = () => {
                     });
                   }}
                 >
-                  <img src={deleteimg} className="delete-icon" alt="신고버튼" />
+                  <img
+                    src={deleteimg}
+                    className="delete-icon"
+                    alt="신고버튼"
+                    loading="lazy"
+                  />
                 </button>
               </div>
             </div>

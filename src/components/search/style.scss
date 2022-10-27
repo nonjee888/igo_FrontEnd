@@ -12,6 +12,12 @@
   border-radius: 120px;
   background: #fff;
   margin: 1rem auto 1rem auto;
+  .goBackwrap {
+    align-items: center;
+    justify-content: center;
+    width: 5%;
+    height: 5%;
+  }
   .SearchBar {
     font-size: 18px;
     width: calc(100% - 0px);
@@ -27,7 +33,7 @@
     .Icon {
       position: absolute;
       right: 12px;
-      top: 5px;
+      top: 4px;
       width: 26px;
     }
   }

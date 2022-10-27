@@ -19,9 +19,9 @@ const PostCard = ({ post }) => {
         }}
       >
         {thumnail === "false" ? (
-          <img className="img-container" src={photo} />
+          <img className="img-container" src={photo} alt="" />
         ) : (
-          <img className="img-container" src={thumnail} />
+          <img className="img-container" src={thumnail} alt="" />
         )}
         <div className="pic-wrapper">
           <div className="post-content">
