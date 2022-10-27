@@ -1,4 +1,5 @@
 //Toast UI 에디터
+import "./style.scss";
 import Swal from "sweetalert2";
 import S3 from "react-aws-s3";
 import { Editor } from "@toast-ui/react-editor";

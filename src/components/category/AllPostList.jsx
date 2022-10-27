@@ -217,7 +217,7 @@ export default function AllPostList() {
           navigate("/tutorial");
         }}
       >
-        <img src={research} alt="리서치커피받으세요" loading="lazy" />
+        <img src={research} alt="리서치커피받으세요" />
       </button>
     </div>
   );
