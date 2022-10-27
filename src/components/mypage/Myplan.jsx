@@ -13,6 +13,7 @@ import {
 import add from "../../asset/add.png";
 import deleteimg1 from "../../asset/deleteimg1.png";
 import calendarIcon from "../../asset/assetMypage/calendarIcon.png";
+import goingback from "../../asset/goingback.png";
 //삭제알림창
 import Swal from "sweetalert2";
 
@@ -35,17 +36,29 @@ const Myplan = () => {
   return (
     <div className="All">
       <div className="MyPosts">
-        <div className="planTitle">
+        <div className="MyPostsTitle">
+          <div className="MyPageGoBack">
+            <img
+              src={goingback}
+              onClick={() => {
+                navigate(-1);
+              }}
+              alt=""
+            />
+          </div>
           <h3>나의 일정</h3>
-          <img
-            src={add}
-            className="planAdd"
-            alt="일정추가하기"
-            onClick={() => {
-              navigate("/myplanpost");
-            }}
-          />
+          <div className="MyPlanAdd">
+            <img
+              src={add}
+              className="planAdd"
+              alt="일정추가하기"
+              onClick={() => {
+                navigate("/myplanpost");
+              }}
+            />
+          </div>
         </div>
+
         <div
           style={{
             display: "flex",
@@ -114,7 +127,7 @@ const Myplan = () => {
             );
           })}
         </div>
-        <h3 style={{ marginTop: "10%" }}>완료된 일정</h3>
+        <h3 style={{ margin: "10% 0 5% 10%" }}>완료된 일정</h3>
         <div
           style={{
             display: "flex",

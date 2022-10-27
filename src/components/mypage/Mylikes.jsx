@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 // 리덕스 관련 Imports
 import { useDispatch, useSelector } from "react-redux";
 import { getMylikes } from "../../redux/modules/mylikes";
+//이미지
 import photo from "../../asset/assetMypage/photo.png";
 import love from "../../asset/assetMypage/love.png";
+import goingback from "../../asset/goingback.png";
 
 const Mylikes = () => {
   let navigate = useNavigate();
@@ -20,9 +22,21 @@ const Mylikes = () => {
   return (
     <div className="All">
       <div className="MyPosts">
-        <h3>
-          나의 <img src={love} alt="좋아요" loading="lazy" /> 게시글
-        </h3>
+        <div className="MyPostsTitle">
+          <div className="MyPageGoBack">
+            <img
+              src={goingback}
+              onClick={() => {
+                navigate(-1);
+              }}
+              alt=""
+            />
+          </div>
+          <h3>
+            나의 <img src={love} alt="좋아요" loading="lazy" />
+            게시글
+          </h3>
+        </div>
         <div className="MyListsAll">
           {mylikes?.length === 0 ? (
             <div className="myPageNoInfo">아직 ♥를 누른 게시물이 없습니다.</div>
