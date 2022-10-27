@@ -104,10 +104,9 @@ src="https://camo.githubusercontent.com/c37f52fc7f77f8a8fd16a733a91c75278dcb3149
 # 🎯Trouble Shooting 
 
 ## [트러블슈팅!](https://pacific-force-cab.notion.site/Trouble-shooting-0e43f4f5f5524c6e83fc418494ce6b2a)
-
+</br></br>
 
 # 🎥사이트 데모
-
 |튜토리얼|로그인(랜덤이미지)|태그선택, 선택기반추천페이지|
 |:---:|:---:|:---:|
 |![튜토리얼](https://user-images.githubusercontent.com/108657283/198048342-db82b3f6-09a1-4275-9313-94df686d1eb2.gif)|![로그인](https://user-images.githubusercontent.com/108657283/198040520-e783224c-e601-4a76-afea-78d7b50f28f8.gif)|![태그](https://user-images.githubusercontent.com/108657283/198048762-ad187ab9-fdad-4405-9749-128699e71e09.gif)|
