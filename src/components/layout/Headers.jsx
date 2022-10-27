@@ -74,7 +74,7 @@ const Headers = () => {
               님
             </div>
             <div className="noticeButton" onClick={openModal2}>
-              <img src={notice} alt="알림" loading="lazy" />
+              <img src={notice} alt="알림" />
               {notice1.length !== 0 ? <div className="notification" /> : null}
             </div>
           </>
@@ -94,7 +94,7 @@ const Headers = () => {
               님
             </div>
             <div className="noticeButton" onClick={openModal2}>
-              <img src={notice} alt="알림" loading="lazy" />
+              <img src={notice} alt="알림" />
               {notice1.length !== 0 ? <div className="notification" /> : null}
             </div>
           </>
@@ -102,7 +102,7 @@ const Headers = () => {
       </div>
       <Modal2 open={modalOpen2} close={closeModal2} />
       <button className="Menu" onClick={openModal}>
-        <img src={menu} alt="메뉴" loading="lazy" />
+        <img src={menu} alt="메뉴" />
       </button>
       <Modal open={modalOpen} close={closeModal} />
     </div>
