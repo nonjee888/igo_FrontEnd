@@ -1,4 +1,4 @@
-![내돈내여 썸네일](https://user-images.githubusercontent.com/106578705/196959130-dbee6ce6-7e55-4f43-a62f-077244082991.jpeg)
+![내돈내여 썸네일](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fclxm8X%2FbtrPIRmhmS6%2FJkSaVUvvTI9wgdtt0mSwP0%2Fimg.jpg)
 # 🖥 프로젝트 기간
 ### 2022.09.16 ~ 2022.10.28 </br></br>
 
