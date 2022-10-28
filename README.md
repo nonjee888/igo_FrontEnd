@@ -20,13 +20,13 @@
 
 # 📑 Service Architecture
 
-![아키텍쳐](![image](https://user-images.githubusercontent.com/106578705/198479515-38fdd6c3-cb12-49b0-8fbc-d9b0d58c2c31.png)
-)</br></br>
+![아키텍쳐](https://user-images.githubusercontent.com/106578705/198481476-39f1a589-80c3-4e26-9754-898ac14f5802.jpeg)
+</br></br>
 
 
 # 🗂컴포넌트 구조
 
-![내돈내여컴포넌트](https://user-images.githubusercontent.com/106578705/198281413-5902ee88-cbf6-4248-b5c3-84a096c4be04.png)
+![내돈내여 컴포넌트 구조](https://user-images.githubusercontent.com/106578705/198480733-80f9faa2-bceb-4f07-84a8-a8b6468b4d37.png)
 
 
 # 🖇와이어프레임 
