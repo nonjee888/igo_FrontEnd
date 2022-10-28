@@ -107,9 +107,11 @@ const PostDetail = () => {
   }, [center, poly]);
 
   useEffect(() => {
-    const map = mapRef.current;
-    if (bounds && map) map.setBounds(bounds && bounds);
-  }, [fetch, id]);
+    setTimeout(() => {
+      const map = mapRef.current;
+      if (bounds && map) map.setBounds(bounds && bounds);
+    }, 50);
+  }, [fetch]);
 
   function pointsToPath(points) {
     return points.map((point) => ({
@@ -378,15 +380,6 @@ const PostDetail = () => {
               <> </>
             ) : (
               <>
-                <button
-                  className="map-detail"
-                  onClick={() => {
-                    const map = mapRef.current;
-                    if (map) map.setBounds(bounds);
-                  }}
-                >
-                  눌러서경로보기
-                </button>
                 <Map // 지도를 표시할 Container
                   center={{
                     // 지도의 중심좌표
