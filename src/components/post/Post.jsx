@@ -7,8 +7,12 @@ const Post = (props) => {
   const navigate = useNavigate();
   const id = props.post.id;
   const title = props.post.title;
-  const thumnail = props.post.thumnail;
+  const thumbnail = props.post.thumnail;
   const heart = props.post.heartNum;
+
+  const getParametersForUnsplash = ({ width, height, quality, format }) => {
+    return `?w=${width}&h=${height}&q=${quality}&fm=${format}&fit=crop`;
+  };
 
   return (
     <>
@@ -19,12 +23,20 @@ const Post = (props) => {
             navigate("/postdetail/" + id);
           }}
         >
-          {thumnail === "false" ? (
+          {thumbnail === "false" ? (
             <img className="img-container" src={photo} loading="lazy" alt="" />
           ) : (
             <img
               className="img-container"
-              src={thumnail}
+              src={
+                thumbnail +
+                getParametersForUnsplash({
+                  width: 191,
+                  height: 166,
+                  quality: 80,
+                  format: "WebP",
+                })
+              }
               loading="lazy"
               alt=""
             />

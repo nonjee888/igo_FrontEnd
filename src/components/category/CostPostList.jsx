@@ -97,29 +97,21 @@ export default function CostPostList() {
           {cost === "10만원대"
             ? ten &&
               ten?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : cost === "20만원대"
             ? twenty &&
               twenty?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : cost === "30만원대"
             ? thirty &&
               thirty?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : overThirty &&
               overThirty?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })}
         </div>
       </div>

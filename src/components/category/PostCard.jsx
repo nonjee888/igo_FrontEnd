@@ -6,10 +6,12 @@ const PostCard = ({ post }) => {
   const navigate = useNavigate();
   const id = post.id;
   const title = post.title;
-  const thumnail = post.thumnail;
+  const thumbnail = post.thumnail;
   const heart = post.heartNum;
-  //   console.log(post.data.data);
 
+  const getParametersForUnsplash = ({ width, height, quality, format }) => {
+    return `?w=${width}&h=${height}&q=${quality}&fm=${format}&fit=crop`;
+  };
   return (
     <>
       <div
@@ -18,10 +20,22 @@ const PostCard = ({ post }) => {
           navigate("/postdetail/" + id);
         }}
       >
-        {thumnail === "false" ? (
+        {thumbnail === "false" ? (
           <img className="img-container" src={photo} alt="" />
         ) : (
-          <img className="img-container" src={thumnail} alt="" />
+          <img
+            className="img-container"
+            src={
+              thumbnail +
+              getParametersForUnsplash({
+                width: 191,
+                height: 166,
+                quality: 80,
+                format: "WebP",
+              })
+            }
+            alt=""
+          />
         )}
         <div className="pic-wrapper">
           <div className="post-content">
