@@ -131,64 +131,46 @@ export default function InterestedPostList() {
           {interest === "혼자여행"
             ? alone &&
               alone?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : interest === "둘이여행"
             ? couple &&
               couple?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : interest === "단체여행"
             ? group &&
               group?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : interest === "가성비"
             ? costWorthy &&
               costWorthy?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : interest === "럭셔리"
             ? luxury &&
               luxury?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : interest === "힐링"
             ? relaxing &&
               relaxing?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : interest === "액티비티"
             ? active &&
               active?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : interest === "식도락"
             ? foodie &&
               foodie?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })
             : insta &&
               insta?.map((post) => {
-                return (
-                  <Post post={post} key={post.id} createdAt={post.createdAt} />
-                );
+                return <Post post={post} key={post.id} />;
               })}
         </div>
       </div>
