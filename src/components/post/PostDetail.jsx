@@ -84,10 +84,6 @@ const PostDetail = () => {
     }
   };
 
-  useEffect(() => {
-    fetch();
-  }, []);
-
   const mapRef = useRef();
   const bounds = useMemo(() => {
     const bounds = new kakao.maps.LatLngBounds();
@@ -124,6 +120,8 @@ const PostDetail = () => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
         setOverlayData(response.payload.mapData);
+        setCenter(response.payload.mapData.marker);
+        setPoly(response.payload.mapData.polyline);
       });
     }
   }, [id]);
