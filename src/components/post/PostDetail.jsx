@@ -19,6 +19,7 @@ import report from "../../asset/report.png";
 import list from "../../asset/list.png";
 import deleteimg from "../../asset/deleteimg.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
+import { useLayoutEffect } from "react";
 
 const { kakao } = window;
 
@@ -116,7 +117,7 @@ const PostDetail = () => {
     }));
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
         setOverlayData(response.payload.mapData);
