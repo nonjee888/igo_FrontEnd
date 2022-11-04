@@ -4,6 +4,18 @@ import React, { useState } from "react";
 import PostKakaoMap from "./PostKakaoMap";
 
 const SearchPlace = (props) => {
+  const {
+    id,
+    title,
+    content,
+    tags,
+    writerId,
+    isActive,
+    isEdit,
+    overlayData,
+    setOverlayData,
+    checkedItems,
+  } = props;
   const [inputText, setInputText] = useState("");
   const [place, setPlace] = useState("");
 
@@ -27,7 +39,20 @@ const SearchPlace = (props) => {
         </button>
       </form>
 
-      <PostKakaoMap props={props} searchPlace={place} />
+      <PostKakaoMap
+        props={props}
+        id={id}
+        title={title}
+        content={content}
+        tags={tags}
+        writerId={writerId}
+        isActive={isActive}
+        isEdit={isEdit}
+        overlayData={overlayData}
+        setOverlayData={setOverlayData}
+        checkedItems={checkedItems}
+        searchPlace={place}
+      />
     </>
   );
 };

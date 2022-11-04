@@ -10,21 +10,19 @@ import commentIcon from "../../asset/commentIcon.png";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-const CommentList = (props) => {
+const CommentList = ({ myinfo, comment, postId }) => {
   const dispatch = useDispatch();
-  const myinfo = props?.myinfo;
-  const myName = props?.myinfo && myinfo[0]?.nickname;
-  const writerId = props.comment.nickname;
-  const commentProfile = props.comment.profile;
+  const myName = myinfo && myinfo[0]?.nickname;
+  const writerId = comment.nickname;
+  const commentProfile = comment.profile;
   const userConfirm = writerId === myName;
-  const content = props.comment.content;
-  const postId = props.postId;
-  const commentId = props.comment.id;
-  const { comments } = useSelector((state) => state.comments);
+  const content = comment.content;
+  const commentId = comment.id;
+
   const { id } = useParams();
   useEffect(() => {
-    dispatch(getComments(id)).then((res) => {});
-  }, [dispatch, id]);
+    dispatch(getComments(id));
+  }, [id]);
 
   const payload = {
     postId,
