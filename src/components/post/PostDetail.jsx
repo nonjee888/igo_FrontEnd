@@ -1,6 +1,6 @@
 import "./style.scss";
 
-import { useEffect, useState, useMemo, useRef } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import { instance } from "../../shared/api";
 import { useParams, useNavigate } from "react-router";
 import { onLikePost } from "../../redux/modules/posts";
@@ -19,6 +19,7 @@ import report from "../../asset/report.png";
 import list from "../../asset/list.png";
 import deleteimg from "../../asset/deleteimg.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
+import { useLayoutEffect } from "react";
 
 const { kakao } = window;
 
@@ -27,12 +28,19 @@ const PostDetail = () => {
   const { error, detail } = useSelector((state) => state?.posts);
   const { myinfo } = useSelector((state) => state.myinfo);
 
+  const [title, setTitle] = useState();
+  const [content, setContent] = useState();
+  const [viewCount, setViewCount] = useState();
+  const [heartNum, setHeartNum] = useState();
+  const [tags, setTags] = useState();
+
   const [center, setCenter] = useState();
   const [poly, setPoly] = useState();
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
   });
+
   //신고하기 모달
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
@@ -64,26 +72,6 @@ const PostDetail = () => {
   const user = myinfo && myinfo[0]?.nickname;
   const userConfirm = user === writerId;
 
-  const fetch = async () => {
-    try {
-      const { data } = await instance.get(`/api/detail/${id}`);
-
-      setCenter(data?.data?.mapData?.marker);
-      setPoly(data?.data?.mapData?.polyline);
-    } catch (error) {
-      <div className="All">
-        <div className="sorry">
-          <img
-            style={{ width: "100%", height: "100%", marginBottom: "10%" }}
-            src={pleaseLogin}
-            alt="sorry"
-          />
-        </div>
-        <div style={{ textAlign: "center" }}>죄송합니다 다시 시도해주세요.</div>
-      </div>;
-    }
-  };
-
   const mapRef = useRef();
   const bounds = useMemo(() => {
     const bounds = new kakao.maps.LatLngBounds();
@@ -100,14 +88,14 @@ const PostDetail = () => {
         });
     }
     return bounds;
-  }, [center, poly]);
+  }, [center]);
 
   useEffect(() => {
     setTimeout(() => {
       const map = mapRef.current;
       if (bounds && map) map.setBounds(bounds && bounds);
     }, 50);
-  }, [fetch]);
+  }, [center]);
 
   function pointsToPath(points) {
     return points.map((point) => ({
@@ -116,15 +104,27 @@ const PostDetail = () => {
     }));
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
+        setTitle(response.payload.title);
+        setContent(response.payload.content);
+        setViewCount(response.payload.viewCount);
+        setHeartNum(response.payload.heartNum);
+        setTags(response && response?.payload?.tags);
         setOverlayData(response.payload.mapData);
         setCenter(response.payload.mapData.marker);
         setPoly(response.payload.mapData.polyline);
       });
     }
-  }, [id]);
+    return () => {
+      setTitle("");
+      setContent();
+      setViewCount("");
+      setHeartNum("");
+      setTags([]);
+    };
+  }, []);
 
   if (error) {
     return (
@@ -174,14 +174,14 @@ const PostDetail = () => {
                   alt=""
                 />
               </div>
-              {detail?.title}
+              {title}
             </div>
           </div>
           {/* 비회원: 작성자, 조회수 보임 like, report 누르면 로그인하기 alert*/}
           {!user ? (
             <div className="noUser-detail-btns">
               <h4 className="detail-nickname">{writerId}</h4>
-              <div>조회수:{detail?.viewCount}</div>
+              <div>조회수:{viewCount}</div>
               <div className="heart-num">
                 <button
                   className="liked-post-btn"
@@ -209,7 +209,7 @@ const PostDetail = () => {
                     alt="관심게시글"
                   />
                 </button>
-                <div className="number">{detail?.heartNum}</div>
+                <div className="number">{heartNum}</div>
               </div>
               <button
                 className="report-post-btn"
@@ -243,7 +243,7 @@ const PostDetail = () => {
             /* 회원 && !게시글 작성자 ? like, report 가능 */
             <div className="notMy-detail-btns">
               <h4 className="detail-nickname">{writerId}</h4>
-              <div>조회수:{detail?.viewCount}</div>
+              <div>조회수:{viewCount}</div>
 
               <div className="heart-num">
                 <button onClick={onLike} className="liked-post-btn">
@@ -253,7 +253,7 @@ const PostDetail = () => {
                     alt="관심게시글"
                   />
                 </button>
-                <div className="number">{detail?.heartNum}</div>
+                <div className="number">{heartNum}</div>
               </div>
 
               <button onClick={openModal} className="report-post-btn">
@@ -276,7 +276,7 @@ const PostDetail = () => {
             /* 게시글 작성자 : like, edit, delete 가능 */
             <div className="detail-btns">
               <h4 className="detail-nickname">{writerId}</h4>
-              <div>조회수:{detail?.viewCount}</div>
+              <div>조회수:{viewCount}</div>
 
               <div className="heart-num">
                 <button onClick={onLike} className="liked-post-btn">
@@ -286,7 +286,7 @@ const PostDetail = () => {
                     alt="관심게시글"
                   />
                 </button>
-                <div className="number">{detail?.heartNum}</div>
+                <div className="number">{heartNum}</div>
               </div>
               <div className="edit-delete">
                 <button className="edit-btn">
@@ -341,7 +341,7 @@ const PostDetail = () => {
               }}
             >
               <span className="detail-tag-text" style={{ color: "#fff" }}>
-                {detail?.tags[0]}
+                {tags && tags[0]}
               </span>
             </div>
             <div
@@ -351,7 +351,7 @@ const PostDetail = () => {
               }}
             >
               <span className="detail-tag-text" style={{ color: "#fff" }}>
-                {detail?.tags[1]}
+                {tags && tags[1]}
               </span>
             </div>
             <div
@@ -361,7 +361,7 @@ const PostDetail = () => {
               }}
             >
               <span className="detail-tag-text" style={{ color: "#fff" }}>
-                {detail?.tags[2]}
+                {tags && tags[2]}
               </span>
             </div>
           </div>
@@ -369,7 +369,7 @@ const PostDetail = () => {
 
           <div
             className="html-wrapper"
-            dangerouslySetInnerHTML={{ __html: sanitizer(detail?.content) }}
+            dangerouslySetInnerHTML={{ __html: sanitizer(content) }}
           ></div>
           <div className="map-wrapper">
             {center === undefined && poly === undefined ? (
@@ -416,4 +416,4 @@ const PostDetail = () => {
   );
 };
 
-export default PostDetail;
+export default React.memo(PostDetail);
