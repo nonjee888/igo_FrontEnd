@@ -124,7 +124,7 @@ const PostComment = () => {
                   type="text"
                   name="comments"
                   value={comment}
-                  autoFocus
+                  // autoFocus
                   className="comment-input"
                   placeholder="댓글입력..."
                   onChange={(e) => {
@@ -155,8 +155,6 @@ const PostComment = () => {
                     comment={comment}
                     key={comment?.id}
                     postId={postId}
-                    setComments={setComments}
-                    commentList={comments}
                   />
                 );
               })}

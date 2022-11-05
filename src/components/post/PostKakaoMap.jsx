@@ -13,28 +13,26 @@ import editpost from "../../asset/editpost.png";
 
 const { kakao } = window;
 
-const PostKakaoMap = (props) => {
+const PostKakaoMap = ({
+  id,
+  title,
+  content,
+  tags,
+  isActive,
+  isEdit,
+  overlayData,
+  setOverlayData,
+  searchPlace,
+  checkedItems,
+}) => {
   const navigate = useNavigate();
   const managerRef = useRef(null);
-  const id = props.props.id;
-  const overlayData = props.props.overlayData;
-  const setOverlayData = props.props.setOverlayData;
-  const isEdit = props.props.isEdit;
-  const isActive = props.props.isActive;
-  const checkedItems = props.props.checkedItems;
-
+  const mapData = overlayData; //맵데이터
   const [modalOpen, setModalOpen] = useState(false);
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
   const [isDone, setIsDone] = useState(false);
-
-  //게시물 등록시 서버로 전송될 데이터
-  const title = props.props.data.title; //타이틀
-  const content = props.props.data.editor; //에디터
-  const mapData = overlayData; //맵데이터
-  const searchPlace = props.searchPlace; //키워드검색
-  const tags = props.props.data.tags; //tag선택
 
   const openModal = () => {
     setModalOpen(true);
@@ -57,11 +55,11 @@ const PostKakaoMap = (props) => {
       });
     } else {
       let req = {
-        title: title,
-        content: content,
+        title,
+        content,
         mapData: overlayData,
-        searchPlace: searchPlace,
-        tags: tags,
+        searchPlace,
+        tags,
       };
 
       const data = await instance.post("/api/post", req);
@@ -74,11 +72,11 @@ const PostKakaoMap = (props) => {
 
   const handleEditButton = async () => {
     let req = {
-      title: title,
-      content: content,
-      mapData: mapData,
-      searchPlace: searchPlace,
-      tags: tags,
+      title,
+      content,
+      mapData,
+      searchPlace,
+      tags,
     };
 
     const data = await instance.patch(`/api/post/${id}`, req, {
@@ -112,9 +110,9 @@ const PostKakaoMap = (props) => {
   useEffect(() => {
     if (!map) return;
     const ps = new kakao.maps.services.Places();
-    if (props.searchPlace === "") return;
+    if (searchPlace === "") return;
 
-    ps.keywordSearch(props.searchPlace, (data, status, _pagination) => {
+    ps.keywordSearch(searchPlace, (data, status, _pagination) => {
       if (status === kakao.maps.services.Status.OK) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
@@ -139,7 +137,7 @@ const PostKakaoMap = (props) => {
         map.setBounds(bounds);
       }
     });
-  }, [map, props.searchPlace]);
+  }, [map, searchPlace]);
 
   return (
     <>
@@ -242,7 +240,7 @@ const PostKakaoMap = (props) => {
               });
             }}
           >
-            {isDone ? "경로업데이트" : "여행경로수정"}
+            {isDone ? "경로업데이트" : "경로초기화"}
           </button>
         ) : (
           <button

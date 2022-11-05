@@ -29,14 +29,14 @@ const AddPost = () => {
 
   //제목, 내용, 지도, 버튼활성화 state
   const [title, setTitle] = useState("");
-  const [editor, setEditor] = useState("");
+  const [content, setContent] = useState("");
   const [overlayData, setOverlayData] = useState({
     marker: [],
     polyline: [],
   });
   const [isActive, setIsActive] = useState(false);
 
-  const content = editor;
+  // const content = editor;
   const editorRef = useRef();
   const dispatch = useDispatch();
   const inputFocus = useRef(null);
@@ -55,9 +55,9 @@ const AddPost = () => {
   };
   const handleEditor = (e) => {
     const innerText = editorRef.current?.getInstance().getHTML();
-    setEditor(innerText);
+    setContent(innerText);
   };
-
+  console.log(content, title);
   //게시글등록 버튼: 제목, 내용이 각각 2, 8자리 글자 이하면 버튼 비활성화
   const isSubmitPost = () => {
     if (content !== "<p><br></p>" && title !== "") {
@@ -74,7 +74,7 @@ const AddPost = () => {
     if (id !== undefined) {
       dispatch(getDetailPosts(id)).then((response) => {
         setTitle(response.payload.title);
-        setEditor(
+        setContent(
           editorRef.current?.getInstance().setHTML(response.payload.content)
         );
         setOverlayData(response.payload.mapData);
@@ -87,7 +87,7 @@ const AddPost = () => {
       //Edit모드가 아니라면 state초기화
     } else {
       setTitle("");
-      setEditor(editorRef.current?.getInstance().getHTML());
+      setContent(editorRef.current?.getInstance().getHTML());
     }
   }, [id]); //게시글의 id가 다를때마다 useEffect가 실행 됨
 
@@ -105,12 +105,6 @@ const AddPost = () => {
   const [openRegionModal, setOpenRegionModal] = useState(false);
   const [openInterestModal, setOpenInterestModal] = useState(false);
   const [openCostModal, setOpenCostModal] = useState(false);
-
-  let data = {
-    title: title,
-    editor: editor,
-    tags: tags,
-  };
 
   useEffect(() => {
     inputFocus.current.focus();
@@ -293,7 +287,9 @@ const AddPost = () => {
             <div>
               <PostSearchPlace
                 id={id}
-                data={data}
+                title={title}
+                content={content}
+                tags={tags}
                 writerId={writerId}
                 isActive={isActive}
                 isEdit={isEdit}

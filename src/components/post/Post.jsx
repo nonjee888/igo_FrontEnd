@@ -3,12 +3,12 @@ import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import photo from "../../asset/assetMypage/photo.png";
 
-const Post = (props) => {
+const Post = ({ post }) => {
   const navigate = useNavigate();
-  const id = props.post.id;
-  const title = props.post.title;
-  const thumbnail = props.post.thumnail;
-  const heart = props.post.heartNum;
+  const id = post.id;
+  const title = post.title;
+  const thumbnail = post.thumnail;
+  const heart = post.heartNum;
 
   const getParametersForUnsplash = ({ width, height, quality, format }) => {
     return `?w=${width}&h=${height}&q=${quality}&fm=${format}&fit=crop`;
