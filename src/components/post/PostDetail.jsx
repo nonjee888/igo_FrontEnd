@@ -1,6 +1,12 @@
 import "./style.scss";
 
-import React, { useEffect, useState, useMemo, useRef } from "react";
+import React, {
+  useLayoutEffect,
+  useEffect,
+  useState,
+  useMemo,
+  useRef,
+} from "react";
 import { instance } from "../../shared/api";
 import { useParams, useNavigate } from "react-router";
 import { onLikePost } from "../../redux/modules/posts";
@@ -19,7 +25,6 @@ import report from "../../asset/report.png";
 import list from "../../asset/list.png";
 import deleteimg from "../../asset/deleteimg.png";
 import pleaseLogin from "../../asset/pleaseLogin.png";
-import { useLayoutEffect } from "react";
 
 const { kakao } = window;
 
