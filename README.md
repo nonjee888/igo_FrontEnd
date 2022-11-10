@@ -1,6 +1,13 @@
 ![내돈내여 썸네일](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fclxm8X%2FbtrPIRmhmS6%2FJkSaVUvvTI9wgdtt0mSwP0%2Fimg.jpg)
+
+# 🔖 서비스 개요
+### 😁내 돈 내고 내가 여행하는, 진정성있는 국내 여행 정보 공유 플랫폼 서비스
+</br></br>
+
+
 # 🖥 프로젝트 기간
 ### 2022.09.16 ~ 2022.10.28 </br></br>
+
 
 # 💡 Notion  
 ## [내돈내여: 내 돈 내고 내가 다녀온 리얼 여행 후기만 모아 보자!](https://goofy-skiff-c81.notion.site/d61b741102074034a0f2bf821369fb51) </br></br>
@@ -14,9 +21,6 @@
 ### FE : 노은지 심혜림 이다현 | BE : 김민식 김예원 이주현
 ### BE GitHub : https://github.com/kminsic/Igo </br></br>
 
-# 🔖 서비스 개요
-### 😁내 돈 내고 내가 여행하는, 진정성있는 국내 여행 정보 공유 플랫폼 서비스
-</br></br>
 
 # 📑 Service Architecture
 
